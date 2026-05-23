@@ -1,0 +1,10 @@
+name: object_publication
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectPublicationEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectPublicationEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectPublishableInterface
+columns:
+  - object_published
+  - object_published_at
+status: canonical

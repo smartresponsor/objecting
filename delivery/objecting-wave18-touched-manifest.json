@@ -1,0 +1,36 @@
+{
+  "wave": "objecting_wave18_rc_stabilization",
+  "base": "objecting_wave17_backend_import_contract_cumulative.zip",
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave18-rc-stabilization-summary.md",
+    "delivery/objecting-wave18-touched-manifest.json",
+    "docs/integration/objecting-rc-stabilization.md",
+    "resources/release/objecting-rc-stabilization.example.yaml",
+    "resources/release/objecting-release-closure.example.yaml",
+    "src/Service/Release/ObjectRcStabilizationManifestReporter.php",
+    "src/Service/Release/ObjectReleaseClosureManifestReporter.php",
+    "src/ServiceInterface/Release/ObjectRcStabilizationManifestReporterInterface.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "src/ValueObject/ObjectRcStabilizationManifest.php",
+    "src/ValueObject/ObjectRcStabilizationReport.php",
+    "tests/Unit/ObjectPackageSurfaceTest.php",
+    "tests/Unit/ObjectRcStabilizationManifestReporterTest.php",
+    "tests/Unit/ObjectReleaseClosureManifestReporterTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_backend_import_contract_check.php",
+    "tools/test/objecting_doctrine_mapping_contract_check.php",
+    "tools/test/objecting_exposing_bridge_contract_check.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/test/objecting_rc_stabilization_check.php",
+    "tools/test/objecting_release_closure_check.php",
+    "tools/test/objecting_schema_mirror_contract_check.php"
+  ],
+  "deleted_paths": [],
+  "notes": [
+    "RC stabilization only; no new runtime responsibility.",
+    "All active objecting_* check tools pass inside the cumulative build."
+  ]
+}

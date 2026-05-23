@@ -1,0 +1,77 @@
+object_doctrine_mapping_contract_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+entity:
+  class: App\Paging\Entity\Page
+  table: page
+  backend_owns_migrations: true
+objecting:
+  package: smart-responsor/objecting
+  field_pack_contract: resources/objecting/Page/object-field-packs.yaml
+  column_prefix_false: true
+  object_columns_prefixed: true
+required_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_publication
+  - object_soft_delete
+  - object_version
+embeddables:
+  - App\Objecting\Embeddable\ObjectIdentityEmbeddable
+  - App\Objecting\Embeddable\ObjectAuditEmbeddable
+  - App\Objecting\Embeddable\ObjectTitleEmbeddable
+  - App\Objecting\Embeddable\ObjectPublicationEmbeddable
+  - App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable
+  - App\Objecting\Embeddable\ObjectVersionEmbeddable
+traits:
+  - App\Objecting\EntityTrait\Embeddable\ObjectIdentityEmbeddableTrait
+  - App\Objecting\EntityTrait\Embeddable\ObjectAuditEmbeddableTrait
+  - App\Objecting\EntityTrait\Embeddable\ObjectTitleEmbeddableTrait
+  - App\Objecting\EntityTrait\Embeddable\ObjectPublicationEmbeddableTrait
+  - App\Objecting\EntityTrait\Embeddable\ObjectSoftDeleteEmbeddableTrait
+  - App\Objecting\EntityTrait\Embeddable\ObjectVersionEmbeddableTrait
+columns:
+  - object_uuid
+  - object_slug
+  - object_created_at
+  - object_updated_at
+  - object_created_by
+  - object_updated_by
+  - object_first_title
+  - object_middle_title
+  - object_last_title
+  - object_published
+  - object_published_at
+  - object_deleted
+  - object_deleted_at
+  - object_deleted_by
+  - object_version
+  - object_etag
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php bin/console doctrine:schema:validate --skip-sync
+mapping_readiness:
+  status: ready
+  checks:
+    - backend_component_namespace
+    - backend_entity_class
+    - backend_table_prefix
+    - backend_objecting_contract_path
+    - required_baseline_field_packs
+    - objecting_embeddable_classes
+    - objecting_embeddable_traits
+    - object_column_names
+    - objecting_column_prefix_policy
+    - backend_migration_ownership
+  blocking_reasons: []
+notes:
+  - Backend components own Entity mapping and Doctrine migrations.
+  - Objecting owns reusable object_* embeddables, traits, interfaces, and field-pack declarations.
+  - Exposing may mirror the schema, but it must not become the Doctrine migration owner.

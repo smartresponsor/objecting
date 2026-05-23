@@ -1,0 +1,11 @@
+name: object_lifecycle
+component: Objecting
+business_stem: Object
+field_packs:
+  - object_identity
+  - object_audit
+  - object_soft_delete
+  - object_lock
+  - object_workflow
+  - object_version
+status: canonical

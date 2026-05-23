@@ -1,0 +1,57 @@
+object_backend_adoption_packet_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+backend_project_root: D:\PhpstormProjects\www\Paging
+package:
+  name: smart-responsor/objecting
+  constraint: ^1.0
+objecting_paths:
+  field_pack_contract: resources/objecting/Page/object-field-packs.yaml
+  readiness_manifest: resources/objecting/Page/object-backend-migration-readiness.yaml
+  adoption_manifest: resources/objecting/Page/object-backend-adoption.yaml
+  handoff_manifest: resources/objecting/Page/object-backend-handoff.yaml
+  release_closure_manifest: resources/release/objecting-release-closure.example.yaml
+required_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+title_alias_profile: object_title_content
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+required_composer_scripts:
+  - test:canon
+  - test:quality
+packet_artifacts:
+  - resources/objecting/Page/object-field-packs.yaml
+  - resources/objecting/Page/object-backend-migration-readiness.yaml
+  - resources/objecting/Page/object-backend-adoption.yaml
+  - resources/objecting/Page/object-backend-handoff.yaml
+  - resources/release/objecting-release-closure.example.yaml
+exposing_contract:
+  path: contract/component/Paging/Page/manifest.yaml
+standalone_ready: true
+adoption_packet_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - backend_component_namespace
+    - backend_objecting_resource_paths
+    - required_baseline_field_packs
+    - title_alias_requires_object_title
+    - backend_quality_gates
+    - backend_composer_scripts
+    - backend_packet_artifacts
+    - objecting_release_closure_link
+    - optional_exposing_contract_path
+    - standalone_ready
+  blocking_reasons: []
+notes:
+  - This packet is the machine-readable bridge from Objecting package closure into one backend component migration.
+  - Backend components still own Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime behavior.
+  - Exposing remains the separate API/OpenAPI contract repository and is linked only by path when available.

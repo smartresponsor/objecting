@@ -1,0 +1,45 @@
+{
+  "wave": "objecting_wave24_backend_migration_command_packet",
+  "base": "objecting_wave23_backend_clone_cleanup_contract_cumulative.zip",
+  "added": [
+    "delivery/objecting-wave24-backend-migration-command-packet-summary.md",
+    "tools/test/objecting_backend_migration_command_packet_check.php",
+    "tests/Unit/ObjectBackendMigrationCommandPacketReporterTest.php",
+    "src/ValueObject/ObjectBackendMigrationCommandPacket.php",
+    "src/ValueObject/ObjectBackendMigrationCommandReport.php",
+    "src/ServiceInterface/FieldPack/ObjectBackendMigrationCommandPacketReporterInterface.php",
+    "src/Service/FieldPack/ObjectBackendMigrationCommandPacketReporter.php",
+    "resources/consumer/object-backend-migration-command.example.yaml",
+    "docs/integration/objecting-backend-migration-command-packet.md"
+  ],
+  "changed": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tests/Unit/ObjectPackageSurfaceTest.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "resources/release/objecting-release-closure.example.yaml"
+  ],
+  "deleted": [],
+  "touched": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave24-backend-migration-command-packet-summary.md",
+    "docs/integration/objecting-backend-migration-command-packet.md",
+    "resources/consumer/object-backend-migration-command.example.yaml",
+    "resources/release/objecting-release-closure.example.yaml",
+    "src/Service/FieldPack/ObjectBackendMigrationCommandPacketReporter.php",
+    "src/ServiceInterface/FieldPack/ObjectBackendMigrationCommandPacketReporterInterface.php",
+    "src/ValueObject/ObjectBackendMigrationCommandPacket.php",
+    "src/ValueObject/ObjectBackendMigrationCommandReport.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "tests/Unit/ObjectBackendMigrationCommandPacketReporterTest.php",
+    "tests/Unit/ObjectPackageSurfaceTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_backend_migration_command_packet_check.php",
+    "tools/test/objecting_package_surface_check.php"
+  ]
+}

@@ -1,0 +1,27 @@
+object_release_manifest_version: 1
+release_candidate: objecting_wave10_release_readiness
+package:
+  name: smart-responsor/objecting
+  namespace_prefix: App\Objecting\
+  bundle_class: App\Objecting\ObjectBundle
+artifacts:
+  cumulative_archive: objecting_wave10_release_readiness_cumulative.zip
+  touched_archive: objecting_wave10_release_readiness_touched.zip
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+required_composer_scripts:
+  - test:canon
+  - test:package-surface
+  - test:release-readiness
+  - test:quality
+consumer_contracts:
+  - resources/consumer/object-field-packs.example.yaml
+  - resources/consumer/object-backend-migration-readiness.example.yaml
+  - resources/consumer/object-backend-adoption.example.yaml
+  - resources/consumer/object-backend-handoff.example.yaml
+boundary:
+  field_pack_foundation_only: true
+  legacy_free: true
+release_readiness:
+  status: ready

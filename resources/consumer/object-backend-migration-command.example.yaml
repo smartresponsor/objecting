@@ -1,0 +1,118 @@
+object_backend_migration_command_version: 1
+name: objecting_backend_migration_wave1
+source_audit: workspace-objecting-field-pack-audit.md
+package:
+  name: smart-responsor/objecting
+  php: ^8.4
+  symfony: ^8.0
+  objecting_baseline: objecting_wave23_backend_clone_cleanup_contract
+scope:
+  purpose: first real sibling backend migration command packet
+  objecting_is_dependency_baseline: true
+  objecting_can_be_modified: false
+  exposing_can_be_modified: false
+  sibling_components_can_be_modified: true
+  touched_files_only: true
+  cumulative_for_backup_only: true
+  destructive_repository_cleanup_forbidden: true
+pilot_components:
+  - Addressing
+  - Taxating
+target_components:
+  - Addressing
+  - Taxating
+  - Paging
+  - Ordering
+  - Paying
+  - Shipping
+  - Cataloging
+  - Messaging
+objecting_artifacts:
+  - resources/consumer/object-backend-clone-cleanup.example.yaml
+  - resources/consumer/object-backend-import.example.yaml
+  - resources/consumer/object-backend-adoption-packet.example.yaml
+  - resources/consumer/object-backend-migration-command.example.yaml
+backend_artifacts_to_create_or_update:
+  - composer.json
+  - resources/objecting/<BusinessStem>/object-field-packs.yaml
+  - resources/objecting/<BusinessStem>/object-backend-migration-readiness.yaml
+  - resources/objecting/<BusinessStem>/object-backend-adoption.yaml
+  - resources/objecting/<BusinessStem>/object-backend-handoff.yaml
+  - resources/schema/<BusinessStem>/object-schema-mirror.yaml
+field_pack_mapping:
+  baseline:
+    - object_identity
+    - object_audit
+    - object_title
+  systemic:
+    - object_state
+    - object_source
+    - object_fingerprint
+    - object_scope
+  title_aliases:
+    name: object_title.firstTitle
+    title: object_title.firstTitle
+    shortDescription: object_title.middleTitle
+    description: object_title.lastTitle
+  not_packs:
+    id: backend-owned Doctrine primary key
+    name: object_title alias
+    title: object_title alias
+    description: object_title alias
+  deferred_tokens:
+    - priority
+    - visibility
+clone_cleanup_pilot:
+  Addressing:
+    clone_files:
+      - src/EntityTrait/ObjectTrait.php
+      - src/EntityTrait/ObjectAuditTrait.php
+  Taxating:
+    clone_files:
+      - src/EntityTrait/Taxation/ObjectAuditTrait.php
+      - src/EntityInterface/Common/ObjectTitleInterface.php
+      - src/EntityTrait/Taxation/TaxationObjectEntityTrait.php
+codex_instructions:
+  - scan each target component before touching it
+  - apply only touched-files changes
+  - keep backend Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime ownership inside the backend component
+  - consume Objecting field packs instead of local Object* clones
+  - use object_identity
+  - use object_audit
+  - use object_title
+  - use object_state
+  - use object_source
+  - use object_fingerprint
+  - use object_scope
+  - map name/title/description through object_title aliases rather than adding object_name or object_description
+  - keep id as backend-owned Doctrine primary key
+  - do not modify Objecting during backend migration
+  - do not modify Exposing during backend migration
+forbidden_actions:
+  - no full repository overwrite
+  - no destructive repository cleanup
+  - no /src/Domain/
+  - no Port and Adapter pattern
+  - no Symfony 7 constraints
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php tools/test/objecting_backend_migration_command_packet_check.php
+migration_command_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - source_audit_markdown
+    - pilot_components
+    - baseline_objecting_packs
+    - systemic_objecting_packs
+    - deferred_tokens
+    - quality_gates
+    - forbidden_actions
+    - touched_files_only
+    - cumulative_backup_only
+    - destructive_repository_cleanup_forbidden
+    - sibling_components_can_be_modified
+    - objecting_locked
+    - exposing_locked
+  blocking_reasons: []

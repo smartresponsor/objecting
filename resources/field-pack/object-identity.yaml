@@ -1,0 +1,10 @@
+name: object_identity
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectIdentityEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectIdentityEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectIdentifiedInterface
+columns:
+  - object_uuid
+  - object_slug
+status: canonical

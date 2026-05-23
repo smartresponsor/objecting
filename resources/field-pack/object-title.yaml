@@ -1,0 +1,11 @@
+name: object_title
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectTitleEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectTitleEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectTitledInterface
+columns:
+  - object_first_title
+  - object_middle_title
+  - object_last_title
+status: canonical

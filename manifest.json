@@ -1,0 +1,74 @@
+[
+  {
+    "path": "docs/architecture/objecting-27-ontology-extract-stage.md",
+    "exists": true
+  },
+  {
+    "path": "src/Extension/Ontology/Exporter/JsonLdExporter.php",
+    "exists": true
+  },
+  {
+    "path": "src/Extension/Ontology/Exporter/RdfExporter.php",
+    "exists": true
+  },
+  {
+    "path": "src/Extension/Ontology/Oql/Executor.php",
+    "exists": true
+  },
+  {
+    "path": "src/Extension/Ontology/Oql/Parser.php",
+    "exists": true
+  },
+  {
+    "path": "src/Extension/Ontology/Oql/Query.php",
+    "exists": true
+  },
+  {
+    "path": "src/Extension/Ontology/Support/ManifestCollector.php",
+    "exists": true
+  },
+  {
+    "path": "src/Ontology/Exporter/JsonLdExporter.php",
+    "exists": true
+  },
+  {
+    "path": "src/Ontology/Exporter/RdfExporter.php",
+    "exists": true
+  },
+  {
+    "path": "src/Ontology/Oql/Executor (2).php",
+    "exists": false
+  },
+  {
+    "path": "src/Ontology/Oql/Executor.php",
+    "exists": true
+  },
+  {
+    "path": "src/Ontology/Oql/Parser (2).php",
+    "exists": false
+  },
+  {
+    "path": "src/Ontology/Oql/Parser.php",
+    "exists": true
+  },
+  {
+    "path": "src/Ontology/Oql/Query (2).php",
+    "exists": false
+  },
+  {
+    "path": "src/Ontology/Oql/Query.php",
+    "exists": true
+  },
+  {
+    "path": "src/Ontology/Support/ManifestCollector.php",
+    "exists": true
+  },
+  {
+    "path": "tools/analysis/objecting-27-module-map.json",
+    "exists": true
+  },
+  {
+    "path": "tools/smoke/objecting-27-ontology-check.php",
+    "exists": true
+  }
+]

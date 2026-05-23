@@ -1,0 +1,22 @@
+{
+  "component": "Objecting",
+  "wave": "wave5_symfony_package_surface",
+  "base": "objecting_wave4_contract_resolution_cumulative.zip",
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave5-symfony-package-surface-summary.md",
+    "docs/integration/symfony-package-installation.md",
+    "src/DependencyInjection/ObjectExtension.php",
+    "src/ObjectBundle.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "delivery/objecting-wave5-touched-manifest.json"
+  ],
+  "deleted_paths": [],
+  "notes": [
+    "Adds Symfony bundle/extension/service configuration for installable package surface.",
+    "Keeps Objecting responsibility limited to system field-pack primitives and helper services.",
+    "No destructive cleanup in this wave."
+  ]
+}

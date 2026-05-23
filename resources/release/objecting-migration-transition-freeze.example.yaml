@@ -1,0 +1,62 @@
+object_migration_transition_freeze_version: 1
+name: objecting_migration_transition_freeze
+objecting_baseline: objecting_rc2
+closure_candidate: objecting_wave27_migration_transition_freeze
+package:
+  name: smart-responsor/objecting
+  php: ^8.4
+  symfony: ^8.0
+artifacts:
+  cumulative_archive: objecting_wave27_migration_transition_freeze_cumulative.zip
+  touched_archive: objecting_wave27_migration_transition_freeze_touched.zip
+next_track: backend_component_migration
+scope:
+  objecting_frozen: true
+  exposing_frozen: true
+  backend_migration_open: true
+  touched_files_only: true
+  cumulative_for_backup_only: true
+  destructive_repository_cleanup_forbidden: true
+pilot_components:
+  - Addressing
+  - Taxating
+locked_objecting_artifacts:
+  - resources/release/objecting-rc2.example.yaml
+  - resources/consumer/object-sibling-pilot-migration-handoff.example.yaml
+  - resources/consumer/object-backend-migration-command.example.yaml
+  - resources/consumer/object-backend-clone-cleanup.example.yaml
+  - tools/test/objecting_systemic_field_pack_check.php
+  - tools/test/objecting_title_alias_hardening_check.php
+handoff_commands:
+  - composer test:quality
+  - composer test:sibling-pilot-migration-handoff
+  - composer test:backend-migration-command
+forbidden_actions:
+  - no Objecting expansion during pilot migration
+  - no Exposing changes during pilot migration
+  - no full repository overwrite
+  - no destructive repository cleanup
+  - no Symfony 7 constraints
+transition_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - objecting_rc2_baseline
+    - closure_candidate
+    - next_track
+    - pilot_components
+    - locked_objecting_artifacts
+    - handoff_commands
+    - forbidden_actions
+    - objecting_frozen
+    - exposing_frozen
+    - backend_migration_open
+    - touched_files_only
+    - cumulative_for_backup_only
+    - destructive_repository_cleanup_forbidden
+  blocking_reasons: []
+notes:
+  - Objecting is frozen as the RC2 field-pack dependency for the next sibling backend pilot migration.
+  - The next working track is backend_component_migration, starting with Addressing and Taxating.
+  - Objecting, Exposing, and host application runtime must not be expanded by the pilot migration wave.
+  - Cumulative archives remain backup/reference snapshots and must not be used for destructive overwrite.

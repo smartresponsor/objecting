@@ -1,0 +1,9 @@
+name: object_title_address
+component: Objecting
+business_stem: Object
+field_pack: object_title
+aliases:
+  firstTitle: addressLine1
+  middleTitle: addressLine2
+  lastTitle: displayLabel
+status: canonical

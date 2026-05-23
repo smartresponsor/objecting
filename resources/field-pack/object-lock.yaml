@@ -1,0 +1,10 @@
+name: object_lock
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectLockEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectLockEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectLockableInterface
+columns:
+  - object_locked_at
+  - object_locked_by
+status: canonical

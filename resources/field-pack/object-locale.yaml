@@ -1,0 +1,10 @@
+name: object_locale
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectLocaleEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectLocaleEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectLocaleAwareInterface
+columns:
+  - object_locale
+  - object_timezone
+status: canonical

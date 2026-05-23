@@ -1,0 +1,9 @@
+name: object_title_person
+component: Objecting
+business_stem: Object
+field_pack: object_title
+aliases:
+  firstTitle: firstName
+  middleTitle: middleName
+  lastTitle: lastName
+status: canonical

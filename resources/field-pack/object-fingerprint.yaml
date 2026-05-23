@@ -1,0 +1,11 @@
+name: object_fingerprint
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectFingerprintEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectFingerprintEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectFingerprintedInterface
+columns:
+  - object_hash
+  - object_checksum
+  - object_algorithm
+status: canonical

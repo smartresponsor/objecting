@@ -1,0 +1,25 @@
+{
+  "wave": "objecting_wave27_migration_transition_freeze",
+  "base": "objecting_wave26_sibling_pilot_migration_handoff_cumulative.zip",
+  "touched_files": [
+    "src/ValueObject/ObjectMigrationTransitionFreezeManifest.php",
+    "src/ValueObject/ObjectMigrationTransitionFreezeReport.php",
+    "src/ServiceInterface/Release/ObjectMigrationTransitionFreezeManifestReporterInterface.php",
+    "src/Service/Release/ObjectMigrationTransitionFreezeManifestReporter.php",
+    "tests/Unit/ObjectMigrationTransitionFreezeManifestReporterTest.php",
+    "resources/release/objecting-migration-transition-freeze.example.yaml",
+    "docs/release/objecting-migration-transition-freeze.md",
+    "tools/test/objecting_migration_transition_freeze_check.php",
+    "composer.json",
+    "config/services.yaml",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "resources/release/objecting-release-closure.example.yaml",
+    "delivery/objecting-wave27-migration-transition-freeze-summary.md",
+    "delivery/objecting-wave27-touched-manifest.json"
+  ],
+  "deletions": [],
+  "notes": [
+    "Objecting is frozen as RC2 baseline for the next backend component migration pilot.",
+    "Sibling components are not modified by this Objecting wave."
+  ]
+}

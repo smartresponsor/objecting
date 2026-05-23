@@ -1,0 +1,70 @@
+object_exposing_bridge_contract_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+entity:
+  class: App\Paging\Entity\Page
+objecting:
+  package: smart-responsor/objecting
+  field_pack_contract: resources/objecting/Page/object-field-packs.yaml
+  doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml
+  schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml
+  backend_adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml
+  title_alias_profile: object_title_content
+  owns_field_packs: true
+backend:
+  owns_runtime: true
+  owns_entity: true
+  owns_doctrine_migrations: true
+  owns_dto_controller_form_service: true
+exposing:
+  repository: Exposing
+  openapi_contract: contract/component/Paging/Page/page.openapi.yaml
+  schema_mirror: contract/component/Paging/Page/page.db-schema.yaml
+  openapi_schema_name: PageResponse
+  owns_api_contract: true
+required_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_publication
+  - object_soft_delete
+  - object_version
+export_artifacts:
+  - resources/objecting/Page/object-field-packs.yaml
+  - resources/objecting/Page/object-doctrine-mapping.yaml
+  - resources/schema/Page/object-schema-mirror.yaml
+  - resources/objecting/Page/object-backend-adoption-packet.yaml
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - composer test:exposing-bridge
+bridge_boundary:
+  bridge_informational: true
+  objecting_not_api_owner: true
+  exposing_not_runtime_owner: true
+exposing_bridge_readiness:
+  status: ready
+  checks:
+    - exposing_bridge_backend_namespace
+    - exposing_bridge_entity_class
+    - exposing_bridge_objecting_contract_paths
+    - exposing_bridge_backend_schema_mirror_path
+    - exposing_bridge_exposing_paths
+    - exposing_bridge_openapi_schema_name
+    - exposing_bridge_title_alias_profile
+    - exposing_bridge_baseline_field_packs
+    - exposing_bridge_export_artifacts
+    - exposing_bridge_backend_runtime_owner
+    - exposing_bridge_objecting_field_pack_owner
+    - exposing_bridge_exposing_api_contract_owner
+    - exposing_bridge_informational_only
+  blocking_reasons: []
+notes:
+  - This bridge is the Objecting side of the future Exposing contract handoff.
+  - Objecting exports field-pack, Doctrine mapping, schema mirror, and adoption packet references only.
+  - Backend components remain runtime owners; Exposing remains the API/OpenAPI contract owner.

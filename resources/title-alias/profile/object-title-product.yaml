@@ -1,0 +1,9 @@
+name: object_title_product
+component: Objecting
+business_stem: Object
+field_pack: object_title
+aliases:
+  firstTitle: name
+  middleTitle: subtitle
+  lastTitle: description
+status: canonical

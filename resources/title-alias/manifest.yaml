@@ -1,0 +1,40 @@
+component: Objecting
+business_stem: Object
+namespace: App\Objecting
+canonical_fields:
+  - firstTitle
+  - middleTitle
+  - lastTitle
+canonical_db_columns:
+  - first_title
+  - middle_title
+  - last_title
+alias_profiles:
+  - object_title_canonical
+  - object_title_person
+  - object_title_content
+  - object_title_product
+  - object_title_address
+  - object_title_organization
+  - object_title_label
+  - object_title_display
+covered_business_alias_tokens:
+  - name
+  - title
+  - description
+  - shortDescription
+  - label
+  - displayName
+  - summary
+  - subtitle
+deferred_systemic_tokens:
+  - priority
+  - visibility
+backend_owned_tokens:
+  - id
+governance_example: resources/title-alias/object-title-alias-governance.example.yaml
+notes:
+  - Objecting owns canonical title fields and reusable alias profiles.
+  - Consumer components own their final DTO, form, OpenAPI, and UI labels.
+  - name/title/description are title aliases, not additional canonical DB columns.
+  - priority and visibility are intentionally deferred until their cross-component semantics are proven.

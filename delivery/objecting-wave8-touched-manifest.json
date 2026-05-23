@@ -1,0 +1,27 @@
+{
+  "wave": "objecting-wave8-backend-adoption-manifest",
+  "base": "objecting_wave7_backend_migration_readiness_cumulative_rebuild.zip",
+  "deletions": [],
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave8-backend-adoption-manifest-summary.md",
+    "docs/integration/backend-component-objecting-migration.md",
+    "docs/integration/objecting-backend-adoption-manifest.md",
+    "docs/integration/objecting-package-quality-gates.md",
+    "resources/consumer/object-backend-adoption.example.yaml",
+    "src/Service/FieldPack/ObjectBackendAdoptionManifestReporter.php",
+    "src/ServiceInterface/FieldPack/ObjectBackendAdoptionManifestReporterInterface.php",
+    "src/ValueObject/ObjectBackendAdoptionManifest.php",
+    "src/ValueObject/ObjectBackendAdoptionReport.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "tests/Unit/ObjectBackendAdoptionManifestReporterTest.php",
+    "tests/Unit/ObjectPackageSurfaceTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_backend_adoption_manifest_check.php",
+    "tools/test/objecting_package_surface_check.php",
+    "delivery/objecting-wave8-touched-manifest.json"
+  ],
+  "notes": "Adds backend adoption manifest/value objects/reporter/gate/docs without destructive cleanup."
+}

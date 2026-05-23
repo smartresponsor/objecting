@@ -1,0 +1,28 @@
+component: Objecting
+business_stem: Object
+namespace: App\Objecting
+field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_publication
+  - object_soft_delete
+  - object_version
+  - object_locale
+  - object_token
+  - object_restriction
+  - object_lock
+  - object_workflow
+  - object_config
+  - object_code
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+baseline:
+  - object_identity
+  - object_audit
+  - object_title
+notes:
+  - Objecting provides composable system field packs, not a god entity.
+  - Consumer components choose packs and own their local business aliases.

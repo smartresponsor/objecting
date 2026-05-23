@@ -1,0 +1,101 @@
+object_rc2_marker_version: 1
+rc_name: objecting_rc2
+previous_rc_name: objecting_rc1
+rc_candidate: objecting_wave25_rc2_marker
+package:
+  name: smart-responsor/objecting
+  namespace_prefix: App\Objecting\
+  bundle_class: App\Objecting\ObjectBundle
+artifacts:
+  cumulative_archive: objecting_wave25_rc2_marker_cumulative.zip
+  touched_archive: objecting_wave25_rc2_marker_touched.zip
+  apply_script: apply_objecting_wave25_rc2_marker_touched.ps1
+contract_paths:
+  release_closure: resources/release/objecting-release-closure.example.yaml
+  field_pack_manifest: resources/field-pack/manifest.yaml
+  title_alias_manifest: resources/title-alias/manifest.yaml
+  backend_migration_command: resources/consumer/object-backend-migration-command.example.yaml
+  backend_clone_cleanup: resources/consumer/object-backend-clone-cleanup.example.yaml
+  platform_constraints: resources/release/objecting-platform-constraints.example.yaml
+included_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+forbidden_field_packs:
+  - object_id
+  - object_name
+  - object_description
+  - object_priority
+  - object_visibility
+deferred_tokens:
+  - priority
+  - visibility
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - composer test:rc2
+  - php tools/test/objecting_rc2_check.php
+required_composer_scripts:
+  - test:quality
+  - test:rc
+  - test:rc2
+  - test:systemic-field-packs
+  - test:title-alias-hardening
+  - test:backend-migration-command
+  - test:backend-clone-cleanup
+final_entrypoints:
+  - tools/test/objecting_rc2_check.php
+  - tools/test/objecting_systemic_field_pack_check.php
+  - tools/test/objecting_title_alias_hardening_check.php
+  - tools/test/objecting_backend_migration_command_packet_check.php
+  - tools/test/objecting_backend_clone_cleanup_contract_check.php
+  - tools/test/objecting_platform_constraint_check.php
+boundary:
+  field_pack_foundation_only: true
+  object_title_canonical: true
+  legacy_free: true
+  backend_runtime_owner: true
+  exposing_separated: true
+  mixed_symfony_7_8_forbidden: true
+  symfony_7_forbidden: true
+  symfony_8_only: true
+  php_84_only: true
+rc_marker:
+  status: ready
+  rc_accepted: true
+  checks:
+    - objecting_rc2_name
+    - objecting_rc2_previous_rc
+    - objecting_rc2_candidate
+    - objecting_package_name
+    - objecting_namespace_prefix
+    - objecting_bundle_class
+    - objecting_rc2_paths
+    - objecting_rc2_quality_gates
+    - objecting_rc2_composer_scripts
+    - objecting_rc2_final_entrypoints
+    - objecting_rc2_included_field_packs
+    - objecting_rc2_forbidden_field_packs
+    - objecting_rc2_deferred_tokens
+    - field_pack_foundation_only
+    - object_title_canonical
+    - legacy_free
+    - backend_runtime_owner
+    - exposing_separated
+    - rc_accepted
+  blocking_reasons: []
+next_tracks:
+  - backend_component_migration
+  - exposing_api_contract
+notes:
+  - Objecting RC2 supersedes RC1 as the active dependency baseline after systemic packs and backend migration command packet.
+  - RC2 includes object_state, object_source, object_fingerprint, and object_scope as active systemic field packs.
+  - name, title, description, label, and displayName remain object_title aliases rather than physical duplicate field packs.
+  - id remains a backend-owned Doctrine primary key and is not an Objecting field pack.
+  - priority and visibility remain deferred systemic tokens until backend usage semantics are separated.
+  - Backend migrations remain owned by backend components; Objecting only supplies embeddable field-pack mapping and contracts.
+  - Exposing remains the separate API/OpenAPI contract repository.

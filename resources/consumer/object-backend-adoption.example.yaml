@@ -1,0 +1,53 @@
+object_backend_adoption_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+entity: App\Paging\Entity\Page
+table: page
+standalone_ready: true
+field_pack_profile: object_content
+explicit_field_packs: []
+effective_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_publication
+  - object_version
+title_alias_profile: object_title_content
+exposing_contract:
+  owner: Exposing
+  path: contract/component/Paging/Page/manifest.yaml
+backend_ownership:
+  entity: Paging
+  doctrine_migrations: Paging
+  dto: Paging
+  controller: Paging
+  repository: Paging
+  service: Paging
+objecting_ownership:
+  field_packs: Objecting
+  field_pack_profiles: Objecting
+  title_alias_profiles: Objecting
+adoption_readiness:
+  status: ready
+  checks:
+    - backend_component_namespace
+    - business_table_prefix
+    - explicit_packs_in_effective_packs
+    - profile_resolution_materialized
+    - optional_exposing_contract_path
+    - standalone_ready
+    - effective_field_packs_registered
+    - baseline_identity_audit_title_present
+    - component_entity_namespace
+    - business_stem_entity_suffix
+    - title_alias_profile_registered
+  blocking_reasons: []
+notes:
+  - Objecting provides system field-pack primitives and validates this manifest.
+  - Backend components still own Entity, migrations, DTO, controllers, forms, repositories, services, fixtures, tests, and runtime behavior.
+  - Exposing may mirror this adoption manifest but does not replace backend runtime ownership.

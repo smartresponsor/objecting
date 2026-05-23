@@ -1,0 +1,10 @@
+name: object_version
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectVersionEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectVersionEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectVersionedInterface
+columns:
+  - object_version
+  - object_etag
+status: canonical

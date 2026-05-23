@@ -1,0 +1,13 @@
+name: object_systemic
+component: Objecting
+business_stem: Object
+field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_version
+status: canonical

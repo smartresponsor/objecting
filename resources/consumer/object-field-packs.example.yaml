@@ -1,0 +1,38 @@
+component: Paging
+business_stem: Page
+namespace: App\Paging
+entity: App\Paging\Entity\Page
+field_pack_profile: object_systemic
+field_packs: []
+effective_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_publication
+  - object_version
+title_alias_profile: object_title_content
+title_aliases:
+  firstTitle: title
+  middleTitle: shortDescription
+  lastTitle: description
+resolution:
+  resolver: App\Objecting\Service\FieldPack\ObjectFieldPackConsumerContractResolver
+  resolved_contract: App\Objecting\ValueObject\ObjectResolvedFieldPackConsumerContract
+notes:
+  - Backend component owns Entity, migrations, DTOs, controllers, forms, and business behavior.
+  - Objecting owns reusable system field-pack vocabulary and title alias profile names.
+  - Exposing owns API/OpenAPI contract mirrors in the separate API track.
+  - field_packs may be empty when field_pack_profile supplies the effective selection.
+  - title_alias_profile or title_aliases require object_title in the resolved effective field packs.
+
+
+migration_readiness_reference:
+  file: resources/consumer/object-backend-migration-readiness.example.yaml
+  baseline_field_packs:
+    - object_identity
+    - object_audit
+    - object_title

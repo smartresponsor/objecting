@@ -1,0 +1,12 @@
+name: object_source
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectSourceEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectSourceEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectSourcedInterface
+columns:
+  - object_source
+  - object_provider
+  - object_external_id
+  - object_source_type
+status: canonical

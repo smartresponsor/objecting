@@ -1,0 +1,96 @@
+object_rc_marker_version: 1
+rc_name: objecting_rc1
+rc_candidate: objecting_wave20_platform_constraints
+package:
+  name: smart-responsor/objecting
+  namespace_prefix: App\Objecting\
+  bundle_class: App\Objecting\ObjectBundle
+artifacts:
+  cumulative_archive: objecting_wave20_platform_constraints_cumulative.zip
+  touched_archive: objecting_wave20_platform_constraints_touched.zip
+  apply_script: apply_objecting_wave20_platform_constraints_touched.ps1
+contract_paths:
+  rc_stabilization: resources/release/objecting-rc-stabilization.example.yaml
+  release_closure: resources/release/objecting-release-closure.example.yaml
+  release_readiness: resources/release/objecting-release-manifest.example.yaml
+  backend_import: resources/consumer/object-backend-import.example.yaml
+  adoption_packet: resources/consumer/object-backend-adoption-packet.example.yaml
+  exposing_bridge: resources/consumer/object-exposing-bridge.example.yaml
+  schema_mirror: resources/consumer/object-schema-mirror.example.yaml
+  doctrine_mapping: resources/consumer/object-doctrine-mapping.example.yaml
+  platform_constraints: resources/release/objecting-platform-constraints.example.yaml
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - composer test:platform-constraints
+  - composer test:rc
+  - php tools/test/objecting_rc1_check.php
+  - php tools/test/objecting_platform_constraint_check.php
+required_composer_scripts:
+  - test:quality
+  - test:rc
+  - test:rc1
+  - test:rc-stabilization
+  - test:release-closure
+  - test:backend-import
+  - test:platform-constraints
+final_entrypoints:
+  - tools/test/objecting_rc1_check.php
+  - tools/test/objecting_rc_stabilization_check.php
+  - tools/test/objecting_release_closure_check.php
+  - tools/test/objecting_backend_import_contract_check.php
+  - tools/test/objecting_exposing_bridge_contract_check.php
+  - tools/test/objecting_schema_mirror_contract_check.php
+  - tools/test/objecting_doctrine_mapping_contract_check.php
+boundary:
+  field_pack_foundation_only: true
+  object_title_canonical: true
+  legacy_free: true
+  backend_runtime_owner: true
+  exposing_separated: true
+  mixed_symfony_7_8_forbidden: true
+  symfony_7_forbidden: true
+  symfony_8_only: true
+  php_84_only: true
+rc_marker:
+  status: ready
+  rc_accepted: true
+  checks:
+    - objecting_rc_name
+    - objecting_rc_candidate
+    - objecting_package_name
+    - objecting_namespace_prefix
+    - objecting_bundle_class
+    - objecting_rc_paths
+    - objecting_rc_quality_gates
+    - objecting_rc_composer_scripts
+    - objecting_rc_final_entrypoints
+    - field_pack_foundation_only
+    - object_title_canonical
+    - legacy_free
+    - backend_runtime_owner
+    - exposing_separated
+    - rc_accepted
+    - platform_constraints_ready
+    - mixed_symfony_7_8_forbidden
+    - symfony_7_forbidden
+    - symfony_8_only
+    - php_84_only
+  blocking_reasons: []
+next_tracks:
+  - backend_component_migration
+  - exposing_api_contract
+notes:
+  - Objecting RC1 is a dependency baseline for backend component migrations.
+  - Objecting remains a system field-pack foundation, not a host app, API layer, CRUD layer, or god entity.
+  - Backend components keep Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime ownership.
+  - Exposing remains the separate API/OpenAPI contract repository.
+  - Objecting RC1 requires PHP ^8.4 and Symfony package constraints ^8.0 only; Symfony 7 and mixed Symfony 7/8 constraints are forbidden.
+
+wave21:
+  marker: objecting_wave21_systemic_field_packs
+  added_field_packs:
+    - object_state
+    - object_source
+    - object_fingerprint
+    - object_scope

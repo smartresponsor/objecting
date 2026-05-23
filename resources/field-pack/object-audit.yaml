@@ -1,0 +1,12 @@
+name: object_audit
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectAuditEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectAuditEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectAuditedInterface
+columns:
+  - object_created_at
+  - object_updated_at
+  - object_created_by
+  - object_updated_by
+status: canonical

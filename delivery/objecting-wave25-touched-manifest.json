@@ -1,0 +1,43 @@
+{
+  "wave": 25,
+  "marker": "objecting_wave25_rc2_marker",
+  "base": "objecting_wave24_backend_migration_command_packet_cumulative.zip",
+  "artifacts": {
+    "touched": "objecting_wave25_rc2_marker_touched.zip",
+    "cumulative": "objecting_wave25_rc2_marker_cumulative.zip",
+    "apply_script": "apply_objecting_wave25_rc2_marker_touched.ps1"
+  },
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "docs/release/objecting-rc2.md",
+    "resources/release/objecting-rc2.example.yaml",
+    "resources/release/objecting-release-closure.example.yaml",
+    "src/Service/Release/ObjectRc2MarkerManifestReporter.php",
+    "src/ServiceInterface/Release/ObjectRc2MarkerManifestReporterInterface.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "src/ValueObject/ObjectRc2MarkerManifest.php",
+    "src/ValueObject/ObjectRc2MarkerReport.php",
+    "tests/Unit/ObjectRc2MarkerManifestReporterTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/test/objecting_rc2_check.php",
+    "delivery/objecting-wave25-rc2-marker-summary.md",
+    "delivery/objecting-wave25-touched-manifest.json"
+  ],
+  "quality_gates": [
+    "php tools/test/objecting_rc2_check.php",
+    "php tools/test/objecting_package_surface_check.php",
+    "php tools/test/objecting_release_closure_check.php",
+    "php tools/test/objecting_canon_check.php",
+    "all tools/test/objecting_*_check.php",
+    "php tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "php -l over src/tests/tools PHP files"
+  ],
+  "notes": [
+    "RC2 supersedes RC1 as active Objecting dependency baseline.",
+    "No sibling backend components were modified.",
+    "No destructive cleanup is included."
+  ]
+}

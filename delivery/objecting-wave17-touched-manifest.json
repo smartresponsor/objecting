@@ -1,0 +1,29 @@
+{
+  "wave": "objecting_wave17_backend_import_contract",
+  "base": "objecting_wave16_exposing_bridge_contract_cumulative.zip",
+  "generated_at": "2026-05-05T06:04:21Z",
+  "touched_files": [
+    "src/ValueObject/ObjectBackendImportContract.php",
+    "src/ValueObject/ObjectBackendImportReport.php",
+    "src/ServiceInterface/FieldPack/ObjectBackendImportContractReporterInterface.php",
+    "src/Service/FieldPack/ObjectBackendImportContractReporter.php",
+    "tests/Unit/ObjectBackendImportContractReporterTest.php",
+    "resources/consumer/object-backend-import.example.yaml",
+    "docs/integration/objecting-backend-import-contract.md",
+    "tools/test/objecting_backend_import_contract_check.php",
+    "composer.json",
+    "config/services.yaml",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "resources/release/objecting-release-closure.example.yaml",
+    "README.md",
+    "delivery/objecting-wave17-backend-import-contract-summary.md",
+    "tools/test/objecting_doctrine_mapping_contract_check.php",
+    "tools/test/objecting_exposing_bridge_contract_check.php",
+    "tools/test/objecting_release_closure_check.php",
+    "tools/test/objecting_schema_mirror_contract_check.php",
+    "delivery/objecting-wave17-touched-manifest.json"
+  ],
+  "deleted_paths": []
+}

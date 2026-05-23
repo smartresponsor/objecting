@@ -1,0 +1,9 @@
+name: object_code
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectCodeEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectCodeEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectCodedInterface
+columns:
+  - object_code
+status: canonical

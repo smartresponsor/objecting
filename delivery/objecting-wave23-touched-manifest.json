@@ -1,0 +1,28 @@
+{
+  "wave": "objecting_wave23_backend_clone_cleanup_contract",
+  "base": "objecting_wave22_title_alias_hardening_cumulative.zip",
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave23-backend-clone-cleanup-contract-summary.md",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/test/objecting_backend_clone_cleanup_contract_check.php",
+    "tests/Unit/ObjectBackendCloneCleanupContractReporterTest.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "src/ValueObject/ObjectBackendCloneCleanupContract.php",
+    "src/ValueObject/ObjectBackendCloneCleanupReport.php",
+    "src/ServiceInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php",
+    "src/Service/FieldPack/ObjectBackendCloneCleanupContractReporter.php",
+    "resources/consumer/object-backend-clone-cleanup.example.yaml",
+    "resources/release/objecting-release-closure.example.yaml",
+    "docs/integration/objecting-backend-clone-cleanup-contract.md"
+  ],
+  "deleted_files": [],
+  "notes": [
+    "Adds Objecting-side backend clone-cleanup contract for Addressing/Taxating pilot.",
+    "Does not modify sibling backend components.",
+    "No destructive repository cleanup; cumulative snapshot is backup/reference only."
+  ]
+}

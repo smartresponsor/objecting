@@ -1,0 +1,70 @@
+object_rc_stabilization_version: 1
+stabilization_candidate: objecting_wave18_rc_stabilization
+package:
+  name: smart-responsor/objecting
+  namespace_prefix: App\Objecting\
+  bundle_class: App\Objecting\ObjectBundle
+contract_paths:
+  release_closure: resources/release/objecting-release-closure.example.yaml
+  release_readiness: resources/release/objecting-release-manifest.example.yaml
+  backend_import: resources/consumer/object-backend-import.example.yaml
+  adoption_packet: resources/consumer/object-backend-adoption-packet.example.yaml
+  exposing_bridge: resources/consumer/object-exposing-bridge.example.yaml
+  schema_mirror: resources/consumer/object-schema-mirror.example.yaml
+  doctrine_mapping: resources/consumer/object-doctrine-mapping.example.yaml
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php tools/test/objecting_rc_stabilization_check.php
+required_composer_scripts:
+  - test:quality
+  - test:rc-stabilization
+  - test:release-closure
+  - test:backend-import
+final_entrypoints:
+  - tools/test/objecting_release_closure_check.php
+  - tools/test/objecting_backend_import_contract_check.php
+  - tools/test/objecting_exposing_bridge_contract_check.php
+  - tools/test/objecting_schema_mirror_contract_check.php
+  - tools/test/objecting_doctrine_mapping_contract_check.php
+  - tools/test/objecting_rc_stabilization_check.php
+boundary:
+  field_pack_foundation_only: true
+  object_title_canonical: true
+  legacy_free: true
+  backend_runtime_owner: true
+  exposing_separated: true
+next_wave:
+  rc_marker_pending: true
+  target: objecting_rc1
+rc_stabilization:
+  status: ready
+  checks:
+    - objecting_package_name
+    - objecting_namespace_prefix
+    - objecting_bundle_class
+    - rc_stabilization_contract_paths
+    - rc_stabilization_quality_gates
+    - rc_stabilization_composer_scripts
+    - rc_stabilization_final_entrypoints
+    - field_pack_foundation_only
+    - object_title_canonical
+    - legacy_free
+    - backend_runtime_owner
+    - exposing_separated
+    - rc_marker_pending
+  blocking_reasons: []
+notes:
+  - Wave 18 is stabilization only; it does not add a new Objecting runtime responsibility.
+  - Objecting remains a field-pack foundation dependency for backend components.
+  - Backend components keep Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime behavior.
+  - Exposing remains the separate API/OpenAPI contract repository.
+  - The next wave should add the RC marker instead of more feature surface.
+
+wave21:
+  marker: objecting_wave21_systemic_field_packs
+  added_field_packs:
+    - object_state
+    - object_source
+    - object_fingerprint
+    - object_scope

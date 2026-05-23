@@ -1,0 +1,41 @@
+object_title_alias_governance_version: 1
+component: Objecting
+business_stem: Object
+canonical_storage:
+  db_columns:
+    - first_title
+    - middle_title
+    - last_title
+  php_fields:
+    - firstTitle
+    - middleTitle
+    - lastTitle
+covered_business_alias_tokens:
+  - name
+  - title
+  - description
+  - shortDescription
+  - label
+  - displayName
+  - summary
+  - subtitle
+deferred_systemic_tokens:
+  priority:
+    status: deferred
+    reason: Priority can mean sort order, queue priority, severity, or business rank.
+  visibility:
+    status: deferred
+    reason: Visibility can mean UI visibility, publication visibility, tenant visibility, or security visibility.
+backend_owned_tokens:
+  id:
+    status: backend_owned
+    reason: Plain id remains the Doctrine primary-key responsibility of the backend component.
+forbidden_wave_22_packs:
+  - object_id
+  - object_name
+  - object_description
+  - object_priority
+  - object_visibility
+notes:
+  - Business aliases must not create duplicate DB columns when object_title is adopted.
+  - Backend/API/Form layers can expose aliases while Doctrine storage remains first_title/middle_title/last_title.

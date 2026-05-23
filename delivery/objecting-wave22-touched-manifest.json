@@ -1,0 +1,32 @@
+{
+  "wave": "objecting_wave22_title_alias_hardening",
+  "base": "objecting_wave21_systemic_field_packs_cumulative.zip",
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "docs/integration/objecting-title-alias-hardening.md",
+    "resources/release/objecting-release-closure.example.yaml",
+    "resources/title-alias/manifest.yaml",
+    "resources/title-alias/object-title-alias-governance.example.yaml",
+    "resources/title-alias/profile/object-title-display.yaml",
+    "resources/title-alias/profile/object-title-label.yaml",
+    "src/Service/Title/ObjectTitleAliasProfileRegistry.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "src/ValueObject/ObjectSystemTokenDecision.php",
+    "src/ValueObject/ObjectTitleAliasMap.php",
+    "src/ValueObject/ObjectTitleAliasProfileName.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/test/objecting_title_alias_hardening_check.php",
+    "delivery/objecting-wave22-title-alias-hardening-summary.md"
+  ],
+  "deleted_paths": [],
+  "checks": [
+    "all tools/test/objecting_*_check.php",
+    "php -l src tests tools"
+  ],
+  "notes": [
+    "No sibling backend components changed.",
+    "priority and visibility intentionally deferred.",
+    "name/title/description remain object_title aliases."
+  ]
+}

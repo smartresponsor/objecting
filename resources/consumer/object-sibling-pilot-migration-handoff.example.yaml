@@ -1,0 +1,100 @@
+object_sibling_pilot_migration_handoff_version: 1
+name: objecting_sibling_pilot_migration_handoff
+source_audit: workspace-objecting-field-pack-audit.md
+objecting_baseline: objecting_rc2
+package:
+  name: smart-responsor/objecting
+  php: ^8.4
+  symfony: ^8.0
+scope:
+  purpose: first sibling backend pilot migration handoff after Objecting RC2
+  objecting_locked: true
+  exposing_locked: true
+  sibling_components_can_be_modified: true
+  touched_files_only: true
+  cumulative_for_backup_only: true
+  destructive_repository_cleanup_forbidden: true
+pilot_components:
+  - Addressing
+  - Taxating
+locked_objecting_artifacts:
+  - resources/release/objecting-rc2.example.yaml
+  - resources/consumer/object-backend-migration-command.example.yaml
+  - resources/consumer/object-backend-clone-cleanup.example.yaml
+  - tools/test/objecting_systemic_field_pack_check.php
+  - tools/test/objecting_title_alias_hardening_check.php
+required_backend_artifacts:
+  - composer.json
+  - resources/objecting/<BusinessStem>/object-field-packs.yaml
+  - resources/objecting/<BusinessStem>/object-backend-adoption.yaml
+  - resources/schema/<BusinessStem>/object-schema-mirror.yaml
+target_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+title_alias_tokens:
+  - name
+  - title
+  - description
+  - shortDescription
+  - label
+  - displayName
+deferred_tokens:
+  - priority
+  - visibility
+forbidden_packs:
+  - object_id
+  - object_name
+  - object_description
+  - object_priority
+  - object_visibility
+pilot_clone_cleanup:
+  Addressing:
+    clone_files:
+      - src/EntityTrait/ObjectTrait.php
+      - src/EntityTrait/ObjectAuditTrait.php
+  Taxating:
+    clone_files:
+      - src/EntityTrait/Taxation/ObjectAuditTrait.php
+      - src/EntityInterface/Common/ObjectTitleInterface.php
+      - src/EntityTrait/Taxation/TaxationObjectEntityTrait.php
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php tools/test/objecting_sibling_pilot_migration_handoff_check.php
+forbidden_actions:
+  - no full repository overwrite
+  - no destructive repository cleanup
+  - no /src/Domain/
+  - no Port and Adapter pattern
+  - no Symfony 7 constraints
+handoff_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - objecting_rc2_baseline
+    - pilot_components
+    - target_field_packs
+    - title_alias_tokens
+    - deferred_tokens
+    - locked_objecting_artifacts
+    - required_backend_artifacts
+    - quality_gates
+    - forbidden_actions
+    - objecting_locked
+    - exposing_locked
+    - sibling_components_can_be_modified
+    - touched_files_only
+    - cumulative_for_backup_only
+    - destructive_repository_cleanup_forbidden
+  blocking_reasons: []
+notes:
+  - This handoff does not change sibling repositories by itself.
+  - Addressing and Taxating are the first pilot components because the workspace audit found local Object* clone surfaces there.
+  - Objecting remains locked as RC2 during the sibling migration wave.
+  - Exposing remains locked during the sibling migration wave.
+  - Backend components own Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime behavior.

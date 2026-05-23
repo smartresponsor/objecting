@@ -1,0 +1,11 @@
+name: object_soft_delete
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectSoftDeleteEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectSoftDeletableInterface
+columns:
+  - object_deleted
+  - object_deleted_at
+  - object_deleted_by
+status: canonical

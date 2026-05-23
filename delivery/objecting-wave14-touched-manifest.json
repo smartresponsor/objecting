@@ -1,0 +1,31 @@
+{
+  "wave": "objecting_wave14_doctrine_mapping_contract",
+  "base": "objecting_wave13_embeddable_initialization_cumulative.zip",
+  "touched_files": [
+    "composer.json",
+    "config/services.yaml",
+    "docs/integration/objecting-doctrine-mapping-contract.md",
+    "resources/consumer/object-doctrine-mapping.example.yaml",
+    "resources/release/objecting-release-closure.example.yaml",
+    "src/Service/Doctrine/ObjectDoctrineMappingContractReporter.php",
+    "src/ServiceInterface/Doctrine/ObjectDoctrineMappingContractReporterInterface.php",
+    "src/ValueObject/ObjectDoctrineMappingContract.php",
+    "src/ValueObject/ObjectDoctrineMappingReport.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "tests/Unit/ObjectDoctrineMappingContractReporterTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_doctrine_mapping_contract_check.php",
+    "tools/test/objecting_release_closure_check.php",
+    "delivery/objecting-wave14-doctrine-mapping-contract-summary.md"
+  ],
+  "deleted_files": [],
+  "checks": [
+    "php tools/test/objecting_doctrine_mapping_contract_check.php",
+    "php tools/test/objecting_canon_check.php",
+    "php tools/test/objecting_package_surface_check.php",
+    "php tools/test/objecting_release_closure_check.php",
+    "php tools/test/objecting_embeddable_initialization_check.php",
+    "php tools/test/objecting_backend_adoption_packet_check.php",
+    "php -l on changed PHP files"
+  ]
+}

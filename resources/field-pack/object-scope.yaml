@@ -1,0 +1,12 @@
+name: object_scope
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectScopeEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectScopeEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectScopedInterface
+columns:
+  - object_scope
+  - object_tenant
+  - object_organization
+  - object_owner
+status: canonical

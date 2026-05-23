@@ -1,0 +1,9 @@
+name: object_config
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectConfigEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectConfigEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectConfigurableInterface
+columns:
+  - object_config
+status: canonical

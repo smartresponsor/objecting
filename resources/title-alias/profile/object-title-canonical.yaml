@@ -1,0 +1,9 @@
+name: object_title_canonical
+component: Objecting
+business_stem: Object
+field_pack: object_title
+aliases:
+  firstTitle: firstTitle
+  middleTitle: middleTitle
+  lastTitle: lastTitle
+status: canonical

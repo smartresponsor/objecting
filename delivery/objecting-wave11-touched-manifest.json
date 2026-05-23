@@ -1,0 +1,32 @@
+{
+  "wave": 11,
+  "name": "objecting_wave11_release_closure",
+  "base": "objecting_wave10_release_readiness_cumulative.zip",
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave11-release-closure-summary.md",
+    "docs/integration/objecting-release-closure.md",
+    "docs/integration/objecting-release-readiness.md",
+    "resources/release/objecting-release-closure.example.yaml",
+    "src/Service/Release/ObjectReleaseClosureManifestReporter.php",
+    "src/ServiceInterface/Release/ObjectReleaseClosureManifestReporterInterface.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "src/ValueObject/ObjectReleaseClosureManifest.php",
+    "src/ValueObject/ObjectReleaseClosureReport.php",
+    "tests/Unit/ObjectPackageSurfaceTest.php",
+    "tests/Unit/ObjectReleaseClosureManifestReporterTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/test/objecting_release_closure_check.php",
+    "delivery/objecting-wave11-release-closure-summary.md",
+    "delivery/objecting-wave11-touched-manifest.json"
+  ],
+  "deleted_files": [],
+  "notes": [
+    "Release closure marker added for Objecting package handoff.",
+    "Objecting remains a system field-pack foundation dependency.",
+    "Backend components remain runtime owners; Exposing remains API contract owner."
+  ]
+}

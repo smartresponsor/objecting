@@ -1,0 +1,10 @@
+name: object_workflow
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectWorkflowEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectWorkflowEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectWorkflowAwareInterface
+columns:
+  - object_workflow_state
+  - object_workflow_context
+status: canonical

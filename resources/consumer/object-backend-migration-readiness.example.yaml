@@ -1,0 +1,35 @@
+component: Paging
+business_stem: Page
+entity: App\Paging\Entity\Page
+field_pack_profile: object_content
+explicit_field_packs: []
+effective_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_publication
+  - object_version
+required_baseline_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+title_alias_profile: object_title_content
+migration_readiness:
+  status: ready
+  checks:
+    - effective_field_packs_registered
+    - baseline_identity_audit_title_present
+    - component_entity_namespace
+    - business_stem_entity_suffix
+    - title_alias_profile_registered
+  blocking_reasons: []
+resolution:
+  owner: Objecting
+  backend_owner: Paging
+  doctrine_migration_owner: Paging
+  api_contract_owner: Exposing
+  note: Objecting resolves and validates the system field-pack contract. The backend component still owns Entity, migrations, DTO, controllers, forms, repositories, services, and runtime behavior.

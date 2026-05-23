@@ -1,0 +1,23 @@
+{
+  "wave": "objecting-wave6-package-quality-gates",
+  "base": "objecting_wave5_symfony_package_surface_cumulative.zip",
+  "touched_files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave6-package-quality-gates-summary.md",
+    "delivery/objecting-wave6-touched-manifest.json",
+    "docs/integration/objecting-package-quality-gates.md",
+    "docs/integration/symfony-package-installation.md",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "tests/Unit/ObjectPackageSurfaceTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_package_surface_check.php"
+  ],
+  "deleted_files": [],
+  "notes": [
+    "No destructive cleanup in this wave.",
+    "config/services.yaml no longer resets ObjectExtension package path parameters to null.",
+    "composer test:quality runs structural and package-surface checks."
+  ]
+}

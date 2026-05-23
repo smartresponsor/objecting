@@ -1,0 +1,67 @@
+object_backend_clone_cleanup_version: 1
+source_audit: workspace-objecting-field-pack-audit.md
+package:
+  name: smart-responsor/objecting
+  namespace_prefix: App\Objecting\
+cleanup_mode:
+  touched_files_only: true
+  cumulative_for_backup_only: true
+  destructive_repository_cleanup_forbidden: true
+  no_full_repo_overwrite: true
+pilot_components:
+  - component: Addressing
+    business_stem: Address
+    namespace: App\Addressing
+    local_clone_files:
+      - src/EntityTrait/ObjectTrait.php
+      - src/EntityTrait/ObjectAuditTrait.php
+    replacement_field_packs:
+      - object_identity
+      - object_audit
+      - object_title
+      - object_publication
+      - object_soft_delete
+      - object_version
+      - object_state
+      - object_scope
+    cleanup_artifacts:
+      - src/Entity/AddressEntity.php
+      - resources/objecting/Address/object-field-packs.yaml
+    status: audit_ready
+  - component: Taxating
+    business_stem: Taxation
+    namespace: App\Taxating
+    local_clone_files:
+      - src/EntityTrait/Taxation/ObjectAuditTrait.php
+      - src/EntityInterface/Common/ObjectTitleInterface.php
+      - src/EntityTrait/Taxation/TaxationObjectEntityTrait.php
+    replacement_field_packs:
+      - object_identity
+      - object_audit
+      - object_title
+      - object_soft_delete
+      - object_version
+      - object_locale
+      - object_state
+      - object_source
+      - object_scope
+    cleanup_artifacts:
+      - src/Entity/TaxationEntity.php
+      - resources/objecting/Taxation/object-field-packs.yaml
+    status: audit_ready
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php tools/test/objecting_backend_clone_cleanup_contract_check.php
+required_composer_scripts:
+  - test:canon
+  - test:quality
+ownership:
+  backend_owns_runtime: true
+  objecting_owns_system_fields: true
+  objecting_does_not_own_backend_migrations: true
+  exposing_stays_separate: true
+notes:
+  - This contract does not change Addressing or Taxating; it documents the Objecting-side pilot cleanup surface.
+  - Addressing and Taxating are the first clone-cleanup candidates because the workspace audit found local Object* clone surfaces there.
+  - Backend cleanup must replace local Object* clones with Objecting field packs and delete only explicit touched clone files.

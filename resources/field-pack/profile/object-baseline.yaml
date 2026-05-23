@@ -1,0 +1,8 @@
+name: object_baseline
+component: Objecting
+business_stem: Object
+field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+status: canonical

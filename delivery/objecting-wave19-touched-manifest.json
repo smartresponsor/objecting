@@ -1,0 +1,23 @@
+{
+  "wave": "objecting_wave19_rc_marker",
+  "base": "objecting_wave18_rc_stabilization_cumulative.zip",
+  "files": [
+    "README.md",
+    "composer.json",
+    "config/services.yaml",
+    "delivery/objecting-wave19-rc-marker-summary.md",
+    "delivery/objecting-wave19-touched-manifest.json",
+    "docs/release/objecting-rc1.md",
+    "resources/release/objecting-rc1.example.yaml",
+    "resources/release/objecting-release-closure.example.yaml",
+    "src/Service/Release/ObjectRcMarkerManifestReporter.php",
+    "src/ServiceInterface/Release/ObjectRcMarkerManifestReporterInterface.php",
+    "src/ValueObject/ObjectPackageSurface.php",
+    "src/ValueObject/ObjectRcMarkerManifest.php",
+    "src/ValueObject/ObjectRcMarkerReport.php",
+    "tests/Unit/ObjectRcMarkerManifestReporterTest.php",
+    "tools/inspection/ObjectingStructuralCanonStatusReport.php",
+    "tools/test/objecting_package_surface_check.php",
+    "tools/test/objecting_rc1_check.php"
+  ]
+}

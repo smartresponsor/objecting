@@ -1,0 +1,45 @@
+object_platform_constraints_version: 1
+constraint_candidate: objecting_wave20_platform_constraints
+package:
+  name: smart-responsor/objecting
+  php: '^8.4'
+  symfony: '^8.0'
+  namespace_prefix: App\Objecting\
+  bundle_class: App\Objecting\ObjectBundle
+composer_constraints:
+  require:
+    php: '^8.4'
+    symfony/config: '^8.0'
+    symfony/dependency-injection: '^8.0'
+    symfony/http-kernel: '^8.0'
+    symfony/uid: '^8.0'
+    symfony/yaml: '^8.0'
+  extra:
+    symfony:
+      require: '^8.0'
+forbidden_constraints:
+  - '^7.0 || ^8.0'
+  - '^7 || ^8'
+  - '^7.0'
+  - '7.*'
+quality_gates:
+  - composer dump-autoload
+  - composer test:platform-constraints
+  - composer test:quality
+  - composer test:rc
+  - php tools/test/objecting_platform_constraint_check.php
+platform_boundary:
+  php_84_only: true
+  symfony_8_only: true
+  symfony_7_forbidden: true
+  mixed_symfony_7_8_forbidden: true
+  legacy_free: true
+checks:
+  - php_constraint_is_84
+  - symfony_constraints_are_80
+  - symfony_extra_require_is_80
+  - no_symfony_7_constraint
+  - no_mixed_symfony_7_8_constraint
+  - platform_gate_registered
+  - rc1_marker_includes_platform_gate
+blocking_reasons: []

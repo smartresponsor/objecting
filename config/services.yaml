@@ -1,0 +1,84 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Objecting\Embeddable\ObjectEmbeddableFactory: ~
+
+  App\Objecting\Service\:
+    resource: '../src/Service/'
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectFieldPackRegistryInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectFieldPackRegistry
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectFieldPackProfileRegistryInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectFieldPackProfileRegistry
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectFieldPackConsumerContractResolverInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectFieldPackConsumerContractResolver
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendMigrationReadinessReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendMigrationReadinessReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendAdoptionManifestReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendAdoptionManifestReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendHandoffManifestReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendHandoffManifestReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendAdoptionPacketManifestReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendAdoptionPacketManifestReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendImportContractReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendImportContractReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendCloneCleanupContractReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendCloneCleanupContractReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectBackendMigrationCommandPacketReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectBackendMigrationCommandPacketReporter
+
+  App\Objecting\ServiceInterface\FieldPack\ObjectSiblingPilotMigrationHandoffReporterInterface:
+    alias: App\Objecting\Service\FieldPack\ObjectSiblingPilotMigrationHandoffReporter
+
+  App\Objecting\ServiceInterface\Title\ObjectTitleAliasProfileRegistryInterface:
+    alias: App\Objecting\Service\Title\ObjectTitleAliasProfileRegistry
+
+  App\Objecting\ServiceInterface\Title\ObjectTitleAliasResolverInterface:
+    alias: App\Objecting\Service\Title\ObjectTitleAliasResolver
+
+  App\Objecting\ServiceInterface\Title\ObjectTitleNormalizerInterface:
+    alias: App\Objecting\Service\Title\ObjectTitleNormalizer
+
+
+  App\Objecting\ServiceInterface\Doctrine\ObjectDoctrineMappingContractReporterInterface:
+    alias: App\Objecting\Service\Doctrine\ObjectDoctrineMappingContractReporter
+
+
+  App\Objecting\ServiceInterface\Schema\ObjectSchemaMirrorContractReporterInterface:
+    alias: App\Objecting\Service\Schema\ObjectSchemaMirrorContractReporter
+
+  App\Objecting\ServiceInterface\Exposing\ObjectExposingBridgeContractReporterInterface:
+    alias: App\Objecting\Service\Exposing\ObjectExposingBridgeContractReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectReleaseManifestReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectReleaseManifestReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectReleaseClosureManifestReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectReleaseClosureManifestReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectRcStabilizationManifestReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectRcStabilizationManifestReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectRcMarkerManifestReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectRcMarkerManifestReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectPlatformConstraintReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectPlatformConstraintReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectRc2MarkerManifestReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectRc2MarkerManifestReporter
+
+  App\Objecting\ServiceInterface\Release\ObjectMigrationTransitionFreezeManifestReporterInterface:
+    alias: App\Objecting\Service\Release\ObjectMigrationTransitionFreezeManifestReporter
+

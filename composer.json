@@ -1,0 +1,103 @@
+{
+  "name": "smart-responsor/objecting",
+  "description": "Symfony-oriented object system field-pack foundation for reusable entity primitives.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oleksandr Tishchenko",
+      "homepage": "https://smartresponsor.com",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "doctrine/orm": "^3.3",
+    "php": "^8.4",
+    "symfony/config": "^8.0",
+    "symfony/dependency-injection": "^8.0",
+    "symfony/http-kernel": "^8.0",
+    "symfony/uid": "^8.0",
+    "symfony/yaml": "^8.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": ">=3.95 <4.0",
+    "phpstan/phpstan": "^2.0",
+    "phpunit/phpunit": "^11.0 || ^12.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\Objecting\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Objecting\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test:canon": "@php tools/test/objecting_canon_check.php",
+    "test:package-surface": "@php tools/test/objecting_package_surface_check.php",
+    "test:migration-readiness": "@php tools/test/objecting_backend_migration_readiness_check.php",
+    "test:quality": [
+      "@test:canon",
+      "@test:package-surface",
+      "@test:platform-constraints",
+      "@test:systemic-field-packs",
+      "@test:title-alias-hardening",
+      "@test:embeddable-initialization",
+      "@test:doctrine-mapping",
+      "@test:schema-mirror",
+      "@test:exposing-bridge",
+      "@test:backend-import",
+      "@test:backend-clone-cleanup",
+      "@test:backend-migration-command",
+      "@test:release-readiness",
+      "@test:rc-stabilization",
+      "@test:rc",
+      "@test:sibling-pilot-migration-handoff",
+      "@test:migration-transition-freeze",
+      "@test:release-closure",
+      "@test:migration-readiness",
+      "@test:backend-adoption",
+      "@test:backend-handoff",
+      "@test:backend-adoption-packet"
+    ],
+    "phpstan": "phpstan analyse src tests tools --memory-limit=1G",
+    "test": "phpunit --testdox",
+    "test:backend-adoption": "@php tools/test/objecting_backend_adoption_manifest_check.php",
+    "test:backend-handoff": "@php tools/test/objecting_backend_handoff_contract_check.php",
+    "test:release-readiness": "@php tools/test/objecting_release_readiness_check.php",
+    "test:release-closure": "@php tools/test/objecting_release_closure_check.php",
+    "test:backend-adoption-packet": "@php tools/test/objecting_backend_adoption_packet_check.php",
+    "test:embeddable-initialization": "@php tools/test/objecting_embeddable_initialization_check.php",
+    "test:doctrine-mapping": "@php tools/test/objecting_doctrine_mapping_contract_check.php",
+    "test:schema-mirror": "@php tools/test/objecting_schema_mirror_contract_check.php",
+    "test:exposing-bridge": "@php tools/test/objecting_exposing_bridge_contract_check.php",
+    "test:backend-import": "@php tools/test/objecting_backend_import_contract_check.php",
+    "test:rc-stabilization": "@php tools/test/objecting_rc_stabilization_check.php",
+    "test:rc": "@php tools/test/objecting_rc2_check.php",
+    "test:rc1": "@php tools/test/objecting_rc1_check.php",
+    "test:platform-constraints": "@php tools/test/objecting_platform_constraint_check.php",
+    "test:systemic-field-packs": "@php tools/test/objecting_systemic_field_pack_check.php",
+    "test:title-alias-hardening": "@php tools/test/objecting_title_alias_hardening_check.php",
+    "test:backend-clone-cleanup": "@php tools/test/objecting_backend_clone_cleanup_contract_check.php",
+    "test:backend-migration-command": "@php tools/test/objecting_backend_migration_command_packet_check.php",
+    "test:rc2": "@php tools/test/objecting_rc2_check.php",
+    "test:sibling-pilot-migration-handoff": "@php tools/test/objecting_sibling_pilot_migration_handoff_check.php",
+    "test:migration-transition-freeze": "@php tools/test/objecting_migration_transition_freeze_check.php"
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "extra": {
+    "symfony": {
+      "require": "^8.0"
+    }
+  }
+}

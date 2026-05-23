@@ -1,0 +1,11 @@
+name: object_state
+component: Objecting
+business_stem: Object
+embeddable: App\Objecting\Embeddable\ObjectStateEmbeddable
+trait: App\Objecting\EntityTrait\Embeddable\ObjectStateEmbeddableTrait
+interface: App\Objecting\EntityInterface\ObjectStatefulInterface
+columns:
+  - object_active
+  - object_enabled
+  - object_status
+status: canonical

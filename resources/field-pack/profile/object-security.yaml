@@ -1,0 +1,11 @@
+name: object_security
+component: Objecting
+business_stem: Object
+field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_token
+  - object_restriction
+  - object_version
+status: canonical

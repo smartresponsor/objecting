@@ -1,0 +1,37 @@
+object_backend_handoff_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+package:
+  name: smart-responsor/objecting
+  constraint: ^1.0
+backend_project_root: D:\PhpstormProjects\www\Paging
+objecting_paths:
+  adoption_manifest: resources/objecting/Page/object-backend-adoption.yaml
+  readiness_manifest: resources/objecting/Page/object-backend-migration-readiness.yaml
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php tools/test/objecting_backend_adoption_manifest_check.php
+required_composer_scripts:
+  - test:canon
+  - test:quality
+exposing_contract:
+  owner: Exposing
+  path: contract/component/Paging/Page/manifest.yaml
+standalone_ready: true
+handoff_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - backend_component_namespace
+    - backend_objecting_resource_paths
+    - backend_quality_gates
+    - backend_composer_scripts
+    - optional_exposing_contract_path
+    - standalone_ready
+  blocking_reasons: []
+notes:
+  - This file is a handoff template for backend components that are ready to adopt Objecting.
+  - The backend component owns Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, tests, fixtures, and runtime behavior.
+  - Objecting owns only system field-pack primitives, field-pack manifests, title alias profiles, and validation helpers.

@@ -1,0 +1,79 @@
+object_schema_mirror_contract_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+entity:
+  class: App\Paging\Entity\Page
+  table: page
+  backend_owns_migrations: true
+objecting:
+  package: smart-responsor/objecting
+  field_pack_contract: resources/objecting/Page/object-field-packs.yaml
+  doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml
+  owns_system_columns: true
+backend_schema_mirror:
+  path: resources/schema/Page/object-schema-mirror.yaml
+  informational_only: true
+exposing_schema_mirror:
+  repository: Exposing
+  path: contract/component/Paging/Page/page.db-schema.yaml
+  owns_api_schema_mirror: true
+required_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+  - object_publication
+  - object_soft_delete
+  - object_version
+object_columns:
+  - object_uuid
+  - object_slug
+  - object_created_at
+  - object_updated_at
+  - object_created_by
+  - object_updated_by
+  - object_first_title
+  - object_middle_title
+  - object_last_title
+  - object_published
+  - object_published_at
+  - object_deleted
+  - object_deleted_at
+  - object_deleted_by
+  - object_version
+  - object_etag
+backend_columns:
+  - id
+  - page_status
+  - page_sort_order
+  - page_parent_id
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - composer test:schema-mirror
+  - php bin/console doctrine:schema:validate --skip-sync
+schema_mirror_readiness:
+  status: ready
+  checks:
+    - schema_mirror_backend_namespace
+    - schema_mirror_entity_class
+    - schema_mirror_table_prefix
+    - schema_mirror_objecting_contract_paths
+    - backend_schema_mirror_path
+    - exposing_schema_mirror_path
+    - schema_mirror_baseline_field_packs
+    - schema_mirror_object_columns
+    - schema_mirror_backend_columns
+    - schema_mirror_backend_migration_ownership
+    - schema_mirror_exposing_ownership
+    - schema_mirror_objecting_system_column_ownership
+    - schema_mirror_informational_only
+  blocking_reasons: []
+notes:
+  - Backend components remain Doctrine migration owners.
+  - Objecting owns reusable object_* system field columns and their field-pack declarations.
+  - Exposing owns the API-visible schema mirror and must not become the Doctrine migration owner.

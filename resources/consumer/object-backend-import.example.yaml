@@ -1,0 +1,65 @@
+object_backend_import_contract_version: 1
+component: Paging
+business_stem: Page
+namespace: App\Paging
+entity:
+  class: App\Paging\Entity\Page
+backend:
+  project_root: D:\PhpstormProjects\www\Paging
+  owns_runtime: true
+  owns_entity: true
+  owns_migrations: true
+objecting:
+  package: smart-responsor/objecting
+  package_constraint: ^1.0
+  owns_system_fields: true
+  import_informational: true
+  adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml
+  field_pack_contract: resources/objecting/Page/object-field-packs.yaml
+  doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml
+  schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml
+  exposing_bridge_contract: resources/objecting/Page/object-exposing-bridge.yaml
+required_field_packs:
+  - object_identity
+  - object_audit
+  - object_title
+  - object_state
+  - object_source
+  - object_fingerprint
+  - object_scope
+title_alias_profile: object_title_content
+import_artifacts:
+  - resources/objecting/Page/object-backend-adoption-packet.yaml
+  - resources/objecting/Page/object-field-packs.yaml
+  - resources/objecting/Page/object-doctrine-mapping.yaml
+  - resources/schema/Page/object-schema-mirror.yaml
+  - resources/objecting/Page/object-exposing-bridge.yaml
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - php tools/test/objecting_backend_import_contract_check.php
+required_composer_scripts:
+  - test:canon
+  - test:quality
+  - test:backend-import
+backend_import_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - backend_component_namespace
+    - backend_entity_class
+    - backend_objecting_import_paths
+    - backend_schema_mirror_path
+    - required_baseline_field_packs
+    - title_alias_requires_object_title
+    - backend_import_quality_gates
+    - backend_import_composer_scripts
+    - backend_import_artifacts
+    - backend_runtime_owner
+    - objecting_system_field_owner
+    - backend_import_informational_only
+  blocking_reasons: []
+notes:
+  - Backend import consumes Objecting contracts but keeps Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime behavior in the backend component.
+  - Objecting owns reusable object_* system fields and field-pack contracts only.
+  - Exposing bridge remains a reference for the future API contract repository and does not move API ownership into Objecting.

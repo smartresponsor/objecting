@@ -1,0 +1,250 @@
+object_release_closure_version: 1
+closure_candidate: objecting_wave27_migration_transition_freeze
+package:
+  name: smart-responsor/objecting
+  namespace_prefix: App\Objecting\
+  bundle_class: App\Objecting\ObjectBundle
+artifacts:
+  cumulative_archive: objecting_wave27_migration_transition_freeze_cumulative.zip
+  touched_archive: objecting_wave27_migration_transition_freeze_touched.zip
+quality_gates:
+  - composer dump-autoload
+  - composer test:quality
+  - composer test:platform-constraints
+  - composer test:title-alias-hardening
+  - composer test:rc-stabilization
+  - composer test:embeddable-initialization
+  - composer test:doctrine-mapping
+  - composer test:schema-mirror
+  - composer test:exposing-bridge
+  - composer test:backend-import
+  - composer test:backend-clone-cleanup
+  - composer test:sibling-pilot-migration-handoff
+  - composer test:migration-transition-freeze
+release_artifacts:
+  - resources/release/objecting-release-manifest.example.yaml
+  - resources/release/objecting-release-closure.example.yaml
+  - resources/release/objecting-rc-stabilization.example.yaml
+  - resources/release/objecting-rc1.example.yaml
+  - resources/release/objecting-platform-constraints.example.yaml
+  - resources/release/objecting-migration-transition-freeze.example.yaml
+  - resources/field-pack/manifest.yaml
+  - resources/title-alias/manifest.yaml
+  - resources/title-alias/object-title-alias-governance.example.yaml
+  - docs/integration/objecting-rc-stabilization.md
+  - docs/release/objecting-rc1.md
+  - docs/release/objecting-migration-transition-freeze.md
+  - docs/integration/objecting-platform-constraints.md
+  - docs/integration/objecting-title-alias-hardening.md
+  - docs/integration/objecting-embeddable-initialization.md
+  - docs/integration/objecting-doctrine-mapping-contract.md
+  - docs/integration/objecting-schema-mirror-contract.md
+  - docs/integration/objecting-exposing-bridge-contract.md
+  - docs/integration/objecting-backend-import-contract.md
+  - docs/integration/objecting-backend-clone-cleanup-contract.md
+  - docs/integration/objecting-sibling-pilot-migration-handoff.md
+consumer_contracts:
+  - resources/consumer/object-field-packs.example.yaml
+  - resources/consumer/object-backend-migration-readiness.example.yaml
+  - resources/consumer/object-backend-adoption.example.yaml
+  - resources/consumer/object-backend-handoff.example.yaml
+  - resources/consumer/object-backend-adoption-packet.example.yaml
+  - resources/consumer/object-doctrine-mapping.example.yaml
+  - resources/consumer/object-schema-mirror.example.yaml
+  - resources/consumer/object-exposing-bridge.example.yaml
+  - resources/consumer/object-backend-import.example.yaml
+  - resources/consumer/object-backend-clone-cleanup.example.yaml
+  - resources/consumer/object-sibling-pilot-migration-handoff.example.yaml
+boundary:
+  field_pack_foundation_only: true
+  object_title_canonical: true
+  legacy_free: true
+  backend_runtime_owner: true
+  exposing_separated: true
+next_tracks:
+  - objecting_rc_marker
+  - backend_component_migration
+  - exposing_api_contract
+closure_readiness:
+  status: ready
+  checks:
+    - objecting_package_name
+    - objecting_namespace_prefix
+    - objecting_bundle_class
+    - release_closure_quality_gates
+    - release_closure_artifacts
+    - release_closure_consumer_contracts
+    - backend_adoption_packet_bridge
+    - release_closure_next_tracks
+    - field_pack_foundation_only
+    - object_title_canonical
+    - title_alias_hardening_ready
+    - priority_visibility_deferred
+    - object_name_description_pack_forbidden
+    - legacy_free
+    - backend_runtime_owner
+    - exposing_separated
+    - embeddable_initialization_safe
+    - doctrine_mapping_contract_ready
+    - schema_mirror_contract_ready
+    - exposing_bridge_contract_ready
+    - backend_import_contract_ready
+    - backend_clone_cleanup_contract_ready
+    - backend_migration_command_packet_ready
+    - sibling_pilot_migration_handoff_ready
+    - migration_transition_freeze_ready
+    - rc_stabilization_ready
+    - platform_constraints_ready
+    - mixed_symfony_7_8_forbidden
+    - symfony_7_forbidden
+    - symfony_8_only
+    - php_84_only
+  blocking_reasons: []
+notes:
+  - Objecting closes as a system field-pack foundation dependency and publishes a backend adoption packet bridge.
+  - Backend components remain owners of Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime behavior.
+  - Exposing remains the separate API/OpenAPI contract repository and must not be folded into Objecting.
+  - Objecting field-pack traits guard uninitialized embeddables while preserving explicit initializeObject* seed methods.
+  - Doctrine mapping contract declares how backend entities consume object_* embeddables while retaining migration ownership.
+  - Schema mirror contract declares backend/Objecting/Exposing ownership boundaries for DB schema visibility.
+  - Exposing bridge contract exports Objecting field-pack, Doctrine mapping, schema mirror, and adoption packet references for the future API contract repository.
+  - Backend import contract provides a stable Objecting-side checklist for backend component migrations.
+  - Backend clone-cleanup contract documents Addressing and Taxating local Object* clone surfaces as the first pilot candidates without modifying sibling repositories.
+  - Backend migration command packet turns the audit and clone-cleanup contract into a Codex-ready touched-files migration command for sibling components.
+  - RC stabilization is complete.
+  - RC marker created in resources/release/objecting-rc1.example.yaml without expanding runtime responsibility.
+  - Objecting package constraints are PHP ^8.4 and Symfony ^8.0 only; Symfony 7 and mixed Symfony 7/8 constraints are forbidden.
+
+wave21:
+  marker: objecting_wave21_systemic_field_packs
+  added_field_packs:
+    - object_state
+    - object_source
+    - object_fingerprint
+    - object_scope
+
+
+wave22:
+  marker: objecting_wave22_title_alias_hardening
+  strengthened_surface:
+    - object_title_alias_profiles
+    - object_title_alias_governance
+    - object_system_token_decisions
+  added_alias_profiles:
+    - object_title_label
+    - object_title_display
+  intentionally_deferred_tokens:
+    - priority
+    - visibility
+  forbidden_packs:
+    - object_id
+    - object_name
+    - object_description
+    - object_priority
+    - object_visibility
+
+
+historical_rc_stabilization_baseline:
+  marker: objecting_wave18_rc_stabilization
+  cumulative_archive: objecting_wave27_migration_transition_freeze_cumulative.zip
+  touched_archive: objecting_wave27_migration_transition_freeze_touched.zip
+  purpose: preserved marker text for existing release-closure gates while the active closure candidate advances.
+
+legacy_closure_candidate: objecting_wave27_migration_transition_freeze
+legacy_cumulative_archive: objecting_wave27_migration_transition_freeze_cumulative.zip
+legacy_touched_archive: objecting_wave27_migration_transition_freeze_touched.zip
+
+wave23:
+  marker: objecting_wave23_backend_clone_cleanup_contract
+  added_surface:
+    - object_backend_clone_cleanup_contract
+    - addressing_taxating_clone_cleanup_pilot_manifest
+  pilot_components:
+    - Addressing
+    - Taxating
+  sibling_components_modified: false
+  destructive_repository_cleanup_forbidden: true
+
+
+
+wave24:
+  marker: objecting_wave24_backend_migration_command_packet
+  added_surface:
+    - object_backend_migration_command_packet
+    - codex_backend_migration_command_manifest
+  consumer_contracts:
+    - resources/consumer/object-backend-migration-command.example.yaml
+  docs:
+    - docs/integration/objecting-backend-migration-command-packet.md
+  readiness_check: backend_migration_command_packet_ready
+  pilot_components:
+    - Addressing
+    - Taxating
+  sibling_components_modified: false
+  objecting_can_be_modified_by_backend_migration: false
+  exposing_can_be_modified_by_backend_migration: false
+  destructive_repository_cleanup_forbidden: true
+
+
+wave25:
+  marker: objecting_wave25_rc2_marker
+  rc_name: objecting_rc2
+  previous_rc_name: objecting_rc1
+  added_surface:
+    - object_rc2_marker_manifest
+    - object_rc2_marker_report
+    - object_rc2_marker_gate
+  release_artifacts:
+    - resources/release/objecting-rc2.example.yaml
+    - docs/release/objecting-rc2.md
+  readiness_check: objecting_rc2_marker_ready
+  active_dependency_baseline: true
+  sibling_components_modified: false
+  objecting_runtime_scope_expanded: false
+  backend_runtime_owner: true
+  exposing_separated: true
+
+
+wave26:
+  marker: objecting_wave26_sibling_pilot_migration_handoff
+  handoff_surface:
+    - resources/consumer/object-sibling-pilot-migration-handoff.example.yaml
+    - docs/integration/objecting-sibling-pilot-migration-handoff.md
+    - tools/test/objecting_sibling_pilot_migration_handoff_check.php
+  pilot_components:
+    - Addressing
+    - Taxating
+  boundary:
+    objecting_locked: true
+    exposing_locked: true
+    sibling_components_can_be_modified: true
+    touched_files_only: true
+    destructive_repository_cleanup_forbidden: true
+
+historical_contract_markers:
+  backend_import_wave18_cumulative_archive: objecting_wave18_rc_stabilization_cumulative.zip
+  backend_import_wave18_touched_archive: objecting_wave18_rc_stabilization_touched.zip
+  canonical_legacy_closure_marker: 'closure_candidate: objecting_wave18_rc_stabilization'
+
+
+wave27:
+  marker: objecting_wave27_migration_transition_freeze
+  transition_surface:
+    - resources/release/objecting-migration-transition-freeze.example.yaml
+    - docs/release/objecting-migration-transition-freeze.md
+    - tools/test/objecting_migration_transition_freeze_check.php
+  objecting_baseline: objecting_rc2
+  next_track: backend_component_migration
+  pilot_components:
+    - Addressing
+    - Taxating
+  boundary:
+    objecting_frozen: true
+    exposing_frozen: true
+    backend_migration_open: true
+    touched_files_only: true
+    cumulative_for_backup_only: true
+    destructive_repository_cleanup_forbidden: true
+
+active_transition_marker: objecting_wave27_migration_transition_freeze
+active_next_track: backend_component_migration
