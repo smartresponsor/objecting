@@ -25,6 +25,16 @@ final class ObjectLockEmbeddable
         return $this->objectLockedBy;
     }
 
+    public function getLockedAt(): ?\DateTimeImmutable
+    {
+        return $this->getObjectLockedAt();
+    }
+
+    public function getLockedBy(): ?string
+    {
+        return $this->getObjectLockedBy();
+    }
+
     public function lock(?string $objectLockedBy = null, ?\DateTimeImmutable $objectLockedAt = null): void
     {
         $this->objectLockedAt = $objectLockedAt ?? new \DateTimeImmutable('now');

@@ -41,13 +41,33 @@ trait ObjectLockEmbeddableTrait
         return $this->objectLockEmbeddable()->getObjectLockedBy();
     }
 
+    public function getLockedAt(): ?\DateTimeImmutable
+    {
+        return $this->objectLockEmbeddable()->getLockedAt();
+    }
+
+    public function getLockedBy(): ?string
+    {
+        return $this->objectLockEmbeddable()->getLockedBy();
+    }
+
     public function lockObject(?string $objectLockedBy = null, ?\DateTimeImmutable $objectLockedAt = null): void
     {
         $this->objectLockEmbeddable()->lock($objectLockedBy, $objectLockedAt);
     }
 
+    public function lock(?string $objectLockedBy = null, ?\DateTimeImmutable $objectLockedAt = null): void
+    {
+        $this->lockObject($objectLockedBy, $objectLockedAt);
+    }
+
     public function unlockObject(): void
     {
         $this->objectLockEmbeddable()->unlock();
+    }
+
+    public function unlock(): void
+    {
+        $this->unlockObject();
     }
 }

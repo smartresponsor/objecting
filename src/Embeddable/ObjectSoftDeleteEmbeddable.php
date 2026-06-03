@@ -33,6 +33,16 @@ final class ObjectSoftDeleteEmbeddable
         return $this->objectDeletedBy;
     }
 
+    public function getDeletedAt(): ?\DateTimeImmutable
+    {
+        return $this->getObjectDeletedAt();
+    }
+
+    public function getDeletedBy(): ?string
+    {
+        return $this->getObjectDeletedBy();
+    }
+
     public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
     {
         $this->objectDeleted = true;

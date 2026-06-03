@@ -41,13 +41,33 @@ trait ObjectSoftDeleteEmbeddableTrait
         return $this->objectSoftDeleteEmbeddable()->getObjectDeletedBy();
     }
 
+    public function getDeletedAt(): ?\DateTimeImmutable
+    {
+        return $this->objectSoftDeleteEmbeddable()->getDeletedAt();
+    }
+
+    public function getDeletedBy(): ?string
+    {
+        return $this->objectSoftDeleteEmbeddable()->getDeletedBy();
+    }
+
     public function deleteObject(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
     {
         $this->objectSoftDeleteEmbeddable()->delete($deletedBy, $deletedAt);
     }
 
+    public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
+    {
+        $this->deleteObject($deletedBy, $deletedAt);
+    }
+
     public function restoreObject(): void
     {
         $this->objectSoftDeleteEmbeddable()->restore();
+    }
+
+    public function restore(): void
+    {
+        $this->restoreObject();
     }
 }

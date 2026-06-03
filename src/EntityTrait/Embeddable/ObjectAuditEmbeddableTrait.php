@@ -46,8 +46,23 @@ trait ObjectAuditEmbeddableTrait
         return $this->objectAuditEmbeddable()->getObjectUpdatedBy();
     }
 
+    public function getModifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->objectAuditEmbeddable()->getModifiedAt();
+    }
+
+    public function getModifiedBy(): ?string
+    {
+        return $this->objectAuditEmbeddable()->getModifiedBy();
+    }
+
     public function touchObject(?\DateTimeImmutable $updatedAt = null, ?string $updatedBy = null): void
     {
         $this->objectAuditEmbeddable()->touch($updatedAt, $updatedBy);
+    }
+
+    public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void
+    {
+        $this->touchObject($modifiedAt, $modifiedBy);
     }
 }

@@ -47,6 +47,16 @@ final class ObjectAuditEmbeddable
         return $this->objectUpdatedBy;
     }
 
+    public function getModifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->getObjectUpdatedAt();
+    }
+
+    public function getModifiedBy(): ?string
+    {
+        return $this->getObjectUpdatedBy();
+    }
+
     public function touch(?\DateTimeImmutable $updatedAt = null, ?string $updatedBy = null): void
     {
         $this->objectUpdatedAt = $updatedAt ?? new \DateTimeImmutable('now');
