@@ -1,6 +1,6 @@
 {
-  "name": "smart-responsor/objecting",
-  "description": "Symfony-oriented object system field-pack foundation for reusable entity primitives.",
+  "name": "objecting/object",
+  "description": "Objecting process app",
   "type": "library",
   "license": "MIT",
   "authors": [
