@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectPlatformConstraintReporter;
-use App\Objecting\ValueObject\ObjectPackageSurface;
-use App\Objecting\ValueObject\ObjectPlatformConstraintManifest;
+use App\Objecting\Manifest\ObjectPlatformConstraintManifest;
+use App\Objecting\Reporter\Release\ObjectPlatformConstraintReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectPlatformConstraintReporterTest extends TestCase

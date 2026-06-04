@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendCloneCleanupContractReporter;
-use App\Objecting\ValueObject\ObjectBackendCloneCleanupContract;
-use App\Objecting\ValueObject\ObjectBackendCloneCleanupReport;
+use App\Objecting\Contract\ObjectBackendCloneCleanupContract;
+use App\Objecting\Report\ObjectBackendCloneCleanupReport;
+use App\Objecting\Reporter\FieldPack\ObjectBackendCloneCleanupContractReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectBackendCloneCleanupContractReporterTest extends TestCase

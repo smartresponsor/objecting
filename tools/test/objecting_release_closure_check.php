@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectReleaseClosureManifest.php',
-    'src/ValueObject/ObjectReleaseClosureReport.php',
-    'src/Service/Release/ObjectReleaseClosureManifestReporter.php',
-    'src/ServiceInterface/Release/ObjectReleaseClosureManifestReporterInterface.php',
+    'src/Manifest/ObjectReleaseClosureManifest.php',
+    'src/Report/ObjectReleaseClosureReport.php',
+    'src/Reporter/Release/ObjectReleaseClosureManifestReporter.php',
+    'src/ReporterInterface/Release/ObjectReleaseClosureManifestReporterInterface.php',
     'tests/Unit/ObjectReleaseClosureManifestReporterTest.php',
     'resources/release/objecting-release-closure.example.yaml',
     'docs/integration/objecting-release-closure.md',
@@ -31,7 +31,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Release\\ObjectReleaseClosureManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Release\\ObjectReleaseClosureManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectReleaseClosureManifestReporterInterface alias.';
     }
 }
@@ -76,7 +76,7 @@ if (is_file($closureFile)) {
     foreach ([
         'object_release_closure_version: 1',
         'closure_candidate: objecting_wave18_rc_stabilization',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'namespace_prefix: App\\Objecting\\',
         'bundle_class: App\\Objecting\\ObjectBundle',
         'cumulative_archive: objecting_wave18_rc_stabilization_cumulative.zip',
@@ -128,7 +128,7 @@ if (is_file($closureFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['RELEASE_CLOSURE_EXAMPLE', 'RELEASE_CLOSURE_DOC', 'RELEASE_CLOSURE_CHECK', 'EXPOSING_BRIDGE_EXAMPLE', 'EXPOSING_BRIDGE_DOC', 'EXPOSING_BRIDGE_CHECK', 'RC_STABILIZATION_EXAMPLE', 'RC_STABILIZATION_DOC', 'RC_STABILIZATION_CHECK'] as $constant) {

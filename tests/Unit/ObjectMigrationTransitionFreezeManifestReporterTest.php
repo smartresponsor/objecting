@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectMigrationTransitionFreezeManifestReporter;
-use App\Objecting\ValueObject\ObjectMigrationTransitionFreezeManifest;
-use App\Objecting\ValueObject\ObjectMigrationTransitionFreezeReport;
-use App\Objecting\ValueObject\ObjectPackageSurface;
+use App\Objecting\Manifest\ObjectMigrationTransitionFreezeManifest;
+use App\Objecting\Report\ObjectMigrationTransitionFreezeReport;
+use App\Objecting\Reporter\Release\ObjectMigrationTransitionFreezeManifestReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectMigrationTransitionFreezeManifestReporterTest extends TestCase

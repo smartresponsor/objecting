@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendHandoffManifestReporter;
-use App\Objecting\ValueObject\ObjectBackendHandoffManifest;
+use App\Objecting\Manifest\ObjectBackendHandoffManifest;
+use App\Objecting\Reporter\FieldPack\ObjectBackendHandoffManifestReporter;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectBackendHandoffManifestReporterTest extends TestCase
@@ -16,7 +16,7 @@ final class ObjectBackendHandoffManifestReporterTest extends TestCase
             component: 'Paging',
             businessStem: 'Page',
             namespace: 'App\\Paging',
-            packageName: 'smart-responsor/objecting',
+            packageName: 'objecting/object',
             packageConstraint: '^1.0',
             backendProjectRoot: 'D:\\PhpstormProjects\\www\\Paging',
             adoptionManifestPath: 'resources/objecting/Page/object-backend-adoption.yaml',

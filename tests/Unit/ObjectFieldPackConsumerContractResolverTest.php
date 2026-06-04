@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectFieldPackConsumerContractResolver;
-use App\Objecting\ValueObject\ObjectFieldPackConsumerContract;
+use App\Objecting\Contract\ObjectFieldPackConsumerContract;
+use App\Objecting\Resolver\FieldPack\ObjectFieldPackConsumerContractResolver;
 use App\Objecting\ValueObject\ObjectFieldPackName;
 use App\Objecting\ValueObject\ObjectFieldPackProfileName;
 use App\Objecting\ValueObject\ObjectTitleAliasProfileName;

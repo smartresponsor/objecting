@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectBackendAdoptionManifest.php',
-    'src/ValueObject/ObjectBackendAdoptionReport.php',
-    'src/Service/FieldPack/ObjectBackendAdoptionManifestReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendAdoptionManifestReporterInterface.php',
+    'src/Manifest/ObjectBackendAdoptionManifest.php',
+    'src/Report/ObjectBackendAdoptionReport.php',
+    'src/Reporter/FieldPack/ObjectBackendAdoptionManifestReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendAdoptionManifestReporterInterface.php',
     'tests/Unit/ObjectBackendAdoptionManifestReporterTest.php',
     'resources/consumer/object-backend-adoption.example.yaml',
     'docs/integration/objecting-backend-adoption-manifest.md',
@@ -24,7 +24,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendAdoptionManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendAdoptionManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendAdoptionManifestReporterInterface alias.';
     }
 }
@@ -80,7 +80,7 @@ if (is_file($exampleFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['BACKEND_ADOPTION_EXAMPLE', 'BACKEND_ADOPTION_DOC', 'BACKEND_ADOPTION_CHECK'] as $constant) {

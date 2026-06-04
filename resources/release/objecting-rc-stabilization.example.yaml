@@ -1,7 +1,7 @@
 object_rc_stabilization_version: 1
 stabilization_candidate: objecting_wave18_rc_stabilization
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   namespace_prefix: App\Objecting\
   bundle_class: App\Objecting\ObjectBundle
 contract_paths:

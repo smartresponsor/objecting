@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectRc2MarkerManifestReporter;
+use App\Objecting\Manifest\ObjectRc2MarkerManifest;
+use App\Objecting\Report\ObjectRc2MarkerReport;
+use App\Objecting\Reporter\Release\ObjectRc2MarkerManifestReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectPackageSurface;
-use App\Objecting\ValueObject\ObjectRc2MarkerManifest;
-use App\Objecting\ValueObject\ObjectRc2MarkerReport;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectRc2MarkerManifestReporterTest extends TestCase

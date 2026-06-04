@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectBackendHandoffManifest.php',
-    'src/ValueObject/ObjectBackendHandoffReport.php',
-    'src/Service/FieldPack/ObjectBackendHandoffManifestReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendHandoffManifestReporterInterface.php',
+    'src/Manifest/ObjectBackendHandoffManifest.php',
+    'src/Report/ObjectBackendHandoffReport.php',
+    'src/Reporter/FieldPack/ObjectBackendHandoffManifestReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendHandoffManifestReporterInterface.php',
     'tests/Unit/ObjectBackendHandoffManifestReporterTest.php',
     'resources/consumer/object-backend-handoff.example.yaml',
     'docs/integration/objecting-backend-handoff-contract.md',
@@ -24,7 +24,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendHandoffManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendHandoffManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendHandoffManifestReporterInterface alias.';
     }
 }
@@ -56,7 +56,7 @@ if (is_file($exampleFile)) {
         'component: Paging',
         'business_stem: Page',
         'namespace: App\\Paging',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'constraint: ^1.0',
         'backend_project_root: D:\\PhpstormProjects\\www\\Paging',
         'adoption_manifest: resources/objecting/Page/object-backend-adoption.yaml',
@@ -76,7 +76,7 @@ if (is_file($exampleFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['BACKEND_HANDOFF_EXAMPLE', 'BACKEND_HANDOFF_DOC', 'BACKEND_HANDOFF_CHECK'] as $constant) {

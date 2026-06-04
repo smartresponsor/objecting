@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendAdoptionPacketManifestReporter;
-use App\Objecting\ValueObject\ObjectBackendAdoptionPacketManifest;
-use App\Objecting\ValueObject\ObjectBackendAdoptionPacketReport;
+use App\Objecting\Manifest\ObjectBackendAdoptionPacketManifest;
+use App\Objecting\Report\ObjectBackendAdoptionPacketReport;
+use App\Objecting\Reporter\FieldPack\ObjectBackendAdoptionPacketManifestReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
 use PHPUnit\Framework\TestCase;
 

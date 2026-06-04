@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectPlatformConstraintManifest.php',
-    'src/ValueObject/ObjectPlatformConstraintReport.php',
-    'src/Service/Release/ObjectPlatformConstraintReporter.php',
-    'src/ServiceInterface/Release/ObjectPlatformConstraintReporterInterface.php',
+    'src/Manifest/ObjectPlatformConstraintManifest.php',
+    'src/Report/ObjectPlatformConstraintReport.php',
+    'src/Reporter/Release/ObjectPlatformConstraintReporter.php',
+    'src/ReporterInterface/Release/ObjectPlatformConstraintReporterInterface.php',
     'tests/Unit/ObjectPlatformConstraintReporterTest.php',
     'resources/release/objecting-platform-constraints.example.yaml',
     'docs/integration/objecting-platform-constraints.md',
@@ -90,12 +90,12 @@ if (is_file($manifestFile)) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Release\\ObjectPlatformConstraintReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Release\\ObjectPlatformConstraintReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectPlatformConstraintReporterInterface alias.';
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['PLATFORM_CONSTRAINTS_EXAMPLE', 'PLATFORM_CONSTRAINTS_DOC', 'PLATFORM_CONSTRAINTS_CHECK', 'SYMFONY_REQUIRE_PACKAGES'] as $constant) {

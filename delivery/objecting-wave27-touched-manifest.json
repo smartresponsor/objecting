@@ -4,8 +4,8 @@
   "touched_files": [
     "src/ValueObject/ObjectMigrationTransitionFreezeManifest.php",
     "src/ValueObject/ObjectMigrationTransitionFreezeReport.php",
-    "src/ServiceInterface/Release/ObjectMigrationTransitionFreezeManifestReporterInterface.php",
-    "src/Service/Release/ObjectMigrationTransitionFreezeManifestReporter.php",
+    "src/ReporterInterface/Release/ObjectMigrationTransitionFreezeManifestReporterInterface.php",
+    "src/Reporter/Release/ObjectMigrationTransitionFreezeManifestReporter.php",
     "tests/Unit/ObjectMigrationTransitionFreezeManifestReporterTest.php",
     "resources/release/objecting-migration-transition-freeze.example.yaml",
     "docs/release/objecting-migration-transition-freeze.md",

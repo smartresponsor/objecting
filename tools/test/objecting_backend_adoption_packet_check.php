@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectBackendAdoptionPacketManifest.php',
-    'src/ValueObject/ObjectBackendAdoptionPacketReport.php',
-    'src/Service/FieldPack/ObjectBackendAdoptionPacketManifestReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendAdoptionPacketManifestReporterInterface.php',
+    'src/Manifest/ObjectBackendAdoptionPacketManifest.php',
+    'src/Report/ObjectBackendAdoptionPacketReport.php',
+    'src/Reporter/FieldPack/ObjectBackendAdoptionPacketManifestReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendAdoptionPacketManifestReporterInterface.php',
     'tests/Unit/ObjectBackendAdoptionPacketManifestReporterTest.php',
     'resources/consumer/object-backend-adoption-packet.example.yaml',
     'docs/integration/objecting-backend-adoption-packet.md',
@@ -24,7 +24,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendAdoptionPacketManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendAdoptionPacketManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendAdoptionPacketManifestReporterInterface alias.';
     }
 }
@@ -57,7 +57,7 @@ if (is_file($exampleFile)) {
         'business_stem: Page',
         'namespace: App\\Paging',
         'backend_project_root: D:\\PhpstormProjects\\www\\Paging',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'constraint: ^1.0',
         'field_pack_contract: resources/objecting/Page/object-field-packs.yaml',
         'readiness_manifest: resources/objecting/Page/object-backend-migration-readiness.yaml',
@@ -84,7 +84,7 @@ if (is_file($exampleFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['BACKEND_ADOPTION_PACKET_EXAMPLE', 'BACKEND_ADOPTION_PACKET_DOC', 'BACKEND_ADOPTION_PACKET_CHECK'] as $constant) {

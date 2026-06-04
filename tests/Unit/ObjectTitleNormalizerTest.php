@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Title\ObjectTitleNormalizer;
+use App\Objecting\Normalizer\Title\ObjectTitleNormalizer;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectTitleNormalizerTest extends TestCase

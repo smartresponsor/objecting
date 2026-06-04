@@ -3,7 +3,7 @@ component: Paging
 business_stem: Page
 namespace: App\Paging
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   constraint: ^1.0
 backend_project_root: D:\PhpstormProjects\www\Paging
 objecting_paths:

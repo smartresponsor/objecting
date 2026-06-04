@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectSiblingPilotMigrationHandoffManifest.php',
-    'src/ValueObject/ObjectSiblingPilotMigrationHandoffReport.php',
-    'src/Service/FieldPack/ObjectSiblingPilotMigrationHandoffReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectSiblingPilotMigrationHandoffReporterInterface.php',
+    'src/Manifest/ObjectSiblingPilotMigrationHandoffManifest.php',
+    'src/Report/ObjectSiblingPilotMigrationHandoffReport.php',
+    'src/Reporter/FieldPack/ObjectSiblingPilotMigrationHandoffReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectSiblingPilotMigrationHandoffReporterInterface.php',
     'tests/Unit/ObjectSiblingPilotMigrationHandoffReporterTest.php',
     'resources/consumer/object-sibling-pilot-migration-handoff.example.yaml',
     'docs/integration/objecting-sibling-pilot-migration-handoff.md',
@@ -43,12 +43,12 @@ if (is_file($composerFile)) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectSiblingPilotMigrationHandoffReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectSiblingPilotMigrationHandoffReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectSiblingPilotMigrationHandoffReporterInterface alias.';
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['SIBLING_PILOT_MIGRATION_HANDOFF_EXAMPLE', 'SIBLING_PILOT_MIGRATION_HANDOFF_DOC', 'SIBLING_PILOT_MIGRATION_HANDOFF_CHECK'] as $constant) {
@@ -64,7 +64,7 @@ if (is_file($exampleFile)) {
     foreach ([
         'object_sibling_pilot_migration_handoff_version: 1',
         'objecting_baseline: objecting_rc2',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'php: ^8.4',
         'symfony: ^8.0',
         'objecting_locked: true',

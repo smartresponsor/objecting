@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectFieldPackProfileRegistry;
-use App\Objecting\Service\FieldPack\ObjectFieldPackRegistry;
+use App\Objecting\Registry\FieldPack\ObjectFieldPackProfileRegistry;
+use App\Objecting\Registry\FieldPack\ObjectFieldPackRegistry;
 use App\Objecting\ValueObject\ObjectFieldPackName;
 use App\Objecting\ValueObject\ObjectFieldPackProfileName;
 use PHPUnit\Framework\TestCase;

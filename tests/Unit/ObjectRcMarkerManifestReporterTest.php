@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectRcMarkerManifestReporter;
-use App\Objecting\ValueObject\ObjectPackageSurface;
-use App\Objecting\ValueObject\ObjectRcMarkerManifest;
-use App\Objecting\ValueObject\ObjectRcMarkerReport;
+use App\Objecting\Manifest\ObjectRcMarkerManifest;
+use App\Objecting\Report\ObjectRcMarkerReport;
+use App\Objecting\Reporter\Release\ObjectRcMarkerManifestReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectRcMarkerManifestReporterTest extends TestCase

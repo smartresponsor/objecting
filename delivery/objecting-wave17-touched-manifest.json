@@ -5,8 +5,8 @@
   "touched_files": [
     "src/ValueObject/ObjectBackendImportContract.php",
     "src/ValueObject/ObjectBackendImportReport.php",
-    "src/ServiceInterface/FieldPack/ObjectBackendImportContractReporterInterface.php",
-    "src/Service/FieldPack/ObjectBackendImportContractReporter.php",
+    "src/ReporterInterface/FieldPack/ObjectBackendImportContractReporterInterface.php",
+    "src/Reporter/FieldPack/ObjectBackendImportContractReporter.php",
     "tests/Unit/ObjectBackendImportContractReporterTest.php",
     "resources/consumer/object-backend-import.example.yaml",
     "docs/integration/objecting-backend-import-contract.md",

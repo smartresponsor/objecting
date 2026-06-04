@@ -4,7 +4,7 @@ business_stem: Page
 namespace: App\Paging
 backend_project_root: D:\PhpstormProjects\www\Paging
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   constraint: ^1.0
 objecting_paths:
   field_pack_contract: resources/objecting/Page/object-field-packs.yaml

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendMigrationCommandPacketReporter;
-use App\Objecting\ValueObject\ObjectBackendMigrationCommandPacket;
-use App\Objecting\ValueObject\ObjectBackendMigrationCommandReport;
+use App\Objecting\Packet\ObjectBackendMigrationCommandPacket;
+use App\Objecting\Report\ObjectBackendMigrationCommandReport;
+use App\Objecting\Reporter\FieldPack\ObjectBackendMigrationCommandPacketReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectBackendMigrationCommandPacketReporterTest extends TestCase

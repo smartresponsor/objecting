@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendImportContractReporter;
-use App\Objecting\ValueObject\ObjectBackendImportContract;
-use App\Objecting\ValueObject\ObjectBackendImportReport;
+use App\Objecting\Contract\ObjectBackendImportContract;
+use App\Objecting\Report\ObjectBackendImportReport;
+use App\Objecting\Reporter\FieldPack\ObjectBackendImportContractReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
 use PHPUnit\Framework\TestCase;
 

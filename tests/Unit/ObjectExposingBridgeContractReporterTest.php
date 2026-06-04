@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Exposing\ObjectExposingBridgeContractReporter;
-use App\Objecting\ValueObject\ObjectExposingBridgeContract;
-use App\Objecting\ValueObject\ObjectExposingBridgeReport;
+use App\Objecting\Contract\ObjectExposingBridgeContract;
+use App\Objecting\Report\ObjectExposingBridgeReport;
+use App\Objecting\Reporter\Exposing\ObjectExposingBridgeContractReporter;
 use App\Objecting\ValueObject\ObjectFieldPackName;
 use PHPUnit\Framework\TestCase;
 

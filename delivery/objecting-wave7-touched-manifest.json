@@ -5,8 +5,8 @@
   "base": "objecting_wave6_package_quality_gates_cumulative.zip",
   "touched_files": [
     "src/ValueObject/ObjectBackendMigrationReadinessReport.php",
-    "src/ServiceInterface/FieldPack/ObjectBackendMigrationReadinessReporterInterface.php",
-    "src/Service/FieldPack/ObjectBackendMigrationReadinessReporter.php",
+    "src/ReporterInterface/FieldPack/ObjectBackendMigrationReadinessReporterInterface.php",
+    "src/Reporter/FieldPack/ObjectBackendMigrationReadinessReporter.php",
     "tests/Unit/ObjectBackendMigrationReadinessReporterTest.php",
     "resources/consumer/object-backend-migration-readiness.example.yaml",
     "docs/integration/objecting-backend-migration-readiness.md",

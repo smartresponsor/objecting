@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectMigrationTransitionFreezeManifest.php',
-    'src/ValueObject/ObjectMigrationTransitionFreezeReport.php',
-    'src/Service/Release/ObjectMigrationTransitionFreezeManifestReporter.php',
-    'src/ServiceInterface/Release/ObjectMigrationTransitionFreezeManifestReporterInterface.php',
+    'src/Manifest/ObjectMigrationTransitionFreezeManifest.php',
+    'src/Report/ObjectMigrationTransitionFreezeReport.php',
+    'src/Reporter/Release/ObjectMigrationTransitionFreezeManifestReporter.php',
+    'src/ReporterInterface/Release/ObjectMigrationTransitionFreezeManifestReporterInterface.php',
     'tests/Unit/ObjectMigrationTransitionFreezeManifestReporterTest.php',
     'resources/release/objecting-migration-transition-freeze.example.yaml',
     'docs/release/objecting-migration-transition-freeze.md',
@@ -44,12 +44,12 @@ if (is_file($composerFile)) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\Objecting\ServiceInterface\Release\ObjectMigrationTransitionFreezeManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\Objecting\ReporterInterface\Release\ObjectMigrationTransitionFreezeManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectMigrationTransitionFreezeManifestReporterInterface alias.';
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['MIGRATION_TRANSITION_FREEZE_EXAMPLE', 'MIGRATION_TRANSITION_FREEZE_DOC', 'MIGRATION_TRANSITION_FREEZE_CHECK'] as $constant) {

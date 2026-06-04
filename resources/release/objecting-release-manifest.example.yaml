@@ -1,7 +1,7 @@
 object_release_manifest_version: 1
 release_candidate: objecting_wave10_release_readiness
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   namespace_prefix: App\Objecting\
   bundle_class: App\Objecting\ObjectBundle
 artifacts:

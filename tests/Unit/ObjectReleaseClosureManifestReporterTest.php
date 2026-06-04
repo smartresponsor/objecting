@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectReleaseClosureManifestReporter;
-use App\Objecting\ValueObject\ObjectPackageSurface;
-use App\Objecting\ValueObject\ObjectReleaseClosureManifest;
-use App\Objecting\ValueObject\ObjectReleaseClosureReport;
+use App\Objecting\Manifest\ObjectReleaseClosureManifest;
+use App\Objecting\Report\ObjectReleaseClosureReport;
+use App\Objecting\Reporter\Release\ObjectReleaseClosureManifestReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectReleaseClosureManifestReporterTest extends TestCase

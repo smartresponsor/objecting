@@ -2,7 +2,7 @@ object_backend_migration_command_version: 1
 name: objecting_backend_migration_wave1
 source_audit: workspace-objecting-field-pack-audit.md
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   php: ^8.4
   symfony: ^8.0
   objecting_baseline: objecting_wave23_backend_clone_cleanup_contract

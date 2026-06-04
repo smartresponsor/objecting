@@ -5,10 +5,10 @@ declare(strict_types=1);
 $root = dirname(__DIR__, 2);
 $errors = [];
 $requiredFiles = [
-    'src/ValueObject/ObjectBackendImportContract.php',
-    'src/ValueObject/ObjectBackendImportReport.php',
-    'src/Service/FieldPack/ObjectBackendImportContractReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendImportContractReporterInterface.php',
+    'src/Contract/ObjectBackendImportContract.php',
+    'src/Report/ObjectBackendImportReport.php',
+    'src/Reporter/FieldPack/ObjectBackendImportContractReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendImportContractReporterInterface.php',
     'tests/Unit/ObjectBackendImportContractReporterTest.php',
     'resources/consumer/object-backend-import.example.yaml',
     'docs/integration/objecting-backend-import-contract.md',
@@ -21,7 +21,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendImportContractReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendImportContractReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendImportContractReporterInterface alias.';
     }
 }
@@ -41,14 +41,14 @@ if (is_file($composerFile)) {
 $exampleFile = $root . '/resources/consumer/object-backend-import.example.yaml';
 if (is_file($exampleFile)) {
     $example = file_get_contents($exampleFile) ?: '';
-    foreach (['object_backend_import_contract_version: 1','component: Paging','business_stem: Page','namespace: App\\Paging','class: App\\Paging\\Entity\\Page','project_root: D:\\PhpstormProjects\\www\\Paging','package: smart-responsor/objecting','adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml','field_pack_contract: resources/objecting/Page/object-field-packs.yaml','doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml','schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml','exposing_bridge_contract: resources/objecting/Page/object-exposing-bridge.yaml','title_alias_profile: object_title_content','composer test:quality','php tools/test/objecting_backend_import_contract_check.php','test:backend-import','backend_import_readiness:','status: ready','backend_component_namespace','backend_entity_class','backend_objecting_import_paths','backend_schema_mirror_path','objecting_system_field_owner','backend_import_informational_only'] as $marker) {
+    foreach (['object_backend_import_contract_version: 1','component: Paging','business_stem: Page','namespace: App\\Paging','class: App\\Paging\\Entity\\Page','project_root: D:\\PhpstormProjects\\www\\Paging','package: objecting/object','adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml','field_pack_contract: resources/objecting/Page/object-field-packs.yaml','doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml','schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml','exposing_bridge_contract: resources/objecting/Page/object-exposing-bridge.yaml','title_alias_profile: object_title_content','composer test:quality','php tools/test/objecting_backend_import_contract_check.php','test:backend-import','backend_import_readiness:','status: ready','backend_component_namespace','backend_entity_class','backend_objecting_import_paths','backend_schema_mirror_path','objecting_system_field_owner','backend_import_informational_only'] as $marker) {
         if (!str_contains($example, $marker)) { $errors[] = 'Backend import example is missing marker: ' . $marker; }
     }
     foreach (['object_identity', 'object_audit', 'object_title'] as $baselinePack) {
         if (!str_contains($example, '- ' . $baselinePack)) { $errors[] = 'Backend import example is missing baseline field pack: ' . $baselinePack; }
     }
 }
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['BACKEND_IMPORT_EXAMPLE', 'BACKEND_IMPORT_DOC', 'BACKEND_IMPORT_CHECK'] as $constant) {

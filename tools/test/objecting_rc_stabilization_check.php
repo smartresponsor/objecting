@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectRcStabilizationManifest.php',
-    'src/ValueObject/ObjectRcStabilizationReport.php',
-    'src/Service/Release/ObjectRcStabilizationManifestReporter.php',
-    'src/ServiceInterface/Release/ObjectRcStabilizationManifestReporterInterface.php',
+    'src/Manifest/ObjectRcStabilizationManifest.php',
+    'src/Report/ObjectRcStabilizationReport.php',
+    'src/Reporter/Release/ObjectRcStabilizationManifestReporter.php',
+    'src/ReporterInterface/Release/ObjectRcStabilizationManifestReporterInterface.php',
     'tests/Unit/ObjectRcStabilizationManifestReporterTest.php',
     'resources/release/objecting-rc-stabilization.example.yaml',
     'docs/integration/objecting-rc-stabilization.md',
@@ -25,7 +25,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Release\\ObjectRcStabilizationManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Release\\ObjectRcStabilizationManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectRcStabilizationManifestReporterInterface alias.';
     }
 }
@@ -55,7 +55,7 @@ if (is_file($manifestFile)) {
     foreach ([
         'object_rc_stabilization_version: 1',
         'stabilization_candidate: objecting_wave18_rc_stabilization',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'namespace_prefix: App\\Objecting\\',
         'bundle_class: App\\Objecting\\ObjectBundle',
         'release_closure: resources/release/objecting-release-closure.example.yaml',
@@ -93,7 +93,7 @@ if (is_file($manifestFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['RC_STABILIZATION_EXAMPLE', 'RC_STABILIZATION_DOC', 'RC_STABILIZATION_CHECK'] as $constant) {

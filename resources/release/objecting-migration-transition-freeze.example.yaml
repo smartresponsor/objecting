@@ -3,7 +3,7 @@ name: objecting_migration_transition_freeze
 objecting_baseline: objecting_rc2
 closure_candidate: objecting_wave27_migration_transition_freeze
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   php: ^8.4
   symfony: ^8.0
 artifacts:

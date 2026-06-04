@@ -5,7 +5,7 @@ Objecting wave 27 freezes the Objecting side of the work after RC2 and opens the
 ## Locked baseline
 
 - Objecting baseline: `objecting_rc2`
-- Active package: `smart-responsor/objecting`
+- Active package: `objecting/object`
 - PHP constraint: `^8.4`
 - Symfony constraint: `^8.0`
 

@@ -8,7 +8,7 @@ The host application may receive it transitively through those backend component
 ```json
 {
   "require": {
-    "smart-responsor/objecting": "*"
+    "objecting/object": "*"
   }
 }
 ```

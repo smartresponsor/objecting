@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectSiblingPilotMigrationHandoffReporter;
+use App\Objecting\Manifest\ObjectSiblingPilotMigrationHandoffManifest;
+use App\Objecting\Report\ObjectSiblingPilotMigrationHandoffReport;
+use App\Objecting\Reporter\FieldPack\ObjectSiblingPilotMigrationHandoffReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectPackageSurface;
-use App\Objecting\ValueObject\ObjectSiblingPilotMigrationHandoffManifest;
-use App\Objecting\ValueObject\ObjectSiblingPilotMigrationHandoffReport;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectSiblingPilotMigrationHandoffReporterTest extends TestCase

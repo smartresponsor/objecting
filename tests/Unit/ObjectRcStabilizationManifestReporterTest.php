@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectRcStabilizationManifestReporter;
-use App\Objecting\ValueObject\ObjectPackageSurface;
-use App\Objecting\ValueObject\ObjectRcStabilizationManifest;
-use App\Objecting\ValueObject\ObjectRcStabilizationReport;
+use App\Objecting\Manifest\ObjectRcStabilizationManifest;
+use App\Objecting\Report\ObjectRcStabilizationReport;
+use App\Objecting\Reporter\Release\ObjectRcStabilizationManifestReporter;
+use App\Objecting\Surface\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectRcStabilizationManifestReporterTest extends TestCase

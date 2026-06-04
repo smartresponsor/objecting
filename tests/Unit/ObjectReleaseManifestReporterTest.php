@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Release\ObjectReleaseManifestReporter;
-use App\Objecting\ValueObject\ObjectReleaseManifest;
+use App\Objecting\Manifest\ObjectReleaseManifest;
+use App\Objecting\Reporter\Release\ObjectReleaseManifestReporter;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectReleaseManifestReporterTest extends TestCase
@@ -14,7 +14,7 @@ final class ObjectReleaseManifestReporterTest extends TestCase
     {
         $manifest = new ObjectReleaseManifest(
             releaseCandidate: 'objecting_wave10_release_readiness',
-            packageName: 'smart-responsor/objecting',
+            packageName: 'objecting/object',
             namespacePrefix: 'App\\Objecting\\',
             bundleClass: 'App\\Objecting\\ObjectBundle',
             cumulativeArchive: 'objecting_wave10_release_readiness_cumulative.zip',

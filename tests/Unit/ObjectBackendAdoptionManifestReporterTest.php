@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendAdoptionManifestReporter;
-use App\Objecting\ValueObject\ObjectBackendAdoptionManifest;
-use App\Objecting\ValueObject\ObjectBackendAdoptionReport;
+use App\Objecting\Manifest\ObjectBackendAdoptionManifest;
+use App\Objecting\Report\ObjectBackendAdoptionReport;
+use App\Objecting\Reporter\FieldPack\ObjectBackendAdoptionManifestReporter;
 use App\Objecting\ValueObject\ObjectFieldPackName;
 use App\Objecting\ValueObject\ObjectFieldPackProfileName;
 use App\Objecting\ValueObject\ObjectTitleAliasProfileName;

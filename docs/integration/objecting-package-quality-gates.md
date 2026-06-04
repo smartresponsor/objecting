@@ -20,7 +20,7 @@ php tools/test/objecting_package_surface_check.php
 
 ## Package-surface rules
 
-- `composer.json` must keep `smart-responsor/objecting` as a library package.
+- `composer.json` must keep `objecting/object` as a library package.
 - PSR-4 autoload must stay `App\Objecting\` to `src/`.
 - `ObjectBundle` and `ObjectExtension` are the Symfony package surface.
 - `ObjectExtension` owns runtime parameters such as `objecting.package_dir` and manifest paths.

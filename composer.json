@@ -40,6 +40,7 @@
     "test:migration-readiness": "@php tools/test/objecting_backend_migration_readiness_check.php",
     "test:quality": [
       "@test:canon",
+      "@test:layer-suffix",
       "@test:package-surface",
       "@test:platform-constraints",
       "@test:systemic-field-packs",
@@ -84,7 +85,8 @@
     "test:backend-migration-command": "@php tools/test/objecting_backend_migration_command_packet_check.php",
     "test:rc2": "@php tools/test/objecting_rc2_check.php",
     "test:sibling-pilot-migration-handoff": "@php tools/test/objecting_sibling_pilot_migration_handoff_check.php",
-    "test:migration-transition-freeze": "@php tools/test/objecting_migration_transition_freeze_check.php"
+    "test:migration-transition-freeze": "@php tools/test/objecting_migration_transition_freeze_check.php",
+    "test:layer-suffix": "@php tools/test/objecting_layer_suffix_check.php"
   },
   "config": {
     "sort-packages": true,

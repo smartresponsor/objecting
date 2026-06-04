@@ -11,54 +11,54 @@ $requiredFiles = [
     'docs/integration/symfony-package-installation.md',
     'docs/integration/objecting-package-quality-gates.md',
     'docs/integration/objecting-embeddable-initialization.md',
-    'src/ValueObject/ObjectPackageSurface.php',
-    'src/ValueObject/ObjectBackendMigrationReadinessReport.php',
-    'src/ValueObject/ObjectBackendAdoptionManifest.php',
-    'src/ValueObject/ObjectBackendAdoptionReport.php',
-    'src/ValueObject/ObjectBackendHandoffManifest.php',
-    'src/ValueObject/ObjectBackendHandoffReport.php',
-    'src/ValueObject/ObjectBackendAdoptionPacketManifest.php',
-    'src/ValueObject/ObjectBackendAdoptionPacketReport.php',
-    'src/ValueObject/ObjectBackendImportContract.php',
-    'src/ValueObject/ObjectBackendImportReport.php',
-    'src/ValueObject/ObjectBackendCloneCleanupContract.php',
-    'src/ValueObject/ObjectBackendCloneCleanupReport.php',
-    'src/ValueObject/ObjectBackendMigrationCommandPacket.php',
-    'src/ValueObject/ObjectBackendMigrationCommandReport.php',
-    'src/ValueObject/ObjectReleaseManifest.php',
-    'src/ValueObject/ObjectReleaseReport.php',
-    'src/ValueObject/ObjectReleaseClosureManifest.php',
-    'src/ValueObject/ObjectReleaseClosureReport.php',
-    'src/ValueObject/ObjectRcStabilizationManifest.php',
-    'src/ValueObject/ObjectRcStabilizationReport.php',
-    'src/ValueObject/ObjectRcMarkerManifest.php',
-    'src/ValueObject/ObjectRcMarkerReport.php',
-    'src/ValueObject/ObjectRc2MarkerManifest.php',
-    'src/ValueObject/ObjectRc2MarkerReport.php',
-    'src/Service/FieldPack/ObjectBackendMigrationReadinessReporter.php',
-    'src/Service/FieldPack/ObjectBackendAdoptionManifestReporter.php',
-    'src/Service/FieldPack/ObjectBackendHandoffManifestReporter.php',
-    'src/Service/FieldPack/ObjectBackendAdoptionPacketManifestReporter.php',
-    'src/Service/FieldPack/ObjectBackendImportContractReporter.php',
-    'src/Service/FieldPack/ObjectBackendCloneCleanupContractReporter.php',
-    'src/Service/FieldPack/ObjectBackendMigrationCommandPacketReporter.php',
-    'src/Service/Release/ObjectReleaseManifestReporter.php',
-    'src/Service/Release/ObjectReleaseClosureManifestReporter.php',
-    'src/Service/Release/ObjectRcStabilizationManifestReporter.php',
-    'src/Service/Release/ObjectRcMarkerManifestReporter.php',
-    'src/Service/Release/ObjectRc2MarkerManifestReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendMigrationReadinessReporterInterface.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendAdoptionManifestReporterInterface.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendHandoffManifestReporterInterface.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendAdoptionPacketManifestReporterInterface.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendImportContractReporterInterface.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendMigrationCommandPacketReporterInterface.php',
-    'src/ServiceInterface/Release/ObjectReleaseManifestReporterInterface.php',
-    'src/ServiceInterface/Release/ObjectReleaseClosureManifestReporterInterface.php',
-    'src/ServiceInterface/Release/ObjectRcStabilizationManifestReporterInterface.php',
-    'src/ServiceInterface/Release/ObjectRcMarkerManifestReporterInterface.php',
-    'src/ServiceInterface/Release/ObjectRc2MarkerManifestReporterInterface.php',
+    'src/Surface/ObjectPackageSurface.php',
+    'src/Report/ObjectBackendMigrationReadinessReport.php',
+    'src/Manifest/ObjectBackendAdoptionManifest.php',
+    'src/Report/ObjectBackendAdoptionReport.php',
+    'src/Manifest/ObjectBackendHandoffManifest.php',
+    'src/Report/ObjectBackendHandoffReport.php',
+    'src/Manifest/ObjectBackendAdoptionPacketManifest.php',
+    'src/Report/ObjectBackendAdoptionPacketReport.php',
+    'src/Contract/ObjectBackendImportContract.php',
+    'src/Report/ObjectBackendImportReport.php',
+    'src/Contract/ObjectBackendCloneCleanupContract.php',
+    'src/Report/ObjectBackendCloneCleanupReport.php',
+    'src/Packet/ObjectBackendMigrationCommandPacket.php',
+    'src/Report/ObjectBackendMigrationCommandReport.php',
+    'src/Manifest/ObjectReleaseManifest.php',
+    'src/Report/ObjectReleaseReport.php',
+    'src/Manifest/ObjectReleaseClosureManifest.php',
+    'src/Report/ObjectReleaseClosureReport.php',
+    'src/Manifest/ObjectRcStabilizationManifest.php',
+    'src/Report/ObjectRcStabilizationReport.php',
+    'src/Manifest/ObjectRcMarkerManifest.php',
+    'src/Report/ObjectRcMarkerReport.php',
+    'src/Manifest/ObjectRc2MarkerManifest.php',
+    'src/Report/ObjectRc2MarkerReport.php',
+    'src/Reporter/FieldPack/ObjectBackendMigrationReadinessReporter.php',
+    'src/Reporter/FieldPack/ObjectBackendAdoptionManifestReporter.php',
+    'src/Reporter/FieldPack/ObjectBackendHandoffManifestReporter.php',
+    'src/Reporter/FieldPack/ObjectBackendAdoptionPacketManifestReporter.php',
+    'src/Reporter/FieldPack/ObjectBackendImportContractReporter.php',
+    'src/Reporter/FieldPack/ObjectBackendCloneCleanupContractReporter.php',
+    'src/Reporter/FieldPack/ObjectBackendMigrationCommandPacketReporter.php',
+    'src/Reporter/Release/ObjectReleaseManifestReporter.php',
+    'src/Reporter/Release/ObjectReleaseClosureManifestReporter.php',
+    'src/Reporter/Release/ObjectRcStabilizationManifestReporter.php',
+    'src/Reporter/Release/ObjectRcMarkerManifestReporter.php',
+    'src/Reporter/Release/ObjectRc2MarkerManifestReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendMigrationReadinessReporterInterface.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendAdoptionManifestReporterInterface.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendHandoffManifestReporterInterface.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendAdoptionPacketManifestReporterInterface.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendImportContractReporterInterface.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendMigrationCommandPacketReporterInterface.php',
+    'src/ReporterInterface/Release/ObjectReleaseManifestReporterInterface.php',
+    'src/ReporterInterface/Release/ObjectReleaseClosureManifestReporterInterface.php',
+    'src/ReporterInterface/Release/ObjectRcStabilizationManifestReporterInterface.php',
+    'src/ReporterInterface/Release/ObjectRcMarkerManifestReporterInterface.php',
+    'src/ReporterInterface/Release/ObjectRc2MarkerManifestReporterInterface.php',
     'tests/Unit/ObjectPackageSurfaceTest.php',
     'tests/Unit/ObjectBackendMigrationReadinessReporterTest.php',
     'tests/Unit/ObjectBackendAdoptionManifestReporterTest.php',
@@ -88,22 +88,22 @@ $requiredFiles = [
     'tools/test/objecting_embeddable_initialization_check.php',
     'tools/test/objecting_systemic_field_pack_check.php',
     'docs/integration/objecting-systemic-field-packs.md',
-    'src/ValueObject/ObjectDoctrineMappingContract.php',
-    'src/ValueObject/ObjectDoctrineMappingReport.php',
-    'src/Service/Doctrine/ObjectDoctrineMappingContractReporter.php',
-    'src/ServiceInterface/Doctrine/ObjectDoctrineMappingContractReporterInterface.php',
+    'src/Contract/ObjectDoctrineMappingContract.php',
+    'src/Report/ObjectDoctrineMappingReport.php',
+    'src/Reporter/Doctrine/ObjectDoctrineMappingContractReporter.php',
+    'src/ReporterInterface/Doctrine/ObjectDoctrineMappingContractReporterInterface.php',
     'tests/Unit/ObjectDoctrineMappingContractReporterTest.php',
     'resources/consumer/object-doctrine-mapping.example.yaml',
     'docs/integration/objecting-doctrine-mapping-contract.md',
     'tools/test/objecting_doctrine_mapping_contract_check.php',
-    'src/ValueObject/ObjectSchemaMirrorContract.php',
-    'src/ValueObject/ObjectSchemaMirrorReport.php',
-    'src/ValueObject/ObjectExposingBridgeContract.php',
-    'src/ValueObject/ObjectExposingBridgeReport.php',
-    'src/Service/Schema/ObjectSchemaMirrorContractReporter.php',
-    'src/Service/Exposing/ObjectExposingBridgeContractReporter.php',
-    'src/ServiceInterface/Schema/ObjectSchemaMirrorContractReporterInterface.php',
-    'src/ServiceInterface/Exposing/ObjectExposingBridgeContractReporterInterface.php',
+    'src/Contract/ObjectSchemaMirrorContract.php',
+    'src/Report/ObjectSchemaMirrorReport.php',
+    'src/Contract/ObjectExposingBridgeContract.php',
+    'src/Report/ObjectExposingBridgeReport.php',
+    'src/Reporter/Schema/ObjectSchemaMirrorContractReporter.php',
+    'src/Reporter/Exposing/ObjectExposingBridgeContractReporter.php',
+    'src/ReporterInterface/Schema/ObjectSchemaMirrorContractReporterInterface.php',
+    'src/ReporterInterface/Exposing/ObjectExposingBridgeContractReporterInterface.php',
     'tests/Unit/ObjectSchemaMirrorContractReporterTest.php',
     'tests/Unit/ObjectExposingBridgeContractReporterTest.php',
     'resources/consumer/object-schema-mirror.example.yaml',
@@ -134,18 +134,18 @@ $requiredFiles = [
     'src/ValueObject/ObjectFieldPackName.php',
     'src/ValueObject/ObjectFieldPackProfile.php',
     'src/ValueObject/ObjectFieldPackProfileName.php',
-    'src/ValueObject/ObjectFieldPackConsumerContract.php',
-    'src/ValueObject/ObjectResolvedFieldPackConsumerContract.php',
-    'src/Service/FieldPack/ObjectFieldPackConsumerContractResolver.php',
-    'src/ServiceInterface/FieldPack/ObjectFieldPackConsumerContractResolverInterface.php',
+    'src/Contract/ObjectFieldPackConsumerContract.php',
+    'src/Contract/ObjectResolvedFieldPackConsumerContract.php',
+    'src/Resolver/FieldPack/ObjectFieldPackConsumerContractResolver.php',
+    'src/ResolverInterface/FieldPack/ObjectFieldPackConsumerContractResolverInterface.php',
     'docs/integration/object-field-pack-contract-resolution.md',
     'src/ValueObject/ObjectTitleAliasProfile.php',
     'src/ValueObject/ObjectTitleAliasProfileName.php',
-    'src/Service/FieldPack/ObjectFieldPackProfileRegistry.php',
-    'src/Service/Title/ObjectTitleAliasProfileRegistry.php',
-    'src/ServiceInterface/FieldPack/ObjectFieldPackProfileRegistryInterface.php',
-    'src/ServiceInterface/Title/ObjectTitleAliasProfileRegistryInterface.php',
-    'src/ServiceInterface/Title/ObjectTitleNormalizerInterface.php',
+    'src/Registry/FieldPack/ObjectFieldPackProfileRegistry.php',
+    'src/Registry/Title/ObjectTitleAliasProfileRegistry.php',
+    'src/RegistryInterface/FieldPack/ObjectFieldPackProfileRegistryInterface.php',
+    'src/RegistryInterface/Title/ObjectTitleAliasProfileRegistryInterface.php',
+    'src/NormalizerInterface/Title/ObjectTitleNormalizerInterface.php',
     'resources/field-pack/profile/object-baseline.yaml',
     'resources/title-alias/manifest.yaml',
     'resources/title-alias/profile/object-title-content.yaml',
@@ -222,21 +222,21 @@ if (is_file($services)) {
         }
     }
     foreach ([
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectFieldPackRegistryInterface',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectFieldPackProfileRegistryInterface',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectFieldPackConsumerContractResolverInterface',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendMigrationReadinessReporterInterface',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendAdoptionManifestReporterInterface',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendHandoffManifestReporterInterface',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendImportContractReporterInterface',
-        'App\\Objecting\\ServiceInterface\\Title\\ObjectTitleAliasProfileRegistryInterface',
-        'App\\Objecting\\ServiceInterface\\Title\\ObjectTitleAliasResolverInterface',
-        'App\\Objecting\\ServiceInterface\\Title\\ObjectTitleNormalizerInterface',
-        'App\\Objecting\\ServiceInterface\\Doctrine\\ObjectDoctrineMappingContractReporterInterface',
-        'App\\Objecting\\ServiceInterface\\Schema\\ObjectSchemaMirrorContractReporterInterface',
-        'App\\Objecting\\ServiceInterface\\Exposing\\ObjectExposingBridgeContractReporterInterface',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectReleaseManifestReporterInterface',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectReleaseClosureManifestReporterInterface',
+        'App\\Objecting\\RegistryInterface\\FieldPack\\ObjectFieldPackRegistryInterface',
+        'App\\Objecting\\RegistryInterface\\FieldPack\\ObjectFieldPackProfileRegistryInterface',
+        'App\\Objecting\\ResolverInterface\\FieldPack\\ObjectFieldPackConsumerContractResolverInterface',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendMigrationReadinessReporterInterface',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendAdoptionManifestReporterInterface',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendHandoffManifestReporterInterface',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendImportContractReporterInterface',
+        'App\\Objecting\\RegistryInterface\\Title\\ObjectTitleAliasProfileRegistryInterface',
+        'App\\Objecting\\ResolverInterface\\Title\\ObjectTitleAliasResolverInterface',
+        'App\\Objecting\\NormalizerInterface\\Title\\ObjectTitleNormalizerInterface',
+        'App\\Objecting\\ReporterInterface\\Doctrine\\ObjectDoctrineMappingContractReporterInterface',
+        'App\\Objecting\\ReporterInterface\\Schema\\ObjectSchemaMirrorContractReporterInterface',
+        'App\\Objecting\\ReporterInterface\\Exposing\\ObjectExposingBridgeContractReporterInterface',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectReleaseManifestReporterInterface',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectReleaseClosureManifestReporterInterface',
     ] as $alias) {
         if (!str_contains($servicesText, $alias . ':')) {
             $errors[] = 'services.yaml is missing Objecting mirror interface alias: ' . $alias;
@@ -349,7 +349,7 @@ if (is_file($backendAdoptionExample)) {
 $backendHandoffExample = $root . '/resources/consumer/object-backend-handoff.example.yaml';
 if (is_file($backendHandoffExample)) {
     $yaml = file_get_contents($backendHandoffExample) ?: '';
-    foreach (['object_backend_handoff_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'name: smart-responsor/objecting', 'adoption_manifest: resources/objecting/Page/object-backend-adoption.yaml', 'readiness_manifest: resources/objecting/Page/object-backend-migration-readiness.yaml', 'composer dump-autoload', 'composer test:quality', 'handoff_readiness:', 'status: ready'] as $requiredMarker) {
+    foreach (['object_backend_handoff_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'name: objecting/object', 'adoption_manifest: resources/objecting/Page/object-backend-adoption.yaml', 'readiness_manifest: resources/objecting/Page/object-backend-migration-readiness.yaml', 'composer dump-autoload', 'composer test:quality', 'handoff_readiness:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) {
             $errors[] = 'Backend handoff example is missing marker: ' . $requiredMarker;
         }
@@ -411,7 +411,7 @@ if (is_file($schemaMirrorExample)) {
 $exposingBridgeExample = $root . '/resources/consumer/object-exposing-bridge.example.yaml';
 if (is_file($exposingBridgeExample)) {
     $yaml = file_get_contents($exposingBridgeExample) ?: '';
-    foreach (['object_exposing_bridge_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'package: smart-responsor/objecting', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml', 'schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml', 'backend_adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml', 'title_alias_profile: object_title_content', 'openapi_contract: contract/component/Paging/Page/page.openapi.yaml', 'schema_mirror: contract/component/Paging/Page/page.db-schema.yaml', 'openapi_schema_name: PageResponse', 'owns_api_contract: true', 'bridge_informational: true', 'objecting_not_api_owner: true', 'exposing_not_runtime_owner: true', 'exposing_bridge_readiness:', 'status: ready', 'exposing_bridge_exposing_api_contract_owner', 'exposing_bridge_informational_only'] as $requiredMarker) {
+    foreach (['object_exposing_bridge_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'package: objecting/object', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml', 'schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml', 'backend_adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml', 'title_alias_profile: object_title_content', 'openapi_contract: contract/component/Paging/Page/page.openapi.yaml', 'schema_mirror: contract/component/Paging/Page/page.db-schema.yaml', 'openapi_schema_name: PageResponse', 'owns_api_contract: true', 'bridge_informational: true', 'objecting_not_api_owner: true', 'exposing_not_runtime_owner: true', 'exposing_bridge_readiness:', 'status: ready', 'exposing_bridge_exposing_api_contract_owner', 'exposing_bridge_informational_only'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) { $errors[] = 'Exposing bridge example is missing marker: ' . $requiredMarker; }
     }
     foreach (['object_identity', 'object_audit', 'object_title'] as $baselinePack) {
@@ -423,7 +423,7 @@ if (is_file($exposingBridgeExample)) {
 $backendImportExample = $root . '/resources/consumer/object-backend-import.example.yaml';
 if (is_file($backendImportExample)) {
     $yaml = file_get_contents($backendImportExample) ?: '';
-    foreach (['object_backend_import_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'package: smart-responsor/objecting', 'adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml', 'schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml', 'exposing_bridge_contract: resources/objecting/Page/object-exposing-bridge.yaml', 'title_alias_profile: object_title_content', 'backend_import_readiness:', 'status: ready', 'backend_component_namespace', 'backend_entity_class', 'backend_objecting_import_paths', 'backend_schema_mirror_path', 'objecting_system_field_owner', 'backend_import_informational_only'] as $requiredMarker) {
+    foreach (['object_backend_import_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'package: objecting/object', 'adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml', 'schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml', 'exposing_bridge_contract: resources/objecting/Page/object-exposing-bridge.yaml', 'title_alias_profile: object_title_content', 'backend_import_readiness:', 'status: ready', 'backend_component_namespace', 'backend_entity_class', 'backend_objecting_import_paths', 'backend_schema_mirror_path', 'objecting_system_field_owner', 'backend_import_informational_only'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) { $errors[] = 'Backend import example is missing marker: ' . $requiredMarker; }
     }
     foreach (['object_identity', 'object_audit', 'object_title'] as $baselinePack) {
@@ -443,7 +443,7 @@ if (is_file($backendMigrationCommandExample)) {
 $releaseExample = $root . '/resources/release/objecting-release-manifest.example.yaml';
 if (is_file($releaseExample)) {
     $yaml = file_get_contents($releaseExample) ?: '';
-    foreach (['object_release_manifest_version: 1', 'release_candidate: objecting_wave10_release_readiness', 'name: smart-responsor/objecting', 'namespace_prefix: App\\Objecting\\', 'cumulative_archive: objecting_wave10_release_readiness_cumulative.zip', 'touched_archive: objecting_wave10_release_readiness_touched.zip', 'composer test:quality', 'test:release-readiness', 'field_pack_foundation_only: true', 'legacy_free: true', 'release_readiness:', 'status: ready'] as $requiredMarker) {
+    foreach (['object_release_manifest_version: 1', 'release_candidate: objecting_wave10_release_readiness', 'name: objecting/object', 'namespace_prefix: App\\Objecting\\', 'cumulative_archive: objecting_wave10_release_readiness_cumulative.zip', 'touched_archive: objecting_wave10_release_readiness_touched.zip', 'composer test:quality', 'test:release-readiness', 'field_pack_foundation_only: true', 'legacy_free: true', 'release_readiness:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) {
             $errors[] = 'Objecting release manifest example is missing marker: ' . $requiredMarker;
         }
@@ -454,7 +454,7 @@ if (is_file($releaseExample)) {
 $releaseClosureExample = $root . '/resources/release/objecting-release-closure.example.yaml';
 if (is_file($releaseClosureExample)) {
     $yaml = file_get_contents($releaseClosureExample) ?: '';
-    foreach (['object_release_closure_version: 1', 'closure_candidate: objecting_wave18_rc_stabilization', 'name: smart-responsor/objecting', 'namespace_prefix: App\\Objecting\\', 'cumulative_archive: objecting_wave18_rc_stabilization_cumulative.zip', 'touched_archive: objecting_wave18_rc_stabilization_touched.zip', 'composer test:quality', 'composer test:rc-stabilization', 'composer test:embeddable-initialization', 'composer test:doctrine-mapping', 'composer test:schema-mirror', 'composer test:exposing-bridge', 'composer test:backend-import', 'resources/release/objecting-release-closure.example.yaml',
+    foreach (['object_release_closure_version: 1', 'closure_candidate: objecting_wave18_rc_stabilization', 'name: objecting/object', 'namespace_prefix: App\\Objecting\\', 'cumulative_archive: objecting_wave18_rc_stabilization_cumulative.zip', 'touched_archive: objecting_wave18_rc_stabilization_touched.zip', 'composer test:quality', 'composer test:rc-stabilization', 'composer test:embeddable-initialization', 'composer test:doctrine-mapping', 'composer test:schema-mirror', 'composer test:exposing-bridge', 'composer test:backend-import', 'resources/release/objecting-release-closure.example.yaml',
     'resources/release/objecting-rc-stabilization.example.yaml', 'resources/release/objecting-rc1.example.yaml', 'resources/release/objecting-rc2.example.yaml', 'resources/release/objecting-platform-constraints.example.yaml', 'docs/integration/objecting-rc-stabilization.md', 'docs/release/objecting-rc1.md', 'docs/release/objecting-rc2.md', 'docs/integration/objecting-embeddable-initialization.md', 'docs/integration/objecting-exposing-bridge-contract.md', 'docs/integration/objecting-backend-import-contract.md', 'resources/consumer/object-backend-adoption-packet.example.yaml', 'resources/consumer/object-exposing-bridge.example.yaml', 'resources/consumer/object-backend-import.example.yaml', 'field_pack_foundation_only: true', 'object_title_canonical: true', 'legacy_free: true', 'backend_runtime_owner: true', 'exposing_separated: true', 'embeddable_initialization_safe', 'doctrine_mapping_contract_ready', 'schema_mirror_contract_ready', 'exposing_bridge_contract_ready', 'backend_import_contract_ready', 'rc_stabilization_ready', 'objecting_rc_marker', 'backend_component_migration', 'exposing_api_contract', 'closure_readiness:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) {
             $errors[] = 'Objecting release closure example is missing marker: ' . $requiredMarker;
@@ -466,7 +466,7 @@ if (is_file($releaseClosureExample)) {
 $rcStabilizationExample = $root . '/resources/release/objecting-rc-stabilization.example.yaml';
 if (is_file($rcStabilizationExample)) {
     $yaml = file_get_contents($rcStabilizationExample) ?: '';
-    foreach (['object_rc_stabilization_version: 1', 'stabilization_candidate: objecting_wave18_rc_stabilization', 'name: smart-responsor/objecting', 'namespace_prefix: App\\Objecting\\', 'bundle_class: App\\Objecting\\ObjectBundle', 'release_closure: resources/release/objecting-release-closure.example.yaml', 'backend_import: resources/consumer/object-backend-import.example.yaml', 'adoption_packet: resources/consumer/object-backend-adoption-packet.example.yaml', 'exposing_bridge: resources/consumer/object-exposing-bridge.example.yaml', 'schema_mirror: resources/consumer/object-schema-mirror.example.yaml', 'doctrine_mapping: resources/consumer/object-doctrine-mapping.example.yaml', 'composer test:quality', 'php tools/test/objecting_rc_stabilization_check.php', 'test:rc-stabilization', 'field_pack_foundation_only: true', 'object_title_canonical: true', 'legacy_free: true', 'backend_runtime_owner: true', 'exposing_separated: true', 'rc_marker_pending: true', 'target: objecting_rc1', 'rc_stabilization:', 'status: ready'] as $requiredMarker) {
+    foreach (['object_rc_stabilization_version: 1', 'stabilization_candidate: objecting_wave18_rc_stabilization', 'name: objecting/object', 'namespace_prefix: App\\Objecting\\', 'bundle_class: App\\Objecting\\ObjectBundle', 'release_closure: resources/release/objecting-release-closure.example.yaml', 'backend_import: resources/consumer/object-backend-import.example.yaml', 'adoption_packet: resources/consumer/object-backend-adoption-packet.example.yaml', 'exposing_bridge: resources/consumer/object-exposing-bridge.example.yaml', 'schema_mirror: resources/consumer/object-schema-mirror.example.yaml', 'doctrine_mapping: resources/consumer/object-doctrine-mapping.example.yaml', 'composer test:quality', 'php tools/test/objecting_rc_stabilization_check.php', 'test:rc-stabilization', 'field_pack_foundation_only: true', 'object_title_canonical: true', 'legacy_free: true', 'backend_runtime_owner: true', 'exposing_separated: true', 'rc_marker_pending: true', 'target: objecting_rc1', 'rc_stabilization:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) {
             $errors[] = 'Objecting RC stabilization example is missing marker: ' . $requiredMarker;
         }

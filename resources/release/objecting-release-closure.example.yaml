@@ -1,7 +1,7 @@
 object_release_closure_version: 1
 closure_candidate: objecting_wave27_migration_transition_freeze
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   namespace_prefix: App\Objecting\
   bundle_class: App\Objecting\ObjectBundle
 artifacts:

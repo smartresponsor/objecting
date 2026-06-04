@@ -5,7 +5,7 @@ namespace: App\Paging
 entity:
   class: App\Paging\Entity\Page
 objecting:
-  package: smart-responsor/objecting
+  package: objecting/object
   field_pack_contract: resources/objecting/Page/object-field-packs.yaml
   doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml
   schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml

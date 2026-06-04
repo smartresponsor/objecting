@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Doctrine\ObjectDoctrineMappingContractReporter;
-use App\Objecting\ValueObject\ObjectDoctrineMappingContract;
-use App\Objecting\ValueObject\ObjectDoctrineMappingReport;
+use App\Objecting\Contract\ObjectDoctrineMappingContract;
+use App\Objecting\Report\ObjectDoctrineMappingReport;
+use App\Objecting\Reporter\Doctrine\ObjectDoctrineMappingContractReporter;
 use App\Objecting\ValueObject\ObjectFieldPackName;
 use PHPUnit\Framework\TestCase;
 

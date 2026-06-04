@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Schema\ObjectSchemaMirrorContractReporter;
+use App\Objecting\Contract\ObjectSchemaMirrorContract;
+use App\Objecting\Report\ObjectSchemaMirrorReport;
+use App\Objecting\Reporter\Schema\ObjectSchemaMirrorContractReporter;
 use App\Objecting\ValueObject\ObjectFieldPackName;
-use App\Objecting\ValueObject\ObjectSchemaMirrorContract;
-use App\Objecting\ValueObject\ObjectSchemaMirrorReport;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectSchemaMirrorContractReporterTest extends TestCase

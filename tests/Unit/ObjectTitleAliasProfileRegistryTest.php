@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\Title\ObjectTitleAliasProfileRegistry;
+use App\Objecting\Registry\Title\ObjectTitleAliasProfileRegistry;
 use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
 use PHPUnit\Framework\TestCase;
 

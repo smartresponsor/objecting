@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectRc2MarkerManifest.php',
-    'src/ValueObject/ObjectRc2MarkerReport.php',
-    'src/Service/Release/ObjectRc2MarkerManifestReporter.php',
-    'src/ServiceInterface/Release/ObjectRc2MarkerManifestReporterInterface.php',
+    'src/Manifest/ObjectRc2MarkerManifest.php',
+    'src/Report/ObjectRc2MarkerReport.php',
+    'src/Reporter/Release/ObjectRc2MarkerManifestReporter.php',
+    'src/ReporterInterface/Release/ObjectRc2MarkerManifestReporterInterface.php',
     'tests/Unit/ObjectRc2MarkerManifestReporterTest.php',
     'resources/release/objecting-rc2.example.yaml',
     'docs/release/objecting-rc2.md',
@@ -49,12 +49,12 @@ if (is_file($composerFile)) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Release\\ObjectRc2MarkerManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Release\\ObjectRc2MarkerManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectRc2MarkerManifestReporterInterface alias.';
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['RC2_MARKER_EXAMPLE', 'RC2_MARKER_DOC', 'RC2_MARKER_CHECK'] as $constant) {
@@ -72,7 +72,7 @@ if (is_file($rc2File)) {
         'rc_name: objecting_rc2',
         'previous_rc_name: objecting_rc1',
         'rc_candidate: objecting_wave25_rc2_marker',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'namespace_prefix: App\\Objecting\\',
         'bundle_class: App\\Objecting\\ObjectBundle',
         'cumulative_archive: objecting_wave25_rc2_marker_cumulative.zip',

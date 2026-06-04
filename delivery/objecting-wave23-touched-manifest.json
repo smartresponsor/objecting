@@ -13,8 +13,8 @@
     "src/ValueObject/ObjectPackageSurface.php",
     "src/ValueObject/ObjectBackendCloneCleanupContract.php",
     "src/ValueObject/ObjectBackendCloneCleanupReport.php",
-    "src/ServiceInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php",
-    "src/Service/FieldPack/ObjectBackendCloneCleanupContractReporter.php",
+    "src/ReporterInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php",
+    "src/Reporter/FieldPack/ObjectBackendCloneCleanupContractReporter.php",
     "resources/consumer/object-backend-clone-cleanup.example.yaml",
     "resources/release/objecting-release-closure.example.yaml",
     "docs/integration/objecting-backend-clone-cleanup-contract.md"

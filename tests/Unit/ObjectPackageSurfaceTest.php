@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\ValueObject\ObjectPackageSurface;
+use App\Objecting\Surface\ObjectPackageSurface;
 use PHPUnit\Framework\TestCase;
 
 final class ObjectPackageSurfaceTest extends TestCase
 {
     public function testItExposesCanonicalPackageSurface(): void
     {
-        self::assertSame('smart-responsor/objecting', ObjectPackageSurface::COMPOSER_PACKAGE);
+        self::assertSame('objecting/object', ObjectPackageSurface::COMPOSER_PACKAGE);
         self::assertSame('App\\Objecting\\', ObjectPackageSurface::NAMESPACE_PREFIX);
         self::assertSame('objecting', ObjectPackageSurface::EXTENSION_ALIAS);
         self::assertSame('config/services.yaml', ObjectPackageSurface::SERVICE_CONFIG);

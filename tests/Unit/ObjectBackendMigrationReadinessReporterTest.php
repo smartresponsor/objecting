@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit;
 
-use App\Objecting\Service\FieldPack\ObjectBackendMigrationReadinessReporter;
-use App\Objecting\ValueObject\ObjectBackendMigrationReadinessReport;
-use App\Objecting\ValueObject\ObjectFieldPackConsumerContract;
+use App\Objecting\Contract\ObjectFieldPackConsumerContract;
+use App\Objecting\Report\ObjectBackendMigrationReadinessReport;
+use App\Objecting\Reporter\FieldPack\ObjectBackendMigrationReadinessReporter;
 use App\Objecting\ValueObject\ObjectFieldPackName;
 use App\Objecting\ValueObject\ObjectFieldPackProfileName;
 use App\Objecting\ValueObject\ObjectTitleAliasProfileName;

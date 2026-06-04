@@ -3,7 +3,7 @@ name: objecting_sibling_pilot_migration_handoff
 source_audit: workspace-objecting-field-pack-audit.md
 objecting_baseline: objecting_rc2
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   php: ^8.4
   symfony: ^8.0
 scope:

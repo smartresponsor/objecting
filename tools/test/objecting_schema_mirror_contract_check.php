@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectSchemaMirrorContract.php',
-    'src/ValueObject/ObjectSchemaMirrorReport.php',
-    'src/Service/Schema/ObjectSchemaMirrorContractReporter.php',
-    'src/ServiceInterface/Schema/ObjectSchemaMirrorContractReporterInterface.php',
+    'src/Contract/ObjectSchemaMirrorContract.php',
+    'src/Report/ObjectSchemaMirrorReport.php',
+    'src/Reporter/Schema/ObjectSchemaMirrorContractReporter.php',
+    'src/ReporterInterface/Schema/ObjectSchemaMirrorContractReporterInterface.php',
     'tests/Unit/ObjectSchemaMirrorContractReporterTest.php',
     'resources/consumer/object-schema-mirror.example.yaml',
     'docs/integration/objecting-schema-mirror-contract.md',
@@ -24,7 +24,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Schema\\ObjectSchemaMirrorContractReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Schema\\ObjectSchemaMirrorContractReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectSchemaMirrorContractReporterInterface alias.';
     }
 }
@@ -59,7 +59,7 @@ if (is_file($exampleFile)) {
         'class: App\\Paging\\Entity\\Page',
         'table: page',
         'backend_owns_migrations: true',
-        'package: smart-responsor/objecting',
+        'package: objecting/object',
         'field_pack_contract: resources/objecting/Page/object-field-packs.yaml',
         'doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml',
         'owns_system_columns: true',
@@ -85,7 +85,7 @@ if (is_file($exampleFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['SCHEMA_MIRROR_EXAMPLE', 'SCHEMA_MIRROR_DOC', 'SCHEMA_MIRROR_CHECK'] as $constant) {

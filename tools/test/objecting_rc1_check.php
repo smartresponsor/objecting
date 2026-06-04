@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectRcMarkerManifest.php',
-    'src/ValueObject/ObjectRcMarkerReport.php',
-    'src/Service/Release/ObjectRcMarkerManifestReporter.php',
-    'src/ServiceInterface/Release/ObjectRcMarkerManifestReporterInterface.php',
+    'src/Manifest/ObjectRcMarkerManifest.php',
+    'src/Report/ObjectRcMarkerReport.php',
+    'src/Reporter/Release/ObjectRcMarkerManifestReporter.php',
+    'src/ReporterInterface/Release/ObjectRcMarkerManifestReporterInterface.php',
     'tests/Unit/ObjectRcMarkerManifestReporterTest.php',
     'resources/release/objecting-rc1.example.yaml',
     'docs/release/objecting-rc1.md',
@@ -35,7 +35,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Release\\ObjectRcMarkerManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Release\\ObjectRcMarkerManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectRcMarkerManifestReporterInterface alias.';
     }
 }
@@ -69,7 +69,7 @@ if (is_file($manifestFile)) {
         'object_rc_marker_version: 1',
         'rc_name: objecting_rc1',
         'rc_candidate: objecting_wave20_platform_constraints',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'namespace_prefix: App\\Objecting\\',
         'bundle_class: App\\Objecting\\ObjectBundle',
         'cumulative_archive: objecting_wave20_platform_constraints_cumulative.zip',
@@ -124,7 +124,7 @@ if (is_file($manifestFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['RC_MARKER_EXAMPLE', 'RC_MARKER_DOC', 'RC_MARKER_CHECK'] as $constant) {

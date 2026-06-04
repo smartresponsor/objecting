@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectReleaseManifest.php',
-    'src/ValueObject/ObjectReleaseReport.php',
-    'src/Service/Release/ObjectReleaseManifestReporter.php',
-    'src/ServiceInterface/Release/ObjectReleaseManifestReporterInterface.php',
+    'src/Manifest/ObjectReleaseManifest.php',
+    'src/Report/ObjectReleaseReport.php',
+    'src/Reporter/Release/ObjectReleaseManifestReporter.php',
+    'src/ReporterInterface/Release/ObjectReleaseManifestReporterInterface.php',
     'tests/Unit/ObjectReleaseManifestReporterTest.php',
     'resources/release/objecting-release-manifest.example.yaml',
     'docs/integration/objecting-release-readiness.md',
@@ -24,7 +24,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Release\\ObjectReleaseManifestReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Release\\ObjectReleaseManifestReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectReleaseManifestReporterInterface alias.';
     }
 }
@@ -54,7 +54,7 @@ if (is_file($manifestFile)) {
     foreach ([
         'object_release_manifest_version: 1',
         'release_candidate: objecting_wave10_release_readiness',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'namespace_prefix: App\\Objecting\\',
         'bundle_class: App\\Objecting\\ObjectBundle',
         'cumulative_archive: objecting_wave10_release_readiness_cumulative.zip',
@@ -79,7 +79,7 @@ if (is_file($manifestFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['RELEASE_MANIFEST_EXAMPLE', 'RELEASE_READINESS_DOC', 'RELEASE_READINESS_CHECK'] as $constant) {

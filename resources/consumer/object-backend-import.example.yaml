@@ -10,7 +10,7 @@ backend:
   owns_entity: true
   owns_migrations: true
 objecting:
-  package: smart-responsor/objecting
+  package: objecting/object
   package_constraint: ^1.0
   owns_system_fields: true
   import_informational: true

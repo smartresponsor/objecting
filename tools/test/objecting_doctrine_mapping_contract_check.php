@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectDoctrineMappingContract.php',
-    'src/ValueObject/ObjectDoctrineMappingReport.php',
-    'src/Service/Doctrine/ObjectDoctrineMappingContractReporter.php',
-    'src/ServiceInterface/Doctrine/ObjectDoctrineMappingContractReporterInterface.php',
+    'src/Contract/ObjectDoctrineMappingContract.php',
+    'src/Report/ObjectDoctrineMappingReport.php',
+    'src/Reporter/Doctrine/ObjectDoctrineMappingContractReporter.php',
+    'src/ReporterInterface/Doctrine/ObjectDoctrineMappingContractReporterInterface.php',
     'tests/Unit/ObjectDoctrineMappingContractReporterTest.php',
     'resources/consumer/object-doctrine-mapping.example.yaml',
     'docs/integration/objecting-doctrine-mapping-contract.md',
@@ -24,7 +24,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Doctrine\\ObjectDoctrineMappingContractReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Doctrine\\ObjectDoctrineMappingContractReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectDoctrineMappingContractReporterInterface alias.';
     }
 }
@@ -59,7 +59,7 @@ if (is_file($exampleFile)) {
         'class: App\\Paging\\Entity\\Page',
         'table: page',
         'backend_owns_migrations: true',
-        'package: smart-responsor/objecting',
+        'package: objecting/object',
         'field_pack_contract: resources/objecting/Page/object-field-packs.yaml',
         'column_prefix_false: true',
         'object_columns_prefixed: true',
@@ -81,7 +81,7 @@ if (is_file($exampleFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['DOCTRINE_MAPPING_EXAMPLE', 'DOCTRINE_MAPPING_DOC', 'DOCTRINE_MAPPING_CHECK'] as $constant) {

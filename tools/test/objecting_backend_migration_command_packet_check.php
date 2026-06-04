@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectBackendMigrationCommandPacket.php',
-    'src/ValueObject/ObjectBackendMigrationCommandReport.php',
-    'src/Service/FieldPack/ObjectBackendMigrationCommandPacketReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendMigrationCommandPacketReporterInterface.php',
+    'src/Packet/ObjectBackendMigrationCommandPacket.php',
+    'src/Report/ObjectBackendMigrationCommandReport.php',
+    'src/Reporter/FieldPack/ObjectBackendMigrationCommandPacketReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendMigrationCommandPacketReporterInterface.php',
     'tests/Unit/ObjectBackendMigrationCommandPacketReporterTest.php',
     'resources/consumer/object-backend-migration-command.example.yaml',
     'docs/integration/objecting-backend-migration-command-packet.md',
@@ -43,12 +43,12 @@ if (is_file($composerFile)) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendMigrationCommandPacketReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendMigrationCommandPacketReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendMigrationCommandPacketReporterInterface alias.';
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['BACKEND_MIGRATION_COMMAND_EXAMPLE', 'BACKEND_MIGRATION_COMMAND_DOC', 'BACKEND_MIGRATION_COMMAND_CHECK'] as $constant) {
@@ -64,7 +64,7 @@ if (is_file($exampleFile)) {
     foreach ([
         'object_backend_migration_command_version: 1',
         'source_audit: workspace-objecting-field-pack-audit.md',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'php: ^8.4',
         'symfony: ^8.0',
         'objecting_can_be_modified: false',

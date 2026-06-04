@@ -10,7 +10,7 @@ $requiredFiles = [
     'config/services.yaml',
     'src/ObjectBundle.php',
     'src/DependencyInjection/ObjectExtension.php',
-    'src/ValueObject/ObjectPackageSurface.php',
+    'src/Surface/ObjectPackageSurface.php',
     'resources/field-pack/manifest.yaml',
     'resources/title-alias/manifest.yaml',
     'tools/test/objecting_title_alias_hardening_check.php',
@@ -78,8 +78,8 @@ if (is_file($composerFile)) {
     if (!is_array($composer)) {
         $errors[] = 'composer.json is not valid JSON.';
     } else {
-        if (($composer['name'] ?? null) !== 'smart-responsor/objecting') {
-            $errors[] = 'composer.json package name must be smart-responsor/objecting.';
+        if (($composer['name'] ?? null) !== 'objecting/object') {
+            $errors[] = 'composer.json package name must be objecting/object.';
         }
         if (($composer['type'] ?? null) !== 'library') {
             $errors[] = 'composer.json type must stay library.';
@@ -110,26 +110,26 @@ if (is_file($servicesFile)) {
         }
     }
     foreach ([
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectFieldPackRegistryInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectFieldPackProfileRegistryInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectFieldPackConsumerContractResolverInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendMigrationReadinessReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendAdoptionManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendHandoffManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendAdoptionPacketManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendImportContractReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendCloneCleanupContractReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendMigrationCommandPacketReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Title\\ObjectTitleAliasProfileRegistryInterface:',
-        'App\\Objecting\\ServiceInterface\\Title\\ObjectTitleAliasResolverInterface:',
-        'App\\Objecting\\ServiceInterface\\Schema\\ObjectSchemaMirrorContractReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Exposing\\ObjectExposingBridgeContractReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectReleaseManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectReleaseClosureManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectRcStabilizationManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectRcMarkerManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Release\\ObjectRc2MarkerManifestReporterInterface:',
-        'App\\Objecting\\ServiceInterface\\Title\\ObjectTitleNormalizerInterface:',
+        'App\\Objecting\\RegistryInterface\\FieldPack\\ObjectFieldPackRegistryInterface:',
+        'App\\Objecting\\RegistryInterface\\FieldPack\\ObjectFieldPackProfileRegistryInterface:',
+        'App\\Objecting\\ResolverInterface\\FieldPack\\ObjectFieldPackConsumerContractResolverInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendMigrationReadinessReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendAdoptionManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendHandoffManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendAdoptionPacketManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendImportContractReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendCloneCleanupContractReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendMigrationCommandPacketReporterInterface:',
+        'App\\Objecting\\RegistryInterface\\Title\\ObjectTitleAliasProfileRegistryInterface:',
+        'App\\Objecting\\ResolverInterface\\Title\\ObjectTitleAliasResolverInterface:',
+        'App\\Objecting\\ReporterInterface\\Schema\\ObjectSchemaMirrorContractReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\Exposing\\ObjectExposingBridgeContractReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectReleaseManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectReleaseClosureManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectRcStabilizationManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectRcMarkerManifestReporterInterface:',
+        'App\\Objecting\\ReporterInterface\\Release\\ObjectRc2MarkerManifestReporterInterface:',
+        'App\\Objecting\\NormalizerInterface\\Title\\ObjectTitleNormalizerInterface:',
     ] as $alias) {
         if (!str_contains($services, $alias)) {
             $errors[] = 'config/services.yaml is missing mirror interface alias: ' . $alias;
@@ -150,7 +150,7 @@ if (is_file($extensionFile)) {
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = (string) file_get_contents($surfaceFile);
     foreach (['COMPOSER_PACKAGE', 'NAMESPACE_PREFIX', 'BUNDLE_CLASS', 'EXTENSION_CLASS', 'EXTENSION_ALIAS', 'SERVICE_CONFIG', 'BACKEND_MIGRATION_READINESS_EXAMPLE', 'BACKEND_MIGRATION_READINESS_DOC', 'BACKEND_MIGRATION_READINESS_CHECK', 'BACKEND_ADOPTION_EXAMPLE', 'BACKEND_ADOPTION_DOC', 'BACKEND_ADOPTION_CHECK', 'BACKEND_HANDOFF_EXAMPLE', 'BACKEND_HANDOFF_DOC', 'BACKEND_HANDOFF_CHECK', 'BACKEND_ADOPTION_PACKET_EXAMPLE', 'BACKEND_ADOPTION_PACKET_DOC', 'BACKEND_ADOPTION_PACKET_CHECK', 'BACKEND_IMPORT_EXAMPLE', 'BACKEND_IMPORT_DOC', 'BACKEND_IMPORT_CHECK', 'BACKEND_CLONE_CLEANUP_EXAMPLE', 'BACKEND_CLONE_CLEANUP_DOC', 'BACKEND_CLONE_CLEANUP_CHECK', 'BACKEND_MIGRATION_COMMAND_EXAMPLE', 'BACKEND_MIGRATION_COMMAND_DOC', 'BACKEND_MIGRATION_COMMAND_CHECK', 'RELEASE_MANIFEST_EXAMPLE', 'RELEASE_READINESS_DOC', 'RELEASE_READINESS_CHECK', 'RELEASE_CLOSURE_EXAMPLE', 'RELEASE_CLOSURE_DOC', 'RELEASE_CLOSURE_CHECK', 'EMBEDDABLE_INITIALIZATION_DOC', 'EMBEDDABLE_INITIALIZATION_CHECK', 'SCHEMA_MIRROR_EXAMPLE', 'SCHEMA_MIRROR_DOC', 'SCHEMA_MIRROR_CHECK', 'EXPOSING_BRIDGE_EXAMPLE', 'EXPOSING_BRIDGE_DOC', 'EXPOSING_BRIDGE_CHECK', 'RC_STABILIZATION_EXAMPLE', 'RC_STABILIZATION_DOC', 'RC_STABILIZATION_CHECK', 'RC_MARKER_EXAMPLE', 'RC_MARKER_DOC', 'RC_MARKER_CHECK', 'RC2_MARKER_EXAMPLE', 'RC2_MARKER_DOC', 'RC2_MARKER_CHECK'] as $constant) {

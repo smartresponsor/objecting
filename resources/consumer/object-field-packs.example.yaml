@@ -20,8 +20,8 @@ title_aliases:
   middleTitle: shortDescription
   lastTitle: description
 resolution:
-  resolver: App\Objecting\Service\FieldPack\ObjectFieldPackConsumerContractResolver
-  resolved_contract: App\Objecting\ValueObject\ObjectResolvedFieldPackConsumerContract
+  resolver: App\Objecting\Resolver\FieldPack\ObjectFieldPackConsumerContractResolver
+  resolved_contract: App\Objecting\Contract\ObjectResolvedFieldPackConsumerContract
 notes:
   - Backend component owns Entity, migrations, DTOs, controllers, forms, and business behavior.
   - Objecting owns reusable system field-pack vocabulary and title alias profile names.

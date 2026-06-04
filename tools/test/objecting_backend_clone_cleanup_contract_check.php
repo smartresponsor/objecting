@@ -6,10 +6,10 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/ValueObject/ObjectBackendCloneCleanupContract.php',
-    'src/ValueObject/ObjectBackendCloneCleanupReport.php',
-    'src/Service/FieldPack/ObjectBackendCloneCleanupContractReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php',
+    'src/Contract/ObjectBackendCloneCleanupContract.php',
+    'src/Report/ObjectBackendCloneCleanupReport.php',
+    'src/Reporter/FieldPack/ObjectBackendCloneCleanupContractReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendCloneCleanupContractReporterInterface.php',
     'tests/Unit/ObjectBackendCloneCleanupContractReporterTest.php',
     'resources/consumer/object-backend-clone-cleanup.example.yaml',
     'docs/integration/objecting-backend-clone-cleanup-contract.md',
@@ -43,12 +43,12 @@ if (is_file($composerFile)) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendCloneCleanupContractReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendCloneCleanupContractReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendCloneCleanupContractReporterInterface alias.';
     }
 }
 
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['BACKEND_CLONE_CLEANUP_EXAMPLE', 'BACKEND_CLONE_CLEANUP_DOC', 'BACKEND_CLONE_CLEANUP_CHECK'] as $constant) {
@@ -64,7 +64,7 @@ if (is_file($exampleFile)) {
     foreach ([
         'object_backend_clone_cleanup_version: 1',
         'source_audit: workspace-objecting-field-pack-audit.md',
-        'name: smart-responsor/objecting',
+        'name: objecting/object',
         'touched_files_only: true',
         'cumulative_for_backup_only: true',
         'destructive_repository_cleanup_forbidden: true',

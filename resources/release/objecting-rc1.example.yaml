@@ -2,7 +2,7 @@ object_rc_marker_version: 1
 rc_name: objecting_rc1
 rc_candidate: objecting_wave20_platform_constraints
 package:
-  name: smart-responsor/objecting
+  name: objecting/object
   namespace_prefix: App\Objecting\
   bundle_class: App\Objecting\ObjectBundle
 artifacts:

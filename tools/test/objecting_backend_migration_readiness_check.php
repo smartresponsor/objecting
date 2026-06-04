@@ -6,9 +6,9 @@ $root = dirname(__DIR__, 2);
 $errors = [];
 
 $requiredFiles = [
-    'src/Service/FieldPack/ObjectBackendMigrationReadinessReporter.php',
-    'src/ServiceInterface/FieldPack/ObjectBackendMigrationReadinessReporterInterface.php',
-    'src/ValueObject/ObjectBackendMigrationReadinessReport.php',
+    'src/Reporter/FieldPack/ObjectBackendMigrationReadinessReporter.php',
+    'src/ReporterInterface/FieldPack/ObjectBackendMigrationReadinessReporterInterface.php',
+    'src/Report/ObjectBackendMigrationReadinessReport.php',
     'tests/Unit/ObjectBackendMigrationReadinessReporterTest.php',
     'resources/consumer/object-backend-migration-readiness.example.yaml',
     'docs/integration/objecting-backend-migration-readiness.md',
@@ -23,7 +23,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\FieldPack\\ObjectBackendMigrationReadinessReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\FieldPack\\ObjectBackendMigrationReadinessReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectBackendMigrationReadinessReporterInterface alias.';
     }
 }
@@ -62,7 +62,7 @@ if (is_file($exampleFile)) {
     }
 }
 
-$reportFile = $root . '/src/Service/FieldPack/ObjectBackendMigrationReadinessReporter.php';
+$reportFile = $root . '/src/Reporter/FieldPack/ObjectBackendMigrationReadinessReporter.php';
 if (is_file($reportFile)) {
     $reporter = file_get_contents($reportFile) ?: '';
     foreach (['ObjectFieldPackName::IDENTITY', 'ObjectFieldPackName::AUDIT', 'ObjectFieldPackName::TITLE'] as $baselineConstant) {

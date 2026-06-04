@@ -8,8 +8,8 @@ $errors = [];
 $requiredFiles = [
     'src/ValueObject/ObjectTitleAliasMap.php',
     'src/ValueObject/ObjectTitleAliasProfileName.php',
-    'src/ValueObject/ObjectSystemTokenDecision.php',
-    'src/Service/Title/ObjectTitleAliasProfileRegistry.php',
+    'src/Decision/ObjectSystemTokenDecision.php',
+    'src/Registry/Title/ObjectTitleAliasProfileRegistry.php',
     'resources/title-alias/manifest.yaml',
     'resources/title-alias/object-title-alias-governance.example.yaml',
     'docs/integration/objecting-title-alias-hardening.md',
@@ -37,14 +37,14 @@ foreach (['LABEL', 'DISPLAY'] as $constant) {
     }
 }
 
-$registry = (string) file_get_contents($root . '/src/Service/Title/ObjectTitleAliasProfileRegistry.php');
+$registry = (string) file_get_contents($root . '/src/Registry/Title/ObjectTitleAliasProfileRegistry.php');
 foreach (['ObjectTitleAliasProfileName::LABEL', 'ObjectTitleAliasProfileName::DISPLAY', 'ALIAS_LABEL', 'ALIAS_DISPLAY_NAME'] as $needle) {
     if (!str_contains($registry, $needle)) {
         $errors[] = 'ObjectTitleAliasProfileRegistry missing alias hardening member: ' . $needle;
     }
 }
 
-$decision = (string) file_get_contents($root . '/src/ValueObject/ObjectSystemTokenDecision.php');
+$decision = (string) file_get_contents($root . '/src/Decision/ObjectSystemTokenDecision.php');
 foreach (['OBJECT_TITLE_ALIAS', 'BACKEND_OWNED', 'DEFERRED', 'TOKEN_PRIORITY', 'TOKEN_VISIBILITY', 'canonicalDecisions', 'titleAliasTokens', 'deferredTokens'] as $needle) {
     if (!str_contains($decision, $needle)) {
         $errors[] = 'ObjectSystemTokenDecision missing token decision member: ' . $needle;

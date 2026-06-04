@@ -5,10 +5,10 @@ declare(strict_types=1);
 $root = dirname(__DIR__, 2);
 $errors = [];
 $requiredFiles = [
-    'src/ValueObject/ObjectExposingBridgeContract.php',
-    'src/ValueObject/ObjectExposingBridgeReport.php',
-    'src/Service/Exposing/ObjectExposingBridgeContractReporter.php',
-    'src/ServiceInterface/Exposing/ObjectExposingBridgeContractReporterInterface.php',
+    'src/Contract/ObjectExposingBridgeContract.php',
+    'src/Report/ObjectExposingBridgeReport.php',
+    'src/Reporter/Exposing/ObjectExposingBridgeContractReporter.php',
+    'src/ReporterInterface/Exposing/ObjectExposingBridgeContractReporterInterface.php',
     'tests/Unit/ObjectExposingBridgeContractReporterTest.php',
     'resources/consumer/object-exposing-bridge.example.yaml',
     'docs/integration/objecting-exposing-bridge-contract.md',
@@ -21,7 +21,7 @@ foreach ($requiredFiles as $requiredFile) {
 $servicesFile = $root . '/config/services.yaml';
 if (is_file($servicesFile)) {
     $services = file_get_contents($servicesFile) ?: '';
-    if (!str_contains($services, 'App\\Objecting\\ServiceInterface\\Exposing\\ObjectExposingBridgeContractReporterInterface:')) {
+    if (!str_contains($services, 'App\\Objecting\\ReporterInterface\\Exposing\\ObjectExposingBridgeContractReporterInterface:')) {
         $errors[] = 'config/services.yaml is missing ObjectExposingBridgeContractReporterInterface alias.';
     }
 }
@@ -41,11 +41,11 @@ if (is_file($composerFile)) {
 $exampleFile = $root . '/resources/consumer/object-exposing-bridge.example.yaml';
 if (is_file($exampleFile)) {
     $example = file_get_contents($exampleFile) ?: '';
-    foreach (['object_exposing_bridge_contract_version: 1','component: Paging','business_stem: Page','namespace: App\\Paging','class: App\\Paging\\Entity\\Page','package: smart-responsor/objecting','field_pack_contract: resources/objecting/Page/object-field-packs.yaml','doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml','schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml','backend_adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml','title_alias_profile: object_title_content','owns_field_packs: true','owns_runtime: true','repository: Exposing','openapi_contract: contract/component/Paging/Page/page.openapi.yaml','schema_mirror: contract/component/Paging/Page/page.db-schema.yaml','openapi_schema_name: PageResponse','owns_api_contract: true','- object_identity','- object_audit','- object_title','composer test:exposing-bridge','bridge_informational: true','objecting_not_api_owner: true','exposing_not_runtime_owner: true','exposing_bridge_readiness:','status: ready','exposing_bridge_backend_namespace','exposing_bridge_exposing_api_contract_owner','exposing_bridge_informational_only'] as $marker) {
+    foreach (['object_exposing_bridge_contract_version: 1','component: Paging','business_stem: Page','namespace: App\\Paging','class: App\\Paging\\Entity\\Page','package: objecting/object','field_pack_contract: resources/objecting/Page/object-field-packs.yaml','doctrine_mapping_contract: resources/objecting/Page/object-doctrine-mapping.yaml','schema_mirror_contract: resources/schema/Page/object-schema-mirror.yaml','backend_adoption_packet: resources/objecting/Page/object-backend-adoption-packet.yaml','title_alias_profile: object_title_content','owns_field_packs: true','owns_runtime: true','repository: Exposing','openapi_contract: contract/component/Paging/Page/page.openapi.yaml','schema_mirror: contract/component/Paging/Page/page.db-schema.yaml','openapi_schema_name: PageResponse','owns_api_contract: true','- object_identity','- object_audit','- object_title','composer test:exposing-bridge','bridge_informational: true','objecting_not_api_owner: true','exposing_not_runtime_owner: true','exposing_bridge_readiness:','status: ready','exposing_bridge_backend_namespace','exposing_bridge_exposing_api_contract_owner','exposing_bridge_informational_only'] as $marker) {
         if (!str_contains($example, $marker)) { $errors[] = 'Exposing bridge example is missing marker: ' . $marker; }
     }
 }
-$surfaceFile = $root . '/src/ValueObject/ObjectPackageSurface.php';
+$surfaceFile = $root . '/src/Surface/ObjectPackageSurface.php';
 if (is_file($surfaceFile)) {
     $surface = file_get_contents($surfaceFile) ?: '';
     foreach (['EXPOSING_BRIDGE_EXAMPLE', 'EXPOSING_BRIDGE_DOC', 'EXPOSING_BRIDGE_CHECK'] as $constant) {

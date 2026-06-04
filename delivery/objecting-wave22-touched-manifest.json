@@ -10,7 +10,7 @@
     "resources/title-alias/object-title-alias-governance.example.yaml",
     "resources/title-alias/profile/object-title-display.yaml",
     "resources/title-alias/profile/object-title-label.yaml",
-    "src/Service/Title/ObjectTitleAliasProfileRegistry.php",
+    "src/Registry/Title/ObjectTitleAliasProfileRegistry.php",
     "src/ValueObject/ObjectPackageSurface.php",
     "src/ValueObject/ObjectSystemTokenDecision.php",
     "src/ValueObject/ObjectTitleAliasMap.php",

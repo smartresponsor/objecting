@@ -36,7 +36,7 @@ $packs = [
 ];
 $manifest = (string) file_get_contents($root . '/resources/field-pack/manifest.yaml');
 $nameFile = (string) file_get_contents($root . '/src/ValueObject/ObjectFieldPackName.php');
-$registry = (string) file_get_contents($root . '/src/Service/FieldPack/ObjectFieldPackRegistry.php');
+$registry = (string) file_get_contents($root . '/src/Registry/FieldPack/ObjectFieldPackRegistry.php');
 foreach ($packs as $pack => $spec) {
     if (!str_contains($manifest, '- ' . $pack)) {
         $errors[] = 'Field-pack manifest is missing ' . $pack;
