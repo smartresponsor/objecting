@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectAuditEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectAuditEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectAuditEmbeddable::class, columnPrefix: false)]
-    private ObjectAuditEmbeddable $objectAudit;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectAuditEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectAuditEmbeddable $objectAudit;
 
     protected function initializeObjectAudit(?\DateTimeImmutable $createdAt = null, ?string $createdBy = null): void
     {
-        $this->objectAudit = new ObjectAuditEmbeddable($createdAt, $createdBy);
+        $this->objectAudit = new \App\Objecting\Embeddable\ObjectAuditEmbeddable($createdAt, $createdBy);
     }
 
-    private function objectAuditEmbeddable(): ObjectAuditEmbeddable
+    private function objectAuditEmbeddable(): \App\Objecting\Embeddable\ObjectAuditEmbeddable
     {
         if (!isset($this->objectAudit)) {
-            $this->objectAudit = new ObjectAuditEmbeddable();
+            $this->objectAudit = new \App\Objecting\Embeddable\ObjectAuditEmbeddable();
         }
 
         return $this->objectAudit;
