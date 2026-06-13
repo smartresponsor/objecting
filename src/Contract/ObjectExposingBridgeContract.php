@@ -41,7 +41,7 @@ final readonly class ObjectExposingBridgeContract
             'backend adoption packet path' => $this->backendAdoptionPacketPath,
             'Exposing OpenAPI path' => $this->exposingOpenApiPath,
             'Exposing schema mirror path' => $this->exposingSchemaMirrorPath,
-            'OpenAPI schema name' => $this->openApiSchemaName,
+            'OpenAPI schema nameEntity' => $this->openApiSchemaName,
             'title alias profile' => $this->titleAliasProfile,
         ] as $label => $value) {
             if ('' === $value) {

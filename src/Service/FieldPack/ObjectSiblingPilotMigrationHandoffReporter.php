@@ -49,7 +49,7 @@ final readonly class ObjectSiblingPilotMigrationHandoffReporter implements Objec
         }
         $checks[] = 'target_field_packs';
 
-        foreach (['name', 'title', 'description', 'shortDescription', 'label', 'displayName'] as $aliasToken) {
+        foreach (['nameEntity', 'title', 'description', 'shortDescription', 'label', 'displayName'] as $aliasToken) {
             if (!in_array($aliasToken, $manifest->titleAliasTokens(), true)) {
                 $blockingReasons[] = sprintf('Sibling pilot migration handoff title aliases must include "%s".', $aliasToken);
             }

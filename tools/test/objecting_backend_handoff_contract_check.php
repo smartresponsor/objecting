@@ -95,3 +95,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting backend handoff contract check passed.\n";
+

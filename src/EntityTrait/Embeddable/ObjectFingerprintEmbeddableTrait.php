@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectFingerprintEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectFingerprintEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectFingerprintEmbeddable::class, columnPrefix: false)]
-    private ObjectFingerprintEmbeddable $objectFingerprint;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectFingerprintEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectFingerprintEmbeddable $objectFingerprint;
 
     protected function initializeObjectFingerprint(?string $objectHash = null, ?string $objectChecksum = null, ?string $objectAlgorithm = null): void
     {
-        $this->objectFingerprint = new ObjectFingerprintEmbeddable($objectHash, $objectChecksum, $objectAlgorithm);
+        $this->objectFingerprint = new \App\Objecting\Embeddable\ObjectFingerprintEmbeddable($objectHash, $objectChecksum, $objectAlgorithm);
     }
 
-    private function objectFingerprintEmbeddable(): ObjectFingerprintEmbeddable
+    private function objectFingerprintEmbeddable(): \App\Objecting\Embeddable\ObjectFingerprintEmbeddable
     {
         if (!isset($this->objectFingerprint)) {
-            $this->objectFingerprint = new ObjectFingerprintEmbeddable();
+            $this->objectFingerprint = new \App\Objecting\Embeddable\ObjectFingerprintEmbeddable();
         }
 
         return $this->objectFingerprint;

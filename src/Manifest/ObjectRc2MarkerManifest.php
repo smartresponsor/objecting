@@ -44,10 +44,10 @@ final readonly class ObjectRc2MarkerManifest
         private bool $rcAccepted = true,
     ) {
         foreach ([
-            'RC name' => $this->rcName,
+            'RC nameEntity' => $this->rcName,
             'RC candidate' => $this->rcCandidate,
-            'previous RC name' => $this->previousRcName,
-            'package name' => $this->packageName,
+            'previous RC nameEntity' => $this->previousRcName,
+            'package nameEntity' => $this->packageName,
             'namespace prefix' => $this->namespacePrefix,
             'bundle class' => $this->bundleClass,
             'cumulative archive' => $this->cumulativeArchive,
@@ -66,7 +66,7 @@ final readonly class ObjectRc2MarkerManifest
         }
 
         if (1 !== preg_match('/^objecting_rc[0-9]+$/', $this->rcName)) {
-            throw new \InvalidArgumentException('Objecting RC2 marker name must use objecting_rcN naming.');
+            throw new \InvalidArgumentException('Objecting RC2 marker nameEntity must use objecting_rcN naming.');
         }
 
         if (1 !== preg_match('/^objecting_rc[0-9]+$/', $this->previousRcName)) {

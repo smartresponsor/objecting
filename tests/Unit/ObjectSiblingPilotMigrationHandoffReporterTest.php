@@ -43,7 +43,7 @@ final class ObjectSiblingPilotMigrationHandoffReporterTest extends TestCase
                 ObjectFieldPackName::FINGERPRINT,
                 ObjectFieldPackName::SCOPE,
             ],
-            titleAliasTokens: ['name', 'title', 'description', 'shortDescription', 'label', 'displayName'],
+            titleAliasTokens: ['nameEntity', 'title', 'description', 'shortDescription', 'label', 'displayName'],
             deferredTokens: ['priority', 'visibility'],
             qualityGates: ['composer dump-autoload', 'composer test:quality', 'php tools/test/objecting_sibling_pilot_migration_handoff_check.php'],
             forbiddenActions: ['no full repository overwrite', 'no destructive repository cleanup', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints'],

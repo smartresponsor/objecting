@@ -153,3 +153,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting RC1 check passed.\n";
+

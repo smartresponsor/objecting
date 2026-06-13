@@ -11,7 +11,7 @@ interface ObjectFieldPackProfileRegistryInterface
     /** @return array<string, ObjectFieldPackProfile> */
     public function all(): array;
 
-    public function get(string $name): ObjectFieldPackProfile;
+    public function get(string $nameEntity): ObjectFieldPackProfile;
 
-    public function has(string $name): bool;
+    public function has(string $nameEntity): bool;
 }

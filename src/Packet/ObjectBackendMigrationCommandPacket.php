@@ -17,7 +17,7 @@ final readonly class ObjectBackendMigrationCommandPacket
      * @param list<string> $deferredTokens
      */
     public function __construct(
-        private string $name,
+        private string $nameEntity,
         private string $packageName,
         private string $sourceAudit,
         private array $targetComponents,
@@ -36,8 +36,8 @@ final readonly class ObjectBackendMigrationCommandPacket
         private bool $exposingCanBeModified = false,
     ) {
         foreach ([
-            'name' => $this->name,
-            'package name' => $this->packageName,
+            'nameEntity' => $this->nameEntity,
+            'package nameEntity' => $this->packageName,
             'source audit' => $this->sourceAudit,
         ] as $label => $value) {
             if ('' === $value) {
@@ -89,9 +89,9 @@ final readonly class ObjectBackendMigrationCommandPacket
         }
     }
 
-    public function name(): string
+    public function nameEntity(): string
     {
-        return $this->name;
+        return $this->nameEntity;
     }
 
     public function packageName(): string
@@ -186,7 +186,7 @@ final readonly class ObjectBackendMigrationCommandPacket
     public function toArray(): array
     {
         return [
-            'name' => $this->name,
+            'nameEntity' => $this->nameEntity,
             'package_name' => $this->packageName,
             'source_audit' => $this->sourceAudit,
             'target_components' => $this->targetComponents,

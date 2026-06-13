@@ -28,7 +28,7 @@ final readonly class ObjectBackendHandoffManifest
             'component' => $this->component,
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
-            'package name' => $this->packageName,
+            'package nameEntity' => $this->packageName,
             'package constraint' => $this->packageConstraint,
             'backend project root' => $this->backendProjectRoot,
             'adoption manifest path' => $this->adoptionManifestPath,

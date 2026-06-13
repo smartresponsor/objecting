@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectIdentityEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectIdentityEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectIdentityEmbeddable::class, columnPrefix: false)]
-    private ObjectIdentityEmbeddable $objectIdentity;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectIdentityEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectIdentityEmbeddable $objectIdentity;
 
     protected function initializeObjectIdentity(?string $objectUuid = null, ?string $objectSlug = null): void
     {
-        $this->objectIdentity = new ObjectIdentityEmbeddable($objectUuid, $objectSlug);
+        $this->objectIdentity = new \App\Objecting\Embeddable\ObjectIdentityEmbeddable($objectUuid, $objectSlug);
     }
 
-    private function objectIdentityEmbeddable(): ObjectIdentityEmbeddable
+    private function objectIdentityEmbeddable(): \App\Objecting\Embeddable\ObjectIdentityEmbeddable
     {
         if (!isset($this->objectIdentity)) {
-            $this->objectIdentity = new ObjectIdentityEmbeddable();
+            $this->objectIdentity = new \App\Objecting\Embeddable\ObjectIdentityEmbeddable();
         }
 
         return $this->objectIdentity;

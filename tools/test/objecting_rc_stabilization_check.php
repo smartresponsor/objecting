@@ -112,3 +112,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting RC stabilization check passed.\n";
+

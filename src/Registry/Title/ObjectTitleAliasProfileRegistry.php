@@ -20,20 +20,20 @@ final class ObjectTitleAliasProfileRegistry implements ObjectTitleAliasProfileRe
         return $this->profiles ??= $this->build();
     }
 
-    public function get(string $name): ObjectTitleAliasProfile
+    public function get(string $nameEntity): ObjectTitleAliasProfile
     {
         $all = $this->all();
 
-        if (!isset($all[$name])) {
-            throw new \InvalidArgumentException(sprintf('Unknown Objecting title-alias profile "%s".', $name));
+        if (!isset($all[$nameEntity])) {
+            throw new \InvalidArgumentException(sprintf('Unknown Objecting title-alias profile "%s".', $nameEntity));
         }
 
-        return $all[$name];
+        return $all[$nameEntity];
     }
 
-    public function has(string $name): bool
+    public function has(string $nameEntity): bool
     {
-        return isset($this->all()[$name]);
+        return isset($this->all()[$nameEntity]);
     }
 
     /** @return array<string, ObjectTitleAliasProfile> */

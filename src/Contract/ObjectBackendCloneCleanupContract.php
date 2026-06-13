@@ -33,7 +33,7 @@ final readonly class ObjectBackendCloneCleanupContract
             'component' => $this->component,
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
-            'package name' => $this->packageName,
+            'package nameEntity' => $this->packageName,
         ] as $label => $value) {
             if ('' === $value) {
                 throw new \InvalidArgumentException(sprintf('Objecting backend clone-cleanup contract %s cannot be empty.', $label));

@@ -32,7 +32,7 @@ final readonly class ObjectDoctrineMappingContract
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
-            'table name' => $this->tableName,
+            'table nameEntity' => $this->tableName,
             'field-pack contract path' => $this->fieldPackContractPath,
         ] as $label => $value) {
             if ('' === $value) {

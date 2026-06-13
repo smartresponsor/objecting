@@ -53,7 +53,7 @@ foreach ($packs as $pack => $spec) {
     }
     $yaml = (string) file_get_contents($yamlFile);
     if (!str_contains($yaml, 'name: ' . $pack)) {
-        $errors[] = 'Field-pack YAML name mismatch for ' . $pack;
+        $errors[] = 'Field-pack YAML nameEntity mismatch for ' . $pack;
     }
     foreach ($spec['columns'] as $column) {
         if (!str_contains($yaml, '- ' . $column)) {
@@ -81,3 +81,4 @@ if ($errors !== []) {
     exit(1);
 }
 echo "Objecting systemic field-pack check passed.\n";
+

@@ -40,7 +40,7 @@ final readonly class ObjectBackendImportContract
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
             'backend project root' => $this->backendProjectRoot,
-            'package name' => $this->packageName,
+            'package nameEntity' => $this->packageName,
             'package constraint' => $this->packageConstraint,
             'adoption packet path' => $this->adoptionPacketPath,
             'field-pack contract path' => $this->fieldPackContractPath,

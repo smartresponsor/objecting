@@ -31,7 +31,7 @@ final readonly class ObjectPlatformConstraintManifest
     ) {
         foreach ([
             'constraint candidate' => $this->constraintCandidate,
-            'package name' => $this->packageName,
+            'package nameEntity' => $this->packageName,
             'PHP constraint' => $this->phpConstraint,
             'Symfony constraint' => $this->symfonyConstraint,
             'namespace prefix' => $this->namespacePrefix,

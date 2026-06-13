@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectSoftDeleteEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectSoftDeleteEmbeddable::class, columnPrefix: false)]
-    private ObjectSoftDeleteEmbeddable $objectSoftDelete;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable $objectSoftDelete;
 
     protected function initializeObjectSoftDelete(): void
     {
-        $this->objectSoftDelete = new ObjectSoftDeleteEmbeddable();
+        $this->objectSoftDelete = new \App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable();
     }
 
-    private function objectSoftDeleteEmbeddable(): ObjectSoftDeleteEmbeddable
+    private function objectSoftDeleteEmbeddable(): \App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable
     {
         if (!isset($this->objectSoftDelete)) {
-            $this->objectSoftDelete = new ObjectSoftDeleteEmbeddable();
+            $this->objectSoftDelete = new \App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable();
         }
 
         return $this->objectSoftDelete;

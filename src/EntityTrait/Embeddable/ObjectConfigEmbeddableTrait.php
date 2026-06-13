@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectConfigEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectConfigEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectConfigEmbeddable::class, columnPrefix: false)]
-    private ObjectConfigEmbeddable $objectConfig;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectConfigEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectConfigEmbeddable $objectConfig;
 
     protected function initializeObjectConfig(): void
     {
-        $this->objectConfig = new ObjectConfigEmbeddable();
+        $this->objectConfig = new \App\Objecting\Embeddable\ObjectConfigEmbeddable();
     }
 
-    private function objectConfigEmbeddable(): ObjectConfigEmbeddable
+    private function objectConfigEmbeddable(): \App\Objecting\Embeddable\ObjectConfigEmbeddable
     {
         if (!isset($this->objectConfig)) {
-            $this->objectConfig = new ObjectConfigEmbeddable();
+            $this->objectConfig = new \App\Objecting\Embeddable\ObjectConfigEmbeddable();
         }
 
         return $this->objectConfig;

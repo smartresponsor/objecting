@@ -10,7 +10,7 @@ final readonly class ObjectTitleAliasMap
     public const MIDDLE_TITLE = 'middleTitle';
     public const LAST_TITLE = 'lastTitle';
 
-    public const ALIAS_NAME = 'name';
+    public const ALIAS_NAME = 'nameEntity';
     public const ALIAS_TITLE = 'title';
     public const ALIAS_DESCRIPTION = 'description';
     public const ALIAS_SHORT_DESCRIPTION = 'shortDescription';

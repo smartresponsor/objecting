@@ -82,7 +82,7 @@ if (is_file($exampleFile)) {
         'object_source',
         'object_fingerprint',
         'object_scope',
-        'name',
+        'nameEntity',
         'title',
         'description',
         'shortDescription',
@@ -132,3 +132,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting sibling pilot migration handoff check passed.\n";
+

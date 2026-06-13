@@ -110,3 +110,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting backend clone-cleanup contract check passed.\n";
+

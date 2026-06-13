@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectLocaleEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectLocaleEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectLocaleEmbeddable::class, columnPrefix: false)]
-    private ObjectLocaleEmbeddable $objectLocale;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectLocaleEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectLocaleEmbeddable $objectLocale;
 
     protected function initializeObjectLocale(?string $objectLocale = null, ?string $objectTimezone = null): void
     {
-        $this->objectLocale = new ObjectLocaleEmbeddable($objectLocale, $objectTimezone);
+        $this->objectLocale = new \App\Objecting\Embeddable\ObjectLocaleEmbeddable($objectLocale, $objectTimezone);
     }
 
-    private function objectLocaleEmbeddable(): ObjectLocaleEmbeddable
+    private function objectLocaleEmbeddable(): \App\Objecting\Embeddable\ObjectLocaleEmbeddable
     {
         if (!isset($this->objectLocale)) {
-            $this->objectLocale = new ObjectLocaleEmbeddable();
+            $this->objectLocale = new \App\Objecting\Embeddable\ObjectLocaleEmbeddable();
         }
 
         return $this->objectLocale;

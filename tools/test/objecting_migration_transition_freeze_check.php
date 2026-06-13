@@ -122,3 +122,4 @@ if ($errors !== []) {
 
 echo "Objecting migration transition freeze check passed.
 ";
+

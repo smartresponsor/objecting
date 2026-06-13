@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectTokenEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectTokenEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectTokenEmbeddable::class, columnPrefix: false)]
-    private ObjectTokenEmbeddable $objectToken;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectTokenEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectTokenEmbeddable $objectToken;
 
     protected function initializeObjectToken(?string $objectToken = null, ?\DateTimeImmutable $objectTokenExpiresAt = null): void
     {
-        $this->objectToken = new ObjectTokenEmbeddable($objectToken, $objectTokenExpiresAt);
+        $this->objectToken = new \App\Objecting\Embeddable\ObjectTokenEmbeddable($objectToken, $objectTokenExpiresAt);
     }
 
-    private function objectTokenEmbeddable(): ObjectTokenEmbeddable
+    private function objectTokenEmbeddable(): \App\Objecting\Embeddable\ObjectTokenEmbeddable
     {
         if (!isset($this->objectToken)) {
-            $this->objectToken = new ObjectTokenEmbeddable();
+            $this->objectToken = new \App\Objecting\Embeddable\ObjectTokenEmbeddable();
         }
 
         return $this->objectToken;

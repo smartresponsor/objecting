@@ -146,3 +146,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting RC2 marker check passed.\n";
+

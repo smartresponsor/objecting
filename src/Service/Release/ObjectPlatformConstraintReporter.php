@@ -17,7 +17,7 @@ final readonly class ObjectPlatformConstraintReporter implements ObjectPlatformC
         $blockingReasons = [];
 
         if (ObjectPackageSurface::COMPOSER_PACKAGE !== $manifest->packageName()) {
-            $blockingReasons[] = 'Objecting platform package name must be objecting/object.';
+            $blockingReasons[] = 'Objecting platform package nameEntity must be objecting/object.';
         }
         $checks[] = 'objecting_platform_package_name';
 

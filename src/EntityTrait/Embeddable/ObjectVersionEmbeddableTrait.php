@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectVersionEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectVersionEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectVersionEmbeddable::class, columnPrefix: false)]
-    private ObjectVersionEmbeddable $objectVersion;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectVersionEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectVersionEmbeddable $objectVersion;
 
     protected function initializeObjectVersion(): void
     {
-        $this->objectVersion = new ObjectVersionEmbeddable();
+        $this->objectVersion = new \App\Objecting\Embeddable\ObjectVersionEmbeddable();
     }
 
-    private function objectVersionEmbeddable(): ObjectVersionEmbeddable
+    private function objectVersionEmbeddable(): \App\Objecting\Embeddable\ObjectVersionEmbeddable
     {
         if (!isset($this->objectVersion)) {
-            $this->objectVersion = new ObjectVersionEmbeddable();
+            $this->objectVersion = new \App\Objecting\Embeddable\ObjectVersionEmbeddable();
         }
 
         return $this->objectVersion;

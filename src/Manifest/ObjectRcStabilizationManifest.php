@@ -35,7 +35,7 @@ final readonly class ObjectRcStabilizationManifest
     ) {
         foreach ([
             'stabilization candidate' => $this->stabilizationCandidate,
-            'package name' => $this->packageName,
+            'package nameEntity' => $this->packageName,
             'namespace prefix' => $this->namespacePrefix,
             'bundle class' => $this->bundleClass,
             'release closure path' => $this->releaseClosurePath,

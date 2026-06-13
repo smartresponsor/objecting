@@ -35,6 +35,6 @@ final class ObjectTitleAliasMapTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        new ObjectTitleAliasMap(['displayName' => 'name']);
+        new ObjectTitleAliasMap(['displayName' => 'nameEntity']);
     }
 }

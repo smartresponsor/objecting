@@ -34,7 +34,7 @@ final readonly class ObjectSchemaMirrorContract
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
-            'table name' => $this->tableName,
+            'table nameEntity' => $this->tableName,
             'field-pack contract path' => $this->fieldPackContractPath,
             'Doctrine mapping contract path' => $this->doctrineMappingContractPath,
             'backend schema mirror path' => $this->backendSchemaMirrorPath,

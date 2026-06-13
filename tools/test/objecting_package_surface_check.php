@@ -78,8 +78,8 @@ if (is_file($composerFile)) {
     if (!is_array($composer)) {
         $errors[] = 'composer.json is not valid JSON.';
     } else {
-        if (($composer['name'] ?? null) !== 'objecting/object') {
-            $errors[] = 'composer.json package name must be objecting/object.';
+        if (($composer['nameEntity'] ?? null) !== 'objecting/object') {
+            $errors[] = 'composer.json package nameEntity must be objecting/object.';
         }
         if (($composer['type'] ?? null) !== 'library') {
             $errors[] = 'composer.json type must stay library.';

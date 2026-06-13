@@ -250,7 +250,7 @@ if (is_file($manifest)) {
         $decl = $root . '/resources/field-pack/' . str_replace('_', '-', $pack) . '.yaml';
         if (!is_file($decl)) { $errors[] = 'Field pack listed in manifest has no declaration file: ' . $pack; continue; }
         $yaml = file_get_contents($decl) ?: '';
-        if (yamlScalar($yaml, 'name') !== $pack) { $errors[] = 'Field-pack declaration name mismatch: ' . $pack; }
+        if (yamlScalar($yaml, 'nameEntity') !== $pack) { $errors[] = 'Field-pack declaration nameEntity mismatch: ' . $pack; }
         foreach (['embeddable','trait','interface'] as $key) {
             $class = yamlScalar($yaml, $key);
             if ($class === null || !str_starts_with($class, 'App\\Objecting\\')) { $errors[] = "Field pack $pack has invalid $key class."; continue; }
@@ -268,7 +268,7 @@ if (is_file($titleAliasManifest)) {
         $decl = $root . '/resources/title-alias/profile/' . str_replace('_', '-', $profile) . '.yaml';
         if (!is_file($decl)) { $errors[] = 'Title alias profile listed in manifest has no declaration file: ' . $profile; continue; }
         $yaml = file_get_contents($decl) ?: '';
-        if (yamlScalar($yaml, 'name') !== $profile) { $errors[] = 'Title alias declaration name mismatch: ' . $profile; }
+        if (yamlScalar($yaml, 'nameEntity') !== $profile) { $errors[] = 'Title alias declaration nameEntity mismatch: ' . $profile; }
         if (yamlScalar($yaml, 'field_pack') !== 'object_title') { $errors[] = 'Title alias profile must target object_title: ' . $profile; }
         foreach (['firstTitle', 'middleTitle', 'lastTitle'] as $field) {
             if (yamlNestedScalar($yaml, 'aliases', $field) === null) { $errors[] = "Title alias profile $profile is missing $field alias."; }
@@ -514,3 +514,4 @@ function yamlNestedScalar(string $yaml, string $section, string $key): ?string {
     }
     return null;
 }
+

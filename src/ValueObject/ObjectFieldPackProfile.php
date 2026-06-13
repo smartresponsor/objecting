@@ -7,24 +7,24 @@ namespace App\Objecting\ValueObject;
 final readonly class ObjectFieldPackProfile
 {
     /** @param list<string> $fieldPacks */
-    public function __construct(private string $name, private array $fieldPacks)
+    public function __construct(private string $nameEntity, private array $fieldPacks)
     {
-        if ('' === $this->name) {
-            throw new \InvalidArgumentException('Objecting field-pack profile name cannot be empty.');
+        if ('' === $this->nameEntity) {
+            throw new \InvalidArgumentException('Objecting field-pack profile nameEntity cannot be empty.');
         }
         foreach ($this->fieldPacks as $fieldPack) {
             if (!ObjectFieldPackName::isKnown($fieldPack)) {
-                throw new \InvalidArgumentException(sprintf('Unknown Objecting field pack "%s" in profile "%s".', $fieldPack, $this->name));
+                throw new \InvalidArgumentException(sprintf('Unknown Objecting field pack "%s" in profile "%s".', $fieldPack, $this->nameEntity));
             }
         }
         if (array_values(array_unique($this->fieldPacks)) !== $this->fieldPacks) {
-            throw new \InvalidArgumentException(sprintf('Duplicate Objecting field pack in profile "%s".', $this->name));
+            throw new \InvalidArgumentException(sprintf('Duplicate Objecting field pack in profile "%s".', $this->nameEntity));
         }
     }
 
-    public function name(): string
+    public function nameEntity(): string
     {
-        return $this->name;
+        return $this->nameEntity;
     }
 
     /** @return list<string> */

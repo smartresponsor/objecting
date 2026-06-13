@@ -11,7 +11,7 @@ final class ObjectSystemTokenDecision
     public const DEFERRED = 'deferred';
 
     public const TOKEN_ID = 'id';
-    public const TOKEN_NAME = 'name';
+    public const TOKEN_NAME = 'nameEntity';
     public const TOKEN_TITLE = 'title';
     public const TOKEN_DESCRIPTION = 'description';
     public const TOKEN_SHORT_DESCRIPTION = 'shortDescription';

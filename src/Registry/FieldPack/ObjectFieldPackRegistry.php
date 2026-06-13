@@ -65,20 +65,20 @@ final class ObjectFieldPackRegistry implements ObjectFieldPackRegistryInterface
         return $this->manifests ??= $this->build();
     }
 
-    public function get(string $name): ObjectFieldPackManifest
+    public function get(string $nameEntity): ObjectFieldPackManifest
     {
         $all = $this->all();
 
-        if (!isset($all[$name])) {
-            throw new \InvalidArgumentException(sprintf('Unknown Objecting field pack "%s".', $name));
+        if (!isset($all[$nameEntity])) {
+            throw new \InvalidArgumentException(sprintf('Unknown Objecting field pack "%s".', $nameEntity));
         }
 
-        return $all[$name];
+        return $all[$nameEntity];
     }
 
-    public function has(string $name): bool
+    public function has(string $nameEntity): bool
     {
-        return isset($this->all()[$name]);
+        return isset($this->all()[$nameEntity]);
     }
 
     /** @return array<string, ObjectFieldPackManifest> */

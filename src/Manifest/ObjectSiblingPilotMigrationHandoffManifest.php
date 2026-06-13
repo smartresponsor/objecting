@@ -17,7 +17,7 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
      * @param list<string> $forbiddenActions
      */
     public function __construct(
-        private string $name,
+        private string $nameEntity,
         private string $packageName,
         private string $objectingBaseline,
         private string $sourceAudit,
@@ -37,8 +37,8 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
         private bool $destructiveRepositoryCleanupForbidden = true,
     ) {
         foreach ([
-            'name' => $this->name,
-            'package name' => $this->packageName,
+            'nameEntity' => $this->nameEntity,
+            'package nameEntity' => $this->packageName,
             'Objecting baseline' => $this->objectingBaseline,
             'source audit' => $this->sourceAudit,
         ] as $label => $value) {
@@ -93,9 +93,9 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
         }
     }
 
-    public function name(): string
+    public function nameEntity(): string
     {
-        return $this->name;
+        return $this->nameEntity;
     }
 
     public function packageName(): string
@@ -195,7 +195,7 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
     public function toArray(): array
     {
         return [
-            'name' => $this->name,
+            'nameEntity' => $this->nameEntity,
             'package_name' => $this->packageName,
             'objecting_baseline' => $this->objectingBaseline,
             'source_audit' => $this->sourceAudit,

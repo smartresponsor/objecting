@@ -98,3 +98,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting release readiness check passed.\n";
+

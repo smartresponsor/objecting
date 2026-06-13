@@ -37,7 +37,7 @@ final readonly class ObjectBackendAdoptionPacketManifest
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'backend project root' => $this->backendProjectRoot,
-            'package name' => $this->packageName,
+            'package nameEntity' => $this->packageName,
             'package constraint' => $this->packageConstraint,
             'field-pack contract path' => $this->fieldPackContractPath,
             'readiness manifest path' => $this->readinessManifestPath,

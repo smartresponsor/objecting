@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectScopeEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectScopeEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectScopeEmbeddable::class, columnPrefix: false)]
-    private ObjectScopeEmbeddable $objectScope;
+    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectScopeEmbeddable::class, columnPrefix: false)]
+    private \App\Objecting\Embeddable\ObjectScopeEmbeddable $objectScope;
 
     protected function initializeObjectScope(?string $objectScope = null, ?string $objectTenant = null, ?string $objectOrganization = null, ?string $objectOwner = null): void
     {
-        $this->objectScope = new ObjectScopeEmbeddable($objectScope, $objectTenant, $objectOrganization, $objectOwner);
+        $this->objectScope = new \App\Objecting\Embeddable\ObjectScopeEmbeddable($objectScope, $objectTenant, $objectOrganization, $objectOwner);
     }
 
-    private function objectScopeEmbeddable(): ObjectScopeEmbeddable
+    private function objectScopeEmbeddable(): \App\Objecting\Embeddable\ObjectScopeEmbeddable
     {
         if (!isset($this->objectScope)) {
-            $this->objectScope = new ObjectScopeEmbeddable();
+            $this->objectScope = new \App\Objecting\Embeddable\ObjectScopeEmbeddable();
         }
 
         return $this->objectScope;

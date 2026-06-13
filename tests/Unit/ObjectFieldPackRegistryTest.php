@@ -18,7 +18,7 @@ final class ObjectFieldPackRegistryTest extends TestCase
 
         foreach (ObjectFieldPackName::all() as $fieldPackName) {
             self::assertTrue($registry->has($fieldPackName), $fieldPackName);
-            self::assertSame($fieldPackName, $registry->get($fieldPackName)->name());
+            self::assertSame($fieldPackName, $registry->get($fieldPackName)->nameEntity());
         }
     }
 
@@ -28,7 +28,7 @@ final class ObjectFieldPackRegistryTest extends TestCase
 
         foreach (ObjectFieldPackProfileName::all() as $profileName) {
             self::assertTrue($registry->has($profileName), $profileName);
-            self::assertSame($profileName, $registry->get($profileName)->name());
+            self::assertSame($profileName, $registry->get($profileName)->nameEntity());
         }
     }
 

@@ -147,3 +147,4 @@ if ($errors !== []) {
 }
 
 echo "Objecting release closure check passed.\n";
+
