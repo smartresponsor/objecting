@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectSourceEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectSourceEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectSourceEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectSourceEmbeddable $objectSource;
+    #[ORM\Embedded(class: ObjectSourceEmbeddable::class, columnPrefix: false)]
+    private ObjectSourceEmbeddable $objectSource;
 
     protected function initializeObjectSource(?string $objectSource = null, ?string $objectProvider = null, ?string $objectExternalId = null, ?string $objectSourceType = null): void
     {
-        $this->objectSource = new \App\Objecting\Embeddable\ObjectSourceEmbeddable($objectSource, $objectProvider, $objectExternalId, $objectSourceType);
+        $this->objectSource = new ObjectSourceEmbeddable($objectSource, $objectProvider, $objectExternalId, $objectSourceType);
     }
 
-    private function objectSourceEmbeddable(): \App\Objecting\Embeddable\ObjectSourceEmbeddable
+    private function objectSourceEmbeddable(): ObjectSourceEmbeddable
     {
         if (!isset($this->objectSource)) {
-            $this->objectSource = new \App\Objecting\Embeddable\ObjectSourceEmbeddable();
+            $this->objectSource = new ObjectSourceEmbeddable();
         }
 
         return $this->objectSource;

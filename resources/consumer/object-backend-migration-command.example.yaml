@@ -48,7 +48,6 @@ field_pack_mapping:
     - object_state
     - object_source
     - object_fingerprint
-    - object_scope
   title_aliases:
     name: object_title.firstTitle
     title: object_title.firstTitle
@@ -83,7 +82,6 @@ codex_instructions:
   - use object_state
   - use object_source
   - use object_fingerprint
-  - use object_scope
   - map name/title/description through object_title aliases rather than adding object_name or object_description
   - keep id as backend-owned Doctrine primary key
   - do not modify Objecting during backend migration

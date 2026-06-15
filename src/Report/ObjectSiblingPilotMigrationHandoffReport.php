@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectSiblingPilotMigrationHandoffManifest;
+
 final readonly class ObjectSiblingPilotMigrationHandoffReport
 {
     public const STATUS_READY = 'ready';

@@ -9,7 +9,6 @@ RC2 includes the RC1 package boundary plus the systemic packs introduced after t
 - `object_state`: `object_active`, `object_enabled`, `object_status`
 - `object_source`: `object_source`, `object_provider`, `object_external_id`, `object_source_type`
 - `object_fingerprint`: `object_hash`, `object_checksum`, `object_algorithm`
-- `object_scope`: `object_scope`, `object_tenant`, `object_organization`, `object_owner`
 
 RC2 also keeps `object_title` canonical. Business tokens such as `name`, `title`, `description`, `label`, and `displayName` are aliases to `firstTitle`, `middleTitle`, and `lastTitle`.
 

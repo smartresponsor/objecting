@@ -31,7 +31,7 @@ final readonly class ObjectReleaseClosureManifest
     ) {
         foreach ([
             'closure candidate' => $this->closureCandidate,
-            'package nameEntity' => $this->packageName,
+            'package name' => $this->packageName,
             'namespace prefix' => $this->namespacePrefix,
             'bundle class' => $this->bundleClass,
             'cumulative archive' => $this->cumulativeArchive,

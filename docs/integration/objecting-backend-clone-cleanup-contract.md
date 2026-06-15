@@ -25,7 +25,6 @@ Local clone surfaces should be replaced by explicit Objecting field packs:
 - `object_version`
 - `object_state`
 - `object_source`
-- `object_scope`
 
 The exact set is component-specific and must be declared in the backend `resources/objecting/<BusinessStem>/object-field-packs.yaml` file.
 

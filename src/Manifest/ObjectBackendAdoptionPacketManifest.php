@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Manifest;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
+
 final readonly class ObjectBackendAdoptionPacketManifest
 {
     /**
@@ -37,7 +40,7 @@ final readonly class ObjectBackendAdoptionPacketManifest
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'backend project root' => $this->backendProjectRoot,
-            'package nameEntity' => $this->packageName,
+            'package name' => $this->packageName,
             'package constraint' => $this->packageConstraint,
             'field-pack contract path' => $this->fieldPackContractPath,
             'readiness manifest path' => $this->readinessManifestPath,

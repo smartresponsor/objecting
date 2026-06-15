@@ -79,7 +79,6 @@ if (is_file($exampleFile)) {
         'object_audit',
         'object_title',
         'object_state',
-        'object_scope',
         'composer test:quality',
         'backend_owns_runtime: true',
         'objecting_owns_system_fields: true',

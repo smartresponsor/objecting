@@ -16,7 +16,7 @@ final class ObjectTitleAliasProfileRegistryTest extends TestCase
 
         foreach (ObjectTitleAliasProfileName::all() as $profileName) {
             self::assertTrue($registry->has($profileName), $profileName);
-            self::assertSame($profileName, $registry->get($profileName)->nameEntity());
+            self::assertSame($profileName, $registry->get($profileName)->name());
         }
     }
 

@@ -36,8 +36,8 @@ platform_boundary:
   legacy_free: true
 checks:
   - php_constraint_is_84
-  - symfony_constraints_are_80
-  - symfony_extra_require_is_80
+  - symfony_constraints_are_8_only
+  - symfony_extra_require_is_8_only
   - no_symfony_7_constraint
   - no_mixed_symfony_7_8_constraint
   - platform_gate_registered

@@ -117,19 +117,15 @@ $requiredFiles = [
     'src/Embeddable/ObjectStateEmbeddable.php',
     'src/Embeddable/ObjectSourceEmbeddable.php',
     'src/Embeddable/ObjectFingerprintEmbeddable.php',
-    'src/Embeddable/ObjectScopeEmbeddable.php',
     'src/EntityTrait/Embeddable/ObjectStateEmbeddableTrait.php',
     'src/EntityTrait/Embeddable/ObjectSourceEmbeddableTrait.php',
     'src/EntityTrait/Embeddable/ObjectFingerprintEmbeddableTrait.php',
-    'src/EntityTrait/Embeddable/ObjectScopeEmbeddableTrait.php',
     'src/EntityInterface/ObjectStatefulInterface.php',
     'src/EntityInterface/ObjectSourcedInterface.php',
     'src/EntityInterface/ObjectFingerprintedInterface.php',
-    'src/EntityInterface/ObjectScopedInterface.php',
     'resources/field-pack/object-state.yaml',
     'resources/field-pack/object-source.yaml',
     'resources/field-pack/object-fingerprint.yaml',
-    'resources/field-pack/object-scope.yaml',
     'resources/field-pack/profile/object-systemic.yaml',
     'src/ValueObject/ObjectFieldPackName.php',
     'src/ValueObject/ObjectFieldPackProfile.php',
@@ -250,7 +246,7 @@ if (is_file($manifest)) {
         $decl = $root . '/resources/field-pack/' . str_replace('_', '-', $pack) . '.yaml';
         if (!is_file($decl)) { $errors[] = 'Field pack listed in manifest has no declaration file: ' . $pack; continue; }
         $yaml = file_get_contents($decl) ?: '';
-        if (yamlScalar($yaml, 'nameEntity') !== $pack) { $errors[] = 'Field-pack declaration nameEntity mismatch: ' . $pack; }
+        if (yamlScalar($yaml, 'name') !== $pack) { $errors[] = 'Field-pack declaration name mismatch: ' . $pack; }
         foreach (['embeddable','trait','interface'] as $key) {
             $class = yamlScalar($yaml, $key);
             if ($class === null || !str_starts_with($class, 'App\\Objecting\\')) { $errors[] = "Field pack $pack has invalid $key class."; continue; }
@@ -268,7 +264,7 @@ if (is_file($titleAliasManifest)) {
         $decl = $root . '/resources/title-alias/profile/' . str_replace('_', '-', $profile) . '.yaml';
         if (!is_file($decl)) { $errors[] = 'Title alias profile listed in manifest has no declaration file: ' . $profile; continue; }
         $yaml = file_get_contents($decl) ?: '';
-        if (yamlScalar($yaml, 'nameEntity') !== $profile) { $errors[] = 'Title alias declaration nameEntity mismatch: ' . $profile; }
+        if (yamlScalar($yaml, 'name') !== $profile) { $errors[] = 'Title alias declaration name mismatch: ' . $profile; }
         if (yamlScalar($yaml, 'field_pack') !== 'object_title') { $errors[] = 'Title alias profile must target object_title: ' . $profile; }
         foreach (['firstTitle', 'middleTitle', 'lastTitle'] as $field) {
             if (yamlNestedScalar($yaml, 'aliases', $field) === null) { $errors[] = "Title alias profile $profile is missing $field alias."; }
@@ -435,7 +431,7 @@ if (is_file($backendImportExample)) {
 $backendMigrationCommandExample = $root . '/resources/consumer/object-backend-migration-command.example.yaml';
 if (is_file($backendMigrationCommandExample)) {
     $yaml = file_get_contents($backendMigrationCommandExample) ?: '';
-    foreach (['object_backend_migration_command_version: 1', 'source_audit: workspace-objecting-field-pack-audit.md', 'objecting_can_be_modified: false', 'exposing_can_be_modified: false', 'sibling_components_can_be_modified: true', 'pilot_components:', '- Addressing', '- Taxating', 'object_identity', 'object_audit', 'object_title', 'object_state', 'object_source', 'object_fingerprint', 'object_scope', 'id: backend-owned Doctrine primary key', 'priority', 'visibility', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints', 'migration_command_readiness:', 'status: ready'] as $requiredMarker) {
+    foreach (['object_backend_migration_command_version: 1', 'source_audit: workspace-objecting-field-pack-audit.md', 'objecting_can_be_modified: false', 'exposing_can_be_modified: false', 'sibling_components_can_be_modified: true', 'pilot_components:', '- Addressing', '- Taxating', 'object_identity', 'object_audit', 'object_title', 'object_state', 'object_source', 'object_fingerprint', 'id: backend-owned Doctrine primary key', 'priority', 'visibility', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints', 'migration_command_readiness:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) { $errors[] = 'Backend migration command example is missing marker: ' . $requiredMarker; }
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Packet\ObjectBackendMigrationCommandPacket;
+
 final readonly class ObjectBackendMigrationCommandReport
 {
     public const STATUS_READY = 'ready';

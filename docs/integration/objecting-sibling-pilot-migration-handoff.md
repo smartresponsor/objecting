@@ -27,7 +27,6 @@ These are the pilot components because the workspace audit found local `Object*`
 - `object_state`
 - `object_source`
 - `object_fingerprint`
-- `object_scope`
 
 `id` remains a backend-owned Doctrine primary key. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` remain aliases of `object_title`.
 

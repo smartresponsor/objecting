@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectWorkflowEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectWorkflowEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectWorkflowEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectWorkflowEmbeddable $objectWorkflow;
+    #[ORM\Embedded(class: ObjectWorkflowEmbeddable::class, columnPrefix: false)]
+    private ObjectWorkflowEmbeddable $objectWorkflow;
 
     protected function initializeObjectWorkflow(): void
     {
-        $this->objectWorkflow = new \App\Objecting\Embeddable\ObjectWorkflowEmbeddable();
+        $this->objectWorkflow = new ObjectWorkflowEmbeddable();
     }
 
-    private function objectWorkflowEmbeddable(): \App\Objecting\Embeddable\ObjectWorkflowEmbeddable
+    private function objectWorkflowEmbeddable(): ObjectWorkflowEmbeddable
     {
         if (!isset($this->objectWorkflow)) {
-            $this->objectWorkflow = new \App\Objecting\Embeddable\ObjectWorkflowEmbeddable();
+            $this->objectWorkflow = new ObjectWorkflowEmbeddable();
         }
 
         return $this->objectWorkflow;

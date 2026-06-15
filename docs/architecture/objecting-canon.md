@@ -32,8 +32,14 @@ Embeddable       Doctrine field grouping
 EntityTrait      ergonomic consumer entity methods
 EntityInterface  capability contract for consumer entities
 Manifest         machine-readable field-pack declaration
-Service          optional system behavior
-ServiceInterface mirrored service contract
+Reporter         report construction
+ReporterInterface mirrored reporter contract
+Registry         canonical lookup surface
+RegistryInterface mirrored registry contract
+Resolver         deterministic contract resolution
+ResolverInterface mirrored resolver contract
+Normalizer       canonical value normalization
+NormalizerInterface mirrored normalizer contract
 ```
 
 ## No legacy retention

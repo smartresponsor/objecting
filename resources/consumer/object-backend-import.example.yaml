@@ -26,7 +26,6 @@ required_field_packs:
   - object_state
   - object_source
   - object_fingerprint
-  - object_scope
 title_alias_profile: object_title_content
 import_artifacts:
   - resources/objecting/Page/object-backend-adoption-packet.yaml

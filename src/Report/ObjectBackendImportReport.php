@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Contract\ObjectBackendImportContract;
+
 final readonly class ObjectBackendImportReport
 {
     public const STATUS_READY = 'ready';

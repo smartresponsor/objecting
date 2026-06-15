@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectBackendCloneCleanupContract
 {
     /**
@@ -33,7 +35,7 @@ final readonly class ObjectBackendCloneCleanupContract
             'component' => $this->component,
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
-            'package nameEntity' => $this->packageName,
+            'package name' => $this->packageName,
         ] as $label => $value) {
             if ('' === $value) {
                 throw new \InvalidArgumentException(sprintf('Objecting backend clone-cleanup contract %s cannot be empty.', $label));

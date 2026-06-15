@@ -17,7 +17,7 @@ final readonly class ObjectPlatformConstraintReporter implements ObjectPlatformC
         $blockingReasons = [];
 
         if (ObjectPackageSurface::COMPOSER_PACKAGE !== $manifest->packageName()) {
-            $blockingReasons[] = 'Objecting platform package nameEntity must be objecting/object.';
+            $blockingReasons[] = 'Objecting platform package name must be objecting/object.';
         }
         $checks[] = 'objecting_platform_package_name';
 
@@ -26,23 +26,28 @@ final readonly class ObjectPlatformConstraintReporter implements ObjectPlatformC
         }
         $checks[] = 'php_constraint_is_84';
 
-        if ('^8.0' !== $manifest->symfonyConstraint()) {
-            $blockingReasons[] = 'Objecting platform Symfony constraint must be ^8.0.';
+        if (!ObjectPlatformConstraintManifest::isSymfony8Constraint($manifest->symfonyConstraint())) {
+            $blockingReasons[] = 'Objecting platform Symfony constraint must target Symfony 8 only.';
         }
-        $checks[] = 'symfony_constraint_is_80';
+        $checks[] = 'symfony_constraint_is_8_only';
 
         $required = $manifest->requiredConstraints();
-        foreach (['php' => '^8.4'] + array_fill_keys(ObjectPackageSurface::SYMFONY_REQUIRE_PACKAGES, '^8.0') as $package => $constraint) {
-            if (($required[$package] ?? null) !== $constraint) {
-                $blockingReasons[] = sprintf('Objecting composer require constraint for %s must be %s.', $package, $constraint);
+        if (($required['php'] ?? null) !== '^8.4') {
+            $blockingReasons[] = 'Objecting composer require constraint for php must be ^8.4.';
+        }
+        foreach (ObjectPackageSurface::SYMFONY_REQUIRE_PACKAGES as $package) {
+            $constraint = $required[$package] ?? null;
+            if (!is_string($constraint) || !ObjectPlatformConstraintManifest::isSymfony8Constraint($constraint)) {
+                $blockingReasons[] = sprintf('Objecting composer require constraint for %s must target Symfony 8 only.', $package);
             }
         }
         $checks[] = 'composer_require_constraints';
 
-        if (($manifest->extraSymfony()['require'] ?? null) !== '^8.0') {
-            $blockingReasons[] = 'Objecting extra.symfony.require must be ^8.0.';
+        $extraSymfonyConstraint = $manifest->extraSymfony()['require'] ?? null;
+        if (!is_string($extraSymfonyConstraint) || !ObjectPlatformConstraintManifest::isSymfony8Constraint($extraSymfonyConstraint)) {
+            $blockingReasons[] = 'Objecting extra.symfony.require must target Symfony 8 only.';
         }
-        $checks[] = 'symfony_extra_require_is_80';
+        $checks[] = 'symfony_extra_require_is_8_only';
 
         foreach ($manifest->forbiddenConstraints() as $forbiddenConstraint) {
             if (str_contains($forbiddenConstraint, '^7') || str_contains($forbiddenConstraint, '7.')) {

@@ -90,7 +90,6 @@ if (is_file($rc2File)) {
         '- object_state',
         '- object_source',
         '- object_fingerprint',
-        '- object_scope',
         '- object_id',
         '- object_name',
         '- object_description',
@@ -120,7 +119,7 @@ if (is_file($rc2File)) {
 $docFile = $root . '/docs/release/objecting-rc2.md';
 if (is_file($docFile)) {
     $doc = file_get_contents($docFile) ?: '';
-    foreach (['Objecting RC2 baseline', 'object_state', 'object_source', 'object_fingerprint', 'object_scope', 'object_title', 'object_id', 'object_priority', 'object_visibility', 'composer test:rc2'] as $marker) {
+    foreach (['Objecting RC2 baseline', 'object_state', 'object_source', 'object_fingerprint', 'object_title', 'object_id', 'object_priority', 'object_visibility', 'composer test:rc2'] as $marker) {
         if (!str_contains($doc, $marker)) {
             $errors[] = 'Objecting RC2 doc is missing marker: ' . $marker;
         }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectReleaseClosureManifest;
+
 final readonly class ObjectReleaseClosureReport
 {
     public const STATUS_READY = 'ready';

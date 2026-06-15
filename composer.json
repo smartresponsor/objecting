@@ -36,10 +36,13 @@
   },
   "scripts": {
     "test:canon": "@php tools/test/objecting_canon_check.php",
+    "test:lifecycle-identity-canon": "@php tools/test/objecting_lifecycle_identity_canon_check.php",
     "test:package-surface": "@php tools/test/objecting_package_surface_check.php",
     "test:migration-readiness": "@php tools/test/objecting_backend_migration_readiness_check.php",
     "test:quality": [
       "@test:canon",
+      "@test:lifecycle-identity-canon",
+      "@test:internal-types",
       "@test:layer-suffix",
       "@test:package-surface",
       "@test:platform-constraints",
@@ -86,7 +89,8 @@
     "test:rc2": "@php tools/test/objecting_rc2_check.php",
     "test:sibling-pilot-migration-handoff": "@php tools/test/objecting_sibling_pilot_migration_handoff_check.php",
     "test:migration-transition-freeze": "@php tools/test/objecting_migration_transition_freeze_check.php",
-    "test:layer-suffix": "@php tools/test/objecting_layer_suffix_check.php"
+    "test:layer-suffix": "@php tools/test/objecting_layer_suffix_check.php",
+    "test:internal-types": "@php tools/test/objecting_internal_type_resolution_check.php"
   },
   "config": {
     "sort-packages": true,

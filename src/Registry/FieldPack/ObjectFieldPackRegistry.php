@@ -7,12 +7,15 @@ namespace App\Objecting\Registry\FieldPack;
 use App\Objecting\Embeddable\ObjectAuditEmbeddable;
 use App\Objecting\Embeddable\ObjectCodeEmbeddable;
 use App\Objecting\Embeddable\ObjectConfigEmbeddable;
+use App\Objecting\Embeddable\ObjectFingerprintEmbeddable;
 use App\Objecting\Embeddable\ObjectIdentityEmbeddable;
 use App\Objecting\Embeddable\ObjectLocaleEmbeddable;
 use App\Objecting\Embeddable\ObjectLockEmbeddable;
 use App\Objecting\Embeddable\ObjectPublicationEmbeddable;
 use App\Objecting\Embeddable\ObjectRestrictionEmbeddable;
 use App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable;
+use App\Objecting\Embeddable\ObjectSourceEmbeddable;
+use App\Objecting\Embeddable\ObjectStateEmbeddable;
 use App\Objecting\Embeddable\ObjectTitleEmbeddable;
 use App\Objecting\Embeddable\ObjectTokenEmbeddable;
 use App\Objecting\Embeddable\ObjectVersionEmbeddable;
@@ -26,7 +29,6 @@ use App\Objecting\EntityInterface\ObjectLocaleAwareInterface;
 use App\Objecting\EntityInterface\ObjectLockableInterface;
 use App\Objecting\EntityInterface\ObjectPublishableInterface;
 use App\Objecting\EntityInterface\ObjectRestrictableInterface;
-use App\Objecting\EntityInterface\ObjectScopedInterface;
 use App\Objecting\EntityInterface\ObjectSoftDeletableInterface;
 use App\Objecting\EntityInterface\ObjectSourcedInterface;
 use App\Objecting\EntityInterface\ObjectStatefulInterface;
@@ -43,7 +45,6 @@ use App\Objecting\EntityTrait\Embeddable\ObjectLocaleEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectLockEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectPublicationEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectRestrictionEmbeddableTrait;
-use App\Objecting\EntityTrait\Embeddable\ObjectScopeEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectSoftDeleteEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectSourceEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectStateEmbeddableTrait;
@@ -65,20 +66,20 @@ final class ObjectFieldPackRegistry implements ObjectFieldPackRegistryInterface
         return $this->manifests ??= $this->build();
     }
 
-    public function get(string $nameEntity): ObjectFieldPackManifest
+    public function get(string $name): ObjectFieldPackManifest
     {
         $all = $this->all();
 
-        if (!isset($all[$nameEntity])) {
-            throw new \InvalidArgumentException(sprintf('Unknown Objecting field pack "%s".', $nameEntity));
+        if (!isset($all[$name])) {
+            throw new \InvalidArgumentException(sprintf('Unknown Objecting field pack "%s".', $name));
         }
 
-        return $all[$nameEntity];
+        return $all[$name];
     }
 
-    public function has(string $nameEntity): bool
+    public function has(string $name): bool
     {
-        return isset($this->all()[$nameEntity]);
+        return isset($this->all()[$name]);
     }
 
     /** @return array<string, ObjectFieldPackManifest> */
@@ -86,7 +87,7 @@ final class ObjectFieldPackRegistry implements ObjectFieldPackRegistryInterface
     {
         return [
             ObjectFieldPackName::IDENTITY => new ObjectFieldPackManifest(ObjectFieldPackName::IDENTITY, ObjectIdentityEmbeddable::class, ObjectIdentityEmbeddableTrait::class, ObjectIdentifiedInterface::class, ['object_uuid', 'object_slug']),
-            ObjectFieldPackName::AUDIT => new ObjectFieldPackManifest(ObjectFieldPackName::AUDIT, ObjectAuditEmbeddable::class, ObjectAuditEmbeddableTrait::class, ObjectAuditedInterface::class, ['object_created_at', 'object_updated_at', 'object_created_by', 'object_updated_by']),
+            ObjectFieldPackName::AUDIT => new ObjectFieldPackManifest(ObjectFieldPackName::AUDIT, ObjectAuditEmbeddable::class, ObjectAuditEmbeddableTrait::class, ObjectAuditedInterface::class, ['object_created_at', 'object_modified_at', 'object_created_by', 'object_modified_by']),
             ObjectFieldPackName::TITLE => new ObjectFieldPackManifest(ObjectFieldPackName::TITLE, ObjectTitleEmbeddable::class, ObjectTitleEmbeddableTrait::class, ObjectTitledInterface::class, ['object_first_title', 'object_middle_title', 'object_last_title']),
             ObjectFieldPackName::PUBLICATION => new ObjectFieldPackManifest(ObjectFieldPackName::PUBLICATION, ObjectPublicationEmbeddable::class, ObjectPublicationEmbeddableTrait::class, ObjectPublishableInterface::class, ['object_published', 'object_published_at']),
             ObjectFieldPackName::SOFT_DELETE => new ObjectFieldPackManifest(ObjectFieldPackName::SOFT_DELETE, ObjectSoftDeleteEmbeddable::class, ObjectSoftDeleteEmbeddableTrait::class, ObjectSoftDeletableInterface::class, ['object_deleted', 'object_deleted_at', 'object_deleted_by']),
@@ -101,7 +102,6 @@ final class ObjectFieldPackRegistry implements ObjectFieldPackRegistryInterface
             ObjectFieldPackName::STATE => new ObjectFieldPackManifest(ObjectFieldPackName::STATE, ObjectStateEmbeddable::class, ObjectStateEmbeddableTrait::class, ObjectStatefulInterface::class, ['object_active', 'object_enabled', 'object_status']),
             ObjectFieldPackName::SOURCE => new ObjectFieldPackManifest(ObjectFieldPackName::SOURCE, ObjectSourceEmbeddable::class, ObjectSourceEmbeddableTrait::class, ObjectSourcedInterface::class, ['object_source', 'object_provider', 'object_external_id', 'object_source_type']),
             ObjectFieldPackName::FINGERPRINT => new ObjectFieldPackManifest(ObjectFieldPackName::FINGERPRINT, ObjectFingerprintEmbeddable::class, ObjectFingerprintEmbeddableTrait::class, ObjectFingerprintedInterface::class, ['object_hash', 'object_checksum', 'object_algorithm']),
-            ObjectFieldPackName::SCOPE => new ObjectFieldPackManifest(ObjectFieldPackName::SCOPE, ObjectScopeEmbeddable::class, ObjectScopeEmbeddableTrait::class, ObjectScopedInterface::class, ['object_scope', 'object_tenant', 'object_organization', 'object_owner']),
         ];
     }
 }

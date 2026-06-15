@@ -7,7 +7,6 @@ Wave 21 adds four systemic field packs discovered through the sibling workspace 
 - `object_state`: `object_active`, `object_enabled`, `object_status`
 - `object_source`: `object_source`, `object_provider`, `object_external_id`, `object_source_type`
 - `object_fingerprint`: `object_hash`, `object_checksum`, `object_algorithm`
-- `object_scope`: `object_scope`, `object_tenant`, `object_organization`, `object_owner`
 
 ## Explicit non-goals
 

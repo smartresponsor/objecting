@@ -30,8 +30,8 @@ final class ObjectTitleAliasProfileName
         ];
     }
 
-    public static function isKnown(string $nameEntity): bool
+    public static function isKnown(string $name): bool
     {
-        return in_array($nameEntity, self::all(), true);
+        return in_array($name, self::all(), true);
     }
 }

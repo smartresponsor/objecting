@@ -24,7 +24,6 @@ included_field_packs:
   - object_state
   - object_source
   - object_fingerprint
-  - object_scope
 forbidden_field_packs:
   - object_id
   - object_name
@@ -93,7 +92,7 @@ next_tracks:
   - exposing_api_contract
 notes:
   - Objecting RC2 supersedes RC1 as the active dependency baseline after systemic packs and backend migration command packet.
-  - RC2 includes object_state, object_source, object_fingerprint, and object_scope as active systemic field packs.
+  - RC2 includes object_state, object_source, object_fingerprint as active systemic field packs.
   - name, title, description, label, and displayName remain object_title aliases rather than physical duplicate field packs.
   - id remains a backend-owned Doctrine primary key and is not an Objecting field pack.
   - priority and visibility remain deferred systemic tokens until backend usage semantics are separated.

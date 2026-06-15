@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectRcMarkerManifest;
+
 final readonly class ObjectRcMarkerReport
 {
     public const STATUS_READY = 'ready';

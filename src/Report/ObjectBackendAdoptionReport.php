@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectBackendAdoptionManifest;
+
 final readonly class ObjectBackendAdoptionReport
 {
     public const STATUS_READY = 'ready';

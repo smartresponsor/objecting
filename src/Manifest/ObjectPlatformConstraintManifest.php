@@ -31,7 +31,7 @@ final readonly class ObjectPlatformConstraintManifest
     ) {
         foreach ([
             'constraint candidate' => $this->constraintCandidate,
-            'package nameEntity' => $this->packageName,
+            'package name' => $this->packageName,
             'PHP constraint' => $this->phpConstraint,
             'Symfony constraint' => $this->symfonyConstraint,
             'namespace prefix' => $this->namespacePrefix,
@@ -50,8 +50,8 @@ final readonly class ObjectPlatformConstraintManifest
             throw new \InvalidArgumentException('Objecting platform PHP constraint must be ^8.4.');
         }
 
-        if ('^8.0' !== $this->symfonyConstraint) {
-            throw new \InvalidArgumentException('Objecting platform Symfony constraint must be ^8.0.');
+        if (!self::isSymfony8Constraint($this->symfonyConstraint)) {
+            throw new \InvalidArgumentException('Objecting platform Symfony constraint must target Symfony 8 only.');
         }
 
         foreach ([
@@ -64,6 +64,11 @@ final readonly class ObjectPlatformConstraintManifest
                 throw new \InvalidArgumentException(sprintf('Objecting platform constraint manifest %s cannot be empty.', $label));
             }
         }
+    }
+
+    public static function isSymfony8Constraint(string $constraint): bool
+    {
+        return 1 === preg_match('/^\^8\.[0-9]+$/', $constraint);
     }
 
     public function constraintCandidate(): string

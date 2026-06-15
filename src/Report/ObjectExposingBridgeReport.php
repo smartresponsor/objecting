@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Contract\ObjectExposingBridgeContract;
+
 final readonly class ObjectExposingBridgeReport
 {
     public const STATUS_READY = 'ready';

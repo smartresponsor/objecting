@@ -2,7 +2,7 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(['src', 'tests'])
-    ->nameEntity('*.php')
+    ->name('*.php')
     ->exclude(['var/metrics', 'var/runtime'])
     ->notName('*.blade.php')
     ->ignoreDotFiles(true)

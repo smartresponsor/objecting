@@ -29,7 +29,6 @@ Systemic packs:
 - `object_state`
 - `object_source`
 - `object_fingerprint`
-- `object_scope`
 
 `id` remains a backend-owned Doctrine primary key. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` are aliases of `object_title` and must not become duplicate database columns when the backend adopts `object_title`.
 

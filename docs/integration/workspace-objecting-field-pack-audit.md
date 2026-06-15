@@ -1,5 +1,7 @@
 # Objecting Workspace Audit
 
+> Historical evidence notice: occurrences of `tenant`, `owner`, `organization`, `scope`, and `updatedAt` below describe fields observed in sibling components. They are not canonical Objecting field packs. The current canon is documented in `docs/architecture/objecting-vendor-identity-canon.md`.
+
 Scope: sibling workspace packages with a direct `Objecting` composer dependency, excluding `App`, `Objecting`, and `Interfacing`.
 Method: scanned source, config, migrations, tests, docs, delivery, report, and related schema hints for the system-field names in the request plus local `Object*` clone surfaces.
 

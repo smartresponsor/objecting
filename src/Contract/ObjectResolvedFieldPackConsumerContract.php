@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+use App\Objecting\ValueObject\ObjectTitleAliasMap;
+
 final readonly class ObjectResolvedFieldPackConsumerContract
 {
     /**

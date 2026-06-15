@@ -121,9 +121,6 @@ wave21:
     - object_state
     - object_source
     - object_fingerprint
-    - object_scope
-
-
 wave22:
   marker: objecting_wave22_title_alias_hardening
   strengthened_surface:

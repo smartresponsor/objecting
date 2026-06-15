@@ -45,6 +45,14 @@ These fields are system fields. Concrete components may alias them as business n
 
 Objecting owns the canonical field pack. Consumer components own their local aliases, DTO labels, forms, and API exposure.
 
+## Vendor identity and lifecycle canon
+
+SmartResponsor uses `VendorEntity` as the business root. Its PostgreSQL primary key is the canonical cross-system identity and is shared one-to-one with `VendorSecurityEntity`. Objecting does not add a parallel tenant identity.
+
+The audit and soft-delete packs use the lifecycle vocabulary `created`, `modified`, and `deleted`. Their `*By` fields carry the canonical Vendor identity as an opaque scalar. Generic tenant, organization, owner, and object-scope ownership fields are outside Objecting responsibility.
+
+See `docs/architecture/objecting-vendor-identity-canon.md`.
+
 ## Runtime ownership
 
 Backend components remain responsible for their own:
@@ -224,7 +232,7 @@ The next Objecting wave should create the RC marker and should not expand Object
 
 ## Platform constraints
 
-Objecting targets PHP `^8.4` and Symfony `^8.0` only. Symfony 7 constraints and mixed Symfony 7/8 constraints such as `^7.0 || ^8.0` are forbidden for the RC baseline.
+Objecting targets PHP `^8.4` and Symfony 8 only. The current package dependencies use a Symfony 8 minor floor, while Symfony 7 and mixed Symfony 7/8 constraints such as `^7.0 || ^8.0` remain forbidden.
 
 Run:
 
@@ -249,7 +257,7 @@ After RC1, the next tracks are backend component migration and the separate Expo
 
 ## Wave 21 systemic field packs
 
-Objecting now includes `object_state`, `object_source`, `object_fingerprint`, and `object_scope` as canonical systemic field packs. `id` remains backend-owned, while `name`, `title`, and `description` remain aliases of `object_title`.
+Objecting includes `object_state`, `object_source`, and `object_fingerprint` as canonical systemic field packs. `id` remains backend-owned, while `name`, `title`, and `description` remain aliases of `object_title`.
 
 
 ## Wave 22 title-alias hardening
@@ -287,7 +295,7 @@ composer test:quality
 
 `objecting_rc2` is the active dependency baseline after the systemic field-pack audit and backend migration command packet.
 
-RC2 includes `object_state`, `object_source`, `object_fingerprint`, and `object_scope` in addition to the RC1 foundation. It keeps `object_title` as the canonical storage for business `name`, `title`, `description`, `label`, and `displayName` aliases. It does not introduce `object_id`, `object_name`, `object_description`, `object_priority`, or `object_visibility`.
+RC2 includes `object_state`, `object_source`, and `object_fingerprint` in addition to the RC1 foundation. It keeps `object_title` as the canonical storage for business `name`, `title`, `description`, `label`, and `displayName` aliases. It does not introduce `object_id`, `object_name`, `object_description`, `object_priority`, or `object_visibility`.
 
 Run:
 

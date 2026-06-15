@@ -82,7 +82,6 @@ if (is_file($exampleFile)) {
         'object_state',
         'object_source',
         'object_fingerprint',
-        'object_scope',
         'id: backend-owned Doctrine primary key',
         'name: object_title alias',
         'title: object_title alias',

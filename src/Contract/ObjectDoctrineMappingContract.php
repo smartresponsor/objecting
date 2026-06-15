@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectDoctrineMappingContract
 {
     /**
@@ -32,7 +34,7 @@ final readonly class ObjectDoctrineMappingContract
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
-            'table nameEntity' => $this->tableName,
+            'table name' => $this->tableName,
             'field-pack contract path' => $this->fieldPackContractPath,
         ] as $label => $value) {
             if ('' === $value) {

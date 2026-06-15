@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectSchemaMirrorContract
 {
     /**
@@ -34,7 +36,7 @@ final readonly class ObjectSchemaMirrorContract
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
-            'table nameEntity' => $this->tableName,
+            'table name' => $this->tableName,
             'field-pack contract path' => $this->fieldPackContractPath,
             'Doctrine mapping contract path' => $this->doctrineMappingContractPath,
             'backend schema mirror path' => $this->backendSchemaMirrorPath,

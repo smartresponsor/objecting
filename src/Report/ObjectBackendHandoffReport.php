@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectBackendHandoffManifest;
+
 final readonly class ObjectBackendHandoffReport
 {
     public const STATUS_READY = 'ready';

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Manifest;
 
+use App\Objecting\Contract\ObjectFieldPackConsumerContract;
+use App\Objecting\ValueObject\ObjectFieldPackName;
+use App\Objecting\ValueObject\ObjectFieldPackProfileName;
+use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
+
 final readonly class ObjectBackendAdoptionManifest
 {
     /**
@@ -28,7 +33,7 @@ final readonly class ObjectBackendAdoptionManifest
             'business stem' => $this->businessStem,
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
-            'table nameEntity' => $this->tableName,
+            'table name' => $this->tableName,
         ] as $label => $value) {
             if ('' === $value) {
                 throw new \InvalidArgumentException(sprintf('Objecting backend adoption manifest %s cannot be empty.', $label));
@@ -54,7 +59,7 @@ final readonly class ObjectBackendAdoptionManifest
         }
 
         if (1 !== preg_match('/^[a-z][a-z0-9_]*$/', $this->tableName)) {
-            throw new \InvalidArgumentException(sprintf('Objecting backend adoption table nameEntity "%s" must be lowercase snake_case.', $this->tableName));
+            throw new \InvalidArgumentException(sprintf('Objecting backend adoption table name "%s" must be lowercase snake_case.', $this->tableName));
         }
 
         foreach (['explicit' => $this->fieldPacks, 'effective' => $this->effectiveFieldPacks] as $label => $fieldPacks) {

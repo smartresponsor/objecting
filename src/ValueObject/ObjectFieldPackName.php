@@ -22,7 +22,6 @@ final class ObjectFieldPackName
     public const STATE = 'object_state';
     public const SOURCE = 'object_source';
     public const FINGERPRINT = 'object_fingerprint';
-    public const SCOPE = 'object_scope';
 
     /** @return list<string> */
     public static function all(): array
@@ -44,12 +43,11 @@ final class ObjectFieldPackName
             self::STATE,
             self::SOURCE,
             self::FINGERPRINT,
-            self::SCOPE,
         ];
     }
 
-    public static function isKnown(string $nameEntity): bool
+    public static function isKnown(string $name): bool
     {
-        return in_array($nameEntity, self::all(), true);
+        return in_array($name, self::all(), true);
     }
 }

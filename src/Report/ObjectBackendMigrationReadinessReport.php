@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Contract\ObjectResolvedFieldPackConsumerContract;
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectBackendMigrationReadinessReport
 {
     public const STATUS_READY = 'ready';

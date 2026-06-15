@@ -30,7 +30,6 @@ final class ObjectBackendMigrationCommandPacketReporterTest extends TestCase
                 ObjectFieldPackName::STATE,
                 ObjectFieldPackName::SOURCE,
                 ObjectFieldPackName::FINGERPRINT,
-                ObjectFieldPackName::SCOPE,
             ],
             qualityGates: ['composer dump-autoload', 'composer test:quality'],
             forbiddenActions: ['no full repository overwrite', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints'],

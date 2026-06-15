@@ -26,13 +26,6 @@ $packs = [
         'interface' => 'src/EntityInterface/ObjectFingerprintedInterface.php',
         'columns' => ['object_hash', 'object_checksum', 'object_algorithm'],
     ],
-    'object_scope' => [
-        'file' => 'object-scope.yaml',
-        'embeddable' => 'src/Embeddable/ObjectScopeEmbeddable.php',
-        'trait' => 'src/EntityTrait/Embeddable/ObjectScopeEmbeddableTrait.php',
-        'interface' => 'src/EntityInterface/ObjectScopedInterface.php',
-        'columns' => ['object_scope', 'object_tenant', 'object_organization', 'object_owner'],
-    ],
 ];
 $manifest = (string) file_get_contents($root . '/resources/field-pack/manifest.yaml');
 $nameFile = (string) file_get_contents($root . '/src/ValueObject/ObjectFieldPackName.php');
@@ -53,7 +46,7 @@ foreach ($packs as $pack => $spec) {
     }
     $yaml = (string) file_get_contents($yamlFile);
     if (!str_contains($yaml, 'name: ' . $pack)) {
-        $errors[] = 'Field-pack YAML nameEntity mismatch for ' . $pack;
+        $errors[] = 'Field-pack YAML name mismatch for ' . $pack;
     }
     foreach ($spec['columns'] as $column) {
         if (!str_contains($yaml, '- ' . $column)) {

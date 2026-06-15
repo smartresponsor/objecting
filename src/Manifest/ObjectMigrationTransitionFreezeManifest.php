@@ -13,7 +13,7 @@ final readonly class ObjectMigrationTransitionFreezeManifest
      * @param list<string> $forbiddenActions
      */
     public function __construct(
-        private string $nameEntity,
+        private string $name,
         private string $packageName,
         private string $objectingBaseline,
         private string $closureCandidate,
@@ -32,8 +32,8 @@ final readonly class ObjectMigrationTransitionFreezeManifest
         private bool $destructiveRepositoryCleanupForbidden = true,
     ) {
         foreach ([
-            'nameEntity' => $this->nameEntity,
-            'package nameEntity' => $this->packageName,
+            'name' => $this->name,
+            'package name' => $this->packageName,
             'Objecting baseline' => $this->objectingBaseline,
             'closure candidate' => $this->closureCandidate,
             'cumulative archive' => $this->cumulativeArchive,
@@ -79,9 +79,9 @@ final readonly class ObjectMigrationTransitionFreezeManifest
         }
     }
 
-    public function nameEntity(): string
+    public function name(): string
     {
-        return $this->nameEntity;
+        return $this->name;
     }
 
     public function packageName(): string
@@ -172,7 +172,7 @@ final readonly class ObjectMigrationTransitionFreezeManifest
     public function toArray(): array
     {
         return [
-            'nameEntity' => $this->nameEntity,
+            'name' => $this->name,
             'package_name' => $this->packageName,
             'objecting_baseline' => $this->objectingBaseline,
             'closure_candidate' => $this->closureCandidate,

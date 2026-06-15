@@ -17,7 +17,7 @@ final readonly class ObjectRcMarkerManifestReporter implements ObjectRcMarkerMan
         $blockingReasons = [];
 
         if ('objecting_rc1' !== $manifest->rcName()) {
-            $blockingReasons[] = sprintf('RC marker nameEntity "%s" must be "objecting_rc1".', $manifest->rcName());
+            $blockingReasons[] = sprintf('RC marker name "%s" must be "objecting_rc1".', $manifest->rcName());
         }
         $checks[] = 'objecting_rc_name';
 

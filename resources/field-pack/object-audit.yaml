@@ -6,7 +6,7 @@ trait: App\Objecting\EntityTrait\Embeddable\ObjectAuditEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectAuditedInterface
 columns:
   - object_created_at
-  - object_updated_at
+  - object_modified_at
   - object_created_by
-  - object_updated_by
+  - object_modified_by
 status: canonical

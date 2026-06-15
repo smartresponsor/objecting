@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectRestrictionEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectRestrictionEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectRestrictionEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectRestrictionEmbeddable $objectRestriction;
+    #[ORM\Embedded(class: ObjectRestrictionEmbeddable::class, columnPrefix: false)]
+    private ObjectRestrictionEmbeddable $objectRestriction;
 
     protected function initializeObjectRestriction(): void
     {
-        $this->objectRestriction = new \App\Objecting\Embeddable\ObjectRestrictionEmbeddable();
+        $this->objectRestriction = new ObjectRestrictionEmbeddable();
     }
 
-    private function objectRestrictionEmbeddable(): \App\Objecting\Embeddable\ObjectRestrictionEmbeddable
+    private function objectRestrictionEmbeddable(): ObjectRestrictionEmbeddable
     {
         if (!isset($this->objectRestriction)) {
-            $this->objectRestriction = new \App\Objecting\Embeddable\ObjectRestrictionEmbeddable();
+            $this->objectRestriction = new ObjectRestrictionEmbeddable();
         }
 
         return $this->objectRestriction;

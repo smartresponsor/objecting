@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Manifest;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectSiblingPilotMigrationHandoffManifest
 {
     /**
@@ -17,7 +19,7 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
      * @param list<string> $forbiddenActions
      */
     public function __construct(
-        private string $nameEntity,
+        private string $name,
         private string $packageName,
         private string $objectingBaseline,
         private string $sourceAudit,
@@ -37,8 +39,8 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
         private bool $destructiveRepositoryCleanupForbidden = true,
     ) {
         foreach ([
-            'nameEntity' => $this->nameEntity,
-            'package nameEntity' => $this->packageName,
+            'name' => $this->name,
+            'package name' => $this->packageName,
             'Objecting baseline' => $this->objectingBaseline,
             'source audit' => $this->sourceAudit,
         ] as $label => $value) {
@@ -93,9 +95,9 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
         }
     }
 
-    public function nameEntity(): string
+    public function name(): string
     {
-        return $this->nameEntity;
+        return $this->name;
     }
 
     public function packageName(): string
@@ -195,7 +197,7 @@ final readonly class ObjectSiblingPilotMigrationHandoffManifest
     public function toArray(): array
     {
         return [
-            'nameEntity' => $this->nameEntity,
+            'name' => $this->name,
             'package_name' => $this->packageName,
             'objecting_baseline' => $this->objectingBaseline,
             'source_audit' => $this->sourceAudit,

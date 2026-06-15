@@ -117,10 +117,10 @@ final readonly class ObjectReference implements \Stringable
         ];
     }
 
-    private static function assertToken(string $value, string $nameEntity): void
+    private static function assertToken(string $value, string $name): void
     {
         if (1 !== preg_match('/^[a-z][a-z0-9_\\-]*$/', $value)) {
-            throw new \InvalidArgumentException(sprintf('Object reference %s must be a canonical lowercase token.', $nameEntity));
+            throw new \InvalidArgumentException(sprintf('Object reference %s must be a canonical lowercase token.', $name));
         }
     }
 }

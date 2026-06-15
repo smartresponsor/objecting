@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectAuditEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectAuditEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectAuditEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectAuditEmbeddable $objectAudit;
+    #[ORM\Embedded(class: ObjectAuditEmbeddable::class, columnPrefix: false)]
+    private ObjectAuditEmbeddable $objectAudit;
 
     protected function initializeObjectAudit(?\DateTimeImmutable $createdAt = null, ?string $createdBy = null): void
     {
-        $this->objectAudit = new \App\Objecting\Embeddable\ObjectAuditEmbeddable($createdAt, $createdBy);
+        $this->objectAudit = new ObjectAuditEmbeddable($createdAt, $createdBy);
     }
 
-    private function objectAuditEmbeddable(): \App\Objecting\Embeddable\ObjectAuditEmbeddable
+    private function objectAuditEmbeddable(): ObjectAuditEmbeddable
     {
         if (!isset($this->objectAudit)) {
-            $this->objectAudit = new \App\Objecting\Embeddable\ObjectAuditEmbeddable();
+            $this->objectAudit = new ObjectAuditEmbeddable();
         }
 
         return $this->objectAudit;
@@ -30,9 +31,9 @@ trait ObjectAuditEmbeddableTrait
         return $this->objectAuditEmbeddable()->getObjectCreatedAt();
     }
 
-    public function getObjectUpdatedAt(): ?\DateTimeImmutable
+    public function getObjectModifiedAt(): ?\DateTimeImmutable
     {
-        return $this->objectAuditEmbeddable()->getObjectUpdatedAt();
+        return $this->objectAuditEmbeddable()->getObjectModifiedAt();
     }
 
     public function getObjectCreatedBy(): ?string
@@ -40,28 +41,13 @@ trait ObjectAuditEmbeddableTrait
         return $this->objectAuditEmbeddable()->getObjectCreatedBy();
     }
 
-    public function getObjectUpdatedBy(): ?string
+    public function getObjectModifiedBy(): ?string
     {
-        return $this->objectAuditEmbeddable()->getObjectUpdatedBy();
-    }
-
-    public function getModifiedAt(): ?\DateTimeImmutable
-    {
-        return $this->objectAuditEmbeddable()->getModifiedAt();
-    }
-
-    public function getModifiedBy(): ?string
-    {
-        return $this->objectAuditEmbeddable()->getModifiedBy();
-    }
-
-    public function touchObject(?\DateTimeImmutable $updatedAt = null, ?string $updatedBy = null): void
-    {
-        $this->objectAuditEmbeddable()->touch($updatedAt, $updatedBy);
+        return $this->objectAuditEmbeddable()->getObjectModifiedBy();
     }
 
     public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void
     {
-        $this->touchObject($modifiedAt, $modifiedBy);
+        $this->objectAuditEmbeddable()->touchModified($modifiedAt, $modifiedBy);
     }
 }

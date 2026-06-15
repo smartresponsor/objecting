@@ -7,39 +7,39 @@ $src = $root . DIRECTORY_SEPARATOR . 'src';
 $errors = [];
 
 $rules = [
-    'Embeddable' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Embeddable'),
-    'EntityInterface' => static fn (string $nameEntity, string $kind): bool => 'interface' === $kind && str_ends_with($nameEntity, 'Interface'),
-    'EntityTrait' => static fn (string $nameEntity, string $kind): bool => 'trait' === $kind && str_ends_with($nameEntity, 'Trait'),
-    'Factory' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Factory'),
-    'Contract' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Contract'),
-    'Manifest' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Manifest'),
-    'Report' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Report'),
-    'Packet' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Packet'),
-    'Decision' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Decision'),
-    'Surface' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Surface'),
-    'Reporter' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Reporter'),
-    'ReporterInterface' => static fn (string $nameEntity, string $kind): bool => 'interface' === $kind && str_ends_with($nameEntity, 'ReporterInterface'),
-    'Registry' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Registry'),
-    'RegistryInterface' => static fn (string $nameEntity, string $kind): bool => 'interface' === $kind && str_ends_with($nameEntity, 'RegistryInterface'),
-    'Resolver' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Resolver'),
-    'ResolverInterface' => static fn (string $nameEntity, string $kind): bool => 'interface' === $kind && str_ends_with($nameEntity, 'ResolverInterface'),
-    'Normalizer' => static fn (string $nameEntity, string $kind): bool => str_ends_with($nameEntity, 'Normalizer'),
-    'NormalizerInterface' => static fn (string $nameEntity, string $kind): bool => 'interface' === $kind && str_ends_with($nameEntity, 'NormalizerInterface'),
-    'ValueObject' => static fn (string $nameEntity, string $kind): bool => in_array($kind, ['class', 'enum'], true)
-        && !str_ends_with($nameEntity, 'Service')
-        && !str_ends_with($nameEntity, 'Reporter')
-        && !str_ends_with($nameEntity, 'Registry')
-        && !str_ends_with($nameEntity, 'Resolver')
-        && !str_ends_with($nameEntity, 'Normalizer')
-        && !str_ends_with($nameEntity, 'Factory')
-        && !str_ends_with($nameEntity, 'Interface')
-        && !str_ends_with($nameEntity, 'Contract')
-        && !str_ends_with($nameEntity, 'Manifest')
-        && !str_ends_with($nameEntity, 'Report')
-        && !str_ends_with($nameEntity, 'Packet')
-        && !str_ends_with($nameEntity, 'Decision')
-        && !str_ends_with($nameEntity, 'Surface')
-        && !str_ends_with($nameEntity, 'Trait'),
+    'Embeddable' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Embeddable'),
+    'EntityInterface' => static fn (string $name, string $kind): bool => 'interface' === $kind && str_ends_with($name, 'Interface'),
+    'EntityTrait' => static fn (string $name, string $kind): bool => 'trait' === $kind && str_ends_with($name, 'Trait'),
+    'Factory' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Factory'),
+    'Contract' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Contract'),
+    'Manifest' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Manifest'),
+    'Report' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Report'),
+    'Packet' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Packet'),
+    'Decision' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Decision'),
+    'Surface' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Surface'),
+    'Reporter' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Reporter'),
+    'ReporterInterface' => static fn (string $name, string $kind): bool => 'interface' === $kind && str_ends_with($name, 'ReporterInterface'),
+    'Registry' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Registry'),
+    'RegistryInterface' => static fn (string $name, string $kind): bool => 'interface' === $kind && str_ends_with($name, 'RegistryInterface'),
+    'Resolver' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Resolver'),
+    'ResolverInterface' => static fn (string $name, string $kind): bool => 'interface' === $kind && str_ends_with($name, 'ResolverInterface'),
+    'Normalizer' => static fn (string $name, string $kind): bool => str_ends_with($name, 'Normalizer'),
+    'NormalizerInterface' => static fn (string $name, string $kind): bool => 'interface' === $kind && str_ends_with($name, 'NormalizerInterface'),
+    'ValueObject' => static fn (string $name, string $kind): bool => in_array($kind, ['class', 'enum'], true)
+        && !str_ends_with($name, 'Service')
+        && !str_ends_with($name, 'Reporter')
+        && !str_ends_with($name, 'Registry')
+        && !str_ends_with($name, 'Resolver')
+        && !str_ends_with($name, 'Normalizer')
+        && !str_ends_with($name, 'Factory')
+        && !str_ends_with($name, 'Interface')
+        && !str_ends_with($name, 'Contract')
+        && !str_ends_with($name, 'Manifest')
+        && !str_ends_with($name, 'Report')
+        && !str_ends_with($name, 'Packet')
+        && !str_ends_with($name, 'Decision')
+        && !str_ends_with($name, 'Surface')
+        && !str_ends_with($name, 'Trait'),
 ];
 
 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($src, FilesystemIterator::SKIP_DOTS));
@@ -67,9 +67,9 @@ foreach ($iterator as $file) {
     }
 
     $kind = $matches[1];
-    $nameEntity = $matches[2];
-    if (!$rules[$topLayer]($nameEntity, $kind)) {
-        $errors[] = sprintf('Layer/suffix mismatch: %s contains %s %s.', $relative, $kind, $nameEntity);
+    $name = $matches[2];
+    if (!$rules[$topLayer]($name, $kind)) {
+        $errors[] = sprintf('Layer/suffix mismatch: %s contains %s %s.', $relative, $kind, $name);
     }
 }
 

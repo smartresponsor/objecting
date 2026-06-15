@@ -10,7 +10,6 @@ effective_field_packs:
   - object_state
   - object_source
   - object_fingerprint
-  - object_scope
   - object_publication
   - object_version
 required_baseline_field_packs:

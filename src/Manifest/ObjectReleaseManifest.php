@@ -26,7 +26,7 @@ final readonly class ObjectReleaseManifest
     ) {
         foreach ([
             'release candidate' => $this->releaseCandidate,
-            'package nameEntity' => $this->packageName,
+            'package name' => $this->packageName,
             'namespace prefix' => $this->namespacePrefix,
             'bundle class' => $this->bundleClass,
             'cumulative archive' => $this->cumulativeArchive,

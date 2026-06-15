@@ -11,7 +11,7 @@ interface ObjectTitleAliasProfileRegistryInterface
     /** @return array<string, ObjectTitleAliasProfile> */
     public function all(): array;
 
-    public function get(string $nameEntity): ObjectTitleAliasProfile;
+    public function get(string $name): ObjectTitleAliasProfile;
 
-    public function has(string $nameEntity): bool;
+    public function has(string $name): bool;
 }

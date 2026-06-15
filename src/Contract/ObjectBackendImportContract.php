@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
+
 final readonly class ObjectBackendImportContract
 {
     /**
@@ -40,7 +43,7 @@ final readonly class ObjectBackendImportContract
             'namespace' => $this->namespace,
             'entity class' => $this->entityClass,
             'backend project root' => $this->backendProjectRoot,
-            'package nameEntity' => $this->packageName,
+            'package name' => $this->packageName,
             'package constraint' => $this->packageConstraint,
             'adoption packet path' => $this->adoptionPacketPath,
             'field-pack contract path' => $this->fieldPackContractPath,

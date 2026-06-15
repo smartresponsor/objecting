@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectStateEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectStateEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectStateEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectStateEmbeddable $objectState;
+    #[ORM\Embedded(class: ObjectStateEmbeddable::class, columnPrefix: false)]
+    private ObjectStateEmbeddable $objectState;
 
     protected function initializeObjectState(bool $objectActive = true, bool $objectEnabled = true, ?string $objectStatus = null): void
     {
-        $this->objectState = new \App\Objecting\Embeddable\ObjectStateEmbeddable($objectActive, $objectEnabled, $objectStatus);
+        $this->objectState = new ObjectStateEmbeddable($objectActive, $objectEnabled, $objectStatus);
     }
 
-    private function objectStateEmbeddable(): \App\Objecting\Embeddable\ObjectStateEmbeddable
+    private function objectStateEmbeddable(): ObjectStateEmbeddable
     {
         if (!isset($this->objectState)) {
-            $this->objectState = new \App\Objecting\Embeddable\ObjectStateEmbeddable();
+            $this->objectState = new ObjectStateEmbeddable();
         }
 
         return $this->objectState;

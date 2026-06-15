@@ -8,11 +8,11 @@ interface ObjectAuditedInterface
 {
     public function getObjectCreatedAt(): \DateTimeImmutable;
 
-    public function getObjectUpdatedAt(): ?\DateTimeImmutable;
+    public function getObjectModifiedAt(): ?\DateTimeImmutable;
 
     public function getObjectCreatedBy(): ?string;
 
-    public function getObjectUpdatedBy(): ?string;
+    public function getObjectModifiedBy(): ?string;
 
-    public function touchObject(?\DateTimeImmutable $updatedAt = null, ?string $updatedBy = null): void;
+    public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void;
 }

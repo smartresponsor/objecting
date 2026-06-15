@@ -8,7 +8,7 @@ final readonly class ObjectFieldPackManifest
 {
     /** @param list<string> $columns */
     public function __construct(
-        private string $nameEntity,
+        private string $name,
         private string $embeddableClass,
         private string $traitClass,
         private string $interfaceClass,
@@ -16,9 +16,9 @@ final readonly class ObjectFieldPackManifest
     ) {
     }
 
-    public function nameEntity(): string
+    public function name(): string
     {
-        return $this->nameEntity;
+        return $this->name;
     }
 
     public function embeddableClass(): string

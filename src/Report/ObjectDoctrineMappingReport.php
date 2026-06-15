@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Contract\ObjectDoctrineMappingContract;
+
 final readonly class ObjectDoctrineMappingReport
 {
     public const STATUS_READY = 'ready';

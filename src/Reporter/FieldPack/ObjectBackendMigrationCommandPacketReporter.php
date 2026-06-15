@@ -41,7 +41,7 @@ final readonly class ObjectBackendMigrationCommandPacketReporter implements Obje
         }
         $checks[] = 'baseline_objecting_packs';
 
-        foreach ([ObjectFieldPackName::STATE, ObjectFieldPackName::SOURCE, ObjectFieldPackName::FINGERPRINT, ObjectFieldPackName::SCOPE] as $systemicPack) {
+        foreach ([ObjectFieldPackName::STATE, ObjectFieldPackName::SOURCE, ObjectFieldPackName::FINGERPRINT] as $systemicPack) {
             if (!in_array($systemicPack, $packet->codexInstructions(), true) && !in_array($systemicPack, $packet->backendArtifacts(), true)) {
                 $blockingReasons[] = sprintf('Backend migration command must mention systemic pack "%s".', $systemicPack);
             }

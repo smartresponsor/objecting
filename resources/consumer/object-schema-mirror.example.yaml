@@ -25,7 +25,6 @@ required_field_packs:
   - object_state
   - object_source
   - object_fingerprint
-  - object_scope
   - object_publication
   - object_soft_delete
   - object_version
@@ -33,9 +32,9 @@ object_columns:
   - object_uuid
   - object_slug
   - object_created_at
-  - object_updated_at
+  - object_modified_at
   - object_created_by
-  - object_updated_by
+  - object_modified_by
   - object_first_title
   - object_middle_title
   - object_last_title

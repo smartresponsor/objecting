@@ -18,7 +18,6 @@ field_packs:
   - object_state
   - object_source
   - object_fingerprint
-  - object_scope
 baseline:
   - object_identity
   - object_audit

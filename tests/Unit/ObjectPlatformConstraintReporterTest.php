@@ -39,7 +39,7 @@ final class ObjectPlatformConstraintReporterTest extends TestCase
         self::assertSame('ready', $report->status());
         self::assertSame([], $report->blockingReasons());
         self::assertContains('php_constraint_is_84', $report->checks());
-        self::assertContains('symfony_constraint_is_80', $report->checks());
+        self::assertContains('symfony_constraint_is_8_only', $report->checks());
     }
 
     public function testItBlocksSymfonySevenDrift(): void

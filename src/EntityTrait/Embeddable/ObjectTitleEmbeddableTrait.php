@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectTitleEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectTitleEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectTitleEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectTitleEmbeddable $objectTitle;
+    #[ORM\Embedded(class: ObjectTitleEmbeddable::class, columnPrefix: false)]
+    private ObjectTitleEmbeddable $objectTitle;
 
     protected function initializeObjectTitle(?string $firstTitle = null, ?string $middleTitle = null, ?string $lastTitle = null): void
     {
-        $this->objectTitle = new \App\Objecting\Embeddable\ObjectTitleEmbeddable($firstTitle, $middleTitle, $lastTitle);
+        $this->objectTitle = new ObjectTitleEmbeddable($firstTitle, $middleTitle, $lastTitle);
     }
 
-    private function objectTitleEmbeddable(): \App\Objecting\Embeddable\ObjectTitleEmbeddable
+    private function objectTitleEmbeddable(): ObjectTitleEmbeddable
     {
         if (!isset($this->objectTitle)) {
-            $this->objectTitle = new \App\Objecting\Embeddable\ObjectTitleEmbeddable();
+            $this->objectTitle = new ObjectTitleEmbeddable();
         }
 
         return $this->objectTitle;

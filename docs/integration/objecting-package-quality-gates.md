@@ -15,6 +15,7 @@ composer test:quality
 
 ```bash
 php tools/test/objecting_canon_check.php
+php tools/test/objecting_internal_type_resolution_check.php
 php tools/test/objecting_package_surface_check.php
 ```
 
@@ -25,7 +26,7 @@ php tools/test/objecting_package_surface_check.php
 - `ObjectBundle` and `ObjectExtension` are the Symfony package surface.
 - `ObjectExtension` owns runtime parameters such as `objecting.package_dir` and manifest paths.
 - `config/services.yaml` must not reset those parameters to `null`.
-- Service aliases must point from mirror interfaces to concrete Objecting services.
+- Suffix-specific aliases must point from Reporter/Registry/Resolver/Normalizer interfaces to their concrete implementations.
 - Backend components keep their own Entity, Migration, Controller, DTO, Form, Route, OpenAPI, and business-service ownership.
 
 ## Consumer expectation
@@ -92,3 +93,8 @@ This gate checks that every active `Object*EmbeddableTrait` has both explicit `i
 `composer test:schema-mirror` validates the consumer-facing schema mirror contract. It ensures that backend migrations remain in backend components, Objecting owns `object_*` system columns, and Exposing remains the owner of API-visible schema mirrors.
 
 - `composer test:exposing-bridge` validates the Objecting-side contract that future Exposing consumers can read without moving API ownership into Objecting.
+
+
+## Internal type-resolution gate
+
+`composer test:internal-types` rejects internal `Object*` type references that rely on accidental same-namespace resolution instead of an explicit import. This prevents report, manifest, contract, and packet types from silently resolving to nonexistent classes.

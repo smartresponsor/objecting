@@ -6,16 +6,16 @@ namespace App\Objecting\ValueObject;
 
 final readonly class ObjectTitleAliasProfile
 {
-    public function __construct(private string $nameEntity, private ObjectTitleAliasMap $aliasMap)
+    public function __construct(private string $name, private ObjectTitleAliasMap $aliasMap)
     {
-        if ('' === $this->nameEntity) {
-            throw new \InvalidArgumentException('Objecting title-alias profile nameEntity cannot be empty.');
+        if ('' === $this->name) {
+            throw new \InvalidArgumentException('Objecting title-alias profile name cannot be empty.');
         }
     }
 
-    public function nameEntity(): string
+    public function name(): string
     {
-        return $this->nameEntity;
+        return $this->name;
     }
 
     public function aliasMap(): ObjectTitleAliasMap

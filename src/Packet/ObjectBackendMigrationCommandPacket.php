@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Packet;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectBackendMigrationCommandPacket
 {
     /**
@@ -17,7 +19,7 @@ final readonly class ObjectBackendMigrationCommandPacket
      * @param list<string> $deferredTokens
      */
     public function __construct(
-        private string $nameEntity,
+        private string $name,
         private string $packageName,
         private string $sourceAudit,
         private array $targetComponents,
@@ -36,8 +38,8 @@ final readonly class ObjectBackendMigrationCommandPacket
         private bool $exposingCanBeModified = false,
     ) {
         foreach ([
-            'nameEntity' => $this->nameEntity,
-            'package nameEntity' => $this->packageName,
+            'name' => $this->name,
+            'package name' => $this->packageName,
             'source audit' => $this->sourceAudit,
         ] as $label => $value) {
             if ('' === $value) {
@@ -89,9 +91,9 @@ final readonly class ObjectBackendMigrationCommandPacket
         }
     }
 
-    public function nameEntity(): string
+    public function name(): string
     {
-        return $this->nameEntity;
+        return $this->name;
     }
 
     public function packageName(): string
@@ -186,7 +188,7 @@ final readonly class ObjectBackendMigrationCommandPacket
     public function toArray(): array
     {
         return [
-            'nameEntity' => $this->nameEntity,
+            'name' => $this->name,
             'package_name' => $this->packageName,
             'source_audit' => $this->sourceAudit,
             'target_components' => $this->targetComponents,

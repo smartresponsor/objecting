@@ -30,7 +30,6 @@ required_field_packs:
   - object_state
   - object_source
   - object_fingerprint
-  - object_scope
   - object_publication
   - object_soft_delete
   - object_version

@@ -20,20 +20,20 @@ final class ObjectFieldPackProfileRegistry implements ObjectFieldPackProfileRegi
         return $this->profiles ??= $this->build();
     }
 
-    public function get(string $nameEntity): ObjectFieldPackProfile
+    public function get(string $name): ObjectFieldPackProfile
     {
         $all = $this->all();
 
-        if (!isset($all[$nameEntity])) {
-            throw new \InvalidArgumentException(sprintf('Unknown Objecting field-pack profile "%s".', $nameEntity));
+        if (!isset($all[$name])) {
+            throw new \InvalidArgumentException(sprintf('Unknown Objecting field-pack profile "%s".', $name));
         }
 
-        return $all[$nameEntity];
+        return $all[$name];
     }
 
-    public function has(string $nameEntity): bool
+    public function has(string $name): bool
     {
-        return isset($this->all()[$nameEntity]);
+        return isset($this->all()[$name]);
     }
 
     /** @return array<string, ObjectFieldPackProfile> */
@@ -45,7 +45,7 @@ final class ObjectFieldPackProfileRegistry implements ObjectFieldPackProfileRegi
             ObjectFieldPackProfileName::LIFECYCLE => new ObjectFieldPackProfile(ObjectFieldPackProfileName::LIFECYCLE, [ObjectFieldPackName::IDENTITY, ObjectFieldPackName::AUDIT, ObjectFieldPackName::SOFT_DELETE, ObjectFieldPackName::LOCK, ObjectFieldPackName::WORKFLOW, ObjectFieldPackName::VERSION]),
             ObjectFieldPackProfileName::SECURITY => new ObjectFieldPackProfile(ObjectFieldPackProfileName::SECURITY, [ObjectFieldPackName::IDENTITY, ObjectFieldPackName::AUDIT, ObjectFieldPackName::TITLE, ObjectFieldPackName::TOKEN, ObjectFieldPackName::RESTRICTION, ObjectFieldPackName::VERSION]),
             ObjectFieldPackProfileName::LOCALIZED => new ObjectFieldPackProfile(ObjectFieldPackProfileName::LOCALIZED, [ObjectFieldPackName::IDENTITY, ObjectFieldPackName::AUDIT, ObjectFieldPackName::TITLE, ObjectFieldPackName::LOCALE, ObjectFieldPackName::VERSION]),
-            ObjectFieldPackProfileName::SYSTEMIC => new ObjectFieldPackProfile(ObjectFieldPackProfileName::SYSTEMIC, [ObjectFieldPackName::IDENTITY, ObjectFieldPackName::AUDIT, ObjectFieldPackName::TITLE, ObjectFieldPackName::STATE, ObjectFieldPackName::SOURCE, ObjectFieldPackName::FINGERPRINT, ObjectFieldPackName::SCOPE, ObjectFieldPackName::VERSION]),
+            ObjectFieldPackProfileName::SYSTEMIC => new ObjectFieldPackProfile(ObjectFieldPackProfileName::SYSTEMIC, [ObjectFieldPackName::IDENTITY, ObjectFieldPackName::AUDIT, ObjectFieldPackName::TITLE, ObjectFieldPackName::STATE, ObjectFieldPackName::SOURCE, ObjectFieldPackName::FINGERPRINT, ObjectFieldPackName::VERSION]),
         ];
     }
 }

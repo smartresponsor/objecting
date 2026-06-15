@@ -14,6 +14,7 @@ $requiredFiles = [
     'resources/field-pack/manifest.yaml',
     'resources/title-alias/manifest.yaml',
     'tools/test/objecting_title_alias_hardening_check.php',
+    'tools/test/objecting_internal_type_resolution_check.php',
     'docs/integration/objecting-title-alias-hardening.md',
     'resources/title-alias/object-title-alias-governance.example.yaml',
     'resources/consumer/object-field-packs.example.yaml',
@@ -78,8 +79,8 @@ if (is_file($composerFile)) {
     if (!is_array($composer)) {
         $errors[] = 'composer.json is not valid JSON.';
     } else {
-        if (($composer['nameEntity'] ?? null) !== 'objecting/object') {
-            $errors[] = 'composer.json package nameEntity must be objecting/object.';
+        if (($composer['name'] ?? null) !== 'objecting/object') {
+            $errors[] = 'composer.json package name must be objecting/object.';
         }
         if (($composer['type'] ?? null) !== 'library') {
             $errors[] = 'composer.json type must stay library.';
@@ -88,7 +89,7 @@ if (is_file($composerFile)) {
         if (($autoload['App\\Objecting\\'] ?? null) !== 'src/') {
             $errors[] = 'composer.json must expose App\\Objecting\\ => src/ autoload.';
         }
-        foreach (['test:canon', 'test:package-surface', 'test:migration-readiness', 'test:backend-adoption', 'test:backend-handoff', 'test:backend-adoption-packet', 'test:backend-import', 'test:backend-clone-cleanup', 'test:backend-migration-command', 'test:release-readiness', 'test:release-closure', 'test:rc-stabilization', 'test:rc', 'test:rc1', 'test:rc2', 'test:embeddable-initialization', 'test:schema-mirror', 'test:exposing-bridge', 'test:quality', 'phpstan', 'test'] as $script) {
+        foreach (['test:canon', 'test:internal-types', 'test:package-surface', 'test:migration-readiness', 'test:backend-adoption', 'test:backend-handoff', 'test:backend-adoption-packet', 'test:backend-import', 'test:backend-clone-cleanup', 'test:backend-migration-command', 'test:release-readiness', 'test:release-closure', 'test:rc-stabilization', 'test:rc', 'test:rc1', 'test:rc2', 'test:embeddable-initialization', 'test:schema-mirror', 'test:exposing-bridge', 'test:quality', 'phpstan', 'test'] as $script) {
             if (!array_key_exists($script, $composer['scripts'] ?? [])) {
                 $errors[] = 'composer.json is missing script: ' . $script;
             }

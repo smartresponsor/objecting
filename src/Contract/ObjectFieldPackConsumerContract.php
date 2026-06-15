@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+use App\Objecting\ValueObject\ObjectFieldPackProfileName;
+use App\Objecting\ValueObject\ObjectTitleAliasMap;
+use App\Objecting\ValueObject\ObjectTitleAliasProfileName;
+
 final readonly class ObjectFieldPackConsumerContract
 {
     /** @param list<string> $fieldPacks */

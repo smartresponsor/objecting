@@ -18,7 +18,7 @@ final readonly class ObjectRc2MarkerManifestReporter implements ObjectRc2MarkerM
         $blockingReasons = [];
 
         if ('objecting_rc2' !== $manifest->rcName()) {
-            $blockingReasons[] = sprintf('RC2 marker nameEntity "%s" must be "objecting_rc2".', $manifest->rcName());
+            $blockingReasons[] = sprintf('RC2 marker name "%s" must be "objecting_rc2".', $manifest->rcName());
         }
         $checks[] = 'objecting_rc2_name';
 
@@ -99,7 +99,6 @@ final readonly class ObjectRc2MarkerManifestReporter implements ObjectRc2MarkerM
             ObjectFieldPackName::STATE,
             ObjectFieldPackName::SOURCE,
             ObjectFieldPackName::FINGERPRINT,
-            ObjectFieldPackName::SCOPE,
         ] as $requiredPack) {
             if (!in_array($requiredPack, $manifest->includedFieldPacks(), true)) {
                 $blockingReasons[] = sprintf('RC2 marker included field packs must include "%s".', $requiredPack);

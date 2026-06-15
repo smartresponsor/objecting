@@ -34,14 +34,17 @@ if (is_file($composerFile)) {
             $errors[] = 'composer.json must require php ^8.4 only.';
         }
 
+        $isSymfony8Constraint = static fn (mixed $constraint): bool => is_string($constraint)
+            && 1 === preg_match('/^\^8\.[0-9]+$/', $constraint);
+
         foreach (['symfony/config', 'symfony/dependency-injection', 'symfony/http-kernel', 'symfony/uid', 'symfony/yaml'] as $package) {
-            if (($require[$package] ?? null) !== '^8.0') {
-                $errors[] = sprintf('composer.json must require %s ^8.0 only.', $package);
+            if (!$isSymfony8Constraint($require[$package] ?? null)) {
+                $errors[] = sprintf('composer.json must require %s with a Symfony 8-only constraint.', $package);
             }
         }
 
-        if (($composer['extra']['symfony']['require'] ?? null) !== '^8.0') {
-            $errors[] = 'composer.json extra.symfony.require must be ^8.0.';
+        if (!$isSymfony8Constraint($composer['extra']['symfony']['require'] ?? null)) {
+            $errors[] = 'composer.json extra.symfony.require must target Symfony 8 only.';
         }
 
         foreach (['^7.0 || ^8.0', '^7 || ^8', '^7.0', '7.*'] as $forbidden) {
@@ -118,7 +121,7 @@ if (is_file($rc1File)) {
 $readmeFile = $root . '/README.md';
 if (is_file($readmeFile)) {
     $readme = file_get_contents($readmeFile) ?: '';
-    foreach (['PHP `^8.4`', 'Symfony `^8.0`', 'composer test:platform-constraints'] as $marker) {
+    foreach (['PHP `^8.4`', 'Symfony 8', 'composer test:platform-constraints'] as $marker) {
         if (!str_contains($readme, $marker)) {
             $errors[] = 'README is missing platform constraint marker: ' . $marker;
         }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Contract;
 
+use App\Objecting\ValueObject\ObjectFieldPackName;
+
 final readonly class ObjectExposingBridgeContract
 {
     /**
@@ -41,7 +43,7 @@ final readonly class ObjectExposingBridgeContract
             'backend adoption packet path' => $this->backendAdoptionPacketPath,
             'Exposing OpenAPI path' => $this->exposingOpenApiPath,
             'Exposing schema mirror path' => $this->exposingSchemaMirrorPath,
-            'OpenAPI schema nameEntity' => $this->openApiSchemaName,
+            'OpenAPI schema name' => $this->openApiSchemaName,
             'title alias profile' => $this->titleAliasProfile,
         ] as $label => $value) {
             if ('' === $value) {

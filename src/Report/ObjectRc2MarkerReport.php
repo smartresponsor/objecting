@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectRc2MarkerManifest;
+
 final readonly class ObjectRc2MarkerReport
 {
     public const STATUS_READY = 'ready';

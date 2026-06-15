@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Objecting\Factory;
 
+use App\Objecting\Embeddable\ObjectAuditEmbeddable;
+use App\Objecting\Embeddable\ObjectIdentityEmbeddable;
+use App\Objecting\Embeddable\ObjectTitleEmbeddable;
+
 final class ObjectEmbeddableFactory
 {
     public function identity(?string $uuid = null, ?string $slug = null): ObjectIdentityEmbeddable

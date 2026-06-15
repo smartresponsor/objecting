@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Contract\ObjectSchemaMirrorContract;
+
 final readonly class ObjectSchemaMirrorReport
 {
     public const STATUS_READY = 'ready';

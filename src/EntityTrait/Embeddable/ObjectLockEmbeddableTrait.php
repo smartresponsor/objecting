@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
+use App\Objecting\Embeddable\ObjectLockEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectLockEmbeddableTrait
 {
-    #[ORM\Embedded(class: \App\Objecting\Embeddable\ObjectLockEmbeddable::class, columnPrefix: false)]
-    private \App\Objecting\Embeddable\ObjectLockEmbeddable $objectLock;
+    #[ORM\Embedded(class: ObjectLockEmbeddable::class, columnPrefix: false)]
+    private ObjectLockEmbeddable $objectLock;
 
     protected function initializeObjectLock(): void
     {
-        $this->objectLock = new \App\Objecting\Embeddable\ObjectLockEmbeddable();
+        $this->objectLock = new ObjectLockEmbeddable();
     }
 
-    private function objectLockEmbeddable(): \App\Objecting\Embeddable\ObjectLockEmbeddable
+    private function objectLockEmbeddable(): ObjectLockEmbeddable
     {
         if (!isset($this->objectLock)) {
-            $this->objectLock = new \App\Objecting\Embeddable\ObjectLockEmbeddable();
+            $this->objectLock = new ObjectLockEmbeddable();
         }
 
         return $this->objectLock;

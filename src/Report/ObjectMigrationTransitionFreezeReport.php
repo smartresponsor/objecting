@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Objecting\Report;
 
+use App\Objecting\Manifest\ObjectMigrationTransitionFreezeManifest;
+
 final readonly class ObjectMigrationTransitionFreezeReport
 {
     public const STATUS_READY = 'ready';

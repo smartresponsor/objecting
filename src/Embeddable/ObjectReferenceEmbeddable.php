@@ -42,14 +42,18 @@ final class ObjectReferenceEmbeddable
 
     public function reference(): ?ObjectReference
     {
-        if (!$this->hasReference()) {
+        $component = $this->referenceComponent;
+        $aggregate = $this->referenceAggregate;
+        $identifier = $this->referenceIdentifier;
+
+        if (null === $component || null === $aggregate || null === $identifier) {
             return null;
         }
 
         return new ObjectReference(
-            $this->referenceComponent,
-            $this->referenceAggregate,
-            $this->referenceIdentifier,
+            $component,
+            $aggregate,
+            $identifier,
             $this->referenceDisplay,
             $this->referenceVersion,
         );

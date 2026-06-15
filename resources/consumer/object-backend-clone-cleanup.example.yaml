@@ -23,7 +23,6 @@ pilot_components:
       - object_soft_delete
       - object_version
       - object_state
-      - object_scope
     cleanup_artifacts:
       - src/Entity/AddressEntity.php
       - resources/objecting/Address/object-field-packs.yaml
@@ -44,7 +43,6 @@ pilot_components:
       - object_locale
       - object_state
       - object_source
-      - object_scope
     cleanup_artifacts:
       - src/Entity/TaxationEntity.php
       - resources/objecting/Taxation/object-field-packs.yaml

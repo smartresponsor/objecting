@@ -12,14 +12,21 @@ final class ObjectAuditEmbeddable
     #[ORM\Column(name: 'object_created_at', type: 'datetime_immutable')]
     private \DateTimeImmutable $objectCreatedAt;
 
-    #[ORM\Column(name: 'object_updated_at', type: 'datetime_immutable', nullable: true)]
-    private ?\DateTimeImmutable $objectUpdatedAt = null;
+    #[ORM\Column(name: 'object_modified_at', type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $objectModifiedAt = null;
 
+    /**
+     * Canonical cross-system identifier of the Vendor identity that created the object.
+     *
+     * Objecting stores the identifier as an opaque scalar and does not own the
+     * VendorEntity or VendorSecurityEntity association.
+     */
     #[ORM\Column(name: 'object_created_by', type: 'string', length: 190, nullable: true)]
     private ?string $objectCreatedBy = null;
 
-    #[ORM\Column(name: 'object_updated_by', type: 'string', length: 190, nullable: true)]
-    private ?string $objectUpdatedBy = null;
+    /** Canonical cross-system Vendor identity that last modified the object. */
+    #[ORM\Column(name: 'object_modified_by', type: 'string', length: 190, nullable: true)]
+    private ?string $objectModifiedBy = null;
 
     public function __construct(?\DateTimeImmutable $createdAt = null, ?string $createdBy = null)
     {
@@ -32,9 +39,9 @@ final class ObjectAuditEmbeddable
         return $this->objectCreatedAt;
     }
 
-    public function getObjectUpdatedAt(): ?\DateTimeImmutable
+    public function getObjectModifiedAt(): ?\DateTimeImmutable
     {
-        return $this->objectUpdatedAt;
+        return $this->objectModifiedAt;
     }
 
     public function getObjectCreatedBy(): ?string
@@ -42,24 +49,14 @@ final class ObjectAuditEmbeddable
         return $this->objectCreatedBy;
     }
 
-    public function getObjectUpdatedBy(): ?string
+    public function getObjectModifiedBy(): ?string
     {
-        return $this->objectUpdatedBy;
+        return $this->objectModifiedBy;
     }
 
-    public function getModifiedAt(): ?\DateTimeImmutable
+    public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void
     {
-        return $this->getObjectUpdatedAt();
-    }
-
-    public function getModifiedBy(): ?string
-    {
-        return $this->getObjectUpdatedBy();
-    }
-
-    public function touch(?\DateTimeImmutable $updatedAt = null, ?string $updatedBy = null): void
-    {
-        $this->objectUpdatedAt = $updatedAt ?? new \DateTimeImmutable('now');
-        $this->objectUpdatedBy = $updatedBy;
+        $this->objectModifiedAt = $modifiedAt ?? new \DateTimeImmutable('now');
+        $this->objectModifiedBy = $modifiedBy;
     }
 }

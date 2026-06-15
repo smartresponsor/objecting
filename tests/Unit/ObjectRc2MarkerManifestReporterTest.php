@@ -48,7 +48,6 @@ final class ObjectRc2MarkerManifestReporterTest extends TestCase
                 ObjectFieldPackName::STATE,
                 ObjectFieldPackName::SOURCE,
                 ObjectFieldPackName::FINGERPRINT,
-                ObjectFieldPackName::SCOPE,
             ],
             forbiddenFieldPacks: ['object_id', 'object_name', 'object_description', 'object_priority', 'object_visibility'],
             deferredTokens: ['priority', 'visibility'],

@@ -41,7 +41,6 @@ final readonly class ObjectSiblingPilotMigrationHandoffReporter implements Objec
             ObjectFieldPackName::STATE,
             ObjectFieldPackName::SOURCE,
             ObjectFieldPackName::FINGERPRINT,
-            ObjectFieldPackName::SCOPE,
         ] as $requiredPack) {
             if (!in_array($requiredPack, $manifest->targetFieldPacks(), true)) {
                 $blockingReasons[] = sprintf('Sibling pilot migration handoff target field packs must include "%s".', $requiredPack);
@@ -49,7 +48,7 @@ final readonly class ObjectSiblingPilotMigrationHandoffReporter implements Objec
         }
         $checks[] = 'target_field_packs';
 
-        foreach (['nameEntity', 'title', 'description', 'shortDescription', 'label', 'displayName'] as $aliasToken) {
+        foreach (['name', 'title', 'description', 'shortDescription', 'label', 'displayName'] as $aliasToken) {
             if (!in_array($aliasToken, $manifest->titleAliasTokens(), true)) {
                 $blockingReasons[] = sprintf('Sibling pilot migration handoff title aliases must include "%s".', $aliasToken);
             }
