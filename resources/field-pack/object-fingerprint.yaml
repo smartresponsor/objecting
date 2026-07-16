@@ -9,3 +9,19 @@ columns:
   - object_checksum
   - object_algorithm
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: deterministic object integrity fingerprint metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: integrity_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - algorithm_is_explicit
+  - fingerprint_input_is_documented
+  - checksum_is_reproducible_for_equal_input

@@ -7,3 +7,19 @@ interface: App\Objecting\EntityInterface\ObjectConfigurableInterface
 columns:
   - object_config
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: versionable object configuration metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: configuration_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - configuration_contains_no_secrets
+  - configuration_schema_is_consumer_owned
+  - serialization_is_deterministic_when_fingerprinted

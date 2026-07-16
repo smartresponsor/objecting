@@ -8,3 +8,18 @@ columns:
   - object_locale
   - object_timezone
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: object locale and timezone interpretation metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: localization_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - locale_uses_canonical_identifier
+  - timezone_uses_canonical_identifier

@@ -8,3 +8,19 @@ columns:
   - object_allowed_roles
   - object_ip_whitelist
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: declarative object access restriction metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: authorization_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - restriction_fields_do_not_enforce_authorization
+  - role_interpretation_is_consumer_owned
+  - ip_normalization_is_consumer_owned

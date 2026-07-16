@@ -9,3 +9,19 @@ columns:
   - object_enabled
   - object_status
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: generic operational state metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: operational_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - status_vocabulary_is_consumer_owned
+  - active_and_enabled_have_distinct_meanings
+  - business_workflow_is_not_encoded_implicitly

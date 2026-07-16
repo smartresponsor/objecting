@@ -8,3 +8,19 @@ columns:
   - object_token
   - object_token_expires_at
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: expiring opaque object token metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: sensitive_token_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - token_is_not_a_password
+  - expired_token_is_not_valid
+  - secret_storage_policy_is_consumer_owned

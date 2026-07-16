@@ -8,3 +8,19 @@ columns:
   - object_workflow_state
   - object_workflow_context
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: object workflow state and context metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: workflow_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - workflow_state_machine_is_consumer_owned
+  - workflow_context_contains_no_secrets
+  - workflow_context_schema_is_versioned_by_consumer

@@ -7,3 +7,18 @@ interface: App\Objecting\EntityInterface\ObjectCodedInterface
 columns:
   - object_code
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: human-readable object code metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: identifier_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - code_is_not_a_primary_key
+  - uniqueness_policy_is_consumer_owned

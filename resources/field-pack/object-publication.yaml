@@ -8,3 +8,18 @@ columns:
   - object_published
   - object_published_at
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: publication visibility timestamp state
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: publication_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - unpublished_state_has_no_publication_timestamp
+  - published_state_has_publication_timestamp

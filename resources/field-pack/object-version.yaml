@@ -8,3 +8,19 @@ columns:
   - object_version
   - object_etag
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: object revision and representation identity metadata
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: integrity_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - version_never_decreases
+  - etag_represents_documented_content
+  - field_pack_does_not_replace_database_locking
