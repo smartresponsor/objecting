@@ -15,24 +15,14 @@ final class ObjectLockEmbeddable
     #[ORM\Column(name: 'object_locked_by', type: 'string', length: 190, nullable: true)]
     private ?string $objectLockedBy = null;
 
-    public function getObjectLockedAt(): ?\DateTimeImmutable
+    public function getLockedAt(): ?\DateTimeImmutable
     {
         return $this->objectLockedAt;
     }
 
-    public function getObjectLockedBy(): ?string
-    {
-        return $this->objectLockedBy;
-    }
-
-    public function getLockedAt(): ?\DateTimeImmutable
-    {
-        return $this->getObjectLockedAt();
-    }
-
     public function getLockedBy(): ?string
     {
-        return $this->getObjectLockedBy();
+        return $this->objectLockedBy;
     }
 
     public function lock(?string $objectLockedBy = null, ?\DateTimeImmutable $objectLockedAt = null): void
@@ -47,7 +37,7 @@ final class ObjectLockEmbeddable
         $this->objectLockedBy = null;
     }
 
-    public function isObjectLocked(): bool
+    public function isLocked(): bool
     {
         return null !== $this->objectLockedAt;
     }

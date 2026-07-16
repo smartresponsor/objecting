@@ -66,14 +66,14 @@ Do not move business fields into Objecting merely because their names resemble a
 
 | Legacy semantic or alias | Canonical Objecting pack | Canonical column | Canonical PHP read/write surface | Required action |
 |---|---|---|---|---|
-| `created`, `createdAt`, `created_at`, `dateCreated`, `creationDate` | `object_audit` | `object_created_at` | `getObjectCreatedAt()`; seed with `initializeObjectAudit($createdAt, $createdBy)` | Migrate data and remove the local field, mapping, getter, setter, and alias. |
-| `createdBy`, `created_by`, `creator`, `creatorId`, `createdUserId` when it is lifecycle attribution | `object_audit` | `object_created_by` | `getObjectCreatedBy()` | Store the canonical Vendor/security shared ID as a string. Do not create `tenant_id`. |
-| `updated`, `updatedAt`, `updated_at`, `lastUpdatedAt`, `modified`, `modifiedAt`, `modified_at` | `object_audit` | `object_modified_at` | `getObjectModifiedAt()`; write with `touchModified($modifiedAt, $modifiedBy)` | Canonical vocabulary is **modified**, never updated. Remove updated/modified local aliases after migration. |
-| `updatedBy`, `updated_by`, `lastUpdatedBy`, `modifiedBy`, `modified_by` | `object_audit` | `object_modified_by` | `getObjectModifiedBy()`; write with `touchModified()` | Backfill the canonical column and remove local actor fields and aliases. |
-| `deleted`, `isDeleted`, `deletedFlag`, `softDeleted` | `object_soft_delete` | `object_deleted` | `isObjectDeleted()` | Replace local boolean mapping and soft-delete trait. |
-| `deletedAt`, `deleted_at`, `removedAt`, `archivedAt` only when it means soft deletion | `object_soft_delete` | `object_deleted_at` | `getObjectDeletedAt()`; `deleteObject($deletedBy, $deletedAt)` | Do not map business archival to soft deletion without proof. |
-| `deletedBy`, `deleted_by`, `removedBy` only when it means soft deletion attribution | `object_soft_delete` | `object_deleted_by` | `getObjectDeletedBy()`; `deleteObject()` | Store the canonical shared ID as a string. |
-| `restore`, `undelete`, `unremove` for soft deletion | `object_soft_delete` | all soft-delete columns | `restoreObject()` | Clear deleted flag, timestamp, and actor through Objecting. |
+| `created`, `createdAt`, `created_at`, `dateCreated`, `creationDate` | `object_audit` | `object_created_at` | `getCreatedAt()`; seed with `initializeObjectAudit($createdAt, $createdBy)` | Migrate data and remove the local field, mapping, getter, setter, and alias. |
+| `createdBy`, `created_by`, `creator`, `creatorId`, `createdUserId` when it is lifecycle attribution | `object_audit` | `object_created_by` | `getCreatedBy()` | Store the canonical Vendor/security shared ID as a string. Do not create `tenant_id`. |
+| `updated`, `updatedAt`, `updated_at`, `lastUpdatedAt`, `modified`, `modifiedAt`, `modified_at` | `object_audit` | `object_modified_at` | `getModifiedAt()`; write with `touchModified($modifiedAt, $modifiedBy)` | Canonical vocabulary is **modified**, never updated. Remove updated/modified local aliases after migration. |
+| `updatedBy`, `updated_by`, `lastUpdatedBy`, `modifiedBy`, `modified_by` | `object_audit` | `object_modified_by` | `getModifiedBy()`; write with `touchModified()` | Backfill the canonical column and remove local actor fields and aliases. |
+| `deleted`, `isDeleted`, `deletedFlag`, `softDeleted` | `object_soft_delete` | `object_deleted` | `isDeleted()` | Replace local boolean mapping and soft-delete trait. |
+| `deletedAt`, `deleted_at`, `removedAt`, `archivedAt` only when it means soft deletion | `object_soft_delete` | `object_deleted_at` | `getDeletedAt()`; `delete($deletedBy, $deletedAt)` | Do not map business archival to soft deletion without proof. |
+| `deletedBy`, `deleted_by`, `removedBy` only when it means soft deletion attribution | `object_soft_delete` | `object_deleted_by` | `getDeletedBy()` | Store the canonical shared ID as a string. |
+| `restore`, `undelete`, `unremove` for soft deletion | `object_soft_delete` | all soft-delete columns | `restore()` | Clear deleted flag, timestamp, and actor through Objecting. |
 
 ### Canonical consumer composition
 
@@ -112,20 +112,20 @@ Lazy initialization provided by Objecting is valid, but it does not invent a cre
 
 ### Consumer API rule
 
-Use only the canonical Object-prefixed methods in migrated consumer code:
+Use only the canonical lifecycle methods in migrated consumer code:
 
-- `getObjectCreatedAt()`
-- `getObjectCreatedBy()`
-- `getObjectModifiedAt()`
-- `getObjectModifiedBy()`
+- `getCreatedAt()`
+- `getCreatedBy()`
+- `getModifiedAt()`
+- `getModifiedBy()`
 - `touchModified()`
-- `isObjectDeleted()`
-- `getObjectDeletedAt()`
-- `getObjectDeletedBy()`
-- `deleteObject()`
-- `restoreObject()`
+- `isDeleted()`
+- `getDeletedAt()`
+- `getDeletedBy()`
+- `delete()`
+- `restore()`
 
-Do not introduce new dependencies on transitional aliases such as `getDeletedAt()`, `getDeletedBy()`, `delete()`, or `restore()` even if Objecting temporarily exposes them.
+Do not introduce dependencies on removed Object-prefixed lifecycle aliases such as `getObjectDeletedAt()`, `getObjectDeletedBy()`, `deleteObject()`, or `restoreObject()`.
 
 ## Tenant cleanup decision matrix
 
@@ -248,8 +248,8 @@ Do not combine destructive column drops with an unverified backfill. Do not sile
 - Use the same identity consistently inside the Doctrine transaction.
 - On creation, seed `object_created_by`.
 - On update, call `touchModified($at, $vendorId)`.
-- On soft deletion, call `deleteObject($vendorId, $at)`.
-- On restore, call `restoreObject()`; do not invent a tenant field.
+- On soft deletion, call `delete($vendorId, $at)`.
+- On restore, call `restore()`; do not invent a tenant field.
 - Async messages must carry the canonical Vendor ID when the worker needs lifecycle attribution or business Vendor context.
 - Do not carry both `vendorId` and `tenantId` when they represent the same identity.
 

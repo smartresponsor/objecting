@@ -26,24 +26,24 @@ trait ObjectAuditEmbeddableTrait
         return $this->objectAudit;
     }
 
-    public function getObjectCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): \DateTimeImmutable
     {
-        return $this->objectAuditEmbeddable()->getObjectCreatedAt();
+        return $this->objectAuditEmbeddable()->getCreatedAt();
     }
 
-    public function getObjectModifiedAt(): ?\DateTimeImmutable
+    public function getModifiedAt(): ?\DateTimeImmutable
     {
-        return $this->objectAuditEmbeddable()->getObjectModifiedAt();
+        return $this->objectAuditEmbeddable()->getModifiedAt();
     }
 
-    public function getObjectCreatedBy(): ?string
+    public function getCreatedBy(): ?string
     {
-        return $this->objectAuditEmbeddable()->getObjectCreatedBy();
+        return $this->objectAuditEmbeddable()->getCreatedBy();
     }
 
-    public function getObjectModifiedBy(): ?string
+    public function getModifiedBy(): ?string
     {
-        return $this->objectAuditEmbeddable()->getObjectModifiedBy();
+        return $this->objectAuditEmbeddable()->getModifiedBy();
     }
 
     public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void

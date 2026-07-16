@@ -182,7 +182,18 @@ foreach ($forbiddenPaths as $forbiddenPath) {
         $errors[] = 'Forbidden legacy path still exists: ' . $forbiddenPath;
     }
 }
-$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS));
+$iterator = new RecursiveIteratorIterator(
+    new RecursiveCallbackFilterIterator(
+        new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS),
+        static function (SplFileInfo $file): bool {
+            if (!$file->isDir()) {
+                return true;
+            }
+
+            return !in_array($file->getFilename(), ['.git', '.codebase-memory', 'vendor', 'var'], true);
+        },
+    ),
+);
 foreach ($iterator as $file) {
     if (!$file instanceof SplFileInfo || !$file->isFile()) { continue; }
     $path = str_replace('\\', '/', substr($file->getPathname(), strlen($root) + 1));

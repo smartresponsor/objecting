@@ -34,22 +34,22 @@ final class ObjectAuditEmbeddable
         $this->objectCreatedBy = $createdBy;
     }
 
-    public function getObjectCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->objectCreatedAt;
     }
 
-    public function getObjectModifiedAt(): ?\DateTimeImmutable
+    public function getModifiedAt(): ?\DateTimeImmutable
     {
         return $this->objectModifiedAt;
     }
 
-    public function getObjectCreatedBy(): ?string
+    public function getCreatedBy(): ?string
     {
         return $this->objectCreatedBy;
     }
 
-    public function getObjectModifiedBy(): ?string
+    public function getModifiedBy(): ?string
     {
         return $this->objectModifiedBy;
     }

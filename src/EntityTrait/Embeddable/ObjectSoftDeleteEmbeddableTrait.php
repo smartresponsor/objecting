@@ -26,19 +26,9 @@ trait ObjectSoftDeleteEmbeddableTrait
         return $this->objectSoftDelete;
     }
 
-    public function isObjectDeleted(): bool
+    public function isDeleted(): bool
     {
-        return $this->objectSoftDeleteEmbeddable()->isObjectDeleted();
-    }
-
-    public function getObjectDeletedAt(): ?\DateTimeImmutable
-    {
-        return $this->objectSoftDeleteEmbeddable()->getObjectDeletedAt();
-    }
-
-    public function getObjectDeletedBy(): ?string
-    {
-        return $this->objectSoftDeleteEmbeddable()->getObjectDeletedBy();
+        return $this->objectSoftDeleteEmbeddable()->isDeleted();
     }
 
     public function getDeletedAt(): ?\DateTimeImmutable
@@ -51,23 +41,13 @@ trait ObjectSoftDeleteEmbeddableTrait
         return $this->objectSoftDeleteEmbeddable()->getDeletedBy();
     }
 
-    public function deleteObject(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
+    public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
     {
         $this->objectSoftDeleteEmbeddable()->delete($deletedBy, $deletedAt);
     }
 
-    public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
-    {
-        $this->deleteObject($deletedBy, $deletedAt);
-    }
-
-    public function restoreObject(): void
-    {
-        $this->objectSoftDeleteEmbeddable()->restore();
-    }
-
     public function restore(): void
     {
-        $this->restoreObject();
+        $this->objectSoftDeleteEmbeddable()->restore();
     }
 }

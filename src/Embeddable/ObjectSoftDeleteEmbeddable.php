@@ -18,29 +18,19 @@ final class ObjectSoftDeleteEmbeddable
     #[ORM\Column(name: 'object_deleted_by', type: 'string', length: 190, nullable: true)]
     private ?string $objectDeletedBy = null;
 
-    public function isObjectDeleted(): bool
+    public function isDeleted(): bool
     {
         return $this->objectDeleted;
     }
 
-    public function getObjectDeletedAt(): ?\DateTimeImmutable
+    public function getDeletedAt(): ?\DateTimeImmutable
     {
         return $this->objectDeletedAt;
     }
 
-    public function getObjectDeletedBy(): ?string
-    {
-        return $this->objectDeletedBy;
-    }
-
-    public function getDeletedAt(): ?\DateTimeImmutable
-    {
-        return $this->getObjectDeletedAt();
-    }
-
     public function getDeletedBy(): ?string
     {
-        return $this->getObjectDeletedBy();
+        return $this->objectDeletedBy;
     }
 
     public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void

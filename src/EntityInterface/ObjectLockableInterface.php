@@ -6,13 +6,13 @@ namespace App\Objecting\EntityInterface;
 
 interface ObjectLockableInterface
 {
-    public function isObjectLocked(): bool;
+    public function isLocked(): bool;
 
-    public function getObjectLockedAt(): ?\DateTimeImmutable;
+    public function getLockedAt(): ?\DateTimeImmutable;
 
-    public function getObjectLockedBy(): ?string;
+    public function getLockedBy(): ?string;
 
-    public function lockObject(?string $objectLockedBy = null, ?\DateTimeImmutable $objectLockedAt = null): void;
+    public function lock(?string $lockedBy = null, ?\DateTimeImmutable $lockedAt = null): void;
 
-    public function unlockObject(): void;
+    public function unlock(): void;
 }
