@@ -58,11 +58,11 @@ foreach ([
 
 $forbiddenPatterns = [
     '/#\[Route\b/' => 'route attribute',
-    '/ApiPlatform\\Metadata/' => 'API Platform metadata ownership',
-    '/Doctrine\\Migrations/' => 'Doctrine migration ownership',
-    '/Nelmio\\ApiDocBundle/' => 'Nelmio API ownership',
-    '/OpenApi\\Attributes/' => 'OpenAPI attribute ownership',
-    '/App\\Cruding\\.*Controller/' => 'Cruding controller ownership',
+    '/ApiPlatform\\\\Metadata/' => 'API Platform metadata ownership',
+    '/Doctrine\\\\Migrations/' => 'Doctrine migration ownership',
+    '/Nelmio\\\\ApiDocBundle/' => 'Nelmio API ownership',
+    '/OpenApi\\\\Attributes/' => 'OpenAPI attribute ownership',
+    '/App\\\\Cruding\\\\.*Controller/' => 'Cruding controller ownership',
     '/\b(?:prePersist|preUpdate|preRemove|postLoad)\b/' => 'hidden Doctrine lifecycle listener behavior',
 ];
 
