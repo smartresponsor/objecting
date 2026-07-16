@@ -21,6 +21,7 @@ ownership:
   migration: Consumer
   api_projection: Exposing
 invariants:
+  - uuid_uses_rfc9562_version_7
   - uuid_is_stable_after_assignment
   - slug_is_not_a_primary_key
   - consumer_primary_key_remains_authoritative
