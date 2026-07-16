@@ -56,7 +56,12 @@ final class ObjectAuditEmbeddable
 
     public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void
     {
-        $this->objectModifiedAt = $modifiedAt ?? new \DateTimeImmutable('now');
+        $effectiveModifiedAt = $modifiedAt ?? new \DateTimeImmutable('now');
+        if ($effectiveModifiedAt < $this->objectCreatedAt) {
+            throw new \InvalidArgumentException('Object modification timestamp cannot precede creation timestamp.');
+        }
+
+        $this->objectModifiedAt = $effectiveModifiedAt;
         $this->objectModifiedBy = $modifiedBy;
     }
 }
