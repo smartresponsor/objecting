@@ -31,12 +31,12 @@ trait ObjectIdentityEmbeddableTrait
         return $this->objectIdentityEmbeddable()->getObjectUuid();
     }
 
-    public function getObjectSlug(): ?string
+    public function getObjectSlug(): string
     {
         return $this->objectIdentityEmbeddable()->getObjectSlug();
     }
 
-    public function setObjectSlug(?string $objectSlug): void
+    public function setObjectSlug(string $objectSlug): void
     {
         $this->objectIdentityEmbeddable()->setObjectSlug($objectSlug);
     }

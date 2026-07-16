@@ -11,13 +11,15 @@ use Symfony\Component\Uid\UuidV7;
 
 final class ObjectIdentityUuidTest extends TestCase
 {
-    public function testGeneratedObjectUuidUsesVersionSeven(): void
+    public function testGeneratedObjectUuidUsesVersionSevenAndDefaultsSlugToBase32Token(): void
     {
         $identity = new ObjectIdentityEmbeddable();
-        $uuid = Uuid::fromString($identity->getObjectUuid());
+        $token = $identity->getObjectUuid();
+        $uuid = Uuid::fromString($token);
 
         self::assertInstanceOf(UuidV7::class, $uuid);
-        self::assertSame(36, strlen($identity->getObjectUuid()));
+        self::assertSame(26, strlen($token));
+        self::assertSame($token, $identity->getObjectSlug());
     }
 
     public function testObjectUuidAndSlugAreIndependentIdentifiers(): void
@@ -29,11 +31,12 @@ final class ObjectIdentityUuidTest extends TestCase
         self::assertNotSame($identity->getObjectUuid(), $identity->getObjectSlug());
     }
 
-    public function testExplicitUuidIsPreservedForHydrationAndImports(): void
+    public function testExplicitUuidIsAcceptedAndExposedAsCanonicalBase32(): void
     {
-        $uuid = Uuid::v7()->toRfc4122();
-        $identity = new ObjectIdentityEmbeddable($uuid, null);
+        $uuid = Uuid::v7();
+        $identity = new ObjectIdentityEmbeddable($uuid->toRfc4122(), null);
 
-        self::assertSame($uuid, $identity->getObjectUuid());
+        self::assertSame($uuid->toBase32(), $identity->getObjectUuid());
+        self::assertSame($identity->getObjectUuid(), $identity->getObjectSlug());
     }
 }

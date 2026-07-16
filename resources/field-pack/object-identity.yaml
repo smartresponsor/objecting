@@ -8,13 +8,13 @@ columns:
   - object_uuid
   - object_slug
 status: canonical
-semantic_version: 1
+semantic_version: 2
 stability: stable
 purpose: stable cross-system object identity aliases
 universal: true
 business_neutral: true
-schema_version: 1
-public_api_version: 1
+schema_version: 2
+public_api_version: 2
 security_classification: identifier_metadata
 ownership:
   mapping: Objecting
@@ -22,6 +22,9 @@ ownership:
   api_projection: Exposing
 invariants:
   - uuid_uses_rfc9562_version_7
+  - uuid_is_stored_as_fixed_binary_16
+  - uuid_is_exposed_as_base32
+  - slug_defaults_to_uuid_base32
   - uuid_is_stable_after_assignment
   - slug_is_not_a_primary_key
   - consumer_primary_key_remains_authoritative

@@ -56,6 +56,11 @@ final class ObjectLifecycleMetadataTest extends TestCase
         self::assertSame(190, $metadata->getFieldMapping('objectAudit.objectCreatedBy')['length']);
         self::assertSame('boolean', $metadata->getFieldMapping('objectSoftDelete.objectDeleted')['type']);
         self::assertSame('integer', $metadata->getFieldMapping('objectVersion.objectVersion')['type']);
+        self::assertSame('binary', $metadata->getFieldMapping('objectIdentity.objectUuid')['type']);
+        self::assertSame(16, $metadata->getFieldMapping('objectIdentity.objectUuid')['length']);
+        self::assertFalse($metadata->getFieldMapping('objectIdentity.objectUuid')['nullable'] ?? false);
+        self::assertSame(190, $metadata->getFieldMapping('objectIdentity.objectSlug')['length']);
+        self::assertFalse($metadata->getFieldMapping('objectIdentity.objectSlug')['nullable'] ?? false);
     }
 
     public function testEntityRoundTripsThroughDoctrineWithoutMigrationFirstSchemaDesign(): void
@@ -85,6 +90,7 @@ final class ObjectLifecycleMetadataTest extends TestCase
         $reloaded = $entityManager->find(ObjectLifecycleTestEntity::class, $id);
 
         self::assertInstanceOf(ObjectLifecycleTestEntity::class, $reloaded);
+        self::assertSame(26, strlen($reloaded->getObjectUuid()));
         self::assertSame('Lifecycle title', $reloaded->getFirstTitle());
         self::assertSame('lifecycle-title', $reloaded->getObjectSlug());
         self::assertEquals($createdAt, $reloaded->getCreatedAt());
