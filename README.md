@@ -53,6 +53,8 @@ The audit and soft-delete packs use the lifecycle vocabulary `created`, `modifie
 
 See `docs/architecture/objecting-vendor-identity-canon.md`.
 
+The full product ownership boundary is defined in `docs/architecture/objecting-responsibility-boundary.md` and enforced by `composer test:responsibility-boundary`.
+
 ## Runtime ownership
 
 Backend components remain responsible for their own:
