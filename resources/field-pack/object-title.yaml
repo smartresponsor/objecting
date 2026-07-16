@@ -9,3 +9,18 @@ columns:
   - object_middle_title
   - object_last_title
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: universal three-part object title surface
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 1
+security_classification: public_metadata
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - business_aliases_do_not_change_canonical_storage
+  - blank_values_normalize_to_null

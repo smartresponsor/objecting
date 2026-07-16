@@ -9,3 +9,19 @@ columns:
   - object_deleted_at
   - object_deleted_by
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: reversible object lifecycle deletion state
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 2
+security_classification: lifecycle_identity
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - active_state_has_no_deletion_metadata
+  - deleted_state_has_deletion_timestamp
+  - restore_clears_complete_deletion_state

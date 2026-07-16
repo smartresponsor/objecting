@@ -8,3 +8,20 @@ columns:
   - object_locked_at
   - object_locked_by
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: application-level object lock attribution
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 2
+security_classification: lifecycle_identity
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - unlocked_state_has_no_lock_metadata
+  - lock_timestamp_and_actor_form_one_state
+  - unlock_clears_complete_lock_state
+  - field_pack_is_not_a_distributed_lock

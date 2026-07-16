@@ -37,12 +37,14 @@
   "scripts": {
     "test:canon": "@php tools/test/objecting_canon_check.php",
     "test:responsibility-boundary": "@php tools/test/objecting_responsibility_boundary_check.php",
+    "test:semantic-manifest": "@php tools/test/objecting_semantic_manifest_check.php",
     "test:lifecycle-identity-canon": "@php tools/test/objecting_lifecycle_identity_canon_check.php",
     "test:package-surface": "@php tools/test/objecting_package_surface_check.php",
     "test:migration-readiness": "@php tools/test/objecting_backend_migration_readiness_check.php",
     "test:quality": [
       "@test:canon",
       "@test:responsibility-boundary",
+      "@test:semantic-manifest",
       "@test:lifecycle-identity-canon",
       "@test:internal-types",
       "@test:layer-suffix",

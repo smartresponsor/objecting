@@ -10,3 +10,20 @@ columns:
   - object_created_by
   - object_modified_by
 status: canonical
+semantic_version: 1
+stability: stable
+purpose: lifecycle attribution timestamps and actors
+universal: true
+business_neutral: true
+schema_version: 1
+public_api_version: 2
+security_classification: lifecycle_identity
+ownership:
+  mapping: Objecting
+  migration: Consumer
+  api_projection: Exposing
+invariants:
+  - creation_identity_is_immutable
+  - creation_timestamp_is_immutable
+  - modification_timestamp_is_not_before_creation
+  - modification_timestamp_and_actor_change_together
