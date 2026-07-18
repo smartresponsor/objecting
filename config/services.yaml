@@ -21,6 +21,9 @@ services:
   App\Objecting\ReporterInterface\Doctrine\ObjectDoctrineMappingContractReporterInterface:
     alias: App\Objecting\Reporter\Doctrine\ObjectDoctrineMappingContractReporter
 
+  App\Objecting\ReporterInterface\Diagnostic\ObjectDiagnosticReporterInterface:
+    alias: App\Objecting\Reporter\Diagnostic\ObjectDiagnosticReporter
+
   App\Objecting\ReporterInterface\Exposing\ObjectExposingBridgeContractReporterInterface:
     alias: App\Objecting\Reporter\Exposing\ObjectExposingBridgeContractReporter
 

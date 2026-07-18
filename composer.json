@@ -39,6 +39,7 @@
     "test:responsibility-boundary": "@php tools/test/objecting_responsibility_boundary_check.php",
     "test:semantic-manifest": "@php tools/test/objecting_semantic_manifest_check.php",
     "test:lifecycle-identity-canon": "@php tools/test/objecting_lifecycle_identity_canon_check.php",
+    "test:production-diagnostics": "@php tools/test/objecting_production_diagnostic_check.php",
     "test:package-surface": "@php tools/test/objecting_package_surface_check.php",
     "test:migration-readiness": "@php tools/test/objecting_backend_migration_readiness_check.php",
     "test:quality": [
@@ -46,6 +47,7 @@
       "@test:responsibility-boundary",
       "@test:semantic-manifest",
       "@test:lifecycle-identity-canon",
+      "@test:production-diagnostics",
       "@test:internal-types",
       "@test:layer-suffix",
       "@test:package-surface",

@@ -104,6 +104,12 @@ composer test:quality
 
 The package-surface check ensures that `ObjectExtension` owns runtime package parameters, `config/services.yaml` does not reset them to `null`, and mirror service-interface aliases stay registered for consumer components.
 
+## Production diagnostics
+
+Objecting exposes stable diagnostic event identifiers and JSON-serializable reports for manifest, profile, field-pack, lifecycle, schema, title-alias, duplicate-consumer-field, and deprecated-API failures. Embeddables remain logger-free, and Objecting does not own logging sinks or metrics exporters.
+
+Run `composer test:production-diagnostics` or the complete `composer test:quality` gate. See `docs/integration/objecting-production-diagnostics.md`.
+
 
 
 ## Backend migration readiness
