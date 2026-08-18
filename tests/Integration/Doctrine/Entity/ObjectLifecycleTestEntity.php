@@ -28,7 +28,8 @@ final class ObjectLifecycleTestEntity
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    /** @phpstan-ignore-next-line */
+    private int $id;
 
     public function __construct(
         ?string $firstTitle = null,
@@ -47,6 +48,6 @@ final class ObjectLifecycleTestEntity
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 }

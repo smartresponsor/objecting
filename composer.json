@@ -13,11 +13,11 @@
   "require": {
     "doctrine/orm": "^3.3",
     "php": "^8.4",
-    "symfony/config": "^8.1",
-    "symfony/dependency-injection": "^8.1",
-    "symfony/http-kernel": "^8.1",
-    "symfony/uid": "^8.1",
-    "symfony/yaml": "^8.1"
+    "symfony/config": "^8.0",
+    "symfony/dependency-injection": "^8.0",
+    "symfony/http-kernel": "^8.0",
+    "symfony/uid": "^8.0",
+    "symfony/yaml": "^8.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": ">=3.95 <4.0",
@@ -53,6 +53,7 @@
       "@test:package-surface",
       "@test:platform-constraints",
       "@test:systemic-field-packs",
+      "@test:entity-kind-policy",
       "@test:title-alias-hardening",
       "@test:embeddable-initialization",
       "@test:doctrine-mapping",
@@ -89,6 +90,8 @@
     "test:rc1": "@php tools/test/objecting_rc1_check.php",
     "test:platform-constraints": "@php tools/test/objecting_platform_constraint_check.php",
     "test:systemic-field-packs": "@php tools/test/objecting_systemic_field_pack_check.php",
+    "test:entity-kind-policy": "@php tools/test/objecting_entity_kind_policy_check.php",
+    "audit:entity-kinds": "@php tools/audit/objecting_workspace_entity_kind_audit.php",
     "test:title-alias-hardening": "@php tools/test/objecting_title_alias_hardening_check.php",
     "test:backend-clone-cleanup": "@php tools/test/objecting_backend_clone_cleanup_contract_check.php",
     "test:backend-migration-command": "@php tools/test/objecting_backend_migration_command_packet_check.php",

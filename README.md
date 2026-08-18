@@ -33,7 +33,7 @@ resources/field-pack/object-*.yaml
 
 ## Universal title canon
 
-All business objects may expose the canonical three-part title surface:
+Every entity classified as `ObjectEntityInterface` must expose the canonical three-part title surface:
 
 ```text
 firstTitle

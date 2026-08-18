@@ -11,7 +11,7 @@ if (!is_string($manifest)) {
 }
 
 preg_match_all('/^\s+-\s+(object_[a-z0-9_]+)$/m', $manifest, $matches);
-$fieldPacks = array_values(array_unique($matches[1] ?? []));
+$fieldPacks = array_values(array_unique($matches[1]));
 if ([] === $fieldPacks) {
     fwrite(STDERR, "Objecting field-pack manifest declares no packs.\n");
     exit(1);

@@ -18,6 +18,13 @@ services:
   App\Objecting\Normalizer\:
     resource: '../src/Normalizer/'
 
+  App\Objecting\Inspector\:
+    resource: '../src/Inspector/'
+
+  App\Objecting\Registry\Entity\ObjectEntityKindRegistry:
+    arguments:
+      $manifestPath: '%objecting.entity_kind_manifest%'
+
   App\Objecting\ReporterInterface\Doctrine\ObjectDoctrineMappingContractReporterInterface:
     alias: App\Objecting\Reporter\Doctrine\ObjectDoctrineMappingContractReporter
 
@@ -74,6 +81,12 @@ services:
 
   App\Objecting\ReporterInterface\Schema\ObjectSchemaMirrorContractReporterInterface:
     alias: App\Objecting\Reporter\Schema\ObjectSchemaMirrorContractReporter
+
+  App\Objecting\RegistryInterface\Entity\ObjectEntityKindRegistryInterface:
+    alias: App\Objecting\Registry\Entity\ObjectEntityKindRegistry
+
+  App\Objecting\InspectorInterface\Entity\ObjectEntityKindInspectorInterface:
+    alias: App\Objecting\Inspector\Entity\ObjectEntityKindInspector
 
   App\Objecting\RegistryInterface\FieldPack\ObjectFieldPackProfileRegistryInterface:
     alias: App\Objecting\Registry\FieldPack\ObjectFieldPackProfileRegistry
