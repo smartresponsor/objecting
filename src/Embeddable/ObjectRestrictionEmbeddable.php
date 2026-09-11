@@ -10,11 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 final class ObjectRestrictionEmbeddable
 {
     /** @var list<string> */
-    #[ORM\Column(name: 'object_allowed_roles', type: 'json')]
+    #[ORM\Column(name: 'allowed_roles', type: 'json')]
     private array $objectAllowedRoles = [];
 
     /** @var list<string> */
-    #[ORM\Column(name: 'object_ip_whitelist', type: 'json')]
+    #[ORM\Column(name: 'ip_whitelist', type: 'json')]
     private array $objectIpWhitelist = [];
 
     /** @return list<string> */

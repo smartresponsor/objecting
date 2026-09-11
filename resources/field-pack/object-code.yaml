@@ -5,7 +5,7 @@ embeddable: App\Objecting\Embeddable\ObjectCodeEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectCodeEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectCodedInterface
 columns:
-  - object_code
+  - code
 status: canonical
 semantic_version: 1
 stability: stable

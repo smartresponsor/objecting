@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectTokenEmbeddable
 {
-    #[ORM\Column(name: 'object_token', type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(name: 'token', type: 'string', length: 255, nullable: true)]
     private ?string $objectToken = null;
 
-    #[ORM\Column(name: 'object_token_expires_at', type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(name: 'token_expires_at', type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $objectTokenExpiresAt = null;
 
     public function __construct(?string $objectToken = null, ?\DateTimeImmutable $objectTokenExpiresAt = null)

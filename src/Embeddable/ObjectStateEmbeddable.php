@@ -9,13 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectStateEmbeddable
 {
-    #[ORM\Column(name: 'object_active', type: 'boolean', options: ['default' => true])]
+    #[ORM\Column(name: 'active', type: 'boolean', options: ['default' => true])]
     private bool $objectActive = true;
 
-    #[ORM\Column(name: 'object_enabled', type: 'boolean', options: ['default' => true])]
+    #[ORM\Column(name: 'enabled', type: 'boolean', options: ['default' => true])]
     private bool $objectEnabled = true;
 
-    #[ORM\Column(name: 'object_status', type: 'string', length: 64, nullable: true)]
+    #[ORM\Column(name: 'status', type: 'string', length: 64, nullable: true)]
     private ?string $objectStatus = null;
 
     public function __construct(bool $objectActive = true, bool $objectEnabled = true, ?string $objectStatus = null)

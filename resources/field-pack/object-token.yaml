@@ -5,8 +5,8 @@ embeddable: App\Objecting\Embeddable\ObjectTokenEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectTokenEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectTokenizedInterface
 columns:
-  - object_token
-  - object_token_expires_at
+  - token
+  - token_expires_at
 status: canonical
 semantic_version: 1
 stability: stable

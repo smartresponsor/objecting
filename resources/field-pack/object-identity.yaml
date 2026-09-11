@@ -5,8 +5,8 @@ embeddable: App\Objecting\Embeddable\ObjectIdentityEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectIdentityEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectIdentifiedInterface
 columns:
-  - object_uuid
-  - object_slug
+  - uuid
+  - slug
 status: canonical
 semantic_version: 2
 stability: stable

@@ -5,9 +5,9 @@ embeddable: App\Objecting\Embeddable\ObjectFingerprintEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectFingerprintEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectFingerprintedInterface
 columns:
-  - object_hash
-  - object_checksum
-  - object_algorithm
+  - hash
+  - checksum
+  - algorithm
 status: canonical
 semantic_version: 1
 stability: stable

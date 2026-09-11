@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectPublicationEmbeddable
 {
-    #[ORM\Column(name: 'object_published', type: 'boolean')]
+    #[ORM\Column(name: 'published', type: 'boolean')]
     private bool $objectPublished = false;
 
-    #[ORM\Column(name: 'object_published_at', type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(name: 'published_at', type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $objectPublishedAt = null;
 
     public function isObjectPublished(): bool

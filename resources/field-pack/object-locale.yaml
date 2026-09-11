@@ -5,8 +5,8 @@ embeddable: App\Objecting\Embeddable\ObjectLocaleEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectLocaleEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectLocaleAwareInterface
 columns:
-  - object_locale
-  - object_timezone
+  - locale
+  - timezone
 status: canonical
 semantic_version: 1
 stability: stable

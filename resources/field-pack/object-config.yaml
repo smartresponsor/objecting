@@ -5,7 +5,7 @@ embeddable: App\Objecting\Embeddable\ObjectConfigEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectConfigEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectConfigurableInterface
 columns:
-  - object_config
+  - config
 status: canonical
 semantic_version: 1
 stability: stable

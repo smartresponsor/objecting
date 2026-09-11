@@ -5,9 +5,9 @@ embeddable: App\Objecting\Embeddable\ObjectTitleEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectTitleEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectTitledInterface
 columns:
-  - object_first_title
-  - object_middle_title
-  - object_last_title
+  - first_title
+  - middle_title
+  - last_title
 status: canonical
 semantic_version: 1
 stability: stable

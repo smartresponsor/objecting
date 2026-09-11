@@ -5,10 +5,10 @@ embeddable: App\Objecting\Embeddable\ObjectSourceEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectSourceEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectSourcedInterface
 columns:
-  - object_source
-  - object_provider
-  - object_external_id
-  - object_source_type
+  - source
+  - provider
+  - external_id
+  - source_type
 status: canonical
 semantic_version: 1
 stability: stable

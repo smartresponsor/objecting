@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectVersionEmbeddable
 {
-    #[ORM\Column(name: 'object_version', type: 'integer')]
+    #[ORM\Column(name: 'version', type: 'integer')]
     private int $objectVersion = 1;
 
-    #[ORM\Column(name: 'object_etag', type: 'string', length: 128, nullable: true)]
+    #[ORM\Column(name: 'etag', type: 'string', length: 128, nullable: true)]
     private ?string $objectEtag = null;
 
     public function getObjectVersion(): int

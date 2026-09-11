@@ -5,10 +5,10 @@ embeddable: App\Objecting\Embeddable\ObjectAuditEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectAuditEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectAuditedInterface
 columns:
-  - object_created_at
-  - object_modified_at
-  - object_created_by
-  - object_modified_by
+  - created_at
+  - modified_at
+  - created_by
+  - modified_by
 status: canonical
 semantic_version: 1
 stability: stable

@@ -5,9 +5,9 @@ embeddable: App\Objecting\Embeddable\ObjectStateEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectStateEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectStatefulInterface
 columns:
-  - object_active
-  - object_enabled
-  - object_status
+  - active
+  - enabled
+  - status
 status: canonical
 semantic_version: 1
 stability: stable

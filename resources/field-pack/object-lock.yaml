@@ -5,8 +5,8 @@ embeddable: App\Objecting\Embeddable\ObjectLockEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectLockEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectLockableInterface
 columns:
-  - object_locked_at
-  - object_locked_by
+  - locked_at
+  - locked_by
 status: canonical
 semantic_version: 1
 stability: stable

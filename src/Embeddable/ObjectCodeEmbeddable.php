@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectCodeEmbeddable
 {
-    #[ORM\Column(name: 'object_code', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'code', type: 'string', length: 190, nullable: true)]
     private ?string $objectCode = null;
 
     public function __construct(?string $objectCode = null)

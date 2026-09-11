@@ -5,9 +5,9 @@ embeddable: App\Objecting\Embeddable\ObjectSoftDeleteEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectSoftDeleteEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectSoftDeletableInterface
 columns:
-  - object_deleted
-  - object_deleted_at
-  - object_deleted_by
+  - deleted
+  - deleted_at
+  - deleted_by
 status: canonical
 semantic_version: 1
 stability: stable

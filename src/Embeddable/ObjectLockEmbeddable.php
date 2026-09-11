@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectLockEmbeddable
 {
-    #[ORM\Column(name: 'object_locked_at', type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(name: 'locked_at', type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $objectLockedAt = null;
 
-    #[ORM\Column(name: 'object_locked_by', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'locked_by', type: 'string', length: 190, nullable: true)]
     private ?string $objectLockedBy = null;
 
     public function getLockedAt(): ?\DateTimeImmutable

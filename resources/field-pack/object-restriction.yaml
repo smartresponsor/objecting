@@ -5,8 +5,8 @@ embeddable: App\Objecting\Embeddable\ObjectRestrictionEmbeddable
 trait: App\Objecting\EntityTrait\Embeddable\ObjectRestrictionEmbeddableTrait
 interface: App\Objecting\EntityInterface\ObjectRestrictableInterface
 columns:
-  - object_allowed_roles
-  - object_ip_whitelist
+  - allowed_roles
+  - ip_whitelist
 status: canonical
 semantic_version: 1
 stability: stable
