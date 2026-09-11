@@ -37,7 +37,7 @@ The following tokens are treated as `object_title` aliases:
 
 ## Identity token
 
-Plain `id` is the canonical shared Doctrine primary key supplied by `object_identity` through `ObjectIdentityEmbeddableTrait`. Objecting does not introduce an `object_id` physical column or separate pack because the canonical storage name is simply `id`.
+Plain `id` remains the consumer-owned Doctrine primary key. `object_identity` supplies reusable UUID/slug identity semantics through `ObjectIdentityEmbeddableTrait`; Objecting does not introduce an `object_id` physical column or replace the consumer primary key.
 
 ## Forbidden wave 22 packs
 

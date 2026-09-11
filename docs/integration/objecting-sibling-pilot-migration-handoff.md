@@ -28,7 +28,7 @@ These are the pilot components because the workspace audit found local `Object*`
 - `object_source`
 - `object_fingerprint`
 
-`id` is supplied centrally by Objecting through `ObjectIdentityEmbeddableTrait` as the shared Doctrine primary key; consumer entities must not redeclare it. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` remain aliases of `object_title`.
+`id` remains owned by each consumer entity as its Doctrine primary key. `ObjectIdentityEmbeddableTrait` supplies reusable Objecting identity fields without replacing that primary key. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` remain aliases of `object_title`.
 
 `priority` and `visibility` remain deferred until their backend semantics are separated.
 

@@ -82,7 +82,7 @@ if (is_file($exampleFile)) {
         'object_state',
         'object_source',
         'object_fingerprint',
-        'consume Objecting object_identity for the shared Doctrine primary key and do not redeclare id locally',
+        'preserve the consumer-owned Doctrine primary key while adopting Objecting object_identity for reusable uuid and slug identity fields',
         'name: object_title alias',
         'title: object_title alias',
         'description: object_title alias',

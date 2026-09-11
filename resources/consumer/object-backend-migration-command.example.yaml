@@ -82,7 +82,7 @@ codex_instructions:
   - use object_source
   - use object_fingerprint
   - map name/title/description through object_title aliases rather than adding object_name or object_description
-  - consume Objecting object_identity for the shared Doctrine primary key and do not redeclare id locally
+  - preserve the consumer-owned Doctrine primary key while adopting Objecting object_identity for reusable uuid and slug identity fields
   - do not modify Objecting during backend migration
   - do not modify Exposing during backend migration
 forbidden_actions:
