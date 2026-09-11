@@ -82,7 +82,7 @@ if (is_file($exampleFile)) {
         'object_state',
         'object_source',
         'object_fingerprint',
-        'id: backend-owned Doctrine primary key',
+        'consume Objecting object_identity for the shared Doctrine primary key and do not redeclare id locally',
         'name: object_title alias',
         'title: object_title alias',
         'description: object_title alias',

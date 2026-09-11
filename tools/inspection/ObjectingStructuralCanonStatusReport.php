@@ -265,7 +265,7 @@ if (is_file($manifest)) {
             $relative = str_replace('\\', '/', $relative) . '.php';
             if (!is_file($root . '/' . $relative)) { $errors[] = "Field pack $pack references missing $key class file: $relative."; }
         }
-        foreach (yamlList($yaml, 'columns') as $column) { if (!str_starts_with($column, 'object_')) { $errors[] = "Field pack $pack has non-object column $column."; } }
+        foreach (yamlList($yaml, 'columns') as $column) { if (str_starts_with($column, 'object_')) { $errors[] = "Field pack $pack leaks Objecting ownership into physical column $column."; } if ('id' === $column && 'object_identity' !== $pack) { $errors[] = "Only object_identity may own the shared Doctrine primary key id."; } }
     }
 }
 $titleAliasManifest = $root . '/resources/title-alias/manifest.yaml';
@@ -442,7 +442,7 @@ if (is_file($backendImportExample)) {
 $backendMigrationCommandExample = $root . '/resources/consumer/object-backend-migration-command.example.yaml';
 if (is_file($backendMigrationCommandExample)) {
     $yaml = file_get_contents($backendMigrationCommandExample) ?: '';
-    foreach (['object_backend_migration_command_version: 1', 'source_audit: workspace-objecting-field-pack-audit.md', 'objecting_can_be_modified: false', 'exposing_can_be_modified: false', 'sibling_components_can_be_modified: true', 'pilot_components:', '- Addressing', '- Taxating', 'object_identity', 'object_audit', 'object_title', 'object_state', 'object_source', 'object_fingerprint', 'id: backend-owned Doctrine primary key', 'priority', 'visibility', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints', 'migration_command_readiness:', 'status: ready'] as $requiredMarker) {
+    foreach (['object_backend_migration_command_version: 1', 'source_audit: workspace-objecting-field-pack-audit.md', 'objecting_can_be_modified: false', 'exposing_can_be_modified: false', 'sibling_components_can_be_modified: true', 'pilot_components:', '- Addressing', '- Taxating', 'object_identity', 'object_audit', 'object_title', 'object_state', 'object_source', 'object_fingerprint', 'consume Objecting object_identity for the shared Doctrine primary key and do not redeclare id locally', 'priority', 'visibility', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints', 'migration_command_readiness:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) { $errors[] = 'Backend migration command example is missing marker: ' . $requiredMarker; }
     }
 }

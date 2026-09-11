@@ -47,6 +47,21 @@ foreach ($scanRoots as $scanRoot) {
     }
 }
 
+$identityTrait = (string) file_get_contents($root . '/src/EntityTrait/Embeddable/ObjectIdentityEmbeddableTrait.php');
+foreach (["#[ORM\\Id]", "#[ORM\\GeneratedValue]", 'private ?int $id = null;', "public function getId(): ?int"] as $marker) {
+    if (str_contains($identityTrait, $marker)) {
+        $errors[] = 'ObjectIdentityEmbeddableTrait must not own consumer Doctrine primary-key marker: ' . $marker;
+    }
+}
+
+$identityManifest = (string) file_get_contents($root . '/resources/field-pack/object-identity.yaml');
+if (preg_match('/^\s*-\s+id\s*$/m', $identityManifest)) {
+    $errors[] = 'object_identity field pack must not own the consumer Doctrine primary-key column id.';
+}
+if (!str_contains($identityManifest, 'consumer_primary_key_remains_authoritative')) {
+    $errors[] = 'object_identity field pack must preserve the consumer-owned primary-key invariant.';
+}
+
 $requiredFiles = [
     'src/Embeddable/ObjectAuditEmbeddable.php',
     'src/Embeddable/ObjectSoftDeleteEmbeddable.php',
