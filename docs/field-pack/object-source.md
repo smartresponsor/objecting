@@ -4,10 +4,10 @@ Generic source/origin and external reference surface.
 
 ## Canonical columns
 
-- `object_source`
-- `object_provider`
-- `object_external_id`
-- `object_source_type`
+- `source`
+- `provider`
+- `external_id`
+- `source_type`
 
 ## Boundary
 

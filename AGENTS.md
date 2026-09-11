@@ -37,9 +37,9 @@ Objecting stores lifecycle actor identifiers as opaque scalar strings. In the cu
 
 The values represent the same canonical cross-system identity rooted at `VendorEntity.id`:
 
-- `object_created_by`: identity that created the row.
-- `object_modified_by`: identity that last modified the row.
-- `object_deleted_by`: identity that soft-deleted the row.
+- `created_by`: identity that created the row.
+- `modified_by`: identity that last modified the row.
+- `deleted_by`: identity that soft-deleted the row.
 
 Do not add a second tenant coordinate beside these fields merely because the platform is multitenant.
 
@@ -50,12 +50,12 @@ Objecting owns reusable system-field vocabulary and implementation:
 - `App\Objecting\Embeddable\Object*Embeddable`
 - `App\Objecting\EntityTrait\Embeddable\Object*EmbeddableTrait`
 - `App\Objecting\EntityInterface\Object*Interface`
-- canonical `object_*` Doctrine column names
+- canonical entity-native Doctrine column mappings; Objecting ownership is expressed in PHP/field-pack names, not DB prefixes
 
 Each consumer component owns:
 
 - its business Entity classes;
-- the Doctrine primary key `id`;
+- Doctrine migrations and table ownership;
 - Doctrine migrations and table ownership;
 - business relations, including a real `VendorEntity` relation when business semantics require one;
 - repositories, queries, DTOs, Forms, serializers, fixtures, tests, and runtime behavior.
@@ -66,13 +66,13 @@ Do not move business fields into Objecting merely because their names resemble a
 
 | Legacy semantic or alias | Canonical Objecting pack | Canonical column | Canonical PHP read/write surface | Required action |
 |---|---|---|---|---|
-| `created`, `createdAt`, `created_at`, `dateCreated`, `creationDate` | `object_audit` | `object_created_at` | `getCreatedAt()`; seed with `initializeObjectAudit($createdAt, $createdBy)` | Migrate data and remove the local field, mapping, getter, setter, and alias. |
-| `createdBy`, `created_by`, `creator`, `creatorId`, `createdUserId` when it is lifecycle attribution | `object_audit` | `object_created_by` | `getCreatedBy()` | Store the canonical Vendor/security shared ID as a string. Do not create `tenant_id`. |
-| `updated`, `updatedAt`, `updated_at`, `lastUpdatedAt`, `modified`, `modifiedAt`, `modified_at` | `object_audit` | `object_modified_at` | `getModifiedAt()`; write with `touchModified($modifiedAt, $modifiedBy)` | Canonical vocabulary is **modified**, never updated. Remove updated/modified local aliases after migration. |
-| `updatedBy`, `updated_by`, `lastUpdatedBy`, `modifiedBy`, `modified_by` | `object_audit` | `object_modified_by` | `getModifiedBy()`; write with `touchModified()` | Backfill the canonical column and remove local actor fields and aliases. |
-| `deleted`, `isDeleted`, `deletedFlag`, `softDeleted` | `object_soft_delete` | `object_deleted` | `isDeleted()` | Replace local boolean mapping and soft-delete trait. |
-| `deletedAt`, `deleted_at`, `removedAt`, `archivedAt` only when it means soft deletion | `object_soft_delete` | `object_deleted_at` | `getDeletedAt()`; `delete($deletedBy, $deletedAt)` | Do not map business archival to soft deletion without proof. |
-| `deletedBy`, `deleted_by`, `removedBy` only when it means soft deletion attribution | `object_soft_delete` | `object_deleted_by` | `getDeletedBy()` | Store the canonical shared ID as a string. |
+| `created`, `createdAt`, `created_at`, `dateCreated`, `creationDate` | `object_audit` | `created_at` | `getCreatedAt()`; seed with `initializeObjectAudit($createdAt, $createdBy)` | Migrate data and remove the local field, mapping, getter, setter, and alias. |
+| `createdBy`, `created_by`, `creator`, `creatorId`, `createdUserId` when it is lifecycle attribution | `object_audit` | `created_by` | `getCreatedBy()` | Store the canonical Vendor/security shared ID as a string. Do not create `tenant_id`. |
+| `updated`, `updatedAt`, `updated_at`, `lastUpdatedAt`, `modified`, `modifiedAt`, `modified_at` | `object_audit` | `modified_at` | `getModifiedAt()`; write with `touchModified($modifiedAt, $modifiedBy)` | Canonical vocabulary is **modified**, never updated. Remove updated/modified local aliases after migration. |
+| `updatedBy`, `updated_by`, `lastUpdatedBy`, `modifiedBy`, `modified_by` | `object_audit` | `modified_by` | `getModifiedBy()`; write with `touchModified()` | Backfill the canonical column and remove local actor fields and aliases. |
+| `deleted`, `isDeleted`, `deletedFlag`, `softDeleted` | `object_soft_delete` | `deleted` | `isDeleted()` | Replace local boolean mapping and soft-delete trait. |
+| `deletedAt`, `deleted_at`, `removedAt`, `archivedAt` only when it means soft deletion | `object_soft_delete` | `deleted_at` | `getDeletedAt()`; `delete($deletedBy, $deletedAt)` | Do not map business archival to soft deletion without proof. |
+| `deletedBy`, `deleted_by`, `removedBy` only when it means soft deletion attribution | `object_soft_delete` | `deleted_by` | `getDeletedBy()` | Store the canonical shared ID as a string. |
 | `restore`, `undelete`, `unremove` for soft deletion | `object_soft_delete` | all soft-delete columns | `restore()` | Clear deleted flag, timestamp, and actor through Objecting. |
 
 ### Canonical consumer composition
@@ -153,7 +153,7 @@ Classify every occurrence before editing.
 
 | Existing use | Canonical interpretation | Migration action |
 |---|---|---|
-| `tenant_id` duplicates the same Vendor/security shared ID already written to lifecycle fields | Technical tenancy drift | Backfill missing `object_created_by`, `object_modified_by`, or `object_deleted_by` from the old value according to the actual lifecycle event; then remove the tenant property, Doctrine mapping, index, FK, DTO/Form/API field, serializer group, query filter, fixture value, and test expectation. |
+| `tenant_id` duplicates the same Vendor/security shared ID already written to lifecycle fields | Technical tenancy drift | Backfill missing `created_by`, `modified_by`, or `deleted_by` from the old value according to the actual lifecycle event; then remove the tenant property, Doctrine mapping, index, FK, DTO/Form/API field, serializer group, query filter, fixture value, and test expectation. |
 | `tenant_id` is used only to resolve the current authenticated context | Runtime security context, not persisted data | Resolve the shared ID from `VendorSecurityEntity`/`VendorEntity`; pass it to creation, modification, and deletion operations. Remove persisted tenant state. |
 | `tenant_id` is a genuine business relation to the Vendor root | Business Vendor association, not multitenancy infrastructure | Preserve the relation under explicit domain vocabulary such as `vendor`/`vendor_id`. Keep it in the owning component, not Objecting. Do not duplicate it with `tenant_id`. |
 | `tenant_id` differs from lifecycle actor IDs in existing data | Unresolved semantic conflict | Stop automatic migration for that Entity. Produce a report with representative rows, mappings, and call sites. Do not guess or destroy data. |
@@ -167,7 +167,7 @@ Never do any of the following:
 - add `tenant_id` to every Entity;
 - create `TenantEntity` above `VendorEntity`;
 - store both `vendor_id` and `tenant_id` for the same identity;
-- replace every `tenant_id` blindly with `object_modified_by`;
+- replace every `tenant_id` blindly with `modified_by`;
 - infer ownership from column names without tracing data and runtime behavior;
 - remove a true business `VendorEntity` relation merely because audit fields exist;
 - retain dead tenant aliases for backward compatibility unless the user explicitly requires a staged public-API transition.
@@ -178,22 +178,22 @@ Adopt a field pack only after confirming that the local field has the same syste
 
 | Pack | Trait | Interface | Canonical columns | Typical legacy candidates |
 |---|---|---|---|---|
-| `object_identity` | `ObjectIdentityEmbeddableTrait` | `ObjectIdentifiedInterface` | `object_uuid`, `object_slug` | `uuid`, `guid`, technical `slug` |
-| `object_audit` | `ObjectAuditEmbeddableTrait` | `ObjectAuditedInterface` | `object_created_at`, `object_modified_at`, `object_created_by`, `object_modified_by` | timestamps and blame/audit fields |
-| `object_title` | `ObjectTitleEmbeddableTrait` | `ObjectTitledInterface` | `object_first_title`, `object_middle_title`, `object_last_title` | `name`, `title`, `label`, `displayName`, `subtitle`, `summary`, `shortDescription`, `description` only through an explicit per-Entity alias decision |
-| `object_publication` | `ObjectPublicationEmbeddableTrait` | `ObjectPublishableInterface` | `object_published`, `object_published_at` | generic publication flags/timestamps |
-| `object_soft_delete` | `ObjectSoftDeleteEmbeddableTrait` | `ObjectSoftDeletableInterface` | `object_deleted`, `object_deleted_at`, `object_deleted_by` | generic soft-delete fields |
-| `object_version` | `ObjectVersionEmbeddableTrait` | `ObjectVersionedInterface` | `object_version`, `object_etag` | generic optimistic version/etag |
-| `object_locale` | `ObjectLocaleEmbeddableTrait` | `ObjectLocaleAwareInterface` | `object_locale`, `object_timezone` | generic locale/timezone |
-| `object_token` | `ObjectTokenEmbeddableTrait` | `ObjectTokenizedInterface` | `object_token`, `object_token_expires_at` | generic technical token and expiry; never passwords or API secrets |
-| `object_restriction` | `ObjectRestrictionEmbeddableTrait` | `ObjectRestrictableInterface` | `object_allowed_roles`, `object_ip_whitelist` | generic role/IP restrictions |
-| `object_lock` | `ObjectLockEmbeddableTrait` | `ObjectLockableInterface` | `object_locked_at`, `object_locked_by` | generic application lock attribution |
-| `object_workflow` | `ObjectWorkflowEmbeddableTrait` | `ObjectWorkflowAwareInterface` | `object_workflow_state`, `object_workflow_context` | generic workflow state/context |
-| `object_config` | `ObjectConfigEmbeddableTrait` | `ObjectConfigurableInterface` | `object_config` | generic object configuration JSON |
-| `object_code` | `ObjectCodeEmbeddableTrait` | `ObjectCodedInterface` | `object_code` | generic technical/business-neutral code only |
-| `object_state` | `ObjectStateEmbeddableTrait` | `ObjectStatefulInterface` | `object_active`, `object_enabled`, `object_status` | generic activation/enabling/status only; preserve domain-specific state machines |
-| `object_source` | `ObjectSourceEmbeddableTrait` | `ObjectSourcedInterface` | `object_source`, `object_provider`, `object_external_id`, `object_source_type` | generic import/provider/external-reference metadata |
-| `object_fingerprint` | `ObjectFingerprintEmbeddableTrait` | `ObjectFingerprintedInterface` | `object_hash`, `object_checksum`, `object_algorithm` | generic integrity/fingerprint metadata |
+| `object_identity` | `ObjectIdentityEmbeddableTrait` | `ObjectIdentifiedInterface` | `uuid`, `slug` | `uuid`, `guid`, technical `slug` |
+| `object_audit` | `ObjectAuditEmbeddableTrait` | `ObjectAuditedInterface` | `created_at`, `modified_at`, `created_by`, `modified_by` | timestamps and blame/audit fields |
+| `object_title` | `ObjectTitleEmbeddableTrait` | `ObjectTitledInterface` | `first_title`, `middle_title`, `last_title` | `name`, `title`, `label`, `displayName`, `subtitle`, `summary`, `shortDescription`, `description` only through an explicit per-Entity alias decision |
+| `object_publication` | `ObjectPublicationEmbeddableTrait` | `ObjectPublishableInterface` | `published`, `published_at` | generic publication flags/timestamps |
+| `object_soft_delete` | `ObjectSoftDeleteEmbeddableTrait` | `ObjectSoftDeletableInterface` | `deleted`, `deleted_at`, `deleted_by` | generic soft-delete fields |
+| `version` | `ObjectVersionEmbeddableTrait` | `ObjectVersionedInterface` | `version`, `etag` | generic optimistic version/etag |
+| `locale` | `ObjectLocaleEmbeddableTrait` | `ObjectLocaleAwareInterface` | `locale`, `timezone` | generic locale/timezone |
+| `token` | `ObjectTokenEmbeddableTrait` | `ObjectTokenizedInterface` | `token`, `token_expires_at` | generic technical token and expiry; never passwords or API secrets |
+| `object_restriction` | `ObjectRestrictionEmbeddableTrait` | `ObjectRestrictableInterface` | `allowed_roles`, `ip_whitelist` | generic role/IP restrictions |
+| `object_lock` | `ObjectLockEmbeddableTrait` | `ObjectLockableInterface` | `locked_at`, `locked_by` | generic application lock attribution |
+| `object_workflow` | `ObjectWorkflowEmbeddableTrait` | `ObjectWorkflowAwareInterface` | `workflow_state`, `workflow_context` | generic workflow state/context |
+| `config` | `ObjectConfigEmbeddableTrait` | `ObjectConfigurableInterface` | `config` | generic object configuration JSON |
+| `code` | `ObjectCodeEmbeddableTrait` | `ObjectCodedInterface` | `code` | generic technical/business-neutral code only |
+| `object_state` | `ObjectStateEmbeddableTrait` | `ObjectStatefulInterface` | `active`, `enabled`, `status` | generic activation/enabling/status only; preserve domain-specific state machines |
+| `source` | `ObjectSourceEmbeddableTrait` | `ObjectSourcedInterface` | `source`, `provider`, `external_id`, `source_type` | generic import/provider/external-reference metadata |
+| `object_fingerprint` | `ObjectFingerprintEmbeddableTrait` | `ObjectFingerprintedInterface` | `hash`, `checksum`, `algorithm` | generic integrity/fingerprint metadata |
 
 `ObjectReferenceEmbeddable` is a separate optional reference surface. Do not replace Doctrine business associations with it mechanically.
 
@@ -229,7 +229,7 @@ For every candidate Entity:
 
 Use a data-safe staged migration. Adapt generated SQL to the component's actual PostgreSQL schema; do not invent table names or types.
 
-1. Add the canonical `object_*` columns needed by the selected packs.
+1. Add the canonical entity-native columns needed by the selected Objecting packs.
 2. Keep new actor/timestamp columns nullable during backfill when required.
 3. Copy data from legacy columns using deterministic SQL.
 4. For tenant cleanup, backfill lifecycle actor columns only where the old tenant value has the confirmed lifecycle meaning.
@@ -246,7 +246,7 @@ Do not combine destructive column drops with an unverified backfill. Do not sile
 
 - Resolve the current canonical identity before entering the application operation.
 - Use the same identity consistently inside the Doctrine transaction.
-- On creation, seed `object_created_by`.
+- On creation, seed `created_by`.
 - On update, call `touchModified($at, $vendorId)`.
 - On soft deletion, call `delete($vendorId, $at)`.
 - On restore, call `restore()`; do not invent a tenant field.
@@ -292,7 +292,7 @@ Also search again for forbidden and legacy tokens after migration.
 A component is complete only when:
 
 - runtime code uses canonical Objecting methods;
-- Doctrine mappings use canonical `object_*` columns;
+- Doctrine mappings use canonical entity-native columns with no `object_` ownership prefix;
 - data migration is explicit and reversible where practical;
 - no duplicate local system-field implementation remains;
 - no redundant tenant identity remains;

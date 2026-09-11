@@ -4,9 +4,9 @@ Generic technical fingerprint/integrity surface.
 
 ## Canonical columns
 
-- `object_hash`
-- `object_checksum`
-- `object_algorithm`
+- `hash`
+- `checksum`
+- `algorithm`
 
 ## Boundary
 

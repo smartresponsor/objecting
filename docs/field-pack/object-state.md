@@ -4,9 +4,9 @@ Generic object availability and status surface.
 
 ## Canonical columns
 
-- `object_active`
-- `object_enabled`
-- `object_status`
+- `active`
+- `enabled`
+- `status`
 
 ## Boundary
 

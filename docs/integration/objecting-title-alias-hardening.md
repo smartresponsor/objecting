@@ -35,9 +35,9 @@ The following tokens are treated as `object_title` aliases:
 
 `priority` and `visibility` are not Objecting field packs in wave 22. They remain deferred because their semantics vary between sorting, severity, queues, publication, UI, security, and tenant exposure.
 
-## Backend-owned tokens
+## Identity token
 
-Plain `id` remains backend-owned Doctrine primary-key storage. Objecting does not provide an `object_id` pack.
+Plain `id` is the canonical shared Doctrine primary key supplied by `object_identity` through `ObjectIdentityEmbeddableTrait`. Objecting does not introduce an `object_id` physical column or separate pack because the canonical storage name is simply `id`.
 
 ## Forbidden wave 22 packs
 

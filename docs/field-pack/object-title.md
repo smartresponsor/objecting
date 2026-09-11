@@ -13,9 +13,9 @@ lastTitle
 ## Default database columns
 
 ```text
-object_first_title
-object_middle_title
-object_last_title
+first_title
+middle_title
+last_title
 ```
 
 ## Alias examples

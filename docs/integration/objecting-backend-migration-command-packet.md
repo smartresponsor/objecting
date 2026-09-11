@@ -30,7 +30,7 @@ Systemic packs:
 - `object_source`
 - `object_fingerprint`
 
-`id` remains a backend-owned Doctrine primary key. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` are aliases of `object_title` and must not become duplicate database columns when the backend adopts `object_title`.
+`id` is owned by Objecting as part of `object_identity` and is supplied by `ObjectIdentityEmbeddableTrait`; consumer entities must not redeclare the repeated Doctrine primary-key mapping. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` are aliases of `object_title` and must not become duplicate database columns when the backend adopts `object_title`.
 
 `priority` and `visibility` remain deferred until a focused semantics decision.
 

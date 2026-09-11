@@ -54,7 +54,6 @@ field_pack_mapping:
     shortDescription: object_title.middleTitle
     description: object_title.lastTitle
   not_packs:
-    id: backend-owned Doctrine primary key
     name: object_title alias
     title: object_title alias
     description: object_title alias
@@ -83,7 +82,7 @@ codex_instructions:
   - use object_source
   - use object_fingerprint
   - map name/title/description through object_title aliases rather than adding object_name or object_description
-  - keep id as backend-owned Doctrine primary key
+  - consume Objecting object_identity for the shared Doctrine primary key and do not redeclare id locally
   - do not modify Objecting during backend migration
   - do not modify Exposing during backend migration
 forbidden_actions:
