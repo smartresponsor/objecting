@@ -66,7 +66,7 @@ if (is_file($exampleFile)) {
         'source_audit: workspace-objecting-field-pack-audit.md',
         'name: objecting/object',
         'php: ^8.4',
-        'symfony: ^8.0',
+        'symfony: ^8.1',
         'objecting_can_be_modified: false',
         'exposing_can_be_modified: false',
         'sibling_components_can_be_modified: true',

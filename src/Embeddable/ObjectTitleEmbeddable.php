@@ -9,13 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectTitleEmbeddable
 {
-    #[ORM\Column(name: 'first_title', type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(name: 'object_first_title', type: 'string', length: 255, nullable: true)]
     private ?string $firstTitle = null;
 
-    #[ORM\Column(name: 'middle_title', type: 'text', nullable: true)]
+    #[ORM\Column(name: 'object_middle_title', type: 'text', nullable: true)]
     private ?string $middleTitle = null;
 
-    #[ORM\Column(name: 'last_title', type: 'text', nullable: true)]
+    #[ORM\Column(name: 'object_last_title', type: 'text', nullable: true)]
     private ?string $lastTitle = null;
 
     public function __construct(?string $firstTitle = null, ?string $middleTitle = null, ?string $lastTitle = null)

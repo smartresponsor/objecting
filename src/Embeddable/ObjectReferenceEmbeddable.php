@@ -10,19 +10,19 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectReferenceEmbeddable
 {
-    #[ORM\Column(name: 'reference_component', type: 'string', length: 64, nullable: true)]
+    #[ORM\Column(name: 'object_reference_component', type: 'string', length: 64, nullable: true)]
     private ?string $referenceComponent = null;
 
-    #[ORM\Column(name: 'reference_aggregate', type: 'string', length: 64, nullable: true)]
+    #[ORM\Column(name: 'object_reference_aggregate', type: 'string', length: 64, nullable: true)]
     private ?string $referenceAggregate = null;
 
-    #[ORM\Column(name: 'reference_identifier', type: 'string', length: 128, nullable: true)]
+    #[ORM\Column(name: 'object_reference_identifier', type: 'string', length: 128, nullable: true)]
     private ?string $referenceIdentifier = null;
 
-    #[ORM\Column(name: 'reference_display', type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(name: 'object_reference_display', type: 'string', length: 255, nullable: true)]
     private ?string $referenceDisplay = null;
 
-    #[ORM\Column(name: 'reference_version', type: 'string', length: 64, nullable: true)]
+    #[ORM\Column(name: 'object_reference_version', type: 'string', length: 64, nullable: true)]
     private ?string $referenceVersion = null;
 
     public static function fromReference(?ObjectReference $reference): self

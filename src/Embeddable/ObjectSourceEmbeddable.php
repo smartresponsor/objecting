@@ -9,16 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectSourceEmbeddable
 {
-    #[ORM\Column(name: 'source', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_source', type: 'string', length: 190, nullable: true)]
     private ?string $objectSource = null;
 
-    #[ORM\Column(name: 'provider', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_provider', type: 'string', length: 190, nullable: true)]
     private ?string $objectProvider = null;
 
-    #[ORM\Column(name: 'external_id', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_external_id', type: 'string', length: 190, nullable: true)]
     private ?string $objectExternalId = null;
 
-    #[ORM\Column(name: 'source_type', type: 'string', length: 120, nullable: true)]
+    #[ORM\Column(name: 'object_source_type', type: 'string', length: 120, nullable: true)]
     private ?string $objectSourceType = null;
 
     public function __construct(?string $objectSource = null, ?string $objectProvider = null, ?string $objectExternalId = null, ?string $objectSourceType = null)

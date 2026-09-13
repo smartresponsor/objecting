@@ -54,7 +54,7 @@ This also makes the trait initialization gates independent from fully-qualified 
 
 The package currently requires Symfony `^8.1`, while historical RC artifacts describe a Symfony `^8.0` floor. Both constraints are Symfony-8-only.
 
-The platform gate now rejects Symfony 7 and mixed-major constraints while allowing a canonical single-major Symfony 8 constraint such as `^8.0` or `^8.1`.
+At the time of this historical cleanup, the platform gate rejected Symfony 7 and mixed-major constraints while allowing a Symfony 8 floor such as `^8.0` or `^8.1`. The current package baseline is superseded by Canon026 and requires Symfony `^8.1` or a later Symfony 8 minor floor.
 
 ### 5. Hidden internal type-resolution defects
 

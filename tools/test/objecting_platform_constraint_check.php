@@ -34,20 +34,25 @@ if (is_file($composerFile)) {
             $errors[] = 'composer.json must require php ^8.4 only.';
         }
 
-        $isSymfony8Constraint = static fn (mixed $constraint): bool => is_string($constraint)
-            && 1 === preg_match('/^\^8\.[0-9]+$/', $constraint);
+        $isSymfony8Constraint = static function (mixed $constraint): bool {
+            $matches = [];
+
+            return is_string($constraint)
+                && 1 === preg_match('/^\^8\.([0-9]+)$/', $constraint, $matches)
+                && (int) $matches[1] >= 1;
+        };
 
         foreach (['symfony/config', 'symfony/dependency-injection', 'symfony/http-kernel', 'symfony/uid', 'symfony/yaml'] as $package) {
             if (!$isSymfony8Constraint($require[$package] ?? null)) {
-                $errors[] = sprintf('composer.json must require %s with a Symfony 8-only constraint.', $package);
+                $errors[] = sprintf('composer.json must require %s with a Symfony 8.1+ constraint.', $package);
             }
         }
 
         if (!$isSymfony8Constraint($composer['extra']['symfony']['require'] ?? null)) {
-            $errors[] = 'composer.json extra.symfony.require must target Symfony 8 only.';
+            $errors[] = 'composer.json extra.symfony.require must target Symfony 8.1 or newer within major 8.';
         }
 
-        foreach (['^7.0 || ^8.0', '^7 || ^8', '^7.0', '7.*'] as $forbidden) {
+        foreach (['^8.0', '^7.0 || ^8.0', '^7 || ^8', '^7.0', '7.*'] as $forbidden) {
             if (str_contains($composerText, $forbidden)) {
                 $errors[] = 'composer.json contains forbidden Symfony 7 constraint: ' . $forbidden;
             }
@@ -72,13 +77,14 @@ if (is_file($manifestFile)) {
         'object_platform_constraints_version: 1',
         'constraint_candidate: objecting_wave20_platform_constraints',
         "php: '^8.4'",
-        "symfony: '^8.0'",
-        'symfony/config: \'^8.0\'',
-        'symfony/dependency-injection: \'^8.0\'',
-        'symfony/http-kernel: \'^8.0\'',
-        'symfony/uid: \'^8.0\'',
-        'symfony/yaml: \'^8.0\'',
-        'require: \'^8.0\'',
+        "symfony: '^8.1'",
+        'symfony/config: \'^8.1\'',
+        'symfony/dependency-injection: \'^8.1\'',
+        'symfony/http-kernel: \'^8.1\'',
+        'symfony/uid: \'^8.1\'',
+        'symfony/yaml: \'^8.1\'',
+        'require: \'^8.1\'',
+        'symfony_81_floor: true',
         'symfony_7_forbidden: true',
         'mixed_symfony_7_8_forbidden: true',
         'composer test:platform-constraints',

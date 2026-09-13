@@ -9,13 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectFingerprintEmbeddable
 {
-    #[ORM\Column(name: 'hash', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_hash', type: 'string', length: 190, nullable: true)]
     private ?string $objectHash = null;
 
-    #[ORM\Column(name: 'checksum', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_checksum', type: 'string', length: 190, nullable: true)]
     private ?string $objectChecksum = null;
 
-    #[ORM\Column(name: 'algorithm', type: 'string', length: 64, nullable: true)]
+    #[ORM\Column(name: 'object_algorithm', type: 'string', length: 64, nullable: true)]
     private ?string $objectAlgorithm = null;
 
     public function __construct(?string $objectHash = null, ?string $objectChecksum = null, ?string $objectAlgorithm = null)

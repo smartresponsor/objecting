@@ -240,7 +240,7 @@ The next Objecting wave should create the RC marker and should not expand Object
 
 ## Platform constraints
 
-Objecting targets PHP `^8.4` and Symfony 8 only. The current package dependencies use a Symfony 8 minor floor, while Symfony 7 and mixed Symfony 7/8 constraints such as `^7.0 || ^8.0` remain forbidden.
+Objecting targets PHP `^8.4` and Symfony 8.1+ only. The current package dependencies use the canonical Symfony 8.1 minor floor, while Symfony 8.0, Symfony 7, and mixed Symfony 7/8 constraints such as `^7.0 || ^8.0` remain forbidden.
 
 Run:
 

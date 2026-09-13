@@ -109,6 +109,17 @@ if (is_file($releaseClosureFile)) {
     }
 }
 
+$embeddableFiles = glob($root . '/src/Embeddable/Object*Embeddable.php') ?: [];
+foreach ($embeddableFiles as $embeddableFile) {
+    $source = file_get_contents($embeddableFile) ?: '';
+    preg_match_all("/ORM\\\\Column\\(name: '([^']+)'/", $source, $matches);
+    foreach ($matches[1] as $columnName) {
+        if (!str_starts_with($columnName, 'object_')) {
+            $errors[] = sprintf('Objecting embeddable physical column must use the object_ prefix: %s (%s).', $columnName, basename($embeddableFile));
+        }
+    }
+}
+
 if ($errors !== []) {
     echo "Objecting Doctrine mapping contract check failed:\n";
     foreach ($errors as $error) {

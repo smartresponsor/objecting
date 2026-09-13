@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectAuditEmbeddable
 {
-    #[ORM\Column(name: 'created_at', type: 'datetime_immutable')]
+    #[ORM\Column(name: 'object_created_at', type: 'datetime_immutable')]
     private \DateTimeImmutable $objectCreatedAt;
 
-    #[ORM\Column(name: 'modified_at', type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(name: 'object_modified_at', type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $objectModifiedAt = null;
 
     /**
@@ -21,11 +21,11 @@ final class ObjectAuditEmbeddable
      * Objecting stores the identifier as an opaque scalar and does not own the
      * VendorEntity or VendorSecurityEntity association.
      */
-    #[ORM\Column(name: 'created_by', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_created_by', type: 'string', length: 190, nullable: true)]
     private ?string $objectCreatedBy = null;
 
     /** Canonical cross-system Vendor identity that last modified the object. */
-    #[ORM\Column(name: 'modified_by', type: 'string', length: 190, nullable: true)]
+    #[ORM\Column(name: 'object_modified_by', type: 'string', length: 190, nullable: true)]
     private ?string $objectModifiedBy = null;
 
     public function __construct(?\DateTimeImmutable $createdAt = null, ?string $createdBy = null)

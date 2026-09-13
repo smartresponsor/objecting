@@ -10,10 +10,10 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Embeddable]
 final class ObjectIdentityEmbeddable
 {
-    #[ORM\Column(name: 'uuid', type: 'binary', length: 16, unique: true, options: ['fixed' => true])]
+    #[ORM\Column(name: 'object_uuid', type: 'binary', length: 16, unique: true, options: ['fixed' => true])]
     private string $objectUuid;
 
-    #[ORM\Column(name: 'slug', type: 'string', length: 190, unique: true)]
+    #[ORM\Column(name: 'object_slug', type: 'string', length: 190, unique: true)]
     private string $objectSlug;
 
     public function __construct(?string $objectUuid = null, ?string $objectSlug = null)

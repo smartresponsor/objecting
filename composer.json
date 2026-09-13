@@ -13,11 +13,11 @@
   "require": {
     "doctrine/orm": "^3.3",
     "php": "^8.4",
-    "symfony/config": "^8.0",
-    "symfony/dependency-injection": "^8.0",
-    "symfony/http-kernel": "^8.0",
-    "symfony/uid": "^8.0",
-    "symfony/yaml": "^8.0"
+    "symfony/config": "^8.1",
+    "symfony/dependency-injection": "^8.1",
+    "symfony/http-kernel": "^8.1",
+    "symfony/uid": "^8.1",
+    "symfony/yaml": "^8.1"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": ">=3.95 <4.0",
@@ -75,6 +75,10 @@
     ],
     "phpstan": "phpstan analyse src tests tools --memory-limit=1G",
     "test": "phpunit --testdox",
+    "test:coverage": [
+      "@php -r \"if (!is_dir('var/coverage')) { mkdir('var/coverage', 0777, true); }\"",
+      "@php -d xdebug.mode=coverage vendor/bin/phpunit --path-coverage --coverage-text=var/coverage/summary.txt"
+    ],
     "test:backend-adoption": "@php tools/test/objecting_backend_adoption_manifest_check.php",
     "test:backend-handoff": "@php tools/test/objecting_backend_handoff_contract_check.php",
     "test:release-readiness": "@php tools/test/objecting_release_readiness_check.php",
@@ -112,7 +116,7 @@
   "prefer-stable": true,
   "extra": {
     "symfony": {
-      "require": "^8.0"
+      "require": "^8.1"
     }
   }
 }

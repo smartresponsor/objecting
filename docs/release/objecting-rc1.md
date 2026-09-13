@@ -40,7 +40,7 @@ The marker binds:
 
 ## Platform baseline
 
-Objecting RC1 requires PHP `^8.4` and Symfony packages `^8.0` only. Symfony 7 constraints and mixed constraints such as `^7.0 || ^8.0` are forbidden.
+Objecting RC1 requires PHP `^8.4` and Symfony packages `^8.1` or a later Symfony 8 minor floor. Symfony 8.0, Symfony 7, and mixed constraints such as `^7.0 || ^8.0` are forbidden.
 
 The platform marker is `resources/release/objecting-platform-constraints.example.yaml`.
 

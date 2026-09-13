@@ -27,7 +27,7 @@ final readonly class ObjectPlatformConstraintReporter implements ObjectPlatformC
         $checks[] = 'php_constraint_is_84';
 
         if (!ObjectPlatformConstraintManifest::isSymfony8Constraint($manifest->symfonyConstraint())) {
-            $blockingReasons[] = 'Objecting platform Symfony constraint must target Symfony 8 only.';
+            $blockingReasons[] = 'Objecting platform Symfony constraint must target Symfony 8.1 or newer within major 8.';
         }
         $checks[] = 'symfony_constraint_is_8_only';
 
@@ -38,24 +38,24 @@ final readonly class ObjectPlatformConstraintReporter implements ObjectPlatformC
         foreach (ObjectPackageSurface::SYMFONY_REQUIRE_PACKAGES as $package) {
             $constraint = $required[$package] ?? null;
             if (!is_string($constraint) || !ObjectPlatformConstraintManifest::isSymfony8Constraint($constraint)) {
-                $blockingReasons[] = sprintf('Objecting composer require constraint for %s must target Symfony 8 only.', $package);
+                $blockingReasons[] = sprintf('Objecting composer require constraint for %s must target Symfony 8.1 or newer within major 8.', $package);
             }
         }
         $checks[] = 'composer_require_constraints';
 
         $extraSymfonyConstraint = $manifest->extraSymfony()['require'] ?? null;
         if (!is_string($extraSymfonyConstraint) || !ObjectPlatformConstraintManifest::isSymfony8Constraint($extraSymfonyConstraint)) {
-            $blockingReasons[] = 'Objecting extra.symfony.require must target Symfony 8 only.';
+            $blockingReasons[] = 'Objecting extra.symfony.require must target Symfony 8.1 or newer within major 8.';
         }
         $checks[] = 'symfony_extra_require_is_8_only';
 
         foreach ($manifest->forbiddenConstraints() as $forbiddenConstraint) {
-            if (str_contains($forbiddenConstraint, '^7') || str_contains($forbiddenConstraint, '7.')) {
+            if ('^8.0' === $forbiddenConstraint || str_contains($forbiddenConstraint, '^7') || str_contains($forbiddenConstraint, '7.')) {
                 continue;
             }
-            $blockingReasons[] = sprintf('Forbidden platform constraint marker must identify Symfony 7 drift: %s.', $forbiddenConstraint);
+            $blockingReasons[] = sprintf('Forbidden platform constraint marker must identify unsupported Symfony drift: %s.', $forbiddenConstraint);
         }
-        $checks[] = 'forbidden_symfony_7_markers';
+        $checks[] = 'forbidden_symfony_drift_markers';
 
         foreach (['composer test:platform-constraints', 'php tools/test/objecting_platform_constraint_check.php'] as $requiredGate) {
             if (!in_array($requiredGate, $manifest->qualityGates(), true)) {

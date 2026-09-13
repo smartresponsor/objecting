@@ -5,7 +5,7 @@ closure_candidate: objecting_wave27_migration_transition_freeze
 package:
   name: objecting/object
   php: ^8.4
-  symfony: ^8.0
+  symfony: ^8.1
 artifacts:
   cumulative_archive: objecting_wave27_migration_transition_freeze_cumulative.zip
   touched_archive: objecting_wave27_migration_transition_freeze_touched.zip

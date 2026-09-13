@@ -8,7 +8,7 @@ It does not modify sibling repositories by itself. It declares the locked Object
 
 - Objecting baseline: `objecting_rc2`
 - PHP: `^8.4`
-- Symfony packages: `^8.0` only
+- Symfony packages: `^8.1` or a later Symfony 8 minor floor
 - Objecting is not modified during the sibling migration wave
 - Exposing is not modified during the sibling migration wave
 

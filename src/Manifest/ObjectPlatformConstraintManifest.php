@@ -51,7 +51,7 @@ final readonly class ObjectPlatformConstraintManifest
         }
 
         if (!self::isSymfony8Constraint($this->symfonyConstraint)) {
-            throw new \InvalidArgumentException('Objecting platform Symfony constraint must target Symfony 8 only.');
+            throw new \InvalidArgumentException('Objecting platform Symfony constraint must target Symfony 8.1 or newer within major 8.');
         }
 
         foreach ([
@@ -68,7 +68,10 @@ final readonly class ObjectPlatformConstraintManifest
 
     public static function isSymfony8Constraint(string $constraint): bool
     {
-        return 1 === preg_match('/^\^8\.[0-9]+$/', $constraint);
+        $matches = [];
+
+        return 1 === preg_match('/^\^8\.([0-9]+)$/', $constraint, $matches)
+            && (int) $matches[1] >= 1;
     }
 
     public function constraintCandidate(): string

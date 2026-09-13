@@ -3,21 +3,22 @@ constraint_candidate: objecting_wave20_platform_constraints
 package:
   name: objecting/object
   php: '^8.4'
-  symfony: '^8.0'
+  symfony: '^8.1'
   namespace_prefix: App\Objecting\
   bundle_class: App\Objecting\ObjectBundle
 composer_constraints:
   require:
     php: '^8.4'
-    symfony/config: '^8.0'
-    symfony/dependency-injection: '^8.0'
-    symfony/http-kernel: '^8.0'
-    symfony/uid: '^8.0'
-    symfony/yaml: '^8.0'
+    symfony/config: '^8.1'
+    symfony/dependency-injection: '^8.1'
+    symfony/http-kernel: '^8.1'
+    symfony/uid: '^8.1'
+    symfony/yaml: '^8.1'
   extra:
     symfony:
-      require: '^8.0'
+      require: '^8.1'
 forbidden_constraints:
+  - '^8.0'
   - '^7.0 || ^8.0'
   - '^7 || ^8'
   - '^7.0'
@@ -31,12 +32,14 @@ quality_gates:
 platform_boundary:
   php_84_only: true
   symfony_8_only: true
+  symfony_81_floor: true
   symfony_7_forbidden: true
   mixed_symfony_7_8_forbidden: true
   legacy_free: true
 checks:
   - php_constraint_is_84
   - symfony_constraints_are_8_only
+  - symfony_constraints_meet_81_floor
   - symfony_extra_require_is_8_only
   - no_symfony_7_constraint
   - no_mixed_symfony_7_8_constraint
