@@ -68,8 +68,8 @@ final readonly class ObjectSchemaMirrorContractReporter implements ObjectSchemaM
             if (!$this->isSnakeCase($columnName)) {
                 $blockingReasons[] = sprintf('Schema mirror Objecting column "%s" must be snake_case.', $columnName);
             }
-            if (!str_starts_with($columnName, 'object_')) {
-                $blockingReasons[] = sprintf('Schema mirror Objecting column "%s" must start with object_.', $columnName);
+            if (str_starts_with($columnName, 'object_')) {
+                $blockingReasons[] = sprintf('Schema mirror Objecting column "%s" must not start with object_.', $columnName);
             }
         }
         $checks[] = 'schema_mirror_object_columns';
@@ -95,7 +95,7 @@ final readonly class ObjectSchemaMirrorContractReporter implements ObjectSchemaM
         $checks[] = 'schema_mirror_exposing_ownership';
 
         if (!$contract->objectingOwnsSystemColumns()) {
-            $blockingReasons[] = 'Schema mirror contract must keep Objecting as the object_* system column owner.';
+            $blockingReasons[] = 'Schema mirror contract must keep Objecting as the reusable system-field semantic owner.';
         }
         $checks[] = 'schema_mirror_objecting_system_column_ownership';
 

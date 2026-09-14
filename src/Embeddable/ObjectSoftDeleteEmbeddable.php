@@ -9,41 +9,41 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectSoftDeleteEmbeddable
 {
-    #[ORM\Column(name: 'object_deleted', type: 'boolean')]
-    private bool $objectDeleted = false;
+    #[ORM\Column(name: 'deleted', type: 'boolean')]
+    private bool $deleted = false;
 
-    #[ORM\Column(name: 'object_deleted_at', type: 'datetime_immutable', nullable: true)]
-    private ?\DateTimeImmutable $objectDeletedAt = null;
+    #[ORM\Column(name: 'deleted_at', type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $deletedAt = null;
 
-    #[ORM\Column(name: 'object_deleted_by', type: 'string', length: 190, nullable: true)]
-    private ?string $objectDeletedBy = null;
+    #[ORM\Column(name: 'deleted_by', type: 'string', length: 190, nullable: true)]
+    private ?string $deletedBy = null;
 
     public function isDeleted(): bool
     {
-        return $this->objectDeleted;
+        return $this->deleted;
     }
 
     public function getDeletedAt(): ?\DateTimeImmutable
     {
-        return $this->objectDeletedAt;
+        return $this->deletedAt;
     }
 
     public function getDeletedBy(): ?string
     {
-        return $this->objectDeletedBy;
+        return $this->deletedBy;
     }
 
     public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void
     {
-        $this->objectDeleted = true;
-        $this->objectDeletedBy = $deletedBy;
-        $this->objectDeletedAt = $deletedAt ?? new \DateTimeImmutable('now');
+        $this->deleted = true;
+        $this->deletedBy = $deletedBy;
+        $this->deletedAt = $deletedAt ?? new \DateTimeImmutable('now');
     }
 
     public function restore(): void
     {
-        $this->objectDeleted = false;
-        $this->objectDeletedBy = null;
-        $this->objectDeletedAt = null;
+        $this->deleted = false;
+        $this->deletedBy = null;
+        $this->deletedAt = null;
     }
 }

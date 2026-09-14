@@ -54,3 +54,48 @@
 
 - Raise measured line and method coverage toward Canon040's 80% / 80% targets while maintaining branch coverage above 70%.
 - Correct the downstream App runtime-lock Objecting bundle identity/inclusion in the App-owned integration task.
+
+## 2026-09-14 — Canon044 RC hardening
+
+### Baseline
+
+- Workspace: `D:\\PhpstormProjects\\www\\Objecting` on `release/objecting-field-pack-normalization-20260910`.
+- Reconnaissance found an existing dirty worktree carrying an in-progress entity-native field naming migration plus unrelated `.gating/` synchronization changes. This run preserves that work and does not reset or overwrite it.
+- Objecting remains a pure reusable library without standalone Symfony boot surfaces, so Canon022's standalone application dependency baseline is not applicable. Adding Cruding, Viewing, or Interfacing as artificial runtime dependencies would cross the Objecting responsibility boundary.
+- Mandatory helper/reference contour consulted: Objecting, Cruding, Viewing, Interfacing, Gating, and the canonical local `Canonization` repository.
+- Canonization textual sources consulted for this workstream: `Canon044ObjectingSystemFieldNamingRule.md`, `Canon043DevelopmentComposerDependencyVersionRule.md`, `Canon022StandaloneApplicationDependencyBaselineRule.md`, `CANONICAL_RULES_JOURNAL.md`, and `GUARD_MATRIX.md`.
+
+### Target-to-canon mapping
+
+- Canon044 applies directly to `objecting/object`: logical pack/type ownership remains `object_*` / `Object*`, while Doctrine physical columns and Doctrine-mapped PHP properties must be entity-native.
+- Current dirty changes already move physical columns to names such as `created_at`, `uuid`, `status`, and `version`.
+- Remaining RC defect: 36 Doctrine-mapped private properties still use `$object*` names across active embeddables, for example `$objectCreatedAt`, `$objectUuid`, and `$objectStatus`.
+- Public ownership/type vocabulary and established public methods are not renamed merely because private mapped state is normalized; this avoids an unnecessary compatibility break while satisfying Canon044.
+- Cruding generic CRUD ownership, Viewing presentation ownership, and Interfacing shell/template ownership are out of scope and must not be folded into Objecting.
+
+### RC-critical workstream
+
+1. Rename all active Doctrine-mapped Objecting private properties to entity-native PHP names while preserving explicit entity-native Doctrine column names.
+2. Harden the Objecting Doctrine mapping executable gate so future `$object*` / `$objecting*` mapped properties fail deterministically.
+3. Re-run targeted Doctrine/schema checks, full `composer test:quality`, PHPUnit, PHPStan, Composer validation/audit, and inspect final Git state.
+
+### Growth workstream (post-RC)
+
+- Improve migration/DX reporting for consumer-side forward renames and broaden coverage toward Canon040 thresholds without adding runtime ownership to Objecting.
+
+### Implementation and verification result
+
+- Normalized all active Doctrine-mapped embeddable private properties from `$object*` names to entity-native PHP names while preserving the existing public Objecting API and explicit entity-native physical columns.
+- Updated Doctrine metadata integration assertions to the resulting embedded field paths, including `objectAudit.createdAt`, `objectIdentity.uuid`, and `objectVersion.version`.
+- Hardened `tools/test/objecting_doctrine_mapping_contract_check.php` so `object_`/`objecting_` physical columns and `$object*`/`$objecting*` Doctrine-mapped PHP properties fail deterministically.
+- Corrected stale ownership wording in the responsibility boundary, schema mirror example, and schema mirror reporter so `object_*` remains logical field-pack vocabulary rather than persisted storage vocabulary.
+- `composer test:doctrine-mapping`: PASS.
+- `composer test:schema-mirror`: PASS.
+- `composer test:quality`: PASS.
+- `composer test`: PASS, 68 tests / 458 assertions, including Doctrine schema creation, hydration, and round-trip coverage.
+- `composer phpstan`: PASS, 222 files / no errors.
+- `composer validate --strict --check-lock`: PASS.
+- Changed-file PHP lint: PASS for 37 tracked PHP files.
+- `composer audit`: PASS, no security vulnerability advisories found.
+- Canonical Code Memory scope resolver: `CODE_MEMORY_SCOPE_SCRIPT_NOT_DECLARED`; no repository-declared memory scope is available to update from this workspace.
+- Pre-existing `.gating/` modifications remain intentionally outside this run's commit scope.

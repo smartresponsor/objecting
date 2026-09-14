@@ -62,14 +62,14 @@ if (is_file($exampleFile)) {
         'package: objecting/object',
         'field_pack_contract: resources/objecting/Page/object-field-packs.yaml',
         'column_prefix_false: true',
-        'object_columns_prefixed: true',
+        'object_columns_prefixed: false',
         '- object_identity',
         '- object_audit',
         '- object_title',
         'App\\Objecting\\Embeddable\\ObjectTitleEmbeddable',
         'App\\Objecting\\EntityTrait\\Embeddable\\ObjectTitleEmbeddableTrait',
-        '- object_uuid',
-        '- object_first_title',
+        '- uuid',
+        '- first_title',
         'php bin/console doctrine:schema:validate --skip-sync',
         'mapping_readiness:',
         'status: ready',
@@ -114,9 +114,18 @@ foreach ($embeddableFiles as $embeddableFile) {
     $source = file_get_contents($embeddableFile) ?: '';
     preg_match_all("/ORM\\\\Column\\(name: '([^']+)'/", $source, $matches);
     foreach ($matches[1] as $columnName) {
-        if (!str_starts_with($columnName, 'object_')) {
-            $errors[] = sprintf('Objecting embeddable physical column must use the object_ prefix: %s (%s).', $columnName, basename($embeddableFile));
+        if (str_starts_with($columnName, 'object_') || str_starts_with($columnName, 'objecting_')) {
+            $errors[] = sprintf('Objecting embeddable physical column must use an entity-native name: %s (%s).', $columnName, basename($embeddableFile));
         }
+    }
+
+    preg_match_all(
+        '/#\\[ORM\\\\Column\\([^\\r\\n]*\\)\\]\\R\\s*(?:private|protected|public)\\s+[^$;\\r\\n]+\\$(object(?:ing)?[A-Z][A-Za-z0-9_]*)/',
+        $source,
+        $propertyMatches,
+    );
+    foreach ($propertyMatches[1] as $propertyName) {
+        $errors[] = sprintf('Objecting embeddable Doctrine-mapped PHP property must use an entity-native name: $%s (%s).', $propertyName, basename($embeddableFile));
     }
 }
 

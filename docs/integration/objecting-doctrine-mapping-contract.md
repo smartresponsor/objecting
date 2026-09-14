@@ -1,6 +1,6 @@
 # Objecting Doctrine mapping contract
 
-Objecting provides Doctrine embeddables and embeddable traits for reusable system field packs. Logical pack/type names and physical system columns remain Objecting-prefixed. Backend components remain the runtime owners of their entities and migrations.
+Objecting provides Doctrine embeddables and embeddable traits for reusable system field packs. Logical pack/type names remain Objecting-prefixed, while physical database columns are flat entity-native names without an Objecting ownership prefix. Backend components remain the runtime owners of their entities and migrations.
 
 ## Boundary
 
@@ -21,13 +21,13 @@ The contract must declare:
 ```text
 component, business_stem, namespace, entity class, table name,
 field-pack contract path, required field packs, Objecting embeddables,
-Objecting embedded traits, canonical object_* physical columns, columnPrefix=false,
+Objecting embedded traits, canonical entity-native physical columns, columnPrefix=false,
 and backend migration ownership.
 ```
 
 ## Column prefix policy
 
-Objecting embeddables define canonical physical system column names such as `object_uuid`, `object_slug`, `object_created_at`, and `object_active`. Backend traits use `columnPrefix: false` so Doctrine preserves those explicit `object_*` names instead of adding the embedded-property name as another prefix. Consumer-owned primary keys such as `id` remain outside Objecting.
+Objecting embeddables define canonical physical system column names such as `uuid`, `slug`, `created_at`, and `active`. Backend traits use `columnPrefix: false` so Doctrine preserves those explicit entity-native names instead of adding the embedded-property name as a prefix. Consumer-owned primary keys such as `id` remain outside Objecting.
 
 ## Baseline packs
 

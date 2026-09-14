@@ -385,7 +385,7 @@ if (is_file($backendAdoptionPacketExample)) {
 $doctrineMappingExample = $root . '/resources/consumer/object-doctrine-mapping.example.yaml';
 if (is_file($doctrineMappingExample)) {
     $yaml = file_get_contents($doctrineMappingExample) ?: '';
-    foreach (['object_doctrine_mapping_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'table: page', 'backend_owns_migrations: true', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'column_prefix_false: true', 'object_columns_prefixed: true', 'App\\Objecting\\Embeddable\\ObjectTitleEmbeddable', 'App\\Objecting\\EntityTrait\\Embeddable\\ObjectTitleEmbeddableTrait', 'php bin/console doctrine:schema:validate --skip-sync', 'mapping_readiness:', 'status: ready', 'backend_migration_ownership'] as $requiredMarker) {
+    foreach (['object_doctrine_mapping_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'table: page', 'backend_owns_migrations: true', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'column_prefix_false: true', 'object_columns_prefixed: false', 'App\\Objecting\\Embeddable\\ObjectTitleEmbeddable', 'App\\Objecting\\EntityTrait\\Embeddable\\ObjectTitleEmbeddableTrait', 'php bin/console doctrine:schema:validate --skip-sync', 'mapping_readiness:', 'status: ready', 'backend_migration_ownership'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) {
             $errors[] = 'Doctrine mapping example is missing marker: ' . $requiredMarker;
         }

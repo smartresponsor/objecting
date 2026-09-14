@@ -10,31 +10,31 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Embeddable]
 final class ObjectIdentityEmbeddable
 {
-    #[ORM\Column(name: 'object_uuid', type: 'binary', length: 16, unique: true, options: ['fixed' => true])]
-    private string $objectUuid;
+    #[ORM\Column(name: 'uuid', type: 'binary', length: 16, unique: true, options: ['fixed' => true])]
+    private string $uuid;
 
-    #[ORM\Column(name: 'object_slug', type: 'string', length: 190, unique: true)]
-    private string $objectSlug;
+    #[ORM\Column(name: 'slug', type: 'string', length: 190, unique: true)]
+    private string $slug;
 
     public function __construct(?string $objectUuid = null, ?string $objectSlug = null)
     {
         $uuid = null === $objectUuid ? Uuid::v7() : Uuid::fromString($objectUuid);
-        $this->objectUuid = $uuid->toBinary();
-        $this->objectSlug = $objectSlug ?? $uuid->toBase32();
+        $this->uuid = $uuid->toBinary();
+        $this->slug = $objectSlug ?? $uuid->toBase32();
     }
 
     public function getObjectUuid(): string
     {
-        return Uuid::fromString($this->objectUuid)->toBase32();
+        return Uuid::fromString($this->uuid)->toBase32();
     }
 
     public function getObjectSlug(): string
     {
-        return $this->objectSlug;
+        return $this->slug;
     }
 
     public function setObjectSlug(string $objectSlug): void
     {
-        $this->objectSlug = $objectSlug;
+        $this->slug = $objectSlug;
     }
 }

@@ -9,11 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectAuditEmbeddable
 {
-    #[ORM\Column(name: 'object_created_at', type: 'datetime_immutable')]
-    private \DateTimeImmutable $objectCreatedAt;
+    #[ORM\Column(name: 'created_at', type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(name: 'object_modified_at', type: 'datetime_immutable', nullable: true)]
-    private ?\DateTimeImmutable $objectModifiedAt = null;
+    #[ORM\Column(name: 'modified_at', type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $modifiedAt = null;
 
     /**
      * Canonical cross-system identifier of the Vendor identity that created the object.
@@ -21,47 +21,47 @@ final class ObjectAuditEmbeddable
      * Objecting stores the identifier as an opaque scalar and does not own the
      * VendorEntity or VendorSecurityEntity association.
      */
-    #[ORM\Column(name: 'object_created_by', type: 'string', length: 190, nullable: true)]
-    private ?string $objectCreatedBy = null;
+    #[ORM\Column(name: 'created_by', type: 'string', length: 190, nullable: true)]
+    private ?string $createdBy = null;
 
     /** Canonical cross-system Vendor identity that last modified the object. */
-    #[ORM\Column(name: 'object_modified_by', type: 'string', length: 190, nullable: true)]
-    private ?string $objectModifiedBy = null;
+    #[ORM\Column(name: 'modified_by', type: 'string', length: 190, nullable: true)]
+    private ?string $modifiedBy = null;
 
     public function __construct(?\DateTimeImmutable $createdAt = null, ?string $createdBy = null)
     {
-        $this->objectCreatedAt = $createdAt ?? new \DateTimeImmutable('now');
-        $this->objectCreatedBy = $createdBy;
+        $this->createdAt = $createdAt ?? new \DateTimeImmutable('now');
+        $this->createdBy = $createdBy;
     }
 
     public function getCreatedAt(): \DateTimeImmutable
     {
-        return $this->objectCreatedAt;
+        return $this->createdAt;
     }
 
     public function getModifiedAt(): ?\DateTimeImmutable
     {
-        return $this->objectModifiedAt;
+        return $this->modifiedAt;
     }
 
     public function getCreatedBy(): ?string
     {
-        return $this->objectCreatedBy;
+        return $this->createdBy;
     }
 
     public function getModifiedBy(): ?string
     {
-        return $this->objectModifiedBy;
+        return $this->modifiedBy;
     }
 
     public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void
     {
         $effectiveModifiedAt = $modifiedAt ?? new \DateTimeImmutable('now');
-        if ($effectiveModifiedAt < $this->objectCreatedAt) {
+        if ($effectiveModifiedAt < $this->createdAt) {
             throw new \InvalidArgumentException('Object modification timestamp cannot precede creation timestamp.');
         }
 
-        $this->objectModifiedAt = $effectiveModifiedAt;
-        $this->objectModifiedBy = $modifiedBy;
+        $this->modifiedAt = $effectiveModifiedAt;
+        $this->modifiedBy = $modifiedBy;
     }
 }

@@ -4,7 +4,7 @@
 
 Objecting is the reusable provider of universal, business-neutral system-field packs for Doctrine entities.
 
-Objecting owns canonical `object_*` columns, Doctrine embeddables, explicit composition traits and interfaces, field-pack manifests and profiles, package diagnostics, compatibility metadata, and factual documentation.
+Objecting owns canonical system-field semantics, entity-native Doctrine columns, Doctrine embeddables, explicit composition traits and interfaces, `object_*` field-pack manifests and profiles, package diagnostics, compatibility metadata, and factual documentation.
 
 Consumer components own business Entity classes and tables, primary keys, Doctrine migrations, business relations and validation, repositories, services, DTOs, Forms, serializers, controllers, routes, fixtures, and runtime behavior.
 

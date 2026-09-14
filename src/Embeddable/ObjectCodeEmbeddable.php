@@ -9,21 +9,21 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectCodeEmbeddable
 {
-    #[ORM\Column(name: 'object_code', type: 'string', length: 190, nullable: true)]
-    private ?string $objectCode = null;
+    #[ORM\Column(name: 'code', type: 'string', length: 190, nullable: true)]
+    private ?string $code = null;
 
     public function __construct(?string $objectCode = null)
     {
-        $this->objectCode = $objectCode;
+        $this->code = $objectCode;
     }
 
     public function getObjectCode(): ?string
     {
-        return $this->objectCode;
+        return $this->code;
     }
 
     public function setObjectCode(?string $objectCode): void
     {
-        $this->objectCode = $objectCode;
+        $this->code = $objectCode;
     }
 }

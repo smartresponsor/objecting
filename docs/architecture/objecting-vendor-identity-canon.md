@@ -12,13 +12,13 @@ Architecturally the platform may be described as multitenant, but the tenant bou
 
 Objecting owns reusable lifecycle fields:
 
-- `object_created_at`
-- `object_created_by`
-- `object_modified_at`
-- `object_modified_by`
-- `object_deleted`
-- `object_deleted_at`
-- `object_deleted_by`
+- `created_at`
+- `created_by`
+- `modified_at`
+- `modified_by`
+- `deleted`
+- `deleted_at`
+- `deleted_by`
 
 The `*By` values carry the canonical Vendor identity for the lifecycle operation. Objecting stores that identifier as an opaque scalar because it must not own or depend on `VendorEntity` or `VendorSecurityEntity` Doctrine mappings.
 
@@ -41,7 +41,7 @@ Doctrine transactions use the already-resolved Vendor identity. A transaction bo
 Consumer migrations are backend-owned. When adopting this canon, consumers should:
 
 1. remove duplicated tenant/scope ownership columns only after checking data and constraints;
-2. rename `object_updated_at` to `object_modified_at`;
-3. rename `object_updated_by` to `object_modified_by`;
+2. rename legacy `updated_at` to canonical `modified_at` where the field is Objecting lifecycle audit data;
+3. rename legacy `updated_by` to canonical `modified_by` where the field is Objecting lifecycle attribution;
 4. preserve the Vendor primary identifier stored in lifecycle `*By` fields;
 5. update indexes, schema mirrors, serialized contracts, fixtures, and tests atomically.

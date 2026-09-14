@@ -10,7 +10,7 @@ objecting:
   package: objecting/object
   field_pack_contract: resources/objecting/Page/object-field-packs.yaml
   column_prefix_false: true
-  object_columns_prefixed: true
+  object_columns_prefixed: false
 required_field_packs:
   - object_identity
   - object_audit
@@ -36,22 +36,22 @@ traits:
   - App\Objecting\EntityTrait\Embeddable\ObjectSoftDeleteEmbeddableTrait
   - App\Objecting\EntityTrait\Embeddable\ObjectVersionEmbeddableTrait
 columns:
-  - object_uuid
-  - object_slug
-  - object_created_at
-  - object_modified_at
-  - object_created_by
-  - object_modified_by
-  - object_first_title
-  - object_middle_title
-  - object_last_title
-  - object_published
-  - object_published_at
-  - object_deleted
-  - object_deleted_at
-  - object_deleted_by
-  - object_version
-  - object_etag
+  - uuid
+  - slug
+  - created_at
+  - modified_at
+  - created_by
+  - modified_by
+  - first_title
+  - middle_title
+  - last_title
+  - published
+  - published_at
+  - deleted
+  - deleted_at
+  - deleted_by
+  - version
+  - etag
 quality_gates:
   - composer dump-autoload
   - composer test:quality

@@ -25,7 +25,7 @@ final class ObjectSchemaMirrorContractReporterTest extends TestCase
             backendSchemaMirrorPath: 'resources/schema/Page/object-schema-mirror.yaml',
             exposingSchemaMirrorPath: 'contract/component/Paging/Page/page.db-schema.yaml',
             requiredFieldPacks: [ObjectFieldPackName::IDENTITY, ObjectFieldPackName::AUDIT, ObjectFieldPackName::TITLE],
-            objectColumnNames: ['object_uuid', 'object_created_at', 'object_first_title'],
+            objectColumnNames: ['uuid', 'created_at', 'first_title'],
             backendColumnNames: ['id', 'page_status', 'page_sort_order'],
         );
 

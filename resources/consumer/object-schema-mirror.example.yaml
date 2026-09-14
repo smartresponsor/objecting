@@ -29,22 +29,22 @@ required_field_packs:
   - object_soft_delete
   - object_version
 object_columns:
-  - object_uuid
-  - object_slug
-  - object_created_at
-  - object_modified_at
-  - object_created_by
-  - object_modified_by
-  - object_first_title
-  - object_middle_title
-  - object_last_title
-  - object_published
-  - object_published_at
-  - object_deleted
-  - object_deleted_at
-  - object_deleted_by
-  - object_version
-  - object_etag
+  - uuid
+  - slug
+  - created_at
+  - modified_at
+  - created_by
+  - modified_by
+  - first_title
+  - middle_title
+  - last_title
+  - published
+  - published_at
+  - deleted
+  - deleted_at
+  - deleted_by
+  - version
+  - etag
 backend_columns:
   - id
   - page_status
@@ -74,5 +74,5 @@ schema_mirror_readiness:
   blocking_reasons: []
 notes:
   - Backend components remain Doctrine migration owners.
-  - Objecting owns reusable object_* system field columns and their field-pack declarations.
+  - Objecting owns reusable system-field semantics and object_* field-pack declarations; persisted columns remain entity-native.
   - Exposing owns the API-visible schema mirror and must not become the Doctrine migration owner.

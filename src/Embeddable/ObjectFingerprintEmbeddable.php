@@ -9,49 +9,49 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectFingerprintEmbeddable
 {
-    #[ORM\Column(name: 'object_hash', type: 'string', length: 190, nullable: true)]
-    private ?string $objectHash = null;
+    #[ORM\Column(name: 'hash', type: 'string', length: 190, nullable: true)]
+    private ?string $hash = null;
 
-    #[ORM\Column(name: 'object_checksum', type: 'string', length: 190, nullable: true)]
-    private ?string $objectChecksum = null;
+    #[ORM\Column(name: 'checksum', type: 'string', length: 190, nullable: true)]
+    private ?string $checksum = null;
 
-    #[ORM\Column(name: 'object_algorithm', type: 'string', length: 64, nullable: true)]
-    private ?string $objectAlgorithm = null;
+    #[ORM\Column(name: 'algorithm', type: 'string', length: 64, nullable: true)]
+    private ?string $algorithm = null;
 
     public function __construct(?string $objectHash = null, ?string $objectChecksum = null, ?string $objectAlgorithm = null)
     {
-        $this->objectHash = $objectHash;
-        $this->objectChecksum = $objectChecksum;
-        $this->objectAlgorithm = $objectAlgorithm;
+        $this->hash = $objectHash;
+        $this->checksum = $objectChecksum;
+        $this->algorithm = $objectAlgorithm;
     }
 
     public function getObjectHash(): ?string
     {
-        return $this->objectHash;
+        return $this->hash;
     }
 
     public function setObjectHash(?string $objectHash): void
     {
-        $this->objectHash = $objectHash;
+        $this->hash = $objectHash;
     }
 
     public function getObjectChecksum(): ?string
     {
-        return $this->objectChecksum;
+        return $this->checksum;
     }
 
     public function setObjectChecksum(?string $objectChecksum): void
     {
-        $this->objectChecksum = $objectChecksum;
+        $this->checksum = $objectChecksum;
     }
 
     public function getObjectAlgorithm(): ?string
     {
-        return $this->objectAlgorithm;
+        return $this->algorithm;
     }
 
     public function setObjectAlgorithm(?string $objectAlgorithm): void
     {
-        $this->objectAlgorithm = $objectAlgorithm;
+        $this->algorithm = $objectAlgorithm;
     }
 }

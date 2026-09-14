@@ -9,25 +9,25 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectVersionEmbeddable
 {
-    #[ORM\Column(name: 'object_version', type: 'integer')]
-    private int $objectVersion = 1;
+    #[ORM\Column(name: 'version', type: 'integer')]
+    private int $version = 1;
 
-    #[ORM\Column(name: 'object_etag', type: 'string', length: 128, nullable: true)]
-    private ?string $objectEtag = null;
+    #[ORM\Column(name: 'etag', type: 'string', length: 128, nullable: true)]
+    private ?string $etag = null;
 
     public function getObjectVersion(): int
     {
-        return $this->objectVersion;
+        return $this->version;
     }
 
     public function getObjectEtag(): ?string
     {
-        return $this->objectEtag;
+        return $this->etag;
     }
 
     public function bumpObjectVersion(?string $objectEtag = null): void
     {
-        ++$this->objectVersion;
-        $this->objectEtag = $objectEtag;
+        ++$this->version;
+        $this->etag = $objectEtag;
     }
 }

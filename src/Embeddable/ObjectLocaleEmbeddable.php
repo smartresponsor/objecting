@@ -9,40 +9,40 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectLocaleEmbeddable
 {
-    #[ORM\Column(name: 'object_locale', type: 'string', length: 16)]
-    private string $objectLocale = 'en_US';
+    #[ORM\Column(name: 'locale', type: 'string', length: 16)]
+    private string $locale = 'en_US';
 
-    #[ORM\Column(name: 'object_timezone', type: 'string', length: 64)]
-    private string $objectTimezone = 'UTC';
+    #[ORM\Column(name: 'timezone', type: 'string', length: 64)]
+    private string $timezone = 'UTC';
 
     public function __construct(?string $objectLocale = null, ?string $objectTimezone = null)
     {
         if (null !== $objectLocale) {
-            $this->objectLocale = $objectLocale;
+            $this->locale = $objectLocale;
         }
 
         if (null !== $objectTimezone) {
-            $this->objectTimezone = $objectTimezone;
+            $this->timezone = $objectTimezone;
         }
     }
 
     public function getObjectLocale(): string
     {
-        return $this->objectLocale;
+        return $this->locale;
     }
 
     public function setObjectLocale(string $objectLocale): void
     {
-        $this->objectLocale = $objectLocale;
+        $this->locale = $objectLocale;
     }
 
     public function getObjectTimezone(): string
     {
-        return $this->objectTimezone;
+        return $this->timezone;
     }
 
     public function setObjectTimezone(string $objectTimezone): void
     {
-        $this->objectTimezone = $objectTimezone;
+        $this->timezone = $objectTimezone;
     }
 }

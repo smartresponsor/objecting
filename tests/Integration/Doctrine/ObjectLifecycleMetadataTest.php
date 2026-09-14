@@ -23,25 +23,25 @@ final class ObjectLifecycleMetadataTest extends TestCase
         self::assertSame(['id'], $metadata->getIdentifierFieldNames());
 
         $expectedColumns = [
+            'created_at',
+            'created_by',
+            'deleted',
+            'deleted_at',
+            'deleted_by',
+            'etag',
+            'first_title',
             'id',
-            'object_created_at',
-            'object_created_by',
-            'object_deleted',
-            'object_deleted_at',
-            'object_deleted_by',
-            'object_etag',
-            'object_first_title',
-            'object_last_title',
-            'object_locked_at',
-            'object_locked_by',
-            'object_middle_title',
-            'object_modified_at',
-            'object_modified_by',
-            'object_published',
-            'object_published_at',
-            'object_slug',
-            'object_uuid',
-            'object_version',
+            'last_title',
+            'locked_at',
+            'locked_by',
+            'middle_title',
+            'modified_at',
+            'modified_by',
+            'published',
+            'published_at',
+            'slug',
+            'uuid',
+            'version',
         ];
         $actualColumns = array_values(array_map(
             static fn (\Doctrine\ORM\Mapping\FieldMapping $mapping): string => $mapping->columnName,
@@ -50,17 +50,17 @@ final class ObjectLifecycleMetadataTest extends TestCase
         sort($actualColumns);
 
         self::assertSame($expectedColumns, $actualColumns);
-        self::assertSame('datetime_immutable', $metadata->getFieldMapping('objectAudit.objectCreatedAt')['type']);
-        self::assertFalse($metadata->getFieldMapping('objectAudit.objectCreatedAt')['nullable'] ?? false);
-        self::assertTrue($metadata->getFieldMapping('objectAudit.objectModifiedAt')['nullable'] ?? false);
-        self::assertSame(190, $metadata->getFieldMapping('objectAudit.objectCreatedBy')['length']);
-        self::assertSame('boolean', $metadata->getFieldMapping('objectSoftDelete.objectDeleted')['type']);
-        self::assertSame('integer', $metadata->getFieldMapping('objectVersion.objectVersion')['type']);
-        self::assertSame('binary', $metadata->getFieldMapping('objectIdentity.objectUuid')['type']);
-        self::assertSame(16, $metadata->getFieldMapping('objectIdentity.objectUuid')['length']);
-        self::assertFalse($metadata->getFieldMapping('objectIdentity.objectUuid')['nullable'] ?? false);
-        self::assertSame(190, $metadata->getFieldMapping('objectIdentity.objectSlug')['length']);
-        self::assertFalse($metadata->getFieldMapping('objectIdentity.objectSlug')['nullable'] ?? false);
+        self::assertSame('datetime_immutable', $metadata->getFieldMapping('objectAudit.createdAt')['type']);
+        self::assertFalse($metadata->getFieldMapping('objectAudit.createdAt')['nullable'] ?? false);
+        self::assertTrue($metadata->getFieldMapping('objectAudit.modifiedAt')['nullable'] ?? false);
+        self::assertSame(190, $metadata->getFieldMapping('objectAudit.createdBy')['length']);
+        self::assertSame('boolean', $metadata->getFieldMapping('objectSoftDelete.deleted')['type']);
+        self::assertSame('integer', $metadata->getFieldMapping('objectVersion.version')['type']);
+        self::assertSame('binary', $metadata->getFieldMapping('objectIdentity.uuid')['type']);
+        self::assertSame(16, $metadata->getFieldMapping('objectIdentity.uuid')['length']);
+        self::assertFalse($metadata->getFieldMapping('objectIdentity.uuid')['nullable'] ?? false);
+        self::assertSame(190, $metadata->getFieldMapping('objectIdentity.slug')['length']);
+        self::assertFalse($metadata->getFieldMapping('objectIdentity.slug')['nullable'] ?? false);
     }
 
     public function testEntityRoundTripsThroughDoctrineWithoutMigrationFirstSchemaDesign(): void
