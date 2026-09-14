@@ -55,7 +55,9 @@ final class ObjectLifecycleMetadataTest extends TestCase
         self::assertTrue($metadata->getFieldMapping('objectAudit.modifiedAt')['nullable'] ?? false);
         self::assertSame(190, $metadata->getFieldMapping('objectAudit.createdBy')['length']);
         self::assertSame('boolean', $metadata->getFieldMapping('objectSoftDelete.deleted')['type']);
-        self::assertSame('integer', $metadata->getFieldMapping('objectVersion.version')['type']);
+        self::assertSame('integer', $metadata->getFieldMapping('objectVersion')['type']);
+        self::assertTrue($metadata->isVersioned);
+        self::assertSame('objectVersion', $metadata->versionField);
         self::assertSame('binary', $metadata->getFieldMapping('objectIdentity.uuid')['type']);
         self::assertSame(16, $metadata->getFieldMapping('objectIdentity.uuid')['length']);
         self::assertFalse($metadata->getFieldMapping('objectIdentity.uuid')['nullable'] ?? false);
@@ -77,7 +79,6 @@ final class ObjectLifecycleMetadataTest extends TestCase
         $entity = new ObjectLifecycleTestEntity('Lifecycle title', 'lifecycle-title', 'vendor-1', $createdAt);
         $entity->touchModified($modifiedAt, 'vendor-2');
         $entity->publishObject($publishedAt);
-        $entity->bumpObjectVersion('etag-2');
         $entity->lock('vendor-3', $lockedAt);
         $entity->delete('vendor-4', $deletedAt);
 
@@ -85,6 +86,11 @@ final class ObjectLifecycleMetadataTest extends TestCase
         $entityManager->flush();
         $id = $entity->getId();
         self::assertNotNull($id);
+        self::assertSame(1, $entity->getObjectVersion());
+
+        $entity->bumpObjectVersion('etag-2');
+        $entityManager->flush();
+        self::assertSame(2, $entity->getObjectVersion());
 
         $entityManager->clear();
         $reloaded = $entityManager->find(ObjectLifecycleTestEntity::class, $id);

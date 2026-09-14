@@ -4,40 +4,35 @@ declare(strict_types=1);
 
 namespace App\Objecting\EntityTrait\Embeddable;
 
-use App\Objecting\Embeddable\ObjectVersionEmbeddable;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ObjectVersionEmbeddableTrait
 {
-    #[ORM\Embedded(class: ObjectVersionEmbeddable::class, columnPrefix: false)]
-    private ObjectVersionEmbeddable $objectVersion;
+    #[ORM\Version]
+    #[ORM\Column(name: 'version', type: 'integer')]
+    private int $objectVersion = 1;
+
+    #[ORM\Column(name: 'etag', type: 'string', length: 128, nullable: true)]
+    private ?string $objectEtag = null;
 
     protected function initializeObjectVersion(): void
     {
-        $this->objectVersion = new ObjectVersionEmbeddable();
-    }
-
-    private function objectVersionEmbeddable(): ObjectVersionEmbeddable
-    {
-        if (!isset($this->objectVersion)) {
-            $this->objectVersion = new ObjectVersionEmbeddable();
-        }
-
-        return $this->objectVersion;
+        $this->objectVersion = 1;
+        $this->objectEtag = null;
     }
 
     public function getObjectVersion(): int
     {
-        return $this->objectVersionEmbeddable()->getObjectVersion();
+        return $this->objectVersion;
     }
 
     public function getObjectEtag(): ?string
     {
-        return $this->objectVersionEmbeddable()->getObjectEtag();
+        return $this->objectEtag;
     }
 
     public function bumpObjectVersion(?string $objectEtag = null): void
     {
-        $this->objectVersionEmbeddable()->bumpObjectVersion($objectEtag);
+        $this->objectEtag = $objectEtag;
     }
 }
