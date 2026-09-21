@@ -289,6 +289,15 @@ foreach ($embeddableTraitFiles as $traitFile) {
     $relative = str_replace($root . '/', '', $traitFile);
     $content = file_get_contents($traitFile) ?: '';
     if (preg_match('/private\s+(Object[A-Za-z0-9]+Embeddable)\s+\$(object[A-Za-z0-9]+);/', $content, $match) !== 1) {
+        // Version/etag are mapped directly so Doctrine can own optimistic locking.
+        if (str_ends_with($relative, '/ObjectVersionEmbeddableTrait.php')
+            && str_contains($content, '#[ORM\\Version]')
+            && preg_match('/private\s+int\s+\$objectVersion\s*=\s*1;/', $content) === 1
+            && preg_match('/private\s+\?string\s+\$objectEtag\s*=\s*null;/', $content) === 1
+        ) {
+            continue;
+        }
+
         $errors[] = 'Embeddable trait lacks typed property: ' . $relative;
         continue;
     }

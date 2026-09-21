@@ -23,6 +23,16 @@ foreach ($traitFiles as $traitFile) {
     $content = (string) file_get_contents($traitFile);
 
     if (!preg_match('/private\s+(Object[A-Za-z0-9]+Embeddable)\s+\$(object[A-Za-z0-9]+);/', $content, $match)) {
+        // ObjectVersionEmbeddableTrait intentionally maps scalar version/etag state
+        // directly because Doctrine optimistic locking requires the version field.
+        if (str_ends_with($relative, '/ObjectVersionEmbeddableTrait.php')
+            && str_contains($content, '#[ORM\\Version]')
+            && preg_match('/private\s+int\s+\$objectVersion\s*=\s*1;/', $content) === 1
+            && preg_match('/private\s+\?string\s+\$objectEtag\s*=\s*null;/', $content) === 1
+        ) {
+            continue;
+        }
+
         $errors[] = 'Trait is missing typed Object* embeddable property: ' . $relative;
         continue;
     }

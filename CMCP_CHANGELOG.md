@@ -55,6 +55,33 @@
 - Raise measured line and method coverage toward Canon040's 80% / 80% targets while maintaining branch coverage above 70%.
 - Correct the downstream App runtime-lock Objecting bundle identity/inclusion in the App-owned integration task.
 
+## 2026-09-20 — RC gate consistency hardening
+
+### Baseline
+
+- Re-read Objecting README/composer surfaces plus mandatory Cruding, Viewing, Interfacing, Gating, and Canonization package contracts.
+- Canonization textual rules consulted: Canon007, Canon008, Canon018, Canon021, Canon022, Canon023, Canon024, Canon025, Canon026, Canon029, Canon032, Canon039, and Canon044.
+- Canon mapping: Objecting remains a reusable field-pack library rather than a standalone application; therefore Canon022/023/025 standalone/path-dependency requirements do not justify adding Cruding, Viewing, or Interfacing runtime dependencies. Canon044 remains directly applicable to Objecting system-field ownership.
+- Pre-existing `.gating/` changes are unrelated workspace state and were preserved without modification by this workstream.
+
+### RC-critical workstream
+
+- `composer test:quality` exposed two stale executable checks that assumed every `Object*EmbeddableTrait` wraps an `Object*Embeddable` typed property.
+- `ObjectVersionEmbeddableTrait` is the intentional exception: version and etag are scalar-mapped, with `#[ORM\\Version]` on the version property so Doctrine owns optimistic locking.
+- Hardened both structural-canon and embeddable-initialization gates to recognize only that exact scalar version/etag shape, retaining strict lazy-embeddable enforcement for every other field-pack trait.
+
+### Verification
+
+- `composer test:quality`: PASS.
+- `composer phpstan`: PASS, 222 files, no errors.
+- `composer validate --strict --check-lock`: PASS.
+- `composer test`: PASS, 68 tests / 462 assertions.
+- Existing unrelated `.gating/` modifications remain outside this task's integration scope.
+
+### Growth workstream
+
+- No growth capability was added. Post-RC work remains coverage uplift and consumer migration ergonomics; neither is required to fix this RC gate inconsistency.
+
 ## 2026-09-14 — Canon044 RC hardening
 
 ### Baseline
