@@ -25,7 +25,7 @@
     "bin/gating"
   ],
   "scripts": {
-    "gate": "@php bin/gating self-check",
+    "gate": "@php bin/gating check --target=.",
     "scan": "@php bin/gating scan --target=.",
     "test": "@php tests/calibration.php",
     "test:unit": "phpunit tests/Unit",

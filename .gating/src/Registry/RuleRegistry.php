@@ -51,6 +51,8 @@ use Gating\Gate\Rule\Canon\Canon040PhpTestCoverageRule;
 use Gating\Gate\Rule\Canon\Canon041BehavioralUiTestToolingRule;
 use Gating\Gate\Rule\Canon\Canon042BehavioralUiCoverageRule;
 use Gating\Gate\Rule\Canon\Canon043DevelopmentComposerDependencyVersionRule;
+use Gating\Gate\Rule\Canon\Canon044ObjectingSystemFieldNamingRule;
+use Gating\Gate\Rule\Canon\Canon045DevelopmentComposerRepositoryClosureRule;
 use Gating\Gate\Rule\Canon\CanonRuleMirrorRule;
 use Gating\Gate\Rule\Composer\ComposerPlatformRule;
 use Gating\Gate\Rule\Database\DatabaseTablePrefixRule;
@@ -120,6 +122,8 @@ final readonly class RuleRegistry
             new Canon041BehavioralUiTestToolingRule(),
             new Canon042BehavioralUiCoverageRule(),
             new Canon043DevelopmentComposerDependencyVersionRule(),
+            new Canon044ObjectingSystemFieldNamingRule(),
+            new Canon045DevelopmentComposerRepositoryClosureRule(),
             new CanonRuleMirrorRule(),
             new ProfileContractRule(),
             new ForbiddenArchitectureRule(),
@@ -218,6 +222,8 @@ final readonly class RuleRegistry
             ['id' => 'canon.041.behavioral_ui_test_tooling', 'area' => 'canon', 'scope' => 'platform', 'kind' => 'canon-linked', 'summary' => 'Requires Symfony Test Pack, Panther, and repository-local Playwright tooling for standalone Symfony applications.'],
             ['id' => 'canon.042.behavioral_ui_coverage', 'area' => 'canon', 'scope' => 'platform', 'kind' => 'canon-linked', 'summary' => 'Evaluates explicit functional, behavioral, UI, and critical-workflow coverage evidence and classifies behavioral test debt.'],
             ['id' => 'canon.043.development_composer_dependency_version', 'area' => 'canon', 'scope' => 'platform', 'kind' => 'canon-linked', 'summary' => 'Requires locally linked first-party Composer path dependencies to use exact dev-master constraints.'],
+            ['id' => 'canon.044.objecting_system_field_naming', 'area' => 'canon', 'scope' => 'platform', 'kind' => 'canon-linked', 'summary' => 'Requires Objecting persisted system fields and Doctrine columns to use entity-native names without object/objecting prefixes.'],
+            ['id' => 'canon.045.development_composer_repository_closure', 'area' => 'canon', 'scope' => 'platform', 'kind' => 'canon-linked', 'summary' => 'Requires root development Composer manifests to expose the complete reachable local first-party path-repository closure.'],
             ['id' => 'canon.mirror_contract', 'area' => 'canon', 'scope' => 'platform', 'kind' => 'meta-canon', 'summary' => 'Validates CanonNNN mirror naming/coverage contract.'],
             ['id' => 'profile.contract_validity', 'area' => 'profile', 'scope' => 'profile', 'kind' => 'profile-canon', 'summary' => 'Ensures component profiles use the common Gating profile contract.'],
             ['id' => 'structure.forbidden_architecture', 'area' => 'structure', 'scope' => 'platform', 'kind' => 'hard-canon', 'summary' => 'Blocks /src/Domain, Port, Adapter, and Adaptor folders.'],

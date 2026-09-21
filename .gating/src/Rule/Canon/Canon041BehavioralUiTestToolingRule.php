@@ -57,7 +57,14 @@ final class Canon041BehavioralUiTestToolingRule extends AbstractCanonRule
                 $hits[] = 'package.json scripts do not expose Playwright test execution.';
             }
         }
-        $playwrightConfig = array_any(['playwright.config.ts', 'playwright.config.js', 'playwright.config.mts', 'playwright.config.mjs', 'playwright.config.cts', 'playwright.config.cjs'], fn ($candidate) => is_file($context->targetPath.'/'.$candidate));
+
+        $playwrightConfig = false;
+        foreach (['playwright.config.ts', 'playwright.config.js', 'playwright.config.mts', 'playwright.config.mjs', 'playwright.config.cts', 'playwright.config.cjs'] as $candidate) {
+            if (is_file($context->targetPath.'/'.$candidate)) {
+                $playwrightConfig = true;
+                break;
+            }
+        }
         if (!$playwrightConfig) {
             $hits[] = 'Missing repository-owned Playwright configuration.';
         }
@@ -110,6 +117,12 @@ final class Canon041BehavioralUiTestToolingRule extends AbstractCanonRule
     /** @param list<string> $commands */
     private function containsCommand(array $commands, string $needle): bool
     {
-        return array_any($commands, fn ($command) => str_contains($command, $needle));
+        foreach ($commands as $command) {
+            if (str_contains($command, $needle)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

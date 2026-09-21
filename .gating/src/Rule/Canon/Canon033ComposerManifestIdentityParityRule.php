@@ -73,8 +73,13 @@ final class Canon033ComposerManifestIdentityParityRule extends AbstractCanonRule
         if (!is_array($psr4)) {
             return false;
         }
+        foreach ($psr4 as $namespace => $_path) {
+            if (is_string($namespace) && str_starts_with($namespace, 'App\\')) {
+                return true;
+            }
+        }
 
-        return array_any($psr4, fn ($_path, $namespace) => is_string($namespace) && str_starts_with($namespace, 'App\\'));
+        return false;
     }
 
     /**

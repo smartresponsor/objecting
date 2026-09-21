@@ -58,6 +58,12 @@ final class Canon034GitignoreBaselineRule extends AbstractCanonRule
     /** @param list<string> $patterns */
     private function containsAny(string $text, array $patterns): bool
     {
-        return array_any($patterns, fn ($pattern) => str_contains($text, strtolower($pattern)));
+        foreach ($patterns as $pattern) {
+            if (str_contains($text, strtolower($pattern))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

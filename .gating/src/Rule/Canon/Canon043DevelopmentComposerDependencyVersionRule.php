@@ -43,6 +43,7 @@ final class Canon043DevelopmentComposerDependencyVersionRule extends AbstractCan
         }
 
         $hits = [];
+        $hasLocalSiblingPath = false;
         foreach (($composer['repositories'] ?? []) as $repository) {
             if (!is_array($repository) || 'path' !== ($repository['type'] ?? null)) {
                 continue;
@@ -53,6 +54,7 @@ final class Canon043DevelopmentComposerDependencyVersionRule extends AbstractCan
                 continue;
             }
 
+            $hasLocalSiblingPath = true;
             $siblingPath = realpath($context->targetPath.DIRECTORY_SEPARATOR.$url);
             if (false === $siblingPath) {
                 $hits[] = 'Local path repository '.$url.' cannot be resolved.';
@@ -72,18 +74,28 @@ final class Canon043DevelopmentComposerDependencyVersionRule extends AbstractCan
                 continue;
             }
 
-            $constraint = $requirements[$package] ?? null;
-            if (null === $constraint) {
-                continue;
+            $version = $repository['options']['versions'][$package] ?? null;
+            if ('dev-master' !== $version) {
+                $hits[] = $package.' path repository must pin options.versions['.$package.'] to dev-master.';
             }
 
-            if ('dev-master' !== $constraint) {
+            $constraint = $requirements[$package] ?? null;
+            if (null !== $constraint && 'dev-master' !== $constraint) {
                 $hits[] = $package.' must use dev-master for local path development; found '.$constraint.'.';
             }
         }
 
+        if ($hasLocalSiblingPath) {
+            if ('dev' !== ($composer['minimum-stability'] ?? null)) {
+                $hits[] = 'Root composer.json must declare minimum-stability=dev for local first-party dev-master dependencies.';
+            }
+            if (true !== ($composer['prefer-stable'] ?? null)) {
+                $hits[] = 'Root composer.json must declare prefer-stable=true with minimum-stability=dev.';
+            }
+        }
+
         return [] === $hits
-            ? $this->result('passed', 'Local sibling Composer dependencies use canonical dev-master constraints.')
+            ? $this->result('passed', 'Local sibling Composer dependencies use canonical dev-master constraints and stability policy.')
             : $this->result('failed', 'Development Composer dependency version policy violations found.', $hits);
     }
 }
