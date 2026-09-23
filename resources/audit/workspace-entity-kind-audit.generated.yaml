@@ -1,5 +1,5 @@
 version: 1
-generated_at: '2026-08-18T23:49:06+00:00'
+generated_at: '2026-09-23T17:24:22+00:00'
 scope:
   workspace_root: 'D:/PhpstormProjects/www'
   excluded_repositories:
@@ -14,16 +14,16 @@ classification_policy:
   ambiguous: 'Entity semantics require human review before assigning a kind.'
   capability_hints: 'Behavioral hints only; they never determine entity kind.'
 summary:
-  repositories: 41
-  entities: 654
-  object: 29
-  relation: 7
-  ambiguous: 618
-  declared_kind: 18
-  review_required: 622
-  record_like_ambiguous: 114
-  append_only_candidates: 63
-  immutable_candidates: 50
+  repositories: 47
+  entities: 681
+  object: 23
+  relation: 8
+  ambiguous: 650
+  declared_kind: 15
+  review_required: 654
+  record_like_ambiguous: 121
+  append_only_candidates: 65
+  immutable_candidates: 53
 components:
   Accessing:
     summary:
@@ -314,8 +314,8 @@ components:
       review_required: 7
     entities:
       -
-        class: AdjudicationAuditEventEntity
-        path: src/Entity/Adjudication/AdjudicationAuditEventEntity.php
+        class: AdjudicationAuditEvent
+        path: src/Entity/AdjudicationAuditEvent.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -326,8 +326,8 @@ components:
           - immutable_candidate
         review_required: true
       -
-        class: AdjudicationConflictEntity
-        path: src/Entity/Adjudication/AdjudicationConflictEntity.php
+        class: AdjudicationConflict
+        path: src/Entity/AdjudicationConflict.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -336,8 +336,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AdjudicationEvidenceEntity
-        path: src/Entity/Adjudication/AdjudicationEvidenceEntity.php
+        class: AdjudicationEvidence
+        path: src/Entity/AdjudicationEvidence.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -346,8 +346,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AdjudicationReviewQueueItemEntity
-        path: src/Entity/Adjudication/AdjudicationReviewQueueItemEntity.php
+        class: AdjudicationReviewQueueItem
+        path: src/Entity/AdjudicationReviewQueueItem.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -356,8 +356,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AdjudicationRuleEntity
-        path: src/Entity/Adjudication/AdjudicationRuleEntity.php
+        class: AdjudicationRule
+        path: src/Entity/AdjudicationRule.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -366,8 +366,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AdjudicationRuntimePackEntity
-        path: src/Entity/Adjudication/AdjudicationRuntimePackEntity.php
+        class: AdjudicationRuntimePack
+        path: src/Entity/AdjudicationRuntimePack.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -376,8 +376,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AdjudicationSourceEntity
-        path: src/Entity/Adjudication/AdjudicationSourceEntity.php
+        class: AdjudicationSource
+        path: src/Entity/AdjudicationSource.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -732,9 +732,9 @@ components:
         review_required: true
   Applicating:
     summary:
-      entities: 5
+      entities: 6
       object: 1
-      relation: 1
+      relation: 2
       ambiguous: 3
       review_required: 3
     entities:
@@ -768,6 +768,17 @@ components:
           - insufficient_kind_evidence
         capability_hints: {}
         review_required: true
+      -
+        class: ApplicationRuntimeAssignment
+        path: src/Entity/ApplicationRuntimeAssignment.php
+        kind: relation
+        confidence: medium
+        declared_kind: null
+        evidence:
+          - relation_name_pattern
+          - owning_association
+        capability_hints: {}
+        review_required: false
       -
         class: ApplicationUser
         path: src/Entity/ApplicationUser.php
@@ -836,8 +847,8 @@ components:
       review_required: 0
     entities:
       -
-        class: Attachment
-        path: src/Entity/Attachment/Attachment.php
+        class: AttachmentEntity
+        path: src/Entity/Attachment/AttachmentEntity.php
         kind: object
         confidence: high
         declared_kind: object
@@ -846,8 +857,8 @@ components:
         capability_hints: {}
         review_required: false
       -
-        class: AttachmentLink
-        path: src/Entity/Attachment/AttachmentLink.php
+        class: AttachmentLinkEntity
+        path: src/Entity/Attachment/AttachmentLinkEntity.php
         kind: relation
         confidence: high
         declared_kind: relation
@@ -969,6 +980,54 @@ components:
         declared_kind: null
         evidence:
           - title_field
+        capability_hints: {}
+        review_required: true
+  Casing:
+    summary:
+      entities: 4
+      object: 0
+      relation: 0
+      ambiguous: 4
+      review_required: 4
+    entities:
+      -
+        class: CaseDraftEntity
+        path: src/Entity/CaseDraftEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: CaseEntity
+        path: src/Entity/CaseEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: CaseInformationRequestEntity
+        path: src/Entity/CaseInformationRequestEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: CaseOutboxMessageEntity
+        path: src/Entity/CaseOutboxMessageEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - slug_field
         capability_hints: {}
         review_required: true
   Cataloging:
@@ -1395,17 +1454,17 @@ components:
           - name_field
         capability_hints: {}
         review_required: true
-  Currencing:
+  Complying:
     summary:
-      entities: 3
+      entities: 14
       object: 0
       relation: 0
-      ambiguous: 3
-      review_required: 3
+      ambiguous: 14
+      review_required: 14
     entities:
       -
-        class: Currency
-        path: src/Entity/Currency/Currency.php
+        class: ComplianceAmlScreening
+        path: src/Entity/ComplianceAmlScreening.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -1414,13 +1473,155 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CurrencyExchangeEntity
-        path: src/Entity/Currency/CurrencyExchangeEntity.php
+        class: ComplianceAuditLog
+        path: src/Entity/ComplianceAuditLog.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - append_only_candidate
+        review_required: true
+      -
+        class: ComplianceCaseQueue
+        path: src/Entity/ComplianceCaseQueue.php
         kind: ambiguous
         confidence: low
         declared_kind: null
         evidence:
           - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceConfig
+        path: src/Entity/ComplianceConfig.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceDecisionLog
+        path: src/Entity/ComplianceDecisionLog.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - append_only_candidate
+        review_required: true
+      -
+        class: ComplianceDecisionLogArchive
+        path: src/Entity/ComplianceDecisionLogArchive.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceFraudSignal
+        path: src/Entity/ComplianceFraudSignal.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceIncidentWebhook
+        path: src/Entity/ComplianceIncidentWebhook.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceKycProfile
+        path: src/Entity/ComplianceKycProfile.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceLimitPolicyEntity
+        path: src/Entity/ComplianceLimitPolicyEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: CompliancePolicyRegistry
+        path: src/Entity/CompliancePolicyRegistry.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceRetentionPolicyEntity
+        path: src/Entity/ComplianceRetentionPolicyEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceRiskRule
+        path: src/Entity/ComplianceRiskRule.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - name_field
+        capability_hints: {}
+        review_required: true
+      -
+        class: ComplianceSanctionListEntry
+        path: src/Entity/ComplianceSanctionListEntry.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - append_only_candidate
+          - immutable_candidate
+        review_required: true
+  Currencing:
+    summary:
+      entities: 2
+      object: 0
+      relation: 0
+      ambiguous: 2
+      review_required: 2
+    entities:
+      -
+        class: CurrencyEntity
+        path: src/Entity/Currency/CurrencyEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - object_title_trait
         capability_hints: {}
         review_required: true
       -
@@ -1430,7 +1631,7 @@ components:
         confidence: low
         declared_kind: null
         evidence:
-          - insufficient_kind_evidence
+          - object_title_trait
         capability_hints: {}
         review_required: true
   Delivering:
@@ -1442,8 +1643,8 @@ components:
       review_required: 2
     entities:
       -
-        class: DeliveringAttempt
-        path: src/Entity/Attempt/DeliveringAttempt.php
+        class: DeliveryAttempt
+        path: src/Entity/Attempt/DeliveryAttempt.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -1452,8 +1653,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: DeliveringDelivery
-        path: src/Entity/Delivery/DeliveringDelivery.php
+        class: DeliveryDelivery
+        path: src/Entity/Delivery/DeliveryDelivery.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -1670,13 +1871,52 @@ components:
       review_required: 1
     entities:
       -
-        class: Facet
-        path: src/Entity/Facet.php
+        class: FacetEntity
+        path: src/Entity/FacetEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
         evidence:
           - name_field
+        capability_hints: {}
+        review_required: true
+  Facting:
+    summary:
+      entities: 3
+      object: 0
+      relation: 0
+      ambiguous: 3
+      review_required: 3
+    entities:
+      -
+        class: FactMigrationEntity
+        path: src/Entity/Fact/FactMigrationEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - name_field
+        capability_hints: {}
+        review_required: true
+      -
+        class: FactRecordEntity
+        path: src/Entity/Fact/FactRecordEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - immutable_candidate
+        review_required: true
+      -
+        class: FactStreamEntity
+        path: src/Entity/Fact/FactStreamEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
         capability_hints: {}
         review_required: true
   Indexing:
@@ -1809,8 +2049,8 @@ components:
       review_required: 1
     entities:
       -
-        class: ManageCrudFieldViewProfileRule
-        path: src/Entity/Crud/ManageCrudFieldViewProfileRule.php
+        class: ManageCrudFieldViewProfileRuleEntity
+        path: src/Entity/Crud/ManageCrudFieldViewProfileRuleEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -1827,18 +2067,8 @@ components:
       review_required: 3
     entities:
       -
-        class: MerchandisingPlacementEntity
-        path: src/Entity/MerchandisingPlacementEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: MerchandisingSectionEntity
-        path: src/Entity/MerchandisingSectionEntity.php
+        class: MerchEntity
+        path: src/Entity/MerchEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -1847,8 +2077,18 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: MerchandisingSurfaceEntity
-        path: src/Entity/MerchandisingSurfaceEntity.php
+        class: MerchPlacementEntity
+        path: src/Entity/MerchPlacementEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: MerchSectionEntity
+        path: src/Entity/MerchSectionEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3784,7 +4024,7 @@ components:
     entities:
       -
         class: PaymentAuditEntity
-        path: src/Infrastructure/Entity/PaymentAuditEntity.php
+        path: src/Entity/Operational/PaymentAuditEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3795,7 +4035,7 @@ components:
         review_required: true
       -
         class: PaymentCircuitEntity
-        path: src/Infrastructure/Entity/PaymentCircuitEntity.php
+        path: src/Entity/Operational/PaymentCircuitEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3805,7 +4045,7 @@ components:
         review_required: true
       -
         class: PaymentDlqEntity
-        path: src/Entity/PaymentDlqEntity.php
+        path: src/Entity/Business/PaymentDlqEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3815,7 +4055,7 @@ components:
         review_required: true
       -
         class: PaymentEntity
-        path: src/Entity/PaymentEntity.php
+        path: src/Entity/Business/PaymentEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3825,7 +4065,7 @@ components:
         review_required: true
       -
         class: PaymentGatewayEntity
-        path: src/Entity/PaymentGatewayEntity.php
+        path: src/Entity/Business/PaymentGatewayEntity.php
         kind: object
         confidence: low
         declared_kind: null
@@ -3836,7 +4076,7 @@ components:
         review_required: true
       -
         class: PaymentIdempotencyEntity
-        path: src/Infrastructure/Entity/PaymentIdempotencyEntity.php
+        path: src/Entity/Operational/PaymentIdempotencyEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3846,7 +4086,7 @@ components:
         review_required: true
       -
         class: PaymentMethodEntity
-        path: src/Entity/PaymentMethodEntity.php
+        path: src/Entity/Business/PaymentMethodEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3856,7 +4096,7 @@ components:
         review_required: true
       -
         class: PaymentOutboxMessageEntity
-        path: src/Entity/PaymentOutboxMessageEntity.php
+        path: src/Entity/Business/PaymentOutboxMessageEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3866,7 +4106,7 @@ components:
         review_required: true
       -
         class: PaymentProjectionEntity
-        path: src/Infrastructure/Entity/PaymentProjectionEntity.php
+        path: src/Entity/Operational/PaymentProjectionEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3876,7 +4116,7 @@ components:
         review_required: true
       -
         class: PaymentProjectionMetaEntity
-        path: src/Infrastructure/Entity/PaymentProjectionMetaEntity.php
+        path: src/Entity/Operational/PaymentProjectionMetaEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3886,7 +4126,7 @@ components:
         review_required: true
       -
         class: PaymentRecurringEntity
-        path: src/Entity/PaymentRecurringEntity.php
+        path: src/Entity/Business/PaymentRecurringEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3896,7 +4136,7 @@ components:
         review_required: true
       -
         class: PaymentRefundEntity
-        path: src/Entity/PaymentRefundEntity.php
+        path: src/Entity/Business/PaymentRefundEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3906,7 +4146,7 @@ components:
         review_required: true
       -
         class: PaymentTokenEntity
-        path: src/Entity/PaymentTokenEntity.php
+        path: src/Entity/Business/PaymentTokenEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3916,7 +4156,7 @@ components:
         review_required: true
       -
         class: PaymentTransactionEntity
-        path: src/Entity/PaymentTransactionEntity.php
+        path: src/Entity/Business/PaymentTransactionEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3926,7 +4166,7 @@ components:
         review_required: true
       -
         class: PaymentTranslationEntity
-        path: src/Entity/PaymentTranslationEntity.php
+        path: src/Entity/Business/PaymentTranslationEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3936,7 +4176,7 @@ components:
         review_required: true
       -
         class: PaymentWebhookLogEntity
-        path: src/Entity/PaymentWebhookLogEntity.php
+        path: src/Entity/Business/PaymentWebhookLogEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3945,17 +4185,17 @@ components:
         capability_hints:
           - append_only_candidate
         review_required: true
-  Projecting:
+  Pricing:
     summary:
-      entities: 54
-      object: 3
+      entities: 1
+      object: 0
       relation: 0
-      ambiguous: 51
-      review_required: 52
+      ambiguous: 1
+      review_required: 1
     entities:
       -
-        class: MetricsHistoryEntity
-        path: src/Entity/Metric/MetricsHistoryEntity.php
+        class: PriceHistoryEntity
+        path: src/Entity/PriceHistoryEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -3963,29 +4203,17 @@ components:
           - record_or_event_name_pattern
         capability_hints: {}
         review_required: true
+  Projecting:
+    summary:
+      entities: 51
+      object: 1
+      relation: 0
+      ambiguous: 50
+      review_required: 51
+    entities:
       -
-        class: OutboxMessageEntity
-        path: src/Entity/Message/OutboxMessageEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - name_field
-        capability_hints: {}
-        review_required: true
-      -
-        class: ProcessedMessageEntity
-        path: src/Entity/Message/ProcessedMessageEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - name_field
-        capability_hints: {}
-        review_required: true
-      -
-        class: ProjectAttachment
-        path: src/Entity/Project/ProjectAttachment.php
+        class: ProjectAttachmentEntity
+        path: src/Entity/Project/ProjectAttachmentEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4065,17 +4293,6 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ProjectEntity
-        path: src/Infrastructure/Doctrine/Entity/ProjectEntity.php
-        kind: object
-        confidence: medium
-        declared_kind: null
-        evidence:
-          - title_field
-          - slug_field
-        capability_hints: {}
-        review_required: false
-      -
         class: ProjectFavouriteEntity
         path: src/Entity/Project/ProjectFavouriteEntity.php
         kind: ambiguous
@@ -4096,8 +4313,28 @@ components:
         capability_hints: {}
         review_required: true
       -
+        class: ProjectMetricsHistoryEntity
+        path: src/Entity/Metric/ProjectMetricsHistoryEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints: {}
+        review_required: true
+      -
         class: ProjectPlatformRewardEntity
         path: src/Entity/Project/ProjectPlatformRewardEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - name_field
+        capability_hints: {}
+        review_required: true
+      -
+        class: ProjectProcessedMessageEntity
+        path: src/Entity/Message/ProjectProcessedMessageEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4116,16 +4353,16 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ProjectReadModelEntity
-        path: src/ReadModel/Project/ProjectReadModelEntity.php
-        kind: object
-        confidence: medium
+        class: ProjectRecordEntity
+        path: src/Entity/Project/ProjectRecordEntity.php
+        kind: ambiguous
+        confidence: low
         declared_kind: null
         evidence:
-          - title_field
-          - slug_field
-        capability_hints: {}
-        review_required: false
+          - record_or_event_name_pattern
+        capability_hints:
+          - immutable_candidate
+        review_required: true
       -
         class: ProjectReportEntity
         path: src/Entity/Project/ProjectReportEntity.php
@@ -4167,6 +4404,16 @@ components:
         capability_hints: {}
         review_required: true
       -
+        class: ProjectTagEntity
+        path: src/Entity/Tag/ProjectTagEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - name_field
+        capability_hints: {}
+        review_required: true
+      -
         class: ProjectTagLinkEntity
         path: src/Entity/Project/ProjectTagLinkEntity.php
         kind: ambiguous
@@ -4199,6 +4446,16 @@ components:
       -
         class: ProjectVendorBridgeEntity
         path: src/Entity/Project/ProjectVendorBridgeEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: ProjectVendorProjectSummaryEntity
+        path: src/Entity/Project/ProjectVendorProjectSummaryEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4471,36 +4728,6 @@ components:
           - name_field
         capability_hints: {}
         review_required: true
-      -
-        class: TagEntity
-        path: src/Entity/Tag/TagEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - name_field
-        capability_hints: {}
-        review_required: true
-      -
-        class: VendorProjectSummaryEntity
-        path: src/Entity/Project/VendorProjectSummaryEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: VendorProjectSummaryEntity
-        path: src/ReadModel/VendorDashboard/VendorProjectSummaryEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
   Relating:
     summary:
       entities: 77
@@ -4510,8 +4737,8 @@ components:
       review_required: 76
     entities:
       -
-        class: Activity
-        path: src/Entity/Activity.php
+        class: RelationActivity
+        path: src/Entity/RelationActivity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4520,8 +4747,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ActivityParticipant
-        path: src/Entity/ActivityParticipant.php
+        class: RelationActivityParticipant
+        path: src/Entity/RelationActivityParticipant.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4530,8 +4757,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ActivityTarget
-        path: src/Entity/ActivityTarget.php
+        class: RelationActivityTarget
+        path: src/Entity/RelationActivityTarget.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4540,8 +4767,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AiDecisionLog
-        path: src/Entity/AiDecisionLog.php
+        class: RelationAiDecisionLog
+        path: src/Entity/RelationAiDecisionLog.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4551,8 +4778,8 @@ components:
           - append_only_candidate
         review_required: true
       -
-        class: AiDraft
-        path: src/Entity/AiDraft.php
+        class: RelationAiDraft
+        path: src/Entity/RelationAiDraft.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4561,8 +4788,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AiEnrichmentRun
-        path: src/Entity/AiEnrichmentRun.php
+        class: RelationAiEnrichmentRun
+        path: src/Entity/RelationAiEnrichmentRun.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4571,8 +4798,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AiScoringRun
-        path: src/Entity/AiScoringRun.php
+        class: RelationAiScoringRun
+        path: src/Entity/RelationAiScoringRun.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4581,8 +4808,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AiSignal
-        path: src/Entity/AiSignal.php
+        class: RelationAiSignal
+        path: src/Entity/RelationAiSignal.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4591,8 +4818,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AiSuggestion
-        path: src/Entity/AiSuggestion.php
+        class: RelationAiSuggestion
+        path: src/Entity/RelationAiSuggestion.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4601,8 +4828,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationAction
-        path: src/Entity/AutomationAction.php
+        class: RelationAutomationAction
+        path: src/Entity/RelationAutomationAction.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4611,8 +4838,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationCondition
-        path: src/Entity/AutomationCondition.php
+        class: RelationAutomationCondition
+        path: src/Entity/RelationAutomationCondition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4621,8 +4848,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationError
-        path: src/Entity/AutomationError.php
+        class: RelationAutomationError
+        path: src/Entity/RelationAutomationError.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4631,8 +4858,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationRule
-        path: src/Entity/AutomationRule.php
+        class: RelationAutomationRule
+        path: src/Entity/RelationAutomationRule.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4641,8 +4868,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationRun
-        path: src/Entity/AutomationRun.php
+        class: RelationAutomationRun
+        path: src/Entity/RelationAutomationRun.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4651,8 +4878,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationRunStep
-        path: src/Entity/AutomationRunStep.php
+        class: RelationAutomationRunStep
+        path: src/Entity/RelationAutomationRunStep.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4661,8 +4888,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: AutomationTrigger
-        path: src/Entity/AutomationTrigger.php
+        class: RelationAutomationTrigger
+        path: src/Entity/RelationAutomationTrigger.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4671,8 +4898,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CalendarDefinition
-        path: src/Entity/CalendarDefinition.php
+        class: RelationCalendarDefinition
+        path: src/Entity/RelationCalendarDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4681,8 +4908,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Call
-        path: src/Entity/Call.php
+        class: RelationCall
+        path: src/Entity/RelationCall.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4691,8 +4918,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Campaign
-        path: src/Entity/Campaign.php
+        class: RelationCampaign
+        path: src/Entity/RelationCampaign.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4701,8 +4928,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CampaignMember
-        path: src/Entity/CampaignMember.php
+        class: RelationCampaignMember
+        path: src/Entity/RelationCampaignMember.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4711,8 +4938,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CampaignResponse
-        path: src/Entity/CampaignResponse.php
+        class: RelationCampaignResponse
+        path: src/Entity/RelationCampaignResponse.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4721,8 +4948,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CampaignTouch
-        path: src/Entity/CampaignTouch.php
+        class: RelationCampaignTouch
+        path: src/Entity/RelationCampaignTouch.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4731,8 +4958,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CaseEscalation
-        path: src/Entity/CaseEscalation.php
+        class: RelationCaseEscalation
+        path: src/Entity/RelationCaseEscalation.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4741,79 +4968,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: CaseRecord
-        path: src/Entity/CaseRecord.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - record_or_event_name_pattern
-        capability_hints:
-          - immutable_candidate
-        review_required: true
-      -
-        class: CaseResolution
-        path: src/Entity/CaseResolution.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: CaseSla
-        path: src/Entity/CaseSla.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: CaseStatusDefinition
-        path: src/Entity/CaseStatusDefinition.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: CaseThread
-        path: src/Entity/CaseThread.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: CaseType
-        path: src/Entity/CaseType.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: CommercialTerm
-        path: src/Entity/CommercialTerm.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: ContactPointSnapshot
-        path: src/Entity/ContactPointSnapshot.php
+        class: RelationCaseRecord
+        path: src/Entity/RelationCaseRecord.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4823,8 +4979,8 @@ components:
           - immutable_candidate
         review_required: true
       -
-        class: DashboardDefinition
-        path: src/Entity/DashboardDefinition.php
+        class: RelationCaseResolution
+        path: src/Entity/RelationCaseResolution.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4833,8 +4989,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: DiscountApproval
-        path: src/Entity/DiscountApproval.php
+        class: RelationCaseSla
+        path: src/Entity/RelationCaseSla.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4843,8 +4999,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: DuplicateCandidate
-        path: src/Entity/DuplicateCandidate.php
+        class: RelationCaseStatusDefinition
+        path: src/Entity/RelationCaseStatusDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4853,8 +5009,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: FieldDefinition
-        path: src/Entity/FieldDefinition.php
+        class: RelationCaseThread
+        path: src/Entity/RelationCaseThread.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4863,8 +5019,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: FieldOption
-        path: src/Entity/FieldOption.php
+        class: RelationCaseType
+        path: src/Entity/RelationCaseType.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4873,8 +5029,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: KanbanDefinition
-        path: src/Entity/KanbanDefinition.php
+        class: RelationCommercialTerm
+        path: src/Entity/RelationCommercialTerm.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4883,8 +5039,19 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LayoutDefinition
-        path: src/Entity/LayoutDefinition.php
+        class: RelationContactPointSnapshot
+        path: src/Entity/RelationContactPointSnapshot.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - immutable_candidate
+        review_required: true
+      -
+        class: RelationDashboardDefinition
+        path: src/Entity/RelationDashboardDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4893,8 +5060,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Lead
-        path: src/Entity/Lead.php
+        class: RelationDiscountApproval
+        path: src/Entity/RelationDiscountApproval.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4903,8 +5070,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadAssignment
-        path: src/Entity/LeadAssignment.php
+        class: RelationDuplicateCandidate
+        path: src/Entity/RelationDuplicateCandidate.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4913,8 +5080,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadConversion
-        path: src/Entity/LeadConversion.php
+        class: RelationFieldDefinition
+        path: src/Entity/RelationFieldDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4923,8 +5090,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadQualification
-        path: src/Entity/LeadQualification.php
+        class: RelationFieldOption
+        path: src/Entity/RelationFieldOption.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4933,8 +5100,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadRejection
-        path: src/Entity/LeadRejection.php
+        class: RelationKanbanDefinition
+        path: src/Entity/RelationKanbanDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4943,8 +5110,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadScore
-        path: src/Entity/LeadScore.php
+        class: RelationLayoutDefinition
+        path: src/Entity/RelationLayoutDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4953,8 +5120,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadSource
-        path: src/Entity/LeadSource.php
+        class: RelationLead
+        path: src/Entity/RelationLead.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4963,8 +5130,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LeadType
-        path: src/Entity/LeadType.php
+        class: RelationLeadAssignment
+        path: src/Entity/RelationLeadAssignment.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4973,8 +5140,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Meeting
-        path: src/Entity/Meeting.php
+        class: RelationLeadConversion
+        path: src/Entity/RelationLeadConversion.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4983,8 +5150,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: MergeProposal
-        path: src/Entity/MergeProposal.php
+        class: RelationLeadQualification
+        path: src/Entity/RelationLeadQualification.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -4993,8 +5160,68 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Note
-        path: src/Entity/Note.php
+        class: RelationLeadRejection
+        path: src/Entity/RelationLeadRejection.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationLeadScore
+        path: src/Entity/RelationLeadScore.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationLeadSource
+        path: src/Entity/RelationLeadSource.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationLeadType
+        path: src/Entity/RelationLeadType.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationMeeting
+        path: src/Entity/RelationMeeting.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationMergeProposal
+        path: src/Entity/RelationMergeProposal.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationNote
+        path: src/Entity/RelationNote.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5003,8 +5230,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ObjectDefinition
-        path: src/Entity/ObjectDefinition.php
+        class: RelationObjectDefinition
+        path: src/Entity/RelationObjectDefinition.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5013,8 +5240,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Opportunity
-        path: src/Entity/Opportunity.php
+        class: RelationOpportunity
+        path: src/Entity/RelationOpportunity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5023,8 +5250,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OpportunityCompetitor
-        path: src/Entity/OpportunityCompetitor.php
+        class: RelationOpportunityCompetitor
+        path: src/Entity/RelationOpportunityCompetitor.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5033,8 +5260,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OpportunityContactRole
-        path: src/Entity/OpportunityContactRole.php
+        class: RelationOpportunityContactRole
+        path: src/Entity/RelationOpportunityContactRole.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5043,8 +5270,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OpportunityForecast
-        path: src/Entity/OpportunityForecast.php
+        class: RelationOpportunityForecast
+        path: src/Entity/RelationOpportunityForecast.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5053,8 +5280,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OpportunityLossReason
-        path: src/Entity/OpportunityLossReason.php
+        class: RelationOpportunityLossReason
+        path: src/Entity/RelationOpportunityLossReason.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5063,8 +5290,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OpportunityProductInterest
-        path: src/Entity/OpportunityProductInterest.php
+        class: RelationOpportunityProductInterest
+        path: src/Entity/RelationOpportunityProductInterest.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5073,8 +5300,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OpportunityStageHistory
-        path: src/Entity/OpportunityStageHistory.php
+        class: RelationOpportunityStageHistory
+        path: src/Entity/RelationOpportunityStageHistory.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5083,8 +5310,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Pipeline
-        path: src/Entity/Pipeline.php
+        class: RelationPipeline
+        path: src/Entity/RelationPipeline.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5093,8 +5320,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: PipelineStage
-        path: src/Entity/PipelineStage.php
+        class: RelationPipelineStage
+        path: src/Entity/RelationPipelineStage.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5103,8 +5330,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: QuoteIntent
-        path: src/Entity/QuoteIntent.php
+        class: RelationQuoteIntent
+        path: src/Entity/RelationQuoteIntent.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5113,8 +5340,120 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: QuoteLineIntent
-        path: src/Entity/QuoteLineIntent.php
+        class: RelationQuoteLineIntent
+        path: src/Entity/RelationQuoteLineIntent.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationReminder
+        path: src/Entity/RelationReminder.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationSource
+        path: src/Entity/RelationSource.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationTargetList
+        path: src/Entity/RelationTargetList.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationTargetListMember
+        path: src/Entity/RelationTargetListMember.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationTask
+        path: src/Entity/RelationTask.php
+        kind: object
+        confidence: medium
+        declared_kind: null
+        evidence:
+          - title_field
+          - label_field
+        capability_hints: {}
+        review_required: false
+      -
+        class: RelationTimelineRecord
+        path: src/Entity/RelationTimelineRecord.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - immutable_candidate
+        review_required: true
+      -
+        class: RelationUtmAttribution
+        path: src/Entity/RelationUtmAttribution.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationViewColumn
+        path: src/Entity/RelationViewColumn.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationViewDefinition
+        path: src/Entity/RelationViewDefinition.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationViewFilter
+        path: src/Entity/RelationViewFilter.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RelationViewSort
+        path: src/Entity/RelationViewSort.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5172,126 +5511,13 @@ components:
           - insufficient_kind_evidence
         capability_hints: {}
         review_required: true
-      -
-        class: Reminder
-        path: src/Entity/Reminder.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: Source
-        path: src/Entity/Source.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: TargetList
-        path: src/Entity/TargetList.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: TargetListMember
-        path: src/Entity/TargetListMember.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: Task
-        path: src/Entity/Task.php
-        kind: object
-        confidence: medium
-        declared_kind: null
-        evidence:
-          - title_field
-          - label_field
-        capability_hints: {}
-        review_required: false
-      -
-        class: TimelineEvent
-        path: src/Entity/TimelineEvent.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - record_or_event_name_pattern
-        capability_hints:
-          - append_only_candidate
-          - immutable_candidate
-        review_required: true
-      -
-        class: UtmAttribution
-        path: src/Entity/UtmAttribution.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: ViewColumn
-        path: src/Entity/ViewColumn.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: ViewDefinition
-        path: src/Entity/ViewDefinition.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: ViewFilter
-        path: src/Entity/ViewFilter.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
-      -
-        class: ViewSort
-        path: src/Entity/ViewSort.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - insufficient_kind_evidence
-        capability_hints: {}
-        review_required: true
   Retailing:
     summary:
-      entities: 1
+      entities: 2
       object: 0
       relation: 0
-      ambiguous: 1
-      review_required: 1
+      ambiguous: 2
+      review_required: 2
     entities:
       -
         class: RetailEntity
@@ -5301,6 +5527,44 @@ components:
         declared_kind: null
         evidence:
           - title_field
+        capability_hints: {}
+        review_required: true
+      -
+        class: RetailResponseEntity
+        path: src/Entity/Retail/RetailResponseEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+  Rewarding:
+    summary:
+      entities: 2
+      object: 0
+      relation: 0
+      ambiguous: 2
+      review_required: 2
+    entities:
+      -
+        class: RewardAccountEntity
+        path: src/Entity/RewardAccountEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: RewardTransactionEntity
+        path: src/Entity/RewardTransactionEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
         capability_hints: {}
         review_required: true
   Rolling:
@@ -5456,23 +5720,11 @@ components:
   Shipping:
     summary:
       entities: 12
-      object: 3
+      object: 1
       relation: 0
-      ambiguous: 9
-      review_required: 9
+      ambiguous: 11
+      review_required: 11
     entities:
-      -
-        class: OutboxEventEntity
-        path: src/Entity/Shipping/OutboxEventEntity.php
-        kind: ambiguous
-        confidence: low
-        declared_kind: null
-        evidence:
-          - record_or_event_name_pattern
-        capability_hints:
-          - append_only_candidate
-          - immutable_candidate
-        review_required: true
       -
         class: ShipmentCarrierCredentialEntity
         path: src/Entity/Shipping/ShipmentCarrierCredentialEntity.php
@@ -5507,14 +5759,13 @@ components:
       -
         class: ShipmentCategoryEntity
         path: src/Entity/Shipping/ShipmentCategoryEntity.php
-        kind: object
-        confidence: medium
+        kind: ambiguous
+        confidence: low
         declared_kind: null
         evidence:
           - name_field
-          - object_slug_column
         capability_hints: {}
-        review_required: false
+        review_required: true
       -
         class: ShipmentEntity
         path: src/Entity/Shipping/ShipmentEntity.php
@@ -5528,14 +5779,25 @@ components:
       -
         class: ShipmentMethodEntity
         path: src/Entity/Shipping/ShipmentMethodEntity.php
-        kind: object
-        confidence: medium
+        kind: ambiguous
+        confidence: low
         declared_kind: null
         evidence:
           - name_field
-          - object_slug_column
         capability_hints: {}
-        review_required: false
+        review_required: true
+      -
+        class: ShipmentOutboxEventEntity
+        path: src/Entity/Shipping/ShipmentOutboxEventEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - record_or_event_name_pattern
+        capability_hints:
+          - append_only_candidate
+          - immutable_candidate
+        review_required: true
       -
         class: ShipmentPolicyEntity
         path: src/Entity/Shipping/ShipmentPolicyEntity.php
@@ -5584,6 +5846,54 @@ components:
         declared_kind: null
         evidence:
           - title_field
+        capability_hints: {}
+        review_required: true
+  Stocking:
+    summary:
+      entities: 4
+      object: 0
+      relation: 0
+      ambiguous: 4
+      review_required: 4
+    entities:
+      -
+        class: StockItemEntity
+        path: src/Entity/StockItemEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: StockLevelEntity
+        path: src/Entity/StockLevelEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: StockMovementEntity
+        path: src/Entity/StockMovementEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
+      -
+        class: StockReservationEntity
+        path: src/Entity/StockReservationEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
         capability_hints: {}
         review_required: true
   Subscripting:
@@ -5748,10 +6058,13 @@ components:
         class: TagEntity
         path: src/Entity/Tag/TagEntity.php
         kind: object
-        confidence: high
-        declared_kind: object
+        confidence: medium
+        declared_kind: null
         evidence:
-          - 'implements:ObjectEntityInterface'
+          - object_title_trait
+          - label_field
+          - slug_field
+          - object_slug_column
         capability_hints: {}
         review_required: false
       -
@@ -5838,12 +6151,22 @@ components:
         review_required: true
   Taxating:
     summary:
-      entities: 48
+      entities: 49
       object: 1
       relation: 0
-      ambiguous: 47
-      review_required: 48
+      ambiguous: 48
+      review_required: 49
     entities:
+      -
+        class: TaxationAddressEntity
+        path: src/Entity/Common/TaxationAddressEntity.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - insufficient_kind_evidence
+        capability_hints: {}
+        review_required: true
       -
         class: TaxationArchiveEventEntity
         path: src/Entity/Taxation/TaxationArchiveEventEntity.php
@@ -5913,7 +6236,7 @@ components:
         review_required: true
       -
         class: TaxationCertificateProjectionEntity
-        path: src/Projection/Taxation/TaxationCertificateProjectionEntity.php
+        path: src/Entity/Taxation/Projection/TaxationCertificateProjectionEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -5948,7 +6271,7 @@ components:
         confidence: low
         declared_kind: null
         evidence:
-          - insufficient_kind_evidence
+          - object_title_trait
         capability_hints: {}
         review_required: true
       -
@@ -6015,7 +6338,7 @@ components:
         review_required: true
       -
         class: TaxationHolidayProjectionEntity
-        path: src/Projection/Taxation/TaxationHolidayProjectionEntity.php
+        path: src/Entity/Taxation/Projection/TaxationHolidayProjectionEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6181,7 +6504,7 @@ components:
         confidence: low
         declared_kind: null
         evidence:
-          - insufficient_kind_evidence
+          - object_title_trait
         capability_hints: {}
         review_required: true
       -
@@ -6232,7 +6555,7 @@ components:
         confidence: low
         declared_kind: null
         evidence:
-          - insufficient_kind_evidence
+          - object_title_trait
         capability_hints: {}
         review_required: true
       -
@@ -6247,7 +6570,7 @@ components:
         review_required: true
       -
         class: TaxationRegistrationProjectionEntity
-        path: src/Projection/Taxation/TaxationRegistrationProjectionEntity.php
+        path: src/Entity/Taxation/Projection/TaxationRegistrationProjectionEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6810,14 +7133,24 @@ components:
   Walleting:
     summary:
       entities: 18
-      object: 3
+      object: 1
       relation: 1
-      ambiguous: 14
-      review_required: 14
+      ambiguous: 16
+      review_required: 16
     entities:
       -
-        class: Account
-        path: src/Entity/Account.php
+        class: Wallet
+        path: src/Entity/Wallet.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
+        evidence:
+          - object_title_trait
+        capability_hints: {}
+        review_required: true
+      -
+        class: WalletAccount
+        path: src/Entity/WalletAccount.php
         kind: object
         confidence: high
         declared_kind: object
@@ -6826,8 +7159,8 @@ components:
         capability_hints: {}
         review_required: false
       -
-        class: AccountBalance
-        path: src/Entity/AccountBalance.php
+        class: WalletAccountBalance
+        path: src/Entity/WalletAccountBalance.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6836,8 +7169,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: FinancialOperationLink
-        path: src/Entity/FinancialOperationLink.php
+        class: WalletFinancialOperationLink
+        path: src/Entity/WalletFinancialOperationLink.php
         kind: relation
         confidence: high
         declared_kind: relation
@@ -6846,8 +7179,8 @@ components:
         capability_hints: {}
         review_required: false
       -
-        class: Funding
-        path: src/Entity/Funding.php
+        class: WalletFunding
+        path: src/Entity/WalletFunding.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6856,8 +7189,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: InboxReceipt
-        path: src/Entity/InboxReceipt.php
+        class: WalletInboxReceipt
+        path: src/Entity/WalletInboxReceipt.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6866,8 +7199,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: LedgerTransaction
-        path: src/Entity/LedgerTransaction.php
+        class: WalletLedgerTransaction
+        path: src/Entity/WalletLedgerTransaction.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6876,8 +7209,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OutboxMessage
-        path: src/Entity/OutboxMessage.php
+        class: WalletOutboxMessage
+        path: src/Entity/WalletOutboxMessage.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6886,8 +7219,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: OutboxRequeueAudit
-        path: src/Entity/OutboxRequeueAudit.php
+        class: WalletOutboxRequeueAudit
+        path: src/Entity/WalletOutboxRequeueAudit.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6897,18 +7230,18 @@ components:
           - append_only_candidate
         review_required: true
       -
-        class: PaymentInstrument
-        path: src/Entity/PaymentInstrument.php
-        kind: object
-        confidence: high
-        declared_kind: object
+        class: WalletPaymentInstrument
+        path: src/Entity/WalletPaymentInstrument.php
+        kind: ambiguous
+        confidence: low
+        declared_kind: null
         evidence:
-          - 'implements:ObjectEntityInterface'
+          - object_title_trait
         capability_hints: {}
-        review_required: false
+        review_required: true
       -
-        class: Posting
-        path: src/Entity/Posting.php
+        class: WalletPosting
+        path: src/Entity/WalletPosting.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6920,8 +7253,8 @@ components:
           - immutable_candidate
         review_required: true
       -
-        class: PostingMetricSample
-        path: src/Entity/PostingMetricSample.php
+        class: WalletPostingMetricSample
+        path: src/Entity/WalletPostingMetricSample.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6930,8 +7263,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: PostingSloState
-        path: src/Entity/PostingSloState.php
+        class: WalletPostingSloState
+        path: src/Entity/WalletPostingSloState.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6940,8 +7273,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ProviderEvent
-        path: src/Entity/ProviderEvent.php
+        class: WalletProviderEventEntity
+        path: src/Entity/WalletProviderEventEntity.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6953,8 +7286,8 @@ components:
           - immutable_candidate
         review_required: true
       -
-        class: ReconciliationMismatch
-        path: src/Entity/ReconciliationMismatch.php
+        class: WalletReconciliationMismatch
+        path: src/Entity/WalletReconciliationMismatch.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6963,8 +7296,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: ReconciliationRun
-        path: src/Entity/ReconciliationRun.php
+        class: WalletReconciliationRun
+        path: src/Entity/WalletReconciliationRun.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6973,8 +7306,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Reservation
-        path: src/Entity/Reservation.php
+        class: WalletReservation
+        path: src/Entity/WalletReservation.php
         kind: ambiguous
         confidence: low
         declared_kind: null
@@ -6983,18 +7316,8 @@ components:
         capability_hints: {}
         review_required: true
       -
-        class: Wallet
-        path: src/Entity/Wallet.php
-        kind: object
-        confidence: high
-        declared_kind: object
-        evidence:
-          - 'implements:ObjectEntityInterface'
-        capability_hints: {}
-        review_required: false
-      -
-        class: Withdrawal
-        path: src/Entity/Withdrawal.php
+        class: WalletWithdrawal
+        path: src/Entity/WalletWithdrawal.php
         kind: ambiguous
         confidence: low
         declared_kind: null
