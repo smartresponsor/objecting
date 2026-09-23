@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Objecting\Listener\Doctrine;
 
-use App\Objecting\EntityInterface\ObjectIdentifiedInterface;
+use App\Objecting\Embeddable\ObjectIdentityEmbeddable;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -19,7 +19,15 @@ final class ObjectIdentityDoctrineMetadataListener
     /** @param ClassMetadata<object> $metadata */
     public function apply(ClassMetadata $metadata): void
     {
-        if (!is_a($metadata->name, ObjectIdentifiedInterface::class, true)) {
+        $hasIdentityEmbeddable = false;
+        foreach ($metadata->embeddedClasses as $embeddedClass) {
+            if (ObjectIdentityEmbeddable::class === $embeddedClass->class) {
+                $hasIdentityEmbeddable = true;
+                break;
+            }
+        }
+
+        if (!$hasIdentityEmbeddable) {
             return;
         }
 
