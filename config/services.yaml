@@ -21,6 +21,13 @@ services:
   App\Objecting\Inspector\:
     resource: '../src/Inspector/'
 
+  App\Objecting\Listener\:
+    resource: '../src/Listener/'
+
+  App\Objecting\Listener\Doctrine\ObjectIdentityDoctrineMetadataListener:
+    tags:
+      - { name: doctrine.event_listener, event: loadClassMetadata }
+
   App\Objecting\Registry\Entity\ObjectEntityKindRegistry:
     arguments:
       $manifestPath: '%objecting.entity_kind_manifest%'
