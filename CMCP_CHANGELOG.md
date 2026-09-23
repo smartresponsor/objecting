@@ -126,3 +126,57 @@
 - `composer audit`: PASS, no security vulnerability advisories found.
 - Canonical Code Memory scope resolver: `CODE_MEMORY_SCOPE_SCRIPT_NOT_DECLARED`; no repository-declared memory scope is available to update from this workspace.
 - Pre-existing `.gating/` modifications remain intentionally outside this run's commit scope.
+
+## 2026-09-23 — Canon054 deterministic identity constraint ownership
+
+### Baseline
+
+- Workspace: `D:\\PhpstormProjects\\www\\Objecting`; branch `release/objecting-field-pack-normalization-20260910`.
+- Mandatory contour re-read: Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization root contracts.
+- Canonization textual rules consulted: Canon008, Canon022, Canon026, Canon044, Canon053, Canon054, `GUARD_MATRIX.md`, and the 2026-09-23 Canon054 amendment in `CANONICAL_RULES_JOURNAL.md`.
+- Current worktree already contains in-progress Objecting-owned Canon054 work in `ObjectIdentityDoctrineMetadataListener`, its unit test, Composer/Gating integration, and a production Composer manifest; these values are preserved and verified rather than overwritten.
+- Unrelated/generated `.gating/` state remains outside Objecting product ownership and will not be staged as product code.
+
+### Target-to-canon mapping
+
+- Canon054 applies directly: reusable Objecting identity metadata must produce deterministic table-level unique constraints such as `uniq_<table>_uuid` and `uniq_<table>_slug`, avoiding column-level `unique: true` and Doctrine hash-derived constraint names.
+- Canon044 remains coupled to the same surface: persisted fields stay entity-native (`uuid`, `slug`) while `Object*` remains ownership/type vocabulary.
+- Canon008 requires any production integration introduced by Objecting to remain fully described by Composer; Cruding/Viewing/Interfacing are reference dependencies for this task, not artificial Objecting runtime dependencies.
+- Canon022 is not directly applicable because Objecting itself is a reusable library without standalone Symfony application boot surfaces.
+- Canon053 permits the Gating development symlink currently present in `composer.json`.
+- Canon026 remains satisfied by PHP `^8.4` and Symfony `^8.1`.
+
+### RC-critical workstream
+
+1. Validate and harden the existing Doctrine metadata listener so Objecting identity embeddable consumers receive deterministic table-level UUID/slug uniqueness exactly once.
+2. Verify bundle/service wiring and package manifests so standalone consumers can activate `App\\Objecting\\ObjectBundle` and production metadata remains reproducible.
+3. Add or repair regression coverage and documentation where the current runtime contract is not yet explicit.
+4. Run targeted tests, full Objecting quality/static-analysis/unit gates, Composer validation/audit, Gating, and inspect final Git/upstream state.
+
+### Growth workstream (post-RC)
+
+- Expand consumer diagnostics that report legacy hash-derived identity constraints and generate migration-ready remediation guidance, without moving consumer schema migration ownership into Objecting.
+
+### Implementation and verification result
+
+- Confirmed Objecting-owned Doctrine metadata policy adds deterministic `uniq_<table>_uuid` and `uniq_<table>_slug` constraints for consumers embedding `ObjectIdentityEmbeddable`, with idempotent application and collision protection.
+- Normalized the Doctrine-mapped version trait state to entity-native private properties `$version` and `$etag` while preserving the public `Object*` lifecycle API.
+- Added mandatory PHP-CS-Fixer scripts, Gating development integration, production Composer manifest parity, and synchronized the production manifest license metadata with the repository license.
+- Removed copied Gating engine/policy content from the consumer `.gating/` product surface by quarantining it outside the tracked product surface; `.gating/` remains artifact-only.
+- Updated integration documentation for ObjectBundle metadata-listener activation and consumer migration ownership.
+- Fixed the auxiliary Doctrine-listener test symbol so Objecting's own active-symbol prefix gate remains canonical.
+- `composer test:quality`: PASS.
+- `composer test`: PASS, 70 tests / 466 assertions.
+- `composer cs:check`: PASS, 0 / 192 files fixable.
+- `composer phpstan`: PASS, 224 / 224 files, no errors.
+- `composer validate --strict --check-lock`: PASS.
+- `composer audit`: PASS, no security advisories.
+- `composer test:coverage`: PASS; Lines 67.82% (2335/3443), Methods 54.49% (431/791), Branches 79.85% (2346/2938). Canon040 therefore remains warning-level line/method coverage debt while branch coverage exceeds its target.
+- Gating now passes Canon029, Canon044, Canon052, Canon053, and Canon054 for the implemented Objecting surfaces.
+
+### External executable-canon blockers
+
+- Canon001 remains a Gating/Canonization implementation mismatch: the normative Canon001 rule states that the technical-role root list is not closed and an unknown root is an escalation candidate rather than evidence of violation, while the current Gating executable hard-fails legitimate Objecting roots such as `Decision`, `Diagnostic`, `Embeddable`, and `EntityInterface`.
+- Canon025 remains an applicability conflict for this reusable package: Gating requires standalone `bin/console` and `config/bundles.php`, while Objecting is explicitly a reusable library. Adding those boot surfaces would in turn activate Canon022's standalone dependency baseline and create an invalid self-dependency expectation for the Objecting owner package.
+- Canon030 remains an applicability conflict: normative Canon030 targets persistence-owning repositories, while current Gating infers persistence ownership from the presence of Doctrine ORM. Objecting owns reusable embeddable metadata but deliberately does not own consumer entities or migrations.
+- These three hard failures are therefore not repaired inside Objecting because doing so would violate the component responsibility boundary; they require a Gating/Canonization applicability correction.

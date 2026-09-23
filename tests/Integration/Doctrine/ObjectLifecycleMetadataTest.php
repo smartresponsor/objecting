@@ -55,9 +55,9 @@ final class ObjectLifecycleMetadataTest extends TestCase
         self::assertTrue($metadata->getFieldMapping('objectAudit.modifiedAt')['nullable'] ?? false);
         self::assertSame(190, $metadata->getFieldMapping('objectAudit.createdBy')['length']);
         self::assertSame('boolean', $metadata->getFieldMapping('objectSoftDelete.deleted')['type']);
-        self::assertSame('integer', $metadata->getFieldMapping('objectVersion')['type']);
+        self::assertSame('integer', $metadata->getFieldMapping('version')['type']);
         self::assertTrue($metadata->isVersioned);
-        self::assertSame('objectVersion', $metadata->versionField);
+        self::assertSame('version', $metadata->versionField);
         self::assertSame('binary', $metadata->getFieldMapping('objectIdentity.uuid')['type']);
         self::assertSame(16, $metadata->getFieldMapping('objectIdentity.uuid')['length']);
         self::assertFalse($metadata->getFieldMapping('objectIdentity.uuid')['nullable'] ?? false);

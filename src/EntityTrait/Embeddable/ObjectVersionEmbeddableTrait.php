@@ -10,29 +10,29 @@ trait ObjectVersionEmbeddableTrait
 {
     #[ORM\Version]
     #[ORM\Column(name: 'version', type: 'integer')]
-    private int $objectVersion = 1;
+    private int $version = 1;
 
     #[ORM\Column(name: 'etag', type: 'string', length: 128, nullable: true)]
-    private ?string $objectEtag = null;
+    private ?string $etag = null;
 
     protected function initializeObjectVersion(): void
     {
-        $this->objectVersion = 1;
-        $this->objectEtag = null;
+        $this->version = 1;
+        $this->etag = null;
     }
 
     public function getObjectVersion(): int
     {
-        return $this->objectVersion;
+        return $this->version;
     }
 
     public function getObjectEtag(): ?string
     {
-        return $this->objectEtag;
+        return $this->etag;
     }
 
     public function bumpObjectVersion(?string $objectEtag = null): void
     {
-        $this->objectEtag = $objectEtag;
+        $this->etag = $objectEtag;
     }
 }

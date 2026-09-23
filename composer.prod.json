@@ -131,14 +131,9 @@
   },
   "repositories": [
     {
-      "type": "path",
-      "url": "../Gating",
-      "options": {
-        "symlink": true,
-        "versions": {
-          "gating/gate": "dev-master"
-        }
-      }
+      "type": "vcs",
+      "url": "https://github.com/smartresponsor/gating.git",
+      "no-api": true
     }
   ]
 }

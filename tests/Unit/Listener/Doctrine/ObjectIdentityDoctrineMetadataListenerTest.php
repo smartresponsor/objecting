@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Objecting\Tests\Unit\Listener\Doctrine;
 
-use App\Objecting\EntityInterface\ObjectIdentifiedInterface;
+use App\Objecting\Embeddable\ObjectIdentityEmbeddable;
 use App\Objecting\Listener\Doctrine\ObjectIdentityDoctrineMetadataListener;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use PHPUnit\Framework\TestCase;
@@ -15,6 +15,11 @@ final class ObjectIdentityDoctrineMetadataListenerTest extends TestCase
     {
         $metadata = new ClassMetadata(ObjectIdentityMetadataConsumer::class);
         $metadata->setPrimaryTable(['name' => 'example_record']);
+        $metadata->mapEmbedded([
+            'fieldName' => 'objectIdentity',
+            'class' => ObjectIdentityEmbeddable::class,
+            'columnPrefix' => false,
+        ]);
         $metadata->mapField([
             'fieldName' => 'uuid',
             'columnName' => 'uuid',
@@ -45,7 +50,7 @@ final class ObjectIdentityDoctrineMetadataListenerTest extends TestCase
 
     public function testIgnoresNonObjectingEntity(): void
     {
-        $metadata = new ClassMetadata(NonObjectIdentityMetadataConsumer::class);
+        $metadata = new ClassMetadata(ObjectNonIdentityMetadataConsumer::class);
         $metadata->setPrimaryTable(['name' => 'plain_record']);
         $metadata->mapField([
             'fieldName' => 'uuid',
@@ -66,23 +71,10 @@ final class ObjectIdentityDoctrineMetadataListenerTest extends TestCase
     }
 }
 
-final class ObjectIdentityMetadataConsumer implements ObjectIdentifiedInterface
+final class ObjectIdentityMetadataConsumer
 {
-    public function getObjectUuid(): string
-    {
-        return '';
-    }
-
-    public function getObjectSlug(): string
-    {
-        return '';
-    }
-
-    public function setObjectSlug(string $objectSlug): void
-    {
-    }
 }
 
-final class NonObjectIdentityMetadataConsumer
+final class ObjectNonIdentityMetadataConsumer
 {
 }

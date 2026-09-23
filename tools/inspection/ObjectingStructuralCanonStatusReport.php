@@ -292,8 +292,8 @@ foreach ($embeddableTraitFiles as $traitFile) {
         // Version/etag are mapped directly so Doctrine can own optimistic locking.
         if (str_ends_with($relative, '/ObjectVersionEmbeddableTrait.php')
             && str_contains($content, '#[ORM\\Version]')
-            && preg_match('/private\s+int\s+\$objectVersion\s*=\s*1;/', $content) === 1
-            && preg_match('/private\s+\?string\s+\$objectEtag\s*=\s*null;/', $content) === 1
+            && preg_match('/private\s+int\s+\$version\s*=\s*1;/', $content) === 1
+            && preg_match('/private\s+\?string\s+\$etag\s*=\s*null;/', $content) === 1
         ) {
             continue;
         }
