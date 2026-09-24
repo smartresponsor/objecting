@@ -72,6 +72,7 @@ Get-ChildItem -LiteralPath $workspaceRoot -Directory | Sort-Object Name | ForEac
 
     $migrationHits = @()
     $semanticMigrationHits = @()
+    $migrationVersions = @{}
     $migrations = Join-Path $repo 'migrations'
     if (Test-Path -LiteralPath $migrations) {
         Get-ChildItem -LiteralPath $migrations -Recurse -File -ErrorAction SilentlyContinue | Where-Object { $_.Extension -in @('.php', '.sql') } | ForEach-Object {
@@ -80,20 +81,42 @@ Get-ChildItem -LiteralPath $workspaceRoot -Directory | Sort-Object Name | ForEac
                 return
             }
 
-            if (
-                $text -match '(?i)UNIQ_[0-9A-F]{6,}.*\((?:object_)?uuid\)' -or
-                $text -match '(?i)UNIQ_[0-9A-F]{6,}.*\((?:object_)?slug\)'
-            ) {
-                $migrationHits += $_.FullName.Substring($repo.Length + 1).Replace('\', '/')
+            $relativeMigrationPath = $_.FullName.Substring($repo.Length + 1).Replace('\', '/')
+            $versionMatch = [regex]::Match($_.BaseName, 'Version(?<version>\d{14})', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+            $migrationVersions[$relativeMigrationPath] = if ($versionMatch.Success) { [int64]$versionMatch.Groups['version'].Value } else { [int64]0 }
+
+            $containsHashIdentityName = $text -match '(?i)UNIQ_[0-9A-F]{6,}'
+            $containsIdentityColumn = $text -match '(?i)\b(?:object_)?(?:uuid|slug)\b'
+            if ($containsHashIdentityName -and $containsIdentityColumn) {
+                $migrationHits += $relativeMigrationPath
             }
 
-            if (
-                $text -match '(?i)uniq_.*_uuid' -or
-                $text -match '(?i)uniq_.*_slug'
-            ) {
-                $semanticMigrationHits += $_.FullName.Substring($repo.Length + 1).Replace('\', '/')
+            $containsLiteralSemanticIdentityName = (
+                $text -match '(?i)\buniq_[a-z0-9_]+_uuid\b' -or
+                $text -match '(?i)\buniq_[a-z0-9_]+_slug\b'
+            )
+            $containsConstructedSemanticIdentityName = (
+                ($text.Contains("'uniq_'") -or $text.Contains('"uniq_"')) -and
+                (
+                    $text.Contains("'_uuid'") -or $text.Contains('"_uuid"') -or
+                    $text.Contains("'_slug'") -or $text.Contains('"_slug"')
+                )
+            )
+            if ($containsLiteralSemanticIdentityName -or $containsConstructedSemanticIdentityName) {
+                $semanticMigrationHits += $relativeMigrationPath
             }
         }
+    }
+
+    $hashMigrationFiles = @($migrationHits | Sort-Object -Unique)
+    $semanticMigrationFiles = @($semanticMigrationHits | Sort-Object -Unique)
+    $latestHashMigrationVersion = [int64]0
+    foreach ($path in $hashMigrationFiles) {
+        $latestHashMigrationVersion = [Math]::Max($latestHashMigrationVersion, [int64]$migrationVersions[$path])
+    }
+    $latestSemanticMigrationVersion = [int64]0
+    foreach ($path in $semanticMigrationFiles) {
+        $latestSemanticMigrationVersion = [Math]::Max($latestSemanticMigrationVersion, [int64]$migrationVersions[$path])
     }
 
     $results += [ordered]@{
@@ -105,14 +128,18 @@ Get-ChildItem -LiteralPath $workspaceRoot -Directory | Sort-Object Name | ForEac
         objecting_mapping_present = $objectingMappingPresent
         underscore_naming_strategy_present = $underscoreNamingStrategyPresent
         implicit_unique_source_files = @($implicitUniqueFiles | Sort-Object -Unique)
-        hash_identity_migration_files = @($migrationHits | Sort-Object -Unique)
-        semantic_identity_migration_files = @($semanticMigrationHits | Sort-Object -Unique)
-        identity_migration_status = if ($migrationHits.Count -eq 0) {
+        hash_identity_migration_files = $hashMigrationFiles
+        semantic_identity_migration_files = $semanticMigrationFiles
+        latest_hash_identity_migration_version = $latestHashMigrationVersion
+        latest_semantic_identity_migration_version = $latestSemanticMigrationVersion
+        identity_migration_status = if ($hashMigrationFiles.Count -eq 0) {
             'no_hash_history'
-        } elseif ($semanticMigrationHits.Count -gt 0) {
+        } elseif ($semanticMigrationFiles.Count -eq 0) {
+            'historical_hash_only'
+        } elseif ($latestSemanticMigrationVersion -ge $latestHashMigrationVersion) {
             'reconciled'
         } else {
-            'historical_hash_only'
+            'semantic_history_not_later_than_hash'
         }
     }
 }
@@ -125,7 +152,8 @@ $summary = [ordered]@{
     bundle_missing = @($results | Where-Object { $_.runtime_shape -eq 'standalone' -and -not $_.object_bundle_registered }).Count
     with_hash_identity_migrations = @($results | Where-Object { $_.hash_identity_migration_files.Count -gt 0 }).Count
     reconciled_hash_history = @($results | Where-Object { $_.identity_migration_status -eq 'reconciled' }).Count
-    unresolved_hash_history = @($results | Where-Object { $_.identity_migration_status -eq 'historical_hash_only' }).Count
+    unresolved_hash_history = @($results | Where-Object { $_.identity_migration_status -in @('historical_hash_only', 'semantic_history_not_later_than_hash') }).Count
+    semantic_history_not_later_than_hash = @($results | Where-Object { $_.identity_migration_status -eq 'semantic_history_not_later_than_hash' }).Count
     with_implicit_unique_source = @($results | Where-Object { $_.implicit_unique_source_files.Count -gt 0 }).Count
     standalone_mapping_missing = @($results | Where-Object { $_.runtime_shape -eq 'standalone' -and -not $_.objecting_mapping_present }).Count
     standalone_naming_strategy_missing = @($results | Where-Object { $_.runtime_shape -eq 'standalone' -and -not $_.underscore_naming_strategy_present }).Count
