@@ -91,16 +91,24 @@ Get-ChildItem -LiteralPath $workspaceRoot -Directory | Sort-Object Name | ForEac
                 $migrationHits += $relativeMigrationPath
             }
 
+            $literalSemanticUuidNames = @(
+                [regex]::Matches($text, '(?i)\buniq_[a-z0-9_]+_uuid\b') | Where-Object {
+                    $_.Value -notmatch '(?i)_object_uuid$'
+                }
+            )
+            $literalSemanticSlugNames = @(
+                [regex]::Matches($text, '(?i)\buniq_[a-z0-9_]+_slug\b') | Where-Object {
+                    $_.Value -notmatch '(?i)_object_slug$'
+                }
+            )
             $containsLiteralSemanticIdentityName = (
-                $text -match '(?i)\buniq_[a-z0-9_]+_uuid\b' -or
-                $text -match '(?i)\buniq_[a-z0-9_]+_slug\b'
+                $literalSemanticUuidNames.Count -gt 0 -and
+                $literalSemanticSlugNames.Count -gt 0
             )
             $containsConstructedSemanticIdentityName = (
                 ($text.Contains("'uniq_'") -or $text.Contains('"uniq_"')) -and
-                (
-                    $text.Contains("'_uuid'") -or $text.Contains('"_uuid"') -or
-                    $text.Contains("'_slug'") -or $text.Contains('"_slug"')
-                )
+                ($text.Contains("'_uuid'") -or $text.Contains('"_uuid"')) -and
+                ($text.Contains("'_slug'") -or $text.Contains('"_slug"'))
             )
             if ($containsLiteralSemanticIdentityName -or $containsConstructedSemanticIdentityName) {
                 $semanticMigrationHits += $relativeMigrationPath
