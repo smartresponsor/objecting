@@ -1,10 +1,10 @@
-# SmartResponsor Objecting System-Field Canon
+# Objecting System-Field Canon
 
 ## Purpose
 
 This file is the persistent Codex contract for ecosystem-wide migration to the canonical Objecting system fields.
 
-When the task asks to find applications or components and normalize their system fields, treat this file as authoritative. Apply it to every repository in the selected SmartResponsor workspace, subject to more specific nested `AGENTS.md` instructions.
+When the task asks to find applications or components and normalize their system fields, treat this file as authoritative. Apply it to every repository in the selected platform workspace, subject to more specific nested `AGENTS.md` instructions.
 
 Do not merely rename symbols. Produce executable Doctrine mappings, migrations, runtime calls, queries, serializers, forms, fixtures, and tests that use the canonical Objecting field packs.
 

@@ -48,6 +48,22 @@ final class ObjectIdentityDoctrineMetadataListenerTest extends TestCase
         self::assertCount(2, $metadata->table['uniqueConstraints']);
     }
 
+    public function testIgnoresObjectingMappedSuperclassUntilConcreteMetadataIsBuilt(): void
+    {
+        $metadata = new ClassMetadata(ObjectIdentityMappedSuperclassConsumer::class);
+        $metadata->setPrimaryTable(['name' => 'mapped_base']);
+        $metadata->isMappedSuperclass = true;
+        $metadata->mapEmbedded([
+            'fieldName' => 'objectIdentity',
+            'class' => ObjectIdentityEmbeddable::class,
+            'columnPrefix' => false,
+        ]);
+
+        (new ObjectIdentityDoctrineMetadataListener())->apply($metadata);
+
+        self::assertArrayNotHasKey('uniqueConstraints', $metadata->table);
+    }
+
     public function testIgnoresNonObjectingEntity(): void
     {
         $metadata = new ClassMetadata(ObjectNonIdentityMetadataConsumer::class);
@@ -72,6 +88,10 @@ final class ObjectIdentityDoctrineMetadataListenerTest extends TestCase
 }
 
 final class ObjectIdentityMetadataConsumer
+{
+}
+
+final class ObjectIdentityMappedSuperclassConsumer
 {
 }
 

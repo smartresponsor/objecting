@@ -4,7 +4,7 @@
 
 Objecting does not define a tenant entity, tenant identifier, organization owner, or generic object ownership field pack.
 
-In SmartResponsor, `VendorEntity` is the business root. Its PostgreSQL primary key is the canonical cross-system identifier. `VendorSecurityEntity` is a one-to-one technical/security extension that shares the same primary key.
+In the current platform model, `VendorEntity` is the business root. Its PostgreSQL primary key is the canonical cross-system identifier. `VendorSecurityEntity` is a one-to-one technical/security extension that shares the same primary key.
 
 Architecturally the platform may be described as multitenant, but the tenant boundary is already represented by the Vendor identity. A second `tenant_id` would duplicate that identity.
 

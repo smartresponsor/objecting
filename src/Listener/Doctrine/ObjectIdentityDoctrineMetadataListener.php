@@ -27,7 +27,7 @@ final class ObjectIdentityDoctrineMetadataListener
             }
         }
 
-        if (!$hasIdentityEmbeddable) {
+        if (!$hasIdentityEmbeddable || $metadata->isMappedSuperclass) {
             return;
         }
 

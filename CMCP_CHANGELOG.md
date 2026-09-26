@@ -180,3 +180,11 @@
 - Canon025 remains an applicability conflict for this reusable package: Gating requires standalone `bin/console` and `config/bundles.php`, while Objecting is explicitly a reusable library. Adding those boot surfaces would in turn activate Canon022's standalone dependency baseline and create an invalid self-dependency expectation for the Objecting owner package.
 - Canon030 remains an applicability conflict: normative Canon030 targets persistence-owning repositories, while current Gating infers persistence ownership from the presence of Doctrine ORM. Objecting owns reusable embeddable metadata but deliberately does not own consumer entities or migrations.
 - These three hard failures are therefore not repaired inside Objecting because doing so would violate the component responsibility boundary; they require a Gating/Canonization applicability correction.
+
+## 2026-09-25 — mapped-superclass identity metadata correction
+
+- Downstream Vendoring fresh-kernel schema creation exposed an Objecting-owned metadata lifecycle defect: the identity listener required concrete physical `uuid`/`slug` columns while Doctrine was still loading a mapped superclass.
+- `ObjectIdentityDoctrineMetadataListener` now skips physical-column/unique-constraint enforcement for `ClassMetadata::isMappedSuperclass`; concrete identity consumers remain fully validated.
+- Added regression coverage proving an identity-bearing mapped superclass is ignored until concrete metadata is built.
+- Objecting PHPUnit PASS: 71 tests / 467 assertions; Doctrine mapping contract PASS; changed-PHP lint PASS.
+- Downstream Vendoring Doctrine smoke and all fresh-kernel integration partitions pass after this owner fix.

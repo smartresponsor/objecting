@@ -47,7 +47,7 @@ Objecting owns the canonical field pack. Consumer components own their local ali
 
 ## Vendor identity and lifecycle canon
 
-SmartResponsor uses `VendorEntity` as the business root. Its PostgreSQL primary key is the canonical cross-system identity and is shared one-to-one with `VendorSecurityEntity`. Objecting does not add a parallel tenant identity.
+The platform uses `VendorEntity` as the business root. Its PostgreSQL primary key is the canonical cross-system identity and is shared one-to-one with `VendorSecurityEntity`. Objecting does not add a parallel tenant identity.
 
 The audit and soft-delete packs use the lifecycle vocabulary `created`, `modified`, and `deleted`. Their `*By` fields carry the canonical Vendor identity as an opaque scalar. Generic tenant, organization, owner, and object-scope ownership fields are outside Objecting responsibility.
 
