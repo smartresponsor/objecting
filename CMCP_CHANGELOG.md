@@ -258,3 +258,41 @@
 - Added regression coverage proving an identity-bearing mapped superclass is ignored until concrete metadata is built.
 - Objecting PHPUnit PASS: 71 tests / 467 assertions; Doctrine mapping contract PASS; changed-PHP lint PASS.
 - Downstream Vendoring Doctrine smoke and all fresh-kernel integration partitions pass after this owner fix.
+
+## 2026-09-30 — RC canon/gating reconciliation
+
+### Baseline
+
+- Workspace: `D:\\PhpstormProjects\\www\\Objecting`; branch `release/objecting-field-pack-normalization-20260910`.
+- Authoritative engine specification read in full before mutation.
+- Current worktree contained one pre-existing deletion: `.gating/README.md`.
+- Mandatory contour consulted: Objecting plus Cruding/Viewing/Interfacing boundaries, current Gating executable rules, and Canonization normative Canon001, Canon025, Canon030 plus the canonical rules journal.
+- Market/enterprise reference check: current Symfony reusable-bundle guidance treats reusable bundles as packages executed inside a host application rather than self-running applications, reinforcing Objecting's package-only responsibility boundary.
+
+### Target-to-canon mapping
+
+- Canon001: normative rule says the approved technical-role list is not closed and an unknown first role root is an escalation candidate, not failure by itself. Current Gating still hard-fails Objecting roots including `Diagnostic`, `EntityInterface`, and `EntityTrait`.
+- Canon025: normative rule targets repositories recognized as canonical standalone platform Symfony components. Objecting is a reusable field-pack library and must not gain artificial `bin/console` or standalone application bootstrap merely to satisfy a false-positive applicability decision.
+- Canon030: normative execution contract applies to persistence-owning repositories. Objecting owns reusable Doctrine embeddable metadata but not consumer entities or migrations, so adding migration ownership or fake schema-parity commands here would violate its responsibility boundary.
+- Canon052: current Gating owner worktree explicitly defines consumer `.gating/` as artifact-only and rejects duplicated runtime under `.gating/bin`, `.gating/src`, `.gating/tool`, and `.gating/composer.json`. The pre-existing deletion of the tracked `.gating/README.md` is consistent with converging Objecting away from a product-owned consumer Gating surface.
+
+### RC-critical workstream
+
+1. Preserve Objecting as a reusable system-field package; do not encode compensating standalone-runtime or migration ownership for false-positive Canon025/030 applicability.
+2. Adopt the existing `.gating/README.md` removal as the Objecting-side Canon052 artifact-surface cleanup.
+3. Re-run Objecting-owned deterministic gates and capture current Gating/Inspecting evidence after the repository mutation.
+
+### Growth workstream
+
+- Raise line/method coverage toward Canon040 targets and continue migration-DX improvements without moving CRUD, presentation, API, standalone host bootstrap, or consumer migration ownership into Objecting.
+- Resolve remaining Canon001/025/030 executable applicability drift in Gating/Canonization owner workstreams rather than compensating inside Objecting.
+
+### Verification
+
+- `composer test:quality`: PASS.
+- `composer quality`: PASS — PHP-CS-Fixer 0/192 fixable, PHPStan 224/224 clean, PHPUnit 71/71 tests with 467 assertions, shared Gating 0 failures and 0 warnings.
+- `composer validate --strict --check-lock`: PASS.
+- `composer audit`: PASS; no security advisories.
+- Fresh standalone Inspecting report: `D:\\PhpstormProjects\\www\\Inspecting\\.inspecting\\reports\\D--PhpstormProjects-www-Objecting-20260930-151918.json`; PHPStan errors 0, Semgrep findings 0, 64 medium structural observations, 0 autofixable findings.
+- No browser/mobile/UI surface changed; behavioral UI execution and visual screenshot evidence are not applicable.
+- Git integration note: the pre-existing deleted tracked path `.gating/README.md` is now covered by `.gitignore`; both guarded staging and guarded index-untrack endpoints refuse it because the physical path is already absent. No force/reset/restore workaround was used. The deletion remains preserved but unintegrated; CMCP journal publication is independent and safe.
