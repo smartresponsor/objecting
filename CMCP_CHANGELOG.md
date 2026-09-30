@@ -1,5 +1,35 @@
 # CMCP execution journal
 
+## 2026-09-30 — Inspecting high-complexity remediation (engine-20260930142322-objecting-751b31)
+
+### Baseline and canon mapping
+
+- Required read-and-comply contour: Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization.
+- Canonization textual sources consulted: Architecture README and Canon018, Canon019, Canon021, Canon023, Canon043, Canon045, Canon052, Canon053.
+- Objecting remains the system-field foundation owner. Cruding, Viewing, and Interfacing were treated as integration/reference contracts, not invented Objecting runtime dependencies.
+- Canon052 applies directly: Gating is installed as a Composer development dependency through the sibling symlink; consumer `.gating/` remains artifact-only.
+
+### RC-critical remediation
+
+- Initial CanonScanning Inspecting evidence contained 67 structural findings, including 2 high-severity complexity findings:
+  - `ObjectSiblingPilotMigrationHandoffReporter::report()`: cyclomatic complexity 25.
+  - `ObjectRc2MarkerManifestReporter::report()`: cyclomatic complexity 27.
+- Both reporters were refactored into behavior-preserving validation helpers without changing public interfaces, report check vocabulary, or component responsibility.
+
+### Verification
+
+- `composer test:sibling-pilot-migration-handoff`: PASS.
+- `composer test:rc2`: PASS.
+- `composer quality`: PASS — PHP-CS-Fixer 0/192 fixable, PHPStan 224/224 clean, PHPUnit 71/71 tests with 467 assertions, Gating 0 failures.
+- Fresh Inspecting: `D:\PhpstormProjects\www\Inspecting\.inspecting\reports\D--PhpstormProjects-www-Objecting-20260930-144451.json`.
+- Fresh Inspecting result: 64 medium findings, 0 high findings, maximum cyclomatic complexity 23, PHPStan errors 0, Semgrep findings 0.
+- Remaining findings are non-autofixable medium structural observations and are not promoted to RC blockers by an applicable canon or executable gate.
+- No browser/mobile/UI surface changed; behavioral UI evidence and screenshots are not applicable.
+
+### Growth workstream
+
+- Continue systematic reduction of medium structural complexity after RC without broad public API churn.
+
 ## 2026-09-30 — Canon052 artifact-boundary hardening and RC baseline
 
 ### Baseline and market/maturity contour

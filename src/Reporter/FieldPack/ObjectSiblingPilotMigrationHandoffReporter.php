@@ -14,127 +14,170 @@ final readonly class ObjectSiblingPilotMigrationHandoffReporter implements Objec
 {
     public function report(ObjectSiblingPilotMigrationHandoffManifest $manifest): ObjectSiblingPilotMigrationHandoffReport
     {
-        $checks = [];
-        $blockingReasons = [];
-
-        if (ObjectPackageSurface::COMPOSER_PACKAGE !== $manifest->packageName()) {
-            $blockingReasons[] = sprintf('Sibling pilot migration handoff package "%s" must be "%s".', $manifest->packageName(), ObjectPackageSurface::COMPOSER_PACKAGE);
-        }
-        $checks[] = 'objecting_package_name';
-
-        if ('objecting_rc2' !== $manifest->objectingBaseline()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must use objecting_rc2 as the locked dependency baseline.';
-        }
-        $checks[] = 'objecting_rc2_baseline';
-
-        foreach (['Addressing', 'Taxating'] as $pilotComponent) {
-            if (!in_array($pilotComponent, $manifest->pilotComponents(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff pilot components must include "%s".', $pilotComponent);
-            }
-        }
-        $checks[] = 'pilot_components';
-
-        foreach ([
-            ObjectFieldPackName::IDENTITY,
-            ObjectFieldPackName::AUDIT,
-            ObjectFieldPackName::TITLE,
-            ObjectFieldPackName::STATE,
-            ObjectFieldPackName::SOURCE,
-            ObjectFieldPackName::FINGERPRINT,
-        ] as $requiredPack) {
-            if (!in_array($requiredPack, $manifest->targetFieldPacks(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff target field packs must include "%s".', $requiredPack);
-            }
-        }
-        $checks[] = 'target_field_packs';
-
-        foreach (['name', 'title', 'description', 'shortDescription', 'label', 'displayName'] as $aliasToken) {
-            if (!in_array($aliasToken, $manifest->titleAliasTokens(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff title aliases must include "%s".', $aliasToken);
-            }
-        }
-        $checks[] = 'title_alias_tokens';
-
-        foreach (['priority', 'visibility'] as $deferredToken) {
-            if (!in_array($deferredToken, $manifest->deferredTokens(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff deferred tokens must include "%s".', $deferredToken);
-            }
-        }
-        $checks[] = 'deferred_tokens';
-
-        foreach ([
-            ObjectPackageSurface::RC2_MARKER_EXAMPLE,
-            ObjectPackageSurface::BACKEND_MIGRATION_COMMAND_EXAMPLE,
-            ObjectPackageSurface::BACKEND_CLONE_CLEANUP_EXAMPLE,
-            ObjectPackageSurface::SYSTEMIC_FIELD_PACKS_CHECK,
-            ObjectPackageSurface::TITLE_ALIAS_HARDENING_CHECK,
-        ] as $requiredArtifact) {
-            if (!in_array($requiredArtifact, $manifest->lockedObjectingArtifacts(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff locked Objecting artifacts must include "%s".', $requiredArtifact);
-            }
-        }
-        $checks[] = 'locked_objecting_artifacts';
-
-        foreach ([
-            'composer.json',
-            'resources/objecting/<BusinessStem>/object-field-packs.yaml',
-            'resources/objecting/<BusinessStem>/object-backend-adoption.yaml',
-            'resources/schema/<BusinessStem>/object-schema-mirror.yaml',
-        ] as $requiredBackendArtifact) {
-            if (!in_array($requiredBackendArtifact, $manifest->requiredBackendArtifacts(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff required backend artifacts must include "%s".', $requiredBackendArtifact);
-            }
-        }
-        $checks[] = 'required_backend_artifacts';
-
-        foreach (['composer dump-autoload', 'composer test:quality', 'php tools/test/objecting_sibling_pilot_migration_handoff_check.php'] as $requiredGate) {
-            if (!in_array($requiredGate, $manifest->qualityGates(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff quality gates must include "%s".', $requiredGate);
-            }
-        }
-        $checks[] = 'quality_gates';
-
-        foreach (['no full repository overwrite', 'no destructive repository cleanup', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints'] as $forbiddenAction) {
-            if (!in_array($forbiddenAction, $manifest->forbiddenActions(), true)) {
-                $blockingReasons[] = sprintf('Sibling pilot migration handoff forbidden actions must include "%s".', $forbiddenAction);
-            }
-        }
-        $checks[] = 'forbidden_actions';
-
-        if (!$manifest->objectingLocked()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must lock Objecting and forbid Objecting changes during sibling migration.';
-        }
-        $checks[] = 'objecting_locked';
-
-        if (!$manifest->exposingLocked()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must lock Exposing and forbid API contract changes during sibling migration.';
-        }
-        $checks[] = 'exposing_locked';
-
-        if (!$manifest->siblingComponentsCanBeModified()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must allow sibling backend component changes.';
-        }
-        $checks[] = 'sibling_components_can_be_modified';
-
-        if (!$manifest->touchedFilesOnly()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must require touched-files-only delivery.';
-        }
-        $checks[] = 'touched_files_only';
-
-        if (!$manifest->cumulativeForBackupOnly()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must mark cumulative snapshots as backup/reference only.';
-        }
-        $checks[] = 'cumulative_for_backup_only';
-
-        if (!$manifest->destructiveRepositoryCleanupForbidden()) {
-            $blockingReasons[] = 'Sibling pilot migration handoff must forbid destructive repository cleanup.';
-        }
-        $checks[] = 'destructive_repository_cleanup_forbidden';
+        $blockingReasons = array_merge(
+            self::identityReasons($manifest),
+            self::collectionReasons($manifest),
+            self::flagReasons($manifest),
+        );
 
         return new ObjectSiblingPilotMigrationHandoffReport(
             manifest: $manifest,
-            checks: $checks,
+            checks: [
+                'objecting_package_name',
+                'objecting_rc2_baseline',
+                'pilot_components',
+                'target_field_packs',
+                'title_alias_tokens',
+                'deferred_tokens',
+                'locked_objecting_artifacts',
+                'required_backend_artifacts',
+                'quality_gates',
+                'forbidden_actions',
+                'objecting_locked',
+                'exposing_locked',
+                'sibling_components_can_be_modified',
+                'touched_files_only',
+                'cumulative_for_backup_only',
+                'destructive_repository_cleanup_forbidden',
+            ],
             blockingReasons: array_values(array_unique($blockingReasons)),
         );
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function identityReasons(ObjectSiblingPilotMigrationHandoffManifest $manifest): array
+    {
+        $reasons = [];
+
+        if (ObjectPackageSurface::COMPOSER_PACKAGE !== $manifest->packageName()) {
+            $reasons[] = sprintf(
+                'Sibling pilot migration handoff package "%s" must be "%s".',
+                $manifest->packageName(),
+                ObjectPackageSurface::COMPOSER_PACKAGE,
+            );
+        }
+
+        if ('objecting_rc2' !== $manifest->objectingBaseline()) {
+            $reasons[] = 'Sibling pilot migration handoff must use objecting_rc2 as the locked dependency baseline.';
+        }
+
+        return $reasons;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function collectionReasons(ObjectSiblingPilotMigrationHandoffManifest $manifest): array
+    {
+        return array_merge(
+            self::missingReasons(
+                ['Addressing', 'Taxating'],
+                $manifest->pilotComponents(),
+                'Sibling pilot migration handoff pilot components must include "%s".',
+            ),
+            self::missingReasons(
+                [
+                    ObjectFieldPackName::IDENTITY,
+                    ObjectFieldPackName::AUDIT,
+                    ObjectFieldPackName::TITLE,
+                    ObjectFieldPackName::STATE,
+                    ObjectFieldPackName::SOURCE,
+                    ObjectFieldPackName::FINGERPRINT,
+                ],
+                $manifest->targetFieldPacks(),
+                'Sibling pilot migration handoff target field packs must include "%s".',
+            ),
+            self::missingReasons(
+                ['name', 'title', 'description', 'shortDescription', 'label', 'displayName'],
+                $manifest->titleAliasTokens(),
+                'Sibling pilot migration handoff title aliases must include "%s".',
+            ),
+            self::missingReasons(
+                ['priority', 'visibility'],
+                $manifest->deferredTokens(),
+                'Sibling pilot migration handoff deferred tokens must include "%s".',
+            ),
+            self::missingReasons(
+                [
+                    ObjectPackageSurface::RC2_MARKER_EXAMPLE,
+                    ObjectPackageSurface::BACKEND_MIGRATION_COMMAND_EXAMPLE,
+                    ObjectPackageSurface::BACKEND_CLONE_CLEANUP_EXAMPLE,
+                    ObjectPackageSurface::SYSTEMIC_FIELD_PACKS_CHECK,
+                    ObjectPackageSurface::TITLE_ALIAS_HARDENING_CHECK,
+                ],
+                $manifest->lockedObjectingArtifacts(),
+                'Sibling pilot migration handoff locked Objecting artifacts must include "%s".',
+            ),
+            self::missingReasons(
+                [
+                    'composer.json',
+                    'resources/objecting/<BusinessStem>/object-field-packs.yaml',
+                    'resources/objecting/<BusinessStem>/object-backend-adoption.yaml',
+                    'resources/schema/<BusinessStem>/object-schema-mirror.yaml',
+                ],
+                $manifest->requiredBackendArtifacts(),
+                'Sibling pilot migration handoff required backend artifacts must include "%s".',
+            ),
+            self::missingReasons(
+                ['composer dump-autoload', 'composer test:quality', 'php tools/test/objecting_sibling_pilot_migration_handoff_check.php'],
+                $manifest->qualityGates(),
+                'Sibling pilot migration handoff quality gates must include "%s".',
+            ),
+            self::missingReasons(
+                ['no full repository overwrite', 'no destructive repository cleanup', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints'],
+                $manifest->forbiddenActions(),
+                'Sibling pilot migration handoff forbidden actions must include "%s".',
+            ),
+        );
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function flagReasons(ObjectSiblingPilotMigrationHandoffManifest $manifest): array
+    {
+        $reasons = [];
+
+        if (!$manifest->objectingLocked()) {
+            $reasons[] = 'Sibling pilot migration handoff must lock Objecting and forbid Objecting changes during sibling migration.';
+        }
+        if (!$manifest->exposingLocked()) {
+            $reasons[] = 'Sibling pilot migration handoff must lock Exposing and forbid API contract changes during sibling migration.';
+        }
+        if (!$manifest->siblingComponentsCanBeModified()) {
+            $reasons[] = 'Sibling pilot migration handoff must allow sibling backend component changes.';
+        }
+        if (!$manifest->touchedFilesOnly()) {
+            $reasons[] = 'Sibling pilot migration handoff must require touched-files-only delivery.';
+        }
+        if (!$manifest->cumulativeForBackupOnly()) {
+            $reasons[] = 'Sibling pilot migration handoff must mark cumulative snapshots as backup/reference only.';
+        }
+        if (!$manifest->destructiveRepositoryCleanupForbidden()) {
+            $reasons[] = 'Sibling pilot migration handoff must forbid destructive repository cleanup.';
+        }
+
+        return $reasons;
+    }
+
+    /**
+     * @param list<string> $required
+     * @param list<string> $actual
+     *
+     * @return list<string>
+     */
+    private static function missingReasons(array $required, array $actual, string $message): array
+    {
+        $reasons = [];
+
+        foreach ($required as $value) {
+            if (!in_array($value, $actual, true)) {
+                $reasons[] = sprintf($message, $value);
+            }
+        }
+
+        return $reasons;
     }
 }
