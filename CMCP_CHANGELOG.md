@@ -1,5 +1,45 @@
 # CMCP execution journal
 
+## 2026-09-30 — Canon052 artifact-boundary hardening and RC baseline
+
+### Baseline and market/maturity contour
+
+- Workspace: `D:\\PhpstormProjects\\www\\Objecting`; branch `release/objecting-field-pack-normalization-20260910`.
+- Objecting remains a reusable Symfony/Doctrine system-field package. Mature reusable metadata packages compete on deterministic mapping, stable typed contracts, low consumer boilerplate, explicit lifecycle/version semantics, and strict separation from consumer CRUD, presentation, and migration history.
+- Enterprise maturity expectations inside this boundary are deterministic metadata, strict package identity, reproducible development tooling, artifact hygiene, diagnostics, and regression gates. Host runtime bootstrapping, generic CRUD, UI rendering, consumer database migration ownership, and API/OpenAPI ownership stay outside Objecting.
+- Required helper/reference contour consulted: Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization. Fresh CanonScanning RED evidence from 2026-09-29 was consumed before new verification.
+- Live repository state no longer contains the mirrored Gating engine/policy tree reported by that older fingerprint. `composer gate` passes; the only pre-existing dirty path is deletion of `.gating/README.md`, which this run preserves rather than reverting.
+
+### Target-to-canon mapping
+
+- Canon001 applies to `src/`, but the current executable rule hard-fails legitimate technical-role roots even though the normative rule says unknown roots are escalation candidates rather than automatic violations. This is an enforcement mismatch, not justification for an Objecting tree rewrite.
+- Canon025 expects standalone boot plus bundle mode for canonical Symfony application components. Objecting's established contract is a reusable field-pack library/bundle; adding `bin/console` and `config/bundles.php` would expand responsibility into host-application ownership.
+- Canon030 applies to persistence-owning repositories. Objecting owns reusable Doctrine field metadata/embeddables, while consumer repositories own concrete Entities and migration chains.
+- Canon052 directly applies: development Gating is installed as `gating/gate:dev-master` through a `../Gating` path repository with `symlink: true`; production uses packaged/VCS Gating; consumer `.gating/` is artifact-only and must never mirror the owner engine/policy tree.
+- Canon034 is actionable locally: generated Gating artifacts, IDE state, local env overrides, Console-MCP state, and OS noise must not pollute Git status.
+
+### RC-critical workstream
+
+1. Harden `.gitignore` so consumer `.gating/` is unequivocally generated/artifact state and local tooling noise does not become repository state.
+2. Preserve the pre-existing `.gating/README.md` deletion without staging or reverting it unless an explicit contract requires otherwise.
+3. Re-run deterministic Objecting gates, full quality, and post-mutation Inspecting evidence.
+
+### Growth workstream (post-RC)
+
+- Continue coverage uplift and consumer migration ergonomics without moving CRUD, presentation, application bootstrap, API, or migration ownership into Objecting.
+- Resolve Canon001/025/030 applicability/enforcement mismatches in Canonization/Gating rather than encoding compensating architecture in Objecting.
+- Fresh Inspecting retains existing structural maintainability debt (67 observations; 2 high-complexity reporter methods) for a separate refactoring workstream; PHPStan and Semgrep are clean.
+
+### Verification result
+
+- `composer test:quality`: PASS.
+- `composer quality`: PASS — PHP-CS-Fixer 0/192 fixable, PHPStan 224/224 clean, PHPUnit 71/71 tests with 467 assertions, consumer Gating 0 failures.
+- `composer validate --strict --check-lock`: PASS.
+- `composer audit`: PASS, no security advisories.
+- Fresh standalone Inspecting: COMPLETE; PHPStan errors 0, Semgrep findings 0. Structural observations are non-autofixable maintainability/design evidence and were not promoted by an applicable canon rule into blockers for this bounded Canon052/Canon034 hardening.
+- No browser/mobile/UI surface changed, so behavioral UI execution and visual screenshots are not applicable.
+
+
 ## 2026-09-13 — Objecting repository implementation
 
 ### Baseline
