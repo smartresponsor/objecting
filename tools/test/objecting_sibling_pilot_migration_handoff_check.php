@@ -66,7 +66,7 @@ if (is_file($exampleFile)) {
         'objecting_baseline: objecting_rc2',
         'name: objecting/object',
         'php: ^8.4',
-        'symfony: ^8.0',
+        'symfony: ^8.1',
         'objecting_locked: true',
         'exposing_locked: true',
         'sibling_components_can_be_modified: true',

@@ -11,7 +11,7 @@
 - `VendorEntity` is the business root.
 - `VendorEntity.id` is the PostgreSQL primary key and canonical cross-system identity.
 - `VendorSecurityEntity` is a one-to-one technical/security extension sharing the same primary key.
-- SmartResponsor may be described architecturally as multitenant, but Objecting must not materialize a second tenant identity.
+- The platform may be described architecturally as multitenant, but Objecting must not materialize a second tenant identity.
 - Lifecycle fields use `created`, `modified`, and `deleted` vocabulary.
 - `createdBy`, `modifiedBy`, and `deletedBy` carry the canonical Vendor identity as an opaque scalar in Objecting.
 

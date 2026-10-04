@@ -18,8 +18,25 @@ services:
   App\Objecting\Normalizer\:
     resource: '../src/Normalizer/'
 
+  App\Objecting\Inspector\:
+    resource: '../src/Inspector/'
+
+  App\Objecting\Listener\:
+    resource: '../src/Listener/'
+
+  App\Objecting\Listener\Doctrine\ObjectIdentityDoctrineMetadataListener:
+    tags:
+      - { name: doctrine.event_listener, event: loadClassMetadata }
+
+  App\Objecting\Registry\Entity\ObjectEntityKindRegistry:
+    arguments:
+      $manifestPath: '%objecting.entity_kind_manifest%'
+
   App\Objecting\ReporterInterface\Doctrine\ObjectDoctrineMappingContractReporterInterface:
     alias: App\Objecting\Reporter\Doctrine\ObjectDoctrineMappingContractReporter
+
+  App\Objecting\ReporterInterface\Diagnostic\ObjectDiagnosticReporterInterface:
+    alias: App\Objecting\Reporter\Diagnostic\ObjectDiagnosticReporter
 
   App\Objecting\ReporterInterface\Exposing\ObjectExposingBridgeContractReporterInterface:
     alias: App\Objecting\Reporter\Exposing\ObjectExposingBridgeContractReporter
@@ -71,6 +88,12 @@ services:
 
   App\Objecting\ReporterInterface\Schema\ObjectSchemaMirrorContractReporterInterface:
     alias: App\Objecting\Reporter\Schema\ObjectSchemaMirrorContractReporter
+
+  App\Objecting\RegistryInterface\Entity\ObjectEntityKindRegistryInterface:
+    alias: App\Objecting\Registry\Entity\ObjectEntityKindRegistry
+
+  App\Objecting\InspectorInterface\Entity\ObjectEntityKindInspectorInterface:
+    alias: App\Objecting\Inspector\Entity\ObjectEntityKindInspector
 
   App\Objecting\RegistryInterface\FieldPack\ObjectFieldPackProfileRegistryInterface:
     alias: App\Objecting\Registry\FieldPack\ObjectFieldPackProfileRegistry

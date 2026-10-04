@@ -10,21 +10,21 @@ $packs = [
         'embeddable' => 'src/Embeddable/ObjectStateEmbeddable.php',
         'trait' => 'src/EntityTrait/Embeddable/ObjectStateEmbeddableTrait.php',
         'interface' => 'src/EntityInterface/ObjectStatefulInterface.php',
-        'columns' => ['object_active', 'object_enabled', 'object_status'],
+        'columns' => ['active', 'enabled', 'status'],
     ],
     'object_source' => [
         'file' => 'object-source.yaml',
         'embeddable' => 'src/Embeddable/ObjectSourceEmbeddable.php',
         'trait' => 'src/EntityTrait/Embeddable/ObjectSourceEmbeddableTrait.php',
         'interface' => 'src/EntityInterface/ObjectSourcedInterface.php',
-        'columns' => ['object_source', 'object_provider', 'object_external_id', 'object_source_type'],
+        'columns' => ['source', 'provider', 'external_id', 'source_type'],
     ],
     'object_fingerprint' => [
         'file' => 'object-fingerprint.yaml',
         'embeddable' => 'src/Embeddable/ObjectFingerprintEmbeddable.php',
         'trait' => 'src/EntityTrait/Embeddable/ObjectFingerprintEmbeddableTrait.php',
         'interface' => 'src/EntityInterface/ObjectFingerprintedInterface.php',
-        'columns' => ['object_hash', 'object_checksum', 'object_algorithm'],
+        'columns' => ['hash', 'checksum', 'algorithm'],
     ],
 ];
 $manifest = (string) file_get_contents($root . '/resources/field-pack/manifest.yaml');

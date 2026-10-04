@@ -25,7 +25,7 @@ return [
 ];
 ```
 
-The bundle registers Objecting services and service-interface aliases. It does not register consumer entities, migrations, controllers, routes, DTOs, or API contracts.
+The bundle registers Objecting services and service-interface aliases. It also registers the Objecting Doctrine `loadClassMetadata` listener that owns deterministic table-level identity constraints for consumers using `ObjectIdentityEmbeddable`: `uniq_<table>_uuid` and `uniq_<table>_slug`. It does not register consumer entities, migrations, controllers, routes, DTOs, or API contracts.
 
 ## Runtime boundary
 

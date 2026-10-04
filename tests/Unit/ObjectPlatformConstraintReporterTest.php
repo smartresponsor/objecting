@@ -17,18 +17,18 @@ final class ObjectPlatformConstraintReporterTest extends TestCase
             constraintCandidate: 'objecting_wave20_platform_constraints',
             packageName: ObjectPackageSurface::COMPOSER_PACKAGE,
             phpConstraint: '^8.4',
-            symfonyConstraint: '^8.0',
+            symfonyConstraint: '^8.1',
             namespacePrefix: ObjectPackageSurface::NAMESPACE_PREFIX,
             bundleClass: ObjectPackageSurface::BUNDLE_CLASS,
             requiredConstraints: [
                 'php' => '^8.4',
-                'symfony/config' => '^8.0',
-                'symfony/dependency-injection' => '^8.0',
-                'symfony/http-kernel' => '^8.0',
-                'symfony/uid' => '^8.0',
-                'symfony/yaml' => '^8.0',
+                'symfony/config' => '^8.1',
+                'symfony/dependency-injection' => '^8.1',
+                'symfony/http-kernel' => '^8.1',
+                'symfony/uid' => '^8.1',
+                'symfony/yaml' => '^8.1',
             ],
-            extraSymfony: ['require' => '^8.0'],
+            extraSymfony: ['require' => '^8.1'],
             forbiddenConstraints: ['^7.0 || ^8.0', '^7 || ^8', '^7.0', '7.*'],
             qualityGates: ['composer test:platform-constraints', 'php tools/test/objecting_platform_constraint_check.php'],
         );
@@ -48,16 +48,16 @@ final class ObjectPlatformConstraintReporterTest extends TestCase
             constraintCandidate: 'objecting_wave20_platform_constraints',
             packageName: ObjectPackageSurface::COMPOSER_PACKAGE,
             phpConstraint: '^8.4',
-            symfonyConstraint: '^8.0',
+            symfonyConstraint: '^8.1',
             namespacePrefix: ObjectPackageSurface::NAMESPACE_PREFIX,
             bundleClass: ObjectPackageSurface::BUNDLE_CLASS,
             requiredConstraints: [
                 'php' => '^8.4',
                 'symfony/config' => '^7.0 || ^8.0',
-                'symfony/dependency-injection' => '^8.0',
-                'symfony/http-kernel' => '^8.0',
-                'symfony/uid' => '^8.0',
-                'symfony/yaml' => '^8.0',
+                'symfony/dependency-injection' => '^8.1',
+                'symfony/http-kernel' => '^8.1',
+                'symfony/uid' => '^8.1',
+                'symfony/yaml' => '^8.1',
             ],
             extraSymfony: ['require' => '^7.0 || ^8.0'],
             forbiddenConstraints: ['^7.0 || ^8.0'],
@@ -69,5 +69,24 @@ final class ObjectPlatformConstraintReporterTest extends TestCase
         self::assertFalse($report->isReady());
         self::assertSame('blocked', $report->status());
         self::assertNotSame([], $report->blockingReasons());
+    }
+
+    public function testItRejectsSymfony80Floor(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Symfony 8.1 or newer');
+
+        new ObjectPlatformConstraintManifest(
+            constraintCandidate: 'objecting_wave20_platform_constraints',
+            packageName: ObjectPackageSurface::COMPOSER_PACKAGE,
+            phpConstraint: '^8.4',
+            symfonyConstraint: '^8.0',
+            namespacePrefix: ObjectPackageSurface::NAMESPACE_PREFIX,
+            bundleClass: ObjectPackageSurface::BUNDLE_CLASS,
+            requiredConstraints: ['php' => '^8.4'],
+            extraSymfony: ['require' => '^8.0'],
+            forbiddenConstraints: ['^8.0'],
+            qualityGates: ['composer test:platform-constraints'],
+        );
     }
 }

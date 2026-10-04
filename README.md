@@ -33,7 +33,7 @@ resources/field-pack/object-*.yaml
 
 ## Universal title canon
 
-All business objects may expose the canonical three-part title surface:
+Every entity classified as `ObjectEntityInterface` must expose the canonical three-part title surface:
 
 ```text
 firstTitle
@@ -47,11 +47,13 @@ Objecting owns the canonical field pack. Consumer components own their local ali
 
 ## Vendor identity and lifecycle canon
 
-SmartResponsor uses `VendorEntity` as the business root. Its PostgreSQL primary key is the canonical cross-system identity and is shared one-to-one with `VendorSecurityEntity`. Objecting does not add a parallel tenant identity.
+The platform uses `VendorEntity` as the business root. Its PostgreSQL primary key is the canonical cross-system identity and is shared one-to-one with `VendorSecurityEntity`. Objecting does not add a parallel tenant identity.
 
 The audit and soft-delete packs use the lifecycle vocabulary `created`, `modified`, and `deleted`. Their `*By` fields carry the canonical Vendor identity as an opaque scalar. Generic tenant, organization, owner, and object-scope ownership fields are outside Objecting responsibility.
 
 See `docs/architecture/objecting-vendor-identity-canon.md`.
+
+The full product ownership boundary is defined in `docs/architecture/objecting-responsibility-boundary.md` and enforced by `composer test:responsibility-boundary`.
 
 ## Runtime ownership
 
@@ -101,6 +103,12 @@ composer test:quality
 ```
 
 The package-surface check ensures that `ObjectExtension` owns runtime package parameters, `config/services.yaml` does not reset them to `null`, and mirror service-interface aliases stay registered for consumer components.
+
+## Production diagnostics
+
+Objecting exposes stable diagnostic event identifiers and JSON-serializable reports for manifest, profile, field-pack, lifecycle, schema, title-alias, duplicate-consumer-field, and deprecated-API failures. Embeddables remain logger-free, and Objecting does not own logging sinks or metrics exporters.
+
+Run `composer test:production-diagnostics` or the complete `composer test:quality` gate. See `docs/integration/objecting-production-diagnostics.md`.
 
 
 
@@ -232,7 +240,7 @@ The next Objecting wave should create the RC marker and should not expand Object
 
 ## Platform constraints
 
-Objecting targets PHP `^8.4` and Symfony 8 only. The current package dependencies use a Symfony 8 minor floor, while Symfony 7 and mixed Symfony 7/8 constraints such as `^7.0 || ^8.0` remain forbidden.
+Objecting targets PHP `^8.4` and Symfony 8.1+ only. The current package dependencies use the canonical Symfony 8.1 minor floor, while Symfony 8.0, Symfony 7, and mixed Symfony 7/8 constraints such as `^7.0 || ^8.0` remain forbidden.
 
 Run:
 

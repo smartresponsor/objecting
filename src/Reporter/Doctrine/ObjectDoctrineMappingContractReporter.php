@@ -65,14 +65,14 @@ final readonly class ObjectDoctrineMappingContractReporter implements ObjectDoct
             if (!preg_match('/^[a-z][a-z0-9_]*$/', $columnName)) {
                 $blockingReasons[] = sprintf('Doctrine mapping column "%s" must be snake_case.', $columnName);
             }
-            if ($contract->objectColumnsPrefixed() && !str_starts_with($columnName, 'object_')) {
-                $blockingReasons[] = sprintf('Doctrine mapping Objecting column "%s" must start with object_.', $columnName);
+            if (str_starts_with($columnName, 'object_')) {
+                $blockingReasons[] = sprintf('Doctrine mapping Objecting column "%s" must not start with object_.', $columnName);
             }
         }
         $checks[] = 'object_column_names';
 
         if (!$contract->columnPrefixFalse()) {
-            $blockingReasons[] = 'Doctrine mapping contract must use columnPrefix=false because Objecting embeddables already own object_* column names.';
+            $blockingReasons[] = 'Doctrine mapping contract must use columnPrefix=false so explicit entity-native physical column names are preserved.';
         }
         $checks[] = 'objecting_column_prefix_policy';
 

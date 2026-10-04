@@ -2,7 +2,7 @@
   "name": "objecting/object",
   "description": "Objecting process app",
   "type": "library",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "authors": [
     {
       "name": "Oleksandr Tishchenko",
@@ -22,7 +22,8 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": ">=3.95 <4.0",
     "phpstan/phpstan": "^2.0",
-    "phpunit/phpunit": "^11.0 || ^12.0"
+    "phpunit/phpunit": "^11.0 || ^12.0",
+    "gating/gate": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -36,17 +37,24 @@
   },
   "scripts": {
     "test:canon": "@php tools/test/objecting_canon_check.php",
+    "test:responsibility-boundary": "@php tools/test/objecting_responsibility_boundary_check.php",
+    "test:semantic-manifest": "@php tools/test/objecting_semantic_manifest_check.php",
     "test:lifecycle-identity-canon": "@php tools/test/objecting_lifecycle_identity_canon_check.php",
+    "test:production-diagnostics": "@php tools/test/objecting_production_diagnostic_check.php",
     "test:package-surface": "@php tools/test/objecting_package_surface_check.php",
     "test:migration-readiness": "@php tools/test/objecting_backend_migration_readiness_check.php",
     "test:quality": [
       "@test:canon",
+      "@test:responsibility-boundary",
+      "@test:semantic-manifest",
       "@test:lifecycle-identity-canon",
+      "@test:production-diagnostics",
       "@test:internal-types",
       "@test:layer-suffix",
       "@test:package-surface",
       "@test:platform-constraints",
       "@test:systemic-field-packs",
+      "@test:entity-kind-policy",
       "@test:title-alias-hardening",
       "@test:embeddable-initialization",
       "@test:doctrine-mapping",
@@ -66,8 +74,14 @@
       "@test:backend-handoff",
       "@test:backend-adoption-packet"
     ],
+    "cs:check": "php-cs-fixer fix --dry-run --diff --verbose",
+    "cs:fix": "php-cs-fixer fix --verbose",
     "phpstan": "phpstan analyse src tests tools --memory-limit=1G",
     "test": "phpunit --testdox",
+    "test:coverage": [
+      "@php -r \"if (!is_dir('var/coverage')) { mkdir('var/coverage', 0777, true); }\"",
+      "@php -d xdebug.mode=coverage vendor/bin/phpunit --path-coverage --coverage-text=var/coverage/summary.txt"
+    ],
     "test:backend-adoption": "@php tools/test/objecting_backend_adoption_manifest_check.php",
     "test:backend-handoff": "@php tools/test/objecting_backend_handoff_contract_check.php",
     "test:release-readiness": "@php tools/test/objecting_release_readiness_check.php",
@@ -83,6 +97,8 @@
     "test:rc1": "@php tools/test/objecting_rc1_check.php",
     "test:platform-constraints": "@php tools/test/objecting_platform_constraint_check.php",
     "test:systemic-field-packs": "@php tools/test/objecting_systemic_field_pack_check.php",
+    "test:entity-kind-policy": "@php tools/test/objecting_entity_kind_policy_check.php",
+    "audit:entity-kinds": "@php tools/audit/objecting_workspace_entity_kind_audit.php",
     "test:title-alias-hardening": "@php tools/test/objecting_title_alias_hardening_check.php",
     "test:backend-clone-cleanup": "@php tools/test/objecting_backend_clone_cleanup_contract_check.php",
     "test:backend-migration-command": "@php tools/test/objecting_backend_migration_command_packet_check.php",
@@ -90,7 +106,14 @@
     "test:sibling-pilot-migration-handoff": "@php tools/test/objecting_sibling_pilot_migration_handoff_check.php",
     "test:migration-transition-freeze": "@php tools/test/objecting_migration_transition_freeze_check.php",
     "test:layer-suffix": "@php tools/test/objecting_layer_suffix_check.php",
-    "test:internal-types": "@php tools/test/objecting_internal_type_resolution_check.php"
+    "test:internal-types": "@php tools/test/objecting_internal_type_resolution_check.php",
+    "gate": "@php vendor/bin/gating check --target=.",
+    "quality": [
+      "@cs:check",
+      "@phpstan",
+      "@test",
+      "@gate"
+    ]
   },
   "config": {
     "sort-packages": true,
@@ -99,11 +122,23 @@
       "phpstan/extension-installer": true
     }
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
     "symfony": {
-      "require": "^8.0"
+      "require": "^8.1"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../Gating",
+      "options": {
+        "symlink": true,
+        "versions": {
+          "gating/gate": "dev-master"
+        }
+      }
+    }
+  ]
 }

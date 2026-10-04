@@ -85,7 +85,7 @@ notes:
   - Objecting remains a system field-pack foundation, not a host app, API layer, CRUD layer, or god entity.
   - Backend components keep Entity, Doctrine migrations, DTO, Form, Controller, Repository, Service, fixtures, tests, and runtime ownership.
   - Exposing remains the separate API/OpenAPI contract repository.
-  - Objecting RC1 requires PHP ^8.4 and Symfony package constraints ^8.0 only; Symfony 7 and mixed Symfony 7/8 constraints are forbidden.
+  - Objecting RC1 requires PHP ^8.4 and Symfony package constraints ^8.1 or a later Symfony 8 minor floor; Symfony 8.0, Symfony 7, and mixed Symfony 7/8 constraints are forbidden.
 
 wave21:
   marker: objecting_wave21_systemic_field_packs

@@ -27,7 +27,7 @@ final readonly class ObjectDoctrineMappingContract
         private array $columnNames,
         private bool $columnPrefixFalse = true,
         private bool $backendOwnsMigrations = true,
-        private bool $objectColumnsPrefixed = true,
+        private bool $objectColumnsPrefixed = false,
     ) {
         foreach ([
             'component' => $this->component,

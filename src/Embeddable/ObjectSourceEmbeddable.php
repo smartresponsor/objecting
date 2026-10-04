@@ -9,63 +9,63 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectSourceEmbeddable
 {
-    #[ORM\Column(name: 'object_source', type: 'string', length: 190, nullable: true)]
-    private ?string $objectSource = null;
+    #[ORM\Column(name: 'source', type: 'string', length: 190, nullable: true)]
+    private ?string $source = null;
 
-    #[ORM\Column(name: 'object_provider', type: 'string', length: 190, nullable: true)]
-    private ?string $objectProvider = null;
+    #[ORM\Column(name: 'provider', type: 'string', length: 190, nullable: true)]
+    private ?string $provider = null;
 
-    #[ORM\Column(name: 'object_external_id', type: 'string', length: 190, nullable: true)]
-    private ?string $objectExternalId = null;
+    #[ORM\Column(name: 'external_id', type: 'string', length: 190, nullable: true)]
+    private ?string $externalId = null;
 
-    #[ORM\Column(name: 'object_source_type', type: 'string', length: 120, nullable: true)]
-    private ?string $objectSourceType = null;
+    #[ORM\Column(name: 'source_type', type: 'string', length: 120, nullable: true)]
+    private ?string $sourceType = null;
 
     public function __construct(?string $objectSource = null, ?string $objectProvider = null, ?string $objectExternalId = null, ?string $objectSourceType = null)
     {
-        $this->objectSource = $objectSource;
-        $this->objectProvider = $objectProvider;
-        $this->objectExternalId = $objectExternalId;
-        $this->objectSourceType = $objectSourceType;
+        $this->source = $objectSource;
+        $this->provider = $objectProvider;
+        $this->externalId = $objectExternalId;
+        $this->sourceType = $objectSourceType;
     }
 
     public function getObjectSource(): ?string
     {
-        return $this->objectSource;
+        return $this->source;
     }
 
     public function setObjectSource(?string $objectSource): void
     {
-        $this->objectSource = $objectSource;
+        $this->source = $objectSource;
     }
 
     public function getObjectProvider(): ?string
     {
-        return $this->objectProvider;
+        return $this->provider;
     }
 
     public function setObjectProvider(?string $objectProvider): void
     {
-        $this->objectProvider = $objectProvider;
+        $this->provider = $objectProvider;
     }
 
     public function getObjectExternalId(): ?string
     {
-        return $this->objectExternalId;
+        return $this->externalId;
     }
 
     public function setObjectExternalId(?string $objectExternalId): void
     {
-        $this->objectExternalId = $objectExternalId;
+        $this->externalId = $objectExternalId;
     }
 
     public function getObjectSourceType(): ?string
     {
-        return $this->objectSourceType;
+        return $this->sourceType;
     }
 
     public function setObjectSourceType(?string $objectSourceType): void
     {
-        $this->objectSourceType = $objectSourceType;
+        $this->sourceType = $objectSourceType;
     }
 }

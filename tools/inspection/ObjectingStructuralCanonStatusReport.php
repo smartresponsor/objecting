@@ -182,7 +182,18 @@ foreach ($forbiddenPaths as $forbiddenPath) {
         $errors[] = 'Forbidden legacy path still exists: ' . $forbiddenPath;
     }
 }
-$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS));
+$iterator = new RecursiveIteratorIterator(
+    new RecursiveCallbackFilterIterator(
+        new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS),
+        static function (SplFileInfo $file): bool {
+            if (!$file->isDir()) {
+                return true;
+            }
+
+            return !in_array($file->getFilename(), ['.git', '.codebase-memory', '.gating', 'vendor', 'var'], true);
+        },
+    ),
+);
 foreach ($iterator as $file) {
     if (!$file instanceof SplFileInfo || !$file->isFile()) { continue; }
     $path = str_replace('\\', '/', substr($file->getPathname(), strlen($root) + 1));
@@ -254,7 +265,7 @@ if (is_file($manifest)) {
             $relative = str_replace('\\', '/', $relative) . '.php';
             if (!is_file($root . '/' . $relative)) { $errors[] = "Field pack $pack references missing $key class file: $relative."; }
         }
-        foreach (yamlList($yaml, 'columns') as $column) { if (!str_starts_with($column, 'object_')) { $errors[] = "Field pack $pack has non-object column $column."; } }
+        foreach (yamlList($yaml, 'columns') as $column) { if (str_starts_with($column, 'object_')) { $errors[] = "Field pack $pack leaks Objecting ownership into physical column $column."; } if ('id' === $column) { $errors[] = "Objecting field packs must not own the consumer Doctrine primary key id."; } }
     }
 }
 $titleAliasManifest = $root . '/resources/title-alias/manifest.yaml';
@@ -278,6 +289,15 @@ foreach ($embeddableTraitFiles as $traitFile) {
     $relative = str_replace($root . '/', '', $traitFile);
     $content = file_get_contents($traitFile) ?: '';
     if (preg_match('/private\s+(Object[A-Za-z0-9]+Embeddable)\s+\$(object[A-Za-z0-9]+);/', $content, $match) !== 1) {
+        // Version/etag are mapped directly so Doctrine can own optimistic locking.
+        if (str_ends_with($relative, '/ObjectVersionEmbeddableTrait.php')
+            && str_contains($content, '#[ORM\\Version]')
+            && preg_match('/private\s+int\s+\$version\s*=\s*1;/', $content) === 1
+            && preg_match('/private\s+\?string\s+\$etag\s*=\s*null;/', $content) === 1
+        ) {
+            continue;
+        }
+
         $errors[] = 'Embeddable trait lacks typed property: ' . $relative;
         continue;
     }
@@ -374,7 +394,7 @@ if (is_file($backendAdoptionPacketExample)) {
 $doctrineMappingExample = $root . '/resources/consumer/object-doctrine-mapping.example.yaml';
 if (is_file($doctrineMappingExample)) {
     $yaml = file_get_contents($doctrineMappingExample) ?: '';
-    foreach (['object_doctrine_mapping_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'table: page', 'backend_owns_migrations: true', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'column_prefix_false: true', 'object_columns_prefixed: true', 'App\\Objecting\\Embeddable\\ObjectTitleEmbeddable', 'App\\Objecting\\EntityTrait\\Embeddable\\ObjectTitleEmbeddableTrait', 'php bin/console doctrine:schema:validate --skip-sync', 'mapping_readiness:', 'status: ready', 'backend_migration_ownership'] as $requiredMarker) {
+    foreach (['object_doctrine_mapping_contract_version: 1', 'component: Paging', 'business_stem: Page', 'namespace: App\\Paging', 'class: App\\Paging\\Entity\\Page', 'table: page', 'backend_owns_migrations: true', 'field_pack_contract: resources/objecting/Page/object-field-packs.yaml', 'column_prefix_false: true', 'object_columns_prefixed: false', 'App\\Objecting\\Embeddable\\ObjectTitleEmbeddable', 'App\\Objecting\\EntityTrait\\Embeddable\\ObjectTitleEmbeddableTrait', 'php bin/console doctrine:schema:validate --skip-sync', 'mapping_readiness:', 'status: ready', 'backend_migration_ownership'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) {
             $errors[] = 'Doctrine mapping example is missing marker: ' . $requiredMarker;
         }
@@ -431,7 +451,7 @@ if (is_file($backendImportExample)) {
 $backendMigrationCommandExample = $root . '/resources/consumer/object-backend-migration-command.example.yaml';
 if (is_file($backendMigrationCommandExample)) {
     $yaml = file_get_contents($backendMigrationCommandExample) ?: '';
-    foreach (['object_backend_migration_command_version: 1', 'source_audit: workspace-objecting-field-pack-audit.md', 'objecting_can_be_modified: false', 'exposing_can_be_modified: false', 'sibling_components_can_be_modified: true', 'pilot_components:', '- Addressing', '- Taxating', 'object_identity', 'object_audit', 'object_title', 'object_state', 'object_source', 'object_fingerprint', 'id: backend-owned Doctrine primary key', 'priority', 'visibility', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints', 'migration_command_readiness:', 'status: ready'] as $requiredMarker) {
+    foreach (['object_backend_migration_command_version: 1', 'source_audit: workspace-objecting-field-pack-audit.md', 'objecting_can_be_modified: false', 'exposing_can_be_modified: false', 'sibling_components_can_be_modified: true', 'pilot_components:', '- Addressing', '- Taxating', 'object_identity', 'object_audit', 'object_title', 'object_state', 'object_source', 'object_fingerprint', 'preserve the consumer-owned Doctrine primary key while adopting Objecting object_identity for reusable uuid and slug identity fields', 'priority', 'visibility', 'no /src/Domain/', 'no Port and Adapter pattern', 'no Symfony 7 constraints', 'migration_command_readiness:', 'status: ready'] as $requiredMarker) {
         if (!str_contains($yaml, $requiredMarker)) { $errors[] = 'Backend migration command example is missing marker: ' . $requiredMarker; }
     }
 }

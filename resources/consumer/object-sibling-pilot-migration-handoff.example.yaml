@@ -5,7 +5,7 @@ objecting_baseline: objecting_rc2
 package:
   name: objecting/object
   php: ^8.4
-  symfony: ^8.0
+  symfony: ^8.1
 scope:
   purpose: first sibling backend pilot migration handoff after Objecting RC2
   objecting_locked: true

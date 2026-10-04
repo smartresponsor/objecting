@@ -6,13 +6,13 @@ namespace App\Objecting\EntityInterface;
 
 interface ObjectSoftDeletableInterface
 {
-    public function isObjectDeleted(): bool;
+    public function isDeleted(): bool;
 
-    public function getObjectDeletedAt(): ?\DateTimeImmutable;
+    public function getDeletedAt(): ?\DateTimeImmutable;
 
-    public function getObjectDeletedBy(): ?string;
+    public function getDeletedBy(): ?string;
 
-    public function deleteObject(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void;
+    public function delete(?string $deletedBy = null, ?\DateTimeImmutable $deletedAt = null): void;
 
-    public function restoreObject(): void;
+    public function restore(): void;
 }

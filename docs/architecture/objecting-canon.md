@@ -1,6 +1,6 @@
 # Objecting Canon
 
-Objecting is the object system field-pack foundation for Smart Responsor backend components.
+Objecting is the object system field-pack foundation for platform backend components.
 
 ## What Objecting is
 

@@ -8,7 +8,7 @@ It does not modify sibling repositories by itself. It declares the locked Object
 
 - Objecting baseline: `objecting_rc2`
 - PHP: `^8.4`
-- Symfony packages: `^8.0` only
+- Symfony packages: `^8.1` or a later Symfony 8 minor floor
 - Objecting is not modified during the sibling migration wave
 - Exposing is not modified during the sibling migration wave
 
@@ -28,7 +28,7 @@ These are the pilot components because the workspace audit found local `Object*`
 - `object_source`
 - `object_fingerprint`
 
-`id` remains a backend-owned Doctrine primary key. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` remain aliases of `object_title`.
+`id` remains owned by each consumer entity as its Doctrine primary key. `ObjectIdentityEmbeddableTrait` supplies reusable Objecting identity fields without replacing that primary key. `name`, `title`, `description`, `shortDescription`, `label`, and `displayName` remain aliases of `object_title`.
 
 `priority` and `visibility` remain deferred until their backend semantics are separated.
 

@@ -1,0 +1,25 @@
+version: 1
+
+entity_kinds:
+  object:
+    interface: App\Objecting\EntityInterface\ObjectEntityInterface
+    required_field_packs:
+      - object_identity
+      - object_title
+      - object_audit
+      - object_state
+
+  relation:
+    interface: App\Objecting\EntityInterface\ObjectRelationEntityInterface
+    required_field_packs:
+      - object_audit
+
+capabilities:
+  immutable:
+    interface: App\Objecting\EntityInterface\ObjectImmutableInterface
+  append_only:
+    interface: App\Objecting\EntityInterface\ObjectAppendOnlyInterface
+    requires:
+      - immutable
+
+classification:

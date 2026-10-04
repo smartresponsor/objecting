@@ -20,6 +20,7 @@ final class ObjectExtension extends Extension
         $container->setParameter('objecting.resource_dir', dirname(__DIR__, 2).'/resources');
         $container->setParameter('objecting.field_pack_manifest', dirname(__DIR__, 2).'/resources/field-pack/manifest.yaml');
         $container->setParameter('objecting.title_alias_manifest', dirname(__DIR__, 2).'/resources/title-alias/manifest.yaml');
+        $container->setParameter('objecting.entity_kind_manifest', dirname(__DIR__, 2).'/resources/entity-kind/manifest.yaml');
 
         $loader = new YamlFileLoader($container, new FileLocator(dirname(__DIR__, 2).'/config'));
         $loader->load('services.yaml');

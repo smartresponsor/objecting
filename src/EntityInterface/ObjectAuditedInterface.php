@@ -6,13 +6,13 @@ namespace App\Objecting\EntityInterface;
 
 interface ObjectAuditedInterface
 {
-    public function getObjectCreatedAt(): \DateTimeImmutable;
+    public function getCreatedAt(): \DateTimeImmutable;
 
-    public function getObjectModifiedAt(): ?\DateTimeImmutable;
+    public function getModifiedAt(): ?\DateTimeImmutable;
 
-    public function getObjectCreatedBy(): ?string;
+    public function getCreatedBy(): ?string;
 
-    public function getObjectModifiedBy(): ?string;
+    public function getModifiedBy(): ?string;
 
     public function touchModified(?\DateTimeImmutable $modifiedAt = null, ?string $modifiedBy = null): void;
 }

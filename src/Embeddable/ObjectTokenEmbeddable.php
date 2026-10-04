@@ -9,42 +9,42 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectTokenEmbeddable
 {
-    #[ORM\Column(name: 'object_token', type: 'string', length: 255, nullable: true)]
-    private ?string $objectToken = null;
+    #[ORM\Column(name: 'token', type: 'string', length: 255, nullable: true)]
+    private ?string $token = null;
 
-    #[ORM\Column(name: 'object_token_expires_at', type: 'datetime_immutable', nullable: true)]
-    private ?\DateTimeImmutable $objectTokenExpiresAt = null;
+    #[ORM\Column(name: 'token_expires_at', type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $tokenExpiresAt = null;
 
     public function __construct(?string $objectToken = null, ?\DateTimeImmutable $objectTokenExpiresAt = null)
     {
-        $this->objectToken = $objectToken;
-        $this->objectTokenExpiresAt = $objectTokenExpiresAt;
+        $this->token = $objectToken;
+        $this->tokenExpiresAt = $objectTokenExpiresAt;
     }
 
     public function getObjectToken(): ?string
     {
-        return $this->objectToken;
+        return $this->token;
     }
 
     public function setObjectToken(?string $objectToken): void
     {
-        $this->objectToken = $objectToken;
+        $this->token = $objectToken;
     }
 
     public function getObjectTokenExpiresAt(): ?\DateTimeImmutable
     {
-        return $this->objectTokenExpiresAt;
+        return $this->tokenExpiresAt;
     }
 
     public function setObjectTokenExpiresAt(?\DateTimeImmutable $objectTokenExpiresAt): void
     {
-        $this->objectTokenExpiresAt = $objectTokenExpiresAt;
+        $this->tokenExpiresAt = $objectTokenExpiresAt;
     }
 
     public function isObjectTokenValid(?\DateTimeImmutable $at = null): bool
     {
         $now = $at ?? new \DateTimeImmutable('now');
 
-        return null !== $this->objectToken && (null === $this->objectTokenExpiresAt || $this->objectTokenExpiresAt > $now);
+        return null !== $this->token && (null === $this->tokenExpiresAt || $this->tokenExpiresAt > $now);
     }
 }

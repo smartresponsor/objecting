@@ -4,7 +4,7 @@ source_audit: workspace-objecting-field-pack-audit.md
 package:
   name: objecting/object
   php: ^8.4
-  symfony: ^8.0
+  symfony: ^8.1
   objecting_baseline: objecting_wave23_backend_clone_cleanup_contract
 scope:
   purpose: first real sibling backend migration command packet
@@ -54,7 +54,6 @@ field_pack_mapping:
     shortDescription: object_title.middleTitle
     description: object_title.lastTitle
   not_packs:
-    id: backend-owned Doctrine primary key
     name: object_title alias
     title: object_title alias
     description: object_title alias
@@ -83,7 +82,7 @@ codex_instructions:
   - use object_source
   - use object_fingerprint
   - map name/title/description through object_title aliases rather than adding object_name or object_description
-  - keep id as backend-owned Doctrine primary key
+  - preserve the consumer-owned Doctrine primary key while adopting Objecting object_identity for reusable uuid and slug identity fields
   - do not modify Objecting during backend migration
   - do not modify Exposing during backend migration
 forbidden_actions:

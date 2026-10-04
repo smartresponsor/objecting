@@ -9,28 +9,28 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Embeddable]
 final class ObjectWorkflowEmbeddable
 {
-    #[ORM\Column(name: 'object_workflow_state', type: 'string', length: 120)]
-    private string $objectWorkflowState = 'draft';
+    #[ORM\Column(name: 'workflow_state', type: 'string', length: 120)]
+    private string $workflowState = 'draft';
 
     /** @var array<string, mixed> */
-    #[ORM\Column(name: 'object_workflow_context', type: 'json')]
-    private array $objectWorkflowContext = [];
+    #[ORM\Column(name: 'workflow_context', type: 'json')]
+    private array $workflowContext = [];
 
     public function getObjectWorkflowState(): string
     {
-        return $this->objectWorkflowState;
+        return $this->workflowState;
     }
 
     /** @param array<string, mixed> $objectWorkflowContext */
     public function setObjectWorkflowState(string $objectWorkflowState, array $objectWorkflowContext = []): void
     {
-        $this->objectWorkflowState = $objectWorkflowState;
-        $this->objectWorkflowContext = $objectWorkflowContext;
+        $this->workflowState = $objectWorkflowState;
+        $this->workflowContext = $objectWorkflowContext;
     }
 
     /** @return array<string, mixed> */
     public function getObjectWorkflowContext(): array
     {
-        return $this->objectWorkflowContext;
+        return $this->workflowContext;
     }
 }

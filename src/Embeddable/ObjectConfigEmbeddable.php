@@ -10,18 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
 final class ObjectConfigEmbeddable
 {
     /** @var array<string, mixed> */
-    #[ORM\Column(name: 'object_config', type: 'json')]
-    private array $objectConfig = [];
+    #[ORM\Column(name: 'config', type: 'json')]
+    private array $config = [];
 
     /** @return array<string, mixed> */
     public function getObjectConfig(): array
     {
-        return $this->objectConfig;
+        return $this->config;
     }
 
     /** @param array<string, mixed> $objectConfig */
     public function setObjectConfig(array $objectConfig): void
     {
-        $this->objectConfig = $objectConfig;
+        $this->config = $objectConfig;
     }
 }

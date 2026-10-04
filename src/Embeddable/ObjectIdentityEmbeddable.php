@@ -10,35 +10,31 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Embeddable]
 final class ObjectIdentityEmbeddable
 {
-    #[ORM\Column(name: 'object_uuid', type: 'string', length: 36, unique: true)]
-    private string $objectUuid;
+    #[ORM\Column(name: 'uuid', type: 'binary', length: 16, options: ['fixed' => true])]
+    private string $uuid;
 
-    #[ORM\Column(name: 'object_slug', type: 'string', length: 190, nullable: true)]
-    private ?string $objectSlug = null;
+    #[ORM\Column(name: 'slug', type: 'string', length: 190)]
+    private string $slug;
 
     public function __construct(?string $objectUuid = null, ?string $objectSlug = null)
     {
-        $this->objectUuid = $objectUuid ?? Uuid::v7()->toRfc4122();
-        $this->objectSlug = $objectSlug;
+        $uuid = null === $objectUuid ? Uuid::v7() : Uuid::fromString($objectUuid);
+        $this->uuid = $uuid->toBinary();
+        $this->slug = $objectSlug ?? $uuid->toBase32();
     }
 
     public function getObjectUuid(): string
     {
-        return $this->objectUuid;
+        return Uuid::fromString($this->uuid)->toBase32();
     }
 
-    public function setObjectUuid(string $objectUuid): void
+    public function getObjectSlug(): string
     {
-        $this->objectUuid = $objectUuid;
+        return $this->slug;
     }
 
-    public function getObjectSlug(): ?string
+    public function setObjectSlug(string $objectSlug): void
     {
-        return $this->objectSlug;
-    }
-
-    public function setObjectSlug(?string $objectSlug): void
-    {
-        $this->objectSlug = $objectSlug;
+        $this->slug = $objectSlug;
     }
 }

@@ -32,7 +32,7 @@ final class ObjectDoctrineMappingContractReporterTest extends TestCase
                 'App\\Objecting\\EntityTrait\\Embeddable\\ObjectAuditEmbeddableTrait',
                 'App\\Objecting\\EntityTrait\\Embeddable\\ObjectTitleEmbeddableTrait',
             ],
-            columnNames: ['object_uuid', 'object_created_at', 'object_first_title'],
+            columnNames: ['uuid', 'created_at', 'first_title'],
         );
 
         $report = (new ObjectDoctrineMappingContractReporter())->report($contract);

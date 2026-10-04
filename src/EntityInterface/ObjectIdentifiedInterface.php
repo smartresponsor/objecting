@@ -8,7 +8,7 @@ interface ObjectIdentifiedInterface
 {
     public function getObjectUuid(): string;
 
-    public function getObjectSlug(): ?string;
+    public function getObjectSlug(): string;
 
-    public function setObjectSlug(?string $objectSlug): void;
+    public function setObjectSlug(string $objectSlug): void;
 }

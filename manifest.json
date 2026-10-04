@@ -1,74 +1,74 @@
 [
   {
-    "path": "docs/architecture/objecting-27-ontology-extract-stage.md",
+    "path": "composer.json",
     "exists": true
   },
   {
-    "path": "src/Extension/Ontology/Exporter/JsonLdExporter.php",
+    "path": "src/ObjectBundle.php",
     "exists": true
   },
   {
-    "path": "src/Extension/Ontology/Exporter/RdfExporter.php",
+    "path": "src/DependencyInjection/ObjectExtension.php",
     "exists": true
   },
   {
-    "path": "src/Extension/Ontology/Oql/Executor.php",
+    "path": "config/services.yaml",
     "exists": true
   },
   {
-    "path": "src/Extension/Ontology/Oql/Parser.php",
+    "path": "docs/architecture/objecting-canon.md",
     "exists": true
   },
   {
-    "path": "src/Extension/Ontology/Oql/Query.php",
+    "path": "docs/architecture/objecting-responsibility-boundary.md",
     "exists": true
   },
   {
-    "path": "src/Extension/Ontology/Support/ManifestCollector.php",
+    "path": "docs/architecture/objecting-vendor-identity-canon.md",
     "exists": true
   },
   {
-    "path": "src/Ontology/Exporter/JsonLdExporter.php",
+    "path": "resources/field-pack/manifest.yaml",
     "exists": true
   },
   {
-    "path": "src/Ontology/Exporter/RdfExporter.php",
+    "path": "resources/field-pack/object-identity.yaml",
     "exists": true
   },
   {
-    "path": "src/Ontology/Oql/Executor (2).php",
-    "exists": false
-  },
-  {
-    "path": "src/Ontology/Oql/Executor.php",
+    "path": "resources/field-pack/object-audit.yaml",
     "exists": true
   },
   {
-    "path": "src/Ontology/Oql/Parser (2).php",
-    "exists": false
-  },
-  {
-    "path": "src/Ontology/Oql/Parser.php",
+    "path": "resources/field-pack/object-title.yaml",
     "exists": true
   },
   {
-    "path": "src/Ontology/Oql/Query (2).php",
-    "exists": false
-  },
-  {
-    "path": "src/Ontology/Oql/Query.php",
+    "path": "resources/release/objecting-platform-constraints.example.yaml",
     "exists": true
   },
   {
-    "path": "src/Ontology/Support/ManifestCollector.php",
+    "path": "resources/release/objecting-rc2.example.yaml",
     "exists": true
   },
   {
-    "path": "tools/analysis/objecting-27-module-map.json",
+    "path": "tools/test/objecting_responsibility_boundary_check.php",
     "exists": true
   },
   {
-    "path": "tools/smoke/objecting-27-ontology-check.php",
+    "path": "tools/test/objecting_platform_constraint_check.php",
+    "exists": true
+  },
+  {
+    "path": "tests/Integration/Doctrine/ObjectLifecycleMetadataTest.php",
+    "exists": true
+  },
+  {
+    "path": "src/Surface/ObjectPackageSurface.php",
+    "exists": true
+  },
+  {
+    "path": "README.md",
     "exists": true
   }
 ]
