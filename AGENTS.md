@@ -314,3 +314,8 @@ For an ecosystem-wide task, produce:
 8. a deletion manifest containing only proven obsolete paths.
 
 Do not claim completion when only Entity properties were renamed. Completion requires executable code, migrated data, updated queries/contracts, and passing gates.
+## Platform Canon Precedence
+
+For work under `D:\PhpstormProjects\www`, authoritative platform rules live in the Canonization repository. Gating is the executable mirror for objectively guardable rules. This `AGENTS.md` is an agent-facing projection or local supplement and must not override or contradict Canonization.
+
+If a local instruction conflicts with current Canonization, follow Canonization and synchronize this file. Local instructions may narrow scope or add repository-specific constraints only when they remain compatible with Canonization.
